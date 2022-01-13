@@ -18,7 +18,17 @@ function App() {
       localStorage.setItem("lat", position.coords.latitude);
     });
   }, []);
+
   useEffect(() => {
+    const { REACT_APP_API_URL } = process.env;
+    const getTodos = async () => {
+      const user = localStorage.getItem("user");
+      fetch(REACT_APP_API_URL + "/todos" + user)
+        .then((res) => res.json())
+        .then((result) => setTodos(result))
+        .catch((e) => console.log("Database error : " + e));
+    };
+
     getTodos();
   }, [<Input />]);
 
@@ -31,13 +41,6 @@ function App() {
     setTodos((todos) => todos.filter((todo) => todo._id !== focusedToDo._id));
   };
 
-  const getTodos = async () => {
-    const user = localStorage.getItem("user");
-    fetch(REACT_APP_API_URL + "/todos" + user)
-      .then((res) => res.json())
-      .then((result) => setTodos(result))
-      .catch((e) => console.log("Database error : " + e));
-  };
   const logout = () => {
     localStorage.removeItem("user");
     navigate("/");

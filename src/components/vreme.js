@@ -15,7 +15,7 @@ export default function Vreme(props) {
     let long = localStorage.getItem("long");
 
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${REACT_APP_WEATHERID}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${REACT_APP_WEATHERID}`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -23,6 +23,7 @@ export default function Vreme(props) {
         setGrad(result.name);
         setOpis(result.weather[0].description);
       });
+    console.log(REACT_APP_WEATHERID);
   };
 
   useEffect(() => {

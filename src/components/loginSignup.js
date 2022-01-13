@@ -19,9 +19,15 @@ const Login = () => {
           username: signUpUsername,
           password: signUpPassword,
         }),
+      }).then((response) => {
+        if (response.status === 500) {
+          setSignuperror("Username allready taken");
+        } else {
+          setSignuperror("Account created.");
+        }
       });
     } catch (e) {
-      console.log(e);
+      console.log("error");
     }
   };
   const loginUser = async () => {
@@ -48,6 +54,7 @@ const Login = () => {
     }
   };
   const [error, setError] = useState("");
+  const [signupError, setSignuperror] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -135,6 +142,8 @@ const Login = () => {
               Signup
             </Button>
           </Form>
+          <br />
+          {signupError}
         </Col>
       </Row>
     </Container>

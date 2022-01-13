@@ -26,7 +26,7 @@ function App() {
       fetch(REACT_APP_API_URL + "/todos" + user)
         .then((res) => res.json())
         .then((result) => setTodos(result))
-        .catch((e) => console.log("Database error : " + e));
+        .catch((e) => console.log("Database error  : " + e));
     };
 
     getTodos();

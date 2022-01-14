@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const { REACT_APP_API_URL } = process.env;
@@ -63,9 +63,9 @@ const Login = () => {
   useEffect(() => {}, []);
   return (
     <Container>
-      <Row>
+      <Col>
         <Col>
-          <h1>LOGIN</h1>
+          <h1 className="mt-5">LOGIN</h1>
 
           <Form>
             <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -145,7 +145,7 @@ const Login = () => {
           <br />
           {signupError}
         </Col>
-      </Row>
+      </Col>
     </Container>
   );
 };

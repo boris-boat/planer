@@ -56,7 +56,7 @@ export default function Vreme(props) {
           <ListGroup>
             <ListGroup.Item>Temp now : {Math.round(temp)} °C</ListGroup.Item>
             <ListGroup.Item>
-              Personal feel : {Math.round(feels_like)} °C
+              Real feel : {Math.round(feels_like)} °C
             </ListGroup.Item>
             <ListGroup.Item>
               Min temp : {Math.round(temp_min)} °C

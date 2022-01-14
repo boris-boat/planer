@@ -1,7 +1,16 @@
 import "./App.css";
 import "./index.css";
 import Input from "./components/input.js";
-import { ListGroup, DropdownButton, Dropdown, Button } from "react-bootstrap";
+import {
+  ListGroup,
+  DropdownButton,
+  Dropdown,
+  Button,
+  Nav,
+  Navbar,
+  Container,
+} from "react-bootstrap";
+
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +59,7 @@ function App() {
     <div className="App">
       {user ? (
         <>
-          <div className="dropdown-wrapper">
+          {/* <div className="dropdown-wrapper">
             <DropdownButton id="dropdown-item-button" title="Menu">
               <Dropdown.Item as="button" onClick={() => setVremeShow(true)}>
                 Weather
@@ -60,7 +69,18 @@ function App() {
                 Logout
               </Dropdown.Item>
             </DropdownButton>
-          </div>
+          </div> */}
+          <Navbar bg="primary" variant="dark" fixed="top">
+            <Container>
+              <Navbar.Brand onClick={() => navigate("/home")}>
+                imaSve
+              </Navbar.Brand>
+              <Nav className="me-auto">
+                <Nav.Link onClick={() => setVremeShow(true)}>Weather</Nav.Link>
+                <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
           <Input />
           <ListGroup>

@@ -26,9 +26,9 @@ const Input = () => {
       .catch((e) => console.log(e));
   };
   return (
-    <div key="input">
+    <div key="input" className="mt-5">
       <h1>Welcome {creator}</h1>
-      <div className="input-group mb-3">
+      <div className="input-group mb-3  mt-5">
         <input
           type="text"
           className="form-control"

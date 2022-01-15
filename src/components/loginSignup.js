@@ -1,7 +1,16 @@
 import React from "react";
-import { Form, Button, Container, Col, Row } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Col,
+  Row,
+  Alert,
+  Image,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./loginart.jpg";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
@@ -53,6 +62,7 @@ const Login = () => {
       console.log(e);
     }
   };
+
   const [error, setError] = useState("");
   const [signupError, setSignuperror] = useState("");
   const [username, setUsername] = useState("");
@@ -62,11 +72,11 @@ const Login = () => {
 
   useEffect(() => {}, []);
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <Col sm={4}>
           <Col>
-            <h1 className="mt-5">LOGIN</h1>
+            <h1 className="mt-3">LOGIN</h1>
 
             <Form className="mt-5">
               <Form.Group
@@ -102,7 +112,7 @@ const Login = () => {
               </Button>
             </Form>
             <br />
-            {error}
+            {error ? <Alert variant="danger">{error}</Alert> : ""}
           </Col>
 
           <Col>
@@ -112,7 +122,6 @@ const Login = () => {
           </Col>
           <Col>
             <h1 className="mt-5">SIGNUP</h1>
-
             <Form className="mt-5">
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
@@ -147,8 +156,16 @@ const Login = () => {
               </Button>
             </Form>
             <br />
-            {signupError}
+            {signupError ? <Alert>{signupError}</Alert> : ""}
           </Col>
+        </Col>
+        <Col>
+          <Image
+            style={{ height: "100%", width: "100%" }}
+            src={require("./micah-williams-lmFJOx7hPc4-unsplash.jpg")}
+            alt=""
+            responsive
+          />
         </Col>
       </Row>
     </Container>

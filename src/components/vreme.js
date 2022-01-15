@@ -14,13 +14,13 @@ export default function Vreme(props) {
   const getVreme = async () => {
     let lat = localStorage.getItem("lat");
     let long = localStorage.getItem("long");
+
     if (lat && long) {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${REACT_APP_WEATHERID}`
       )
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
           settrenutnoVreme(result.main);
           setGrad(result.name);
           setOpis(result.weather[0].description);

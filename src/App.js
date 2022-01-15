@@ -1,15 +1,25 @@
 import "./App.css";
 import "./index.css";
 import Input from "./components/input.js";
-import { ListGroup, Button, Nav, Navbar, Container } from "react-bootstrap";
+import {
+  ListGroup,
+  Button,
+  Nav,
+  Navbar,
+  Container,
+  NavDropdown,
+} from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
+import TomorrowVreme from "./components/vreme sutra";
+
 import { useNavigate } from "react-router-dom";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [VremeShow, setVremeShow] = useState(false);
+  const [TomorrowVremeShow, setTomorrowVremeShow] = useState(false);
   const user = localStorage.getItem("user");
 
   const navigate = useNavigate();
@@ -57,12 +67,25 @@ function App() {
                 imaSve
               </Navbar.Brand>
               <Nav className="me-auto">
-                <Nav.Link onClick={() => setVremeShow(true)}>Weather</Nav.Link>
+                <NavDropdown title="Weather" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={() => setVremeShow(true)}>
+                    Weather today
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => setTomorrowVremeShow(true)}>
+                    Weather tomorrow
+                  </NavDropdown.Item>
+                </NavDropdown>
+
                 <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
+          <TomorrowVreme
+            show={TomorrowVremeShow}
+            onHide={() => setTomorrowVremeShow(false)}
+          />
+
           <Input />
           <ListGroup>
             <div className="cela-grupa" key="svezajedno">

@@ -71,9 +71,9 @@ function App() {
                   <NavDropdown.Item onClick={() => setVremeShow(true)}>
                     Weather today
                   </NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => setTomorrowVremeShow(true)}>
+                  {/* <NavDropdown.Item onClick={() => setTomorrowVremeShow(true)}>
                     Weather tomorrow
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                 </NavDropdown>
 
                 <Nav.Link onClick={() => logout()}>Logout</Nav.Link>

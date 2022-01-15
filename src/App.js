@@ -1,15 +1,7 @@
 import "./App.css";
 import "./index.css";
 import Input from "./components/input.js";
-import {
-  ListGroup,
-  DropdownButton,
-  Dropdown,
-  Button,
-  Nav,
-  Navbar,
-  Container,
-} from "react-bootstrap";
+import { ListGroup, Button, Nav, Navbar, Container } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
@@ -59,17 +51,6 @@ function App() {
     <div className="App">
       {user ? (
         <>
-          {/* <div className="dropdown-wrapper">
-            <DropdownButton id="dropdown-item-button" title="Menu">
-              <Dropdown.Item as="button" onClick={() => setVremeShow(true)}>
-                Weather
-              </Dropdown.Item>
-
-              <Dropdown.Item as="button" onClick={() => logout()}>
-                Logout
-              </Dropdown.Item>
-            </DropdownButton>
-          </div> */}
           <Navbar bg="primary" variant="dark" fixed="top">
             <Container>
               <Navbar.Brand onClick={() => navigate("/home")}>

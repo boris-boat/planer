@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Container, Col } from "react-bootstrap";
+import { Form, Button, Container, Col, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const { REACT_APP_API_URL } = process.env;
@@ -63,89 +63,94 @@ const Login = () => {
   useEffect(() => {}, []);
   return (
     <Container>
-      <Col>
-        <Col>
-          <h1 className="mt-5">LOGIN</h1>
+      <Row>
+        <Col sm={4}>
+          <Col>
+            <h1 className="mt-5">LOGIN</h1>
 
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Form.Group>
+            <Form className="mt-5">
+              <Form.Group
+                className="mb-3 expand-sm"
+                controlId="formBasicUsername"
+              >
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
 
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={(e) => {
-                loginUser();
-                e.preventDefault();
-              }}
-            >
-              Login
-            </Button>
-          </Form>
-          <br />
-          {error}
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={(e) => {
+                  loginUser();
+                  e.preventDefault();
+                }}
+              >
+                Login
+              </Button>
+            </Form>
+            <br />
+            {error}
+          </Col>
+
+          <Col>
+            <div className="d-flex align-items-center justify-content-center mt-2">
+              <h1>OR</h1>
+            </div>
+          </Col>
+          <Col>
+            <h1 className="mt-5">SIGNUP</h1>
+
+            <Form className="mt-5">
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  value={signUpUsername}
+                  onChange={(e) => setsignUpUsername(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={signUpPassword}
+                  onChange={(e) => setsignUpPassword(e.target.value)}
+                />
+              </Form.Group>
+
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  addUser();
+                }}
+              >
+                Signup
+              </Button>
+            </Form>
+            <br />
+            {signupError}
+          </Col>
         </Col>
-
-        <Col>
-          <div className="d-flex align-items-center justify-content-center">
-            <h1>OR</h1>
-          </div>
-        </Col>
-        <Col>
-          <h1>SIGNUP</h1>
-
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                value={signUpUsername}
-                onChange={(e) => setsignUpUsername(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={signUpPassword}
-                onChange={(e) => setsignUpPassword(e.target.value)}
-              />
-            </Form.Group>
-
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-
-                addUser();
-              }}
-            >
-              Signup
-            </Button>
-          </Form>
-          <br />
-          {signupError}
-        </Col>
-      </Col>
+      </Row>
     </Container>
   );
 };

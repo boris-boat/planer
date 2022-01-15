@@ -72,13 +72,13 @@ const Login = () => {
 
   useEffect(() => {}, []);
   return (
-    <Container fluid>
+    <Container className="mt-5" fluid>
       <Row>
-        <Col sm={4}>
+        <Col sm={4} className="px-4">
           <Col>
             <h1 className="mt-3">LOGIN</h1>
 
-            <Form className="mt-5">
+            <Form className="mt-5 ">
               <Form.Group
                 className="mb-3 expand-sm"
                 controlId="formBasicUsername"

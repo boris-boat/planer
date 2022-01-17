@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./loginart.jpg";
+
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
@@ -72,13 +72,24 @@ const Login = () => {
 
   useEffect(() => {}, []);
   return (
-    <Container className="mt-5" fluid>
+    <Container fluid className="m-0 p-0">
       <Row>
-        <Col sm={4} className="px-4">
+        <Col sm={4}>
           <Col>
-            <h1 className="mt-3">LOGIN</h1>
-
-            <Form className="mt-5 ">
+            <Col>
+              <Row>
+                <Row className="m-0 p-0">
+                  <Image
+                    className="m-0 p-0"
+                    src={require("./logosiroki.png")}
+                  ></Image>
+                </Row>
+                <Row className="d-flex align-items-end m-0">
+                  <h1 className="mt-3 px-4">LOGIN</h1>
+                </Row>
+              </Row>
+            </Col>
+            <Form className="mt-3 px-4 ">
               <Form.Group
                 className="mb-3 expand-sm"
                 controlId="formBasicUsername"
@@ -91,7 +102,7 @@ const Login = () => {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3 " controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -116,13 +127,8 @@ const Login = () => {
           </Col>
 
           <Col>
-            <div className="d-flex align-items-center justify-content-center mt-2">
-              <h1>OR</h1>
-            </div>
-          </Col>
-          <Col>
-            <h1 className="mt-5">SIGNUP</h1>
-            <Form className="mt-5">
+            <h1 className="mt-2 px-4">SIGNUP</h1>
+            <Form className="mt-2 px-4">
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
                 <Form.Control
@@ -159,8 +165,9 @@ const Login = () => {
             {signupError ? <Alert>{signupError}</Alert> : ""}
           </Col>
         </Col>
-        <Col>
+        <Col className="m-0 p-0">
           <Image
+            className="loginImg m-0"
             style={{ height: "100%", width: "100%" }}
             src={require("./micah-williams-lmFJOx7hPc4-unsplash.jpg")}
             alt=""

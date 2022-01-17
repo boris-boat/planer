@@ -63,7 +63,7 @@ function App() {
         <>
           <Navbar bg="primary" variant="dark" fixed="top">
             <Container>
-              <Navbar.Brand onClick={() => navigate("/home")}>
+              <Navbar.Brand role="button" onClick={() => navigate("/home")}>
                 imaSve
               </Navbar.Brand>
               <Nav className="me-auto">

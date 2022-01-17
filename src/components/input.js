@@ -31,9 +31,9 @@ const Input = (props) => {
   };
   return (
     <Container className="">
-      <h1>Welcome {creator}</h1>
+      <h1 className="mt-3">Welcome {creator}</h1>
 
-      <Row className="d-inline-flex">
+      <Row className="d-inline-flex mt-3">
         <InputGroup
           className="mb-3"
           onChange={(e) => setnewTodo(e.target.value)}

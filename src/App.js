@@ -10,6 +10,7 @@ import {
   NavDropdown,
   Row,
   Dropdown,
+  InputGroup,
 } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
@@ -24,6 +25,7 @@ function App() {
   const [TomorrowVremeShow, setTomorrowVremeShow] = useState(false);
   const user = localStorage.getItem("user");
   const [category, setCategory] = useState("General");
+  const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -70,6 +72,16 @@ function App() {
                 imaSve
               </Navbar.Brand>
               <Nav className="me-auto">
+                <Nav.Item className="m-0 p-0">
+                  <input
+                    className="w-100 mt-1"
+                    onChange={(event) => {
+                      setSearch(event.target.value);
+                    }}
+                    placeholder="Search"
+                  ></input>
+                </Nav.Item>
+
                 <NavDropdown title="Weather" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={() => setVremeShow(true)}>
                     Weather today
@@ -91,7 +103,7 @@ function App() {
 
           <Input category={category} />
           <Row>
-            <Dropdown>
+            <Dropdown className="mb-3">
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 {category}
               </Dropdown.Toggle>
@@ -112,29 +124,39 @@ function App() {
           <ListGroup>
             <div className="cela-grupa" key="svezajedno">
               {todos ? (
-                todos.map((todo) => {
-                  if (todo.category === category) {
-                    return (
-                      <ListGroup.Item key={todo._id}>
-                        <div className="d-flex flex-row justify-content-between align-items-center">
-                          <div>
-                            <h5>{todo.text}</h5>
+                todos
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.text.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((todo) => {
+                    if (todo.category === category) {
+                      return (
+                        <ListGroup.Item key={todo._id}>
+                          <div className="d-flex flex-row justify-content-between align-items-cente r">
+                            <div>
+                              <h5 className="mt-1">{todo.text}</h5>
+                            </div>
+                            <div className="d-flex align-items-end">
+                              <button
+                                className="btn-danger btn-sm d-flex "
+                                onClick={() => {
+                                  deleteToDo(todo._id);
+                                }}
+                              >
+                                REMOVE
+                              </button>
+                            </div>
                           </div>
-                          <div className="d-flex align-items-end">
-                            <button
-                              className="btn-danger btn-sm d-flex "
-                              onClick={() => {
-                                deleteToDo(todo._id);
-                              }}
-                            >
-                              REMOVE
-                            </button>
-                          </div>
-                        </div>
-                      </ListGroup.Item>
-                    );
-                  }
-                })
+                        </ListGroup.Item>
+                      );
+                    }
+                  })
               ) : (
                 <h1>Nothing here , go add some items !</h1>
               )}

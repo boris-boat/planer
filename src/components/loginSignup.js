@@ -167,7 +167,7 @@ const Login = () => {
         </Col>
         <Col className="m-0 p-0">
           <Image
-            className="loginImg m-0"
+            className="loginImg m-0 "
             style={{ height: "100%", width: "100%" }}
             src={require("./micah-williams-lmFJOx7hPc4-unsplash.jpg")}
             alt=""

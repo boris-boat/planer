@@ -8,6 +8,8 @@ import {
   Navbar,
   Container,
   NavDropdown,
+  Row,
+  Dropdown,
 } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
@@ -21,6 +23,7 @@ function App() {
   const [VremeShow, setVremeShow] = useState(false);
   const [TomorrowVremeShow, setTomorrowVremeShow] = useState(false);
   const user = localStorage.getItem("user");
+  const [category, setCategory] = useState("General");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -86,30 +89,55 @@ function App() {
             onHide={() => setTomorrowVremeShow(false)}
           />
 
-          <Input />
+          <Input category={category} />
+          <Row>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                {category}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => setCategory("General")}>
+                  General
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setCategory("Reminders")}>
+                  Reminders
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setCategory("Shoping List")}>
+                  Shoping List
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Row>
           <ListGroup>
             <div className="cela-grupa" key="svezajedno">
-              {todos
-                ? todos.map((todo) => (
-                    <ListGroup.Item key={todo._id}>
-                      <div className="d-flex flex-row justify-content-between align-items-center">
-                        <div>
-                          <h5>{todo.text} </h5>
+              {todos ? (
+                todos.map((todo) => {
+                  if (todo.category === category) {
+                    return (
+                      <ListGroup.Item key={todo._id}>
+                        <div className="d-flex flex-row justify-content-between align-items-center">
+                          <div>
+                            <h5>{todo.text}</h5>
+                          </div>
+                          <div className="d-flex align-items-end">
+                            <button
+                              className="btn-danger btn-sm d-flex "
+                              onClick={() => {
+                                deleteToDo(todo._id);
+                              }}
+                            >
+                              REMOVE
+                            </button>
+                          </div>
                         </div>
-                        <div className="d-flex align-items-end">
-                          <button
-                            className="btn-danger btn-sm d-flex "
-                            onClick={() => {
-                              deleteToDo(todo._id);
-                            }}
-                          >
-                            REMOVE
-                          </button>
-                        </div>
-                      </div>
-                    </ListGroup.Item>
-                  ))
-                : ""}
+                      </ListGroup.Item>
+                    );
+                  }
+                })
+              ) : (
+                <h1>Nothing here , go add some items !</h1>
+              )}
             </div>
           </ListGroup>
         </>

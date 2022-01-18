@@ -21,7 +21,7 @@ const Input = (props) => {
       body: JSON.stringify({
         text: newTodo,
         creator: creator,
-        category: props.category,
+        category: props.category === "Everything" ? "General" : props.category,
       }),
     })
       .then((res) => {

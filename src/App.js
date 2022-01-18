@@ -24,7 +24,7 @@ function App() {
   const [VremeShow, setVremeShow] = useState(false);
   const [TomorrowVremeShow, setTomorrowVremeShow] = useState(false);
   const user = localStorage.getItem("user");
-  const [category, setCategory] = useState("General");
+  const [category, setCategory] = useState("Everything");
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
@@ -109,6 +109,9 @@ function App() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
+                <Dropdown.Item onClick={() => setCategory("Everything")}>
+                  Everything
+                </Dropdown.Item>
                 <Dropdown.Item onClick={() => setCategory("General")}>
                   General
                 </Dropdown.Item>
@@ -136,6 +139,26 @@ function App() {
                   })
                   .map((todo) => {
                     if (todo.category === category) {
+                      return (
+                        <ListGroup.Item key={todo._id}>
+                          <div className="d-flex flex-row justify-content-between align-items-cente r">
+                            <div>
+                              <h5 className="mt-1">{todo.text}</h5>
+                            </div>
+                            <div className="d-flex align-items-end">
+                              <button
+                                className="btn-danger btn-sm d-flex "
+                                onClick={() => {
+                                  deleteToDo(todo._id);
+                                }}
+                              >
+                                REMOVE
+                              </button>
+                            </div>
+                          </div>
+                        </ListGroup.Item>
+                      );
+                    } else if (category === "Everything") {
                       return (
                         <ListGroup.Item key={todo._id}>
                           <div className="d-flex flex-row justify-content-between align-items-cente r">

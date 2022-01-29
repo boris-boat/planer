@@ -10,7 +10,6 @@ const Input = (props) => {
   const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
 
-  //da posalje createdBy u bazu
   const API_LOKACIJA = REACT_APP_API_URL;
   const addToDo = async () => {
     await fetch(API_LOKACIJA + "/createTodo", {
@@ -22,6 +21,7 @@ const Input = (props) => {
         text: newTodo,
         creator: creator,
         category: props.category === "Everything" ? "General" : props.category,
+        completed: false,
       }),
     })
       .then((res) => {

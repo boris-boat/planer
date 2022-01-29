@@ -12,7 +12,6 @@ ReactDOM.render(
         <Route exact path="/" element={<Login />} />
       </Routes>
     </React.StrictMode>
-    ,
   </BrowserRouter>,
   document.getElementById("root")
 );

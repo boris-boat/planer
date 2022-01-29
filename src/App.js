@@ -1,6 +1,7 @@
 import "./App.css";
 import "./index.css";
-import Input from "./components/input.js";
+
+import Item from "./components/Item";
 import {
   ListGroup,
   Button,
@@ -15,46 +16,83 @@ import {
 
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
-import TomorrowVreme from "./components/vreme sutra";
 
 import { useNavigate } from "react-router-dom";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [VremeShow, setVremeShow] = useState(false);
-  const [TomorrowVremeShow, setTomorrowVremeShow] = useState(false);
+
   const user = localStorage.getItem("user");
   const [category, setCategory] = useState("Everything");
   const [search, setSearch] = useState("");
+  const [newTodo, setnewTodo] = useState("");
+  const [creator, setCreator] = useState("");
 
   const navigate = useNavigate();
   useEffect(() => {
+    setCreator(localStorage.getItem("user"));
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
     });
   }, []);
-
-  useEffect(() => {
-    const { REACT_APP_API_URL } = process.env;
-    const getTodos = async () => {
-      const user = localStorage.getItem("user");
-      fetch(REACT_APP_API_URL + "/todos" + user)
-        .then((res) => res.json())
-        .then((result) => setTodos(result))
-        .catch((e) => console.log("Database error  : " + e));
-    };
-
-    getTodos();
-  }, [<Input />]);
-
   const { REACT_APP_API_URL } = process.env;
+  const getTodos = async () => {
+    fetch(REACT_APP_API_URL + "/todos" + user)
+      .then((res) => res.json())
+      .then((result) => setTodos(result))
+      .catch((e) => console.log("Database error  : " + e));
+  };
+
+  const addToDo = async () => {
+    let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: newTodo,
+        creator: creator,
+        category: category === "Everything" ? "General" : category,
+        completed: false,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+    setTodos([...todos, newestTodo]);
+  };
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   const deleteToDo = async (id) => {
-    const focusedToDo = await fetch(REACT_APP_API_URL + "/delete/" + id, {
+    await fetch(REACT_APP_API_URL + "/delete/" + id, {
       method: "DELETE",
-    }).then((res) => res.json());
-    setTodos((todos) => todos.filter((todo) => todo._id !== focusedToDo._id));
+    })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+
+    //findbyid and assign to value then filter by it
+    const todosCopy = todos;
+
+    todosCopy.filter((todo) => todo._id !== id);
+    console.log(todosCopy);
+    setTodos([todosCopy]);
+  };
+  const completeTodo = async (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo._id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
   };
 
   const logout = () => {
@@ -86,9 +124,6 @@ function App() {
                   <NavDropdown.Item onClick={() => setVremeShow(true)}>
                     Weather today
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Item onClick={() => setTomorrowVremeShow(true)}>
-                    Weather tomorrow
-                  </NavDropdown.Item> */}
                 </NavDropdown>
 
                 <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
@@ -96,12 +131,35 @@ function App() {
             </Container>
           </Navbar>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
-          <TomorrowVreme
-            show={TomorrowVremeShow}
-            onHide={() => setTomorrowVremeShow(false)}
-          />
 
-          <Input category={category} />
+          {/* <Input category={category} /> */}
+          <Container className="">
+            <h1 className="mt-3">Welcome {creator}</h1>
+
+            <Row className="d-inline-flex mt-3">
+              <InputGroup
+                className="mb-3"
+                onChange={(e) => setnewTodo(e.target.value)}
+                value={newTodo}
+              >
+                <input
+                  className="input-field"
+                  placeholder="Add new item"
+                  value={newTodo}
+                />
+                <Button
+                  variant="outline-secondary"
+                  id="button-addon2"
+                  onClick={() => {
+                    addToDo();
+                    setnewTodo("");
+                  }}
+                >
+                  Add
+                </Button>
+              </InputGroup>
+            </Row>
+          </Container>
           <Row>
             <Dropdown className="mb-3">
               <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -125,7 +183,7 @@ function App() {
             </Dropdown>
           </Row>
           <ListGroup>
-            <div className="cela-grupa" key="svezajedno">
+            <div className="cela-grupa" key={Math.random()}>
               {todos ? (
                 todos
                   .filter((val) => {
@@ -140,42 +198,24 @@ function App() {
                   .map((todo) => {
                     if (todo.category === category) {
                       return (
-                        <ListGroup.Item key={todo._id}>
-                          <div className="d-flex flex-row justify-content-between align-items-cente r">
-                            <div>
-                              <h5 className="mt-1">{todo.text}</h5>
-                            </div>
-                            <div className="d-flex align-items-end">
-                              <button
-                                className="btn-danger btn-sm d-flex "
-                                onClick={() => {
-                                  deleteToDo(todo._id);
-                                }}
-                              >
-                                REMOVE
-                              </button>
-                            </div>
-                          </div>
+                        <ListGroup.Item>
+                          <Item
+                            key={todo._id}
+                            item={todo}
+                            completeTodo={completeTodo}
+                            deleteToDo={deleteToDo}
+                          />
                         </ListGroup.Item>
                       );
                     } else if (category === "Everything") {
                       return (
-                        <ListGroup.Item key={todo._id}>
-                          <div className="d-flex flex-row justify-content-between align-items-cente r">
-                            <div>
-                              <h5 className="mt-1">{todo.text}</h5>
-                            </div>
-                            <div className="d-flex align-items-end">
-                              <button
-                                className="btn-danger btn-sm d-flex "
-                                onClick={() => {
-                                  deleteToDo(todo._id);
-                                }}
-                              >
-                                REMOVE
-                              </button>
-                            </div>
-                          </div>
+                        <ListGroup.Item>
+                          <Item
+                            key={todo._id}
+                            item={todo}
+                            completeTodo={completeTodo}
+                            deleteToDo={deleteToDo}
+                          />
                         </ListGroup.Item>
                       );
                     }

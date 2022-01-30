@@ -76,9 +76,7 @@ function App() {
     //findbyid and assign to value then filter by it
     const todosCopy = todos;
 
-    todosCopy.filter((todo) => todo._id !== id);
-    console.log(todosCopy);
-    setTodos([todosCopy]);
+    setTodos(todosCopy.filter((todo) => todo._id !== id));
   };
   const completeTodo = async (id) => {
     setTodos(
@@ -183,7 +181,7 @@ function App() {
             </Dropdown>
           </Row>
           <ListGroup>
-            <div className="cela-grupa" key={Math.random()}>
+            <div className="cela-grupa" key={Math.random() * 1000}>
               {todos ? (
                 todos
                   .filter((val) => {

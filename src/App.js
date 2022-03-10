@@ -16,6 +16,7 @@ import {
 
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
+import Quote from "./components/quote";
 
 import { useNavigate } from "react-router-dom";
 
@@ -37,6 +38,7 @@ function App() {
       localStorage.setItem("lat", position.coords.latitude);
     });
   }, []);
+
   const { REACT_APP_API_URL } = process.env;
   const getTodos = async () => {
     fetch(REACT_APP_API_URL + "/todos" + user)
@@ -44,7 +46,9 @@ function App() {
       .then((result) => setTodos(result))
       .catch((e) => console.log("Database error  : " + e));
   };
-
+  useEffect(() => {
+    getTodos();
+  }, []);
   const addToDo = async () => {
     let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
       method: "POST",
@@ -62,9 +66,6 @@ function App() {
       .catch((e) => console.log(e));
     setTodos([...todos, newestTodo]);
   };
-  useEffect(() => {
-    getTodos();
-  }, []);
 
   const deleteToDo = async (id) => {
     await fetch(REACT_APP_API_URL + "/delete/" + id, {
@@ -132,7 +133,8 @@ function App() {
 
           {/* <Input category={category} /> */}
           <Container className="">
-            <h1 className="mt-3">Welcome {creator}</h1>
+            <Quote />
+            <h1 className="mt-3">Welcome {creator} !</h1>
 
             <Row className="d-inline-flex mt-3">
               <InputGroup

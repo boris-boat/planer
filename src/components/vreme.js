@@ -70,7 +70,6 @@ export default function Vreme(props) {
           <h1>Please refresh the page and allow location access.</h1>
         )}
       </Modal.Body>
-      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 }

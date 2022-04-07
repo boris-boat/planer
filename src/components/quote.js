@@ -5,7 +5,7 @@ const Quote = () => {
   const [quote, setQuote] = useState("");
   const updateQuote = async () => {
     const response = await fetch("https://api.quotable.io/random?maxLength=50");
-    const { statusCode, statusMessage, ...data } = await response.json();
+    const { ...data } = await response.json();
     setQuote(data);
   };
 

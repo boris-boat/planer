@@ -4,12 +4,14 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/loginSignup";
+import News from "./components/news";
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
       <Routes>
         <Route exact path="/home" element={<App />} />
         <Route exact path="/" element={<Login />} />
+        <Route exact path="/news" element={<News />} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>,

@@ -2,13 +2,11 @@ import "./App.css";
 import "./index.css";
 
 import Item from "./components/Item";
+import { Suspense } from "react";
 import {
   ListGroup,
   Button,
-  Nav,
-  Navbar,
   Container,
-  NavDropdown,
   Row,
   Dropdown,
   InputGroup,
@@ -17,12 +15,16 @@ import {
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
 import Quote from "./components/quote";
+import News from "./components/news";
 
 import { useNavigate } from "react-router-dom";
+import Topnavbar from "./components/navbar";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [VremeShow, setVremeShow] = useState(false);
+  const [newsShow, setNewsShow] = useState(false);
+  const [news, setNews] = useState([]);
 
   const user = localStorage.getItem("user");
   const [category, setCategory] = useState("Everything");
@@ -40,6 +42,7 @@ function App() {
   }, []);
 
   const { REACT_APP_API_URL } = process.env;
+
   const getTodos = async () => {
     fetch(REACT_APP_API_URL + "/todos" + user)
       .then((res) => res.json())
@@ -74,7 +77,6 @@ function App() {
       .then((res) => res.json())
       .catch((e) => console.log(e));
 
-    //findbyid and assign to value then filter by it
     const todosCopy = todos;
 
     setTodos(todosCopy.filter((todo) => todo._id !== id));
@@ -101,39 +103,22 @@ function App() {
 
   return (
     <div className="App">
+      <Topnavbar
+        setSearch={setSearch}
+        setVremeShow={setVremeShow}
+        logout={logout}
+        setNewsShow={setNewsShow}
+      />
+
       {user ? (
         <>
-          <Navbar bg="primary" variant="dark" fixed="top">
-            <Container>
-              <Navbar.Brand role="button" onClick={() => navigate("/home")}>
-                imaSve
-              </Navbar.Brand>
-              <Nav className="me-auto">
-                <Nav.Item className="m-0 p-0">
-                  <input
-                    className="w-100 mt-1"
-                    onChange={(event) => {
-                      setSearch(event.target.value);
-                    }}
-                    placeholder="Search"
-                  ></input>
-                </Nav.Item>
-
-                <NavDropdown title="Weather" id="basic-nav-dropdown">
-                  <NavDropdown.Item onClick={() => setVremeShow(true)}>
-                    Weather today
-                  </NavDropdown.Item>
-                </NavDropdown>
-
-                <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
-              </Nav>
-            </Container>
-          </Navbar>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
-
-          {/* <Input category={category} /> */}
-          <Container className="">
+          <News show={newsShow} onHide={() => setNewsShow(false)} news={news} />
+          <Suspense fallback={<h1>Loading quote...</h1>}>
             <Quote />
+          </Suspense>
+
+          <Container className="">
             <h1 className="mt-3">Welcome {creator} !</h1>
 
             <Row className="d-inline-flex mt-3">

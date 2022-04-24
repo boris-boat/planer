@@ -3,14 +3,7 @@ import "./index.css";
 
 import Item from "./components/Item";
 import { Suspense } from "react";
-import {
-  ListGroup,
-  Button,
-  Container,
-  Row,
-  Dropdown,
-  InputGroup,
-} from "react-bootstrap";
+import { ListGroup, Button, Container, Row, InputGroup } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
@@ -119,7 +112,10 @@ function App() {
           </Suspense>
 
           <Container className="">
-            <h1 className="mt-3">Welcome {creator} !</h1>
+            <Suspense fallback={<h1>Loading user...</h1>}>
+              {" "}
+              <h1 className="mt-3">Welcome {creator} !</h1>
+            </Suspense>
 
             <Row className="d-inline-flex mt-3">
               <InputGroup
@@ -146,69 +142,82 @@ function App() {
             </Row>
           </Container>
           <Row>
-            <Dropdown className="mb-3">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                {category}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setCategory("Everything")}>
-                  Everything
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setCategory("General")}>
-                  General
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setCategory("Reminders")}>
-                  Reminders
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setCategory("Shoping List")}>
-                  Shoping List
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Container className="button-container mb-3">
+              <Button
+                className="btn-sm"
+                variant="success"
+                onClick={() => setCategory("General")}
+              >
+                General
+              </Button>{" "}
+              <Button
+                className="btn-sm"
+                variant="success"
+                onClick={() => setCategory("Reminders")}
+              >
+                Reminders
+              </Button>{" "}
+              <Button
+                className="btn-sm"
+                variant="success"
+                onClick={() => setCategory("Shoping List")}
+              >
+                Shoping List
+              </Button>{" "}
+              <Button
+                className="btn-sm"
+                class="btn-l"
+                variant="success"
+                onClick={() => setCategory("Everything")}
+              >
+                Everything
+              </Button>{" "}
+            </Container>
           </Row>
           <ListGroup>
-            <div className="cela-grupa" key={Math.random() * 1000}>
-              {todos ? (
-                todos
-                  .filter((val) => {
-                    if (search === "") {
-                      return val;
-                    } else if (
-                      val.text.toLowerCase().includes(search.toLowerCase())
-                    ) {
-                      return val;
-                    }
-                  })
-                  .map((todo) => {
-                    if (todo.category === category) {
-                      return (
-                        <ListGroup.Item>
-                          <Item
-                            key={todo._id}
-                            item={todo}
-                            completeTodo={completeTodo}
-                            deleteToDo={deleteToDo}
-                          />
-                        </ListGroup.Item>
-                      );
-                    } else if (category === "Everything") {
-                      return (
-                        <ListGroup.Item>
-                          <Item
-                            key={todo._id}
-                            item={todo}
-                            completeTodo={completeTodo}
-                            deleteToDo={deleteToDo}
-                          />
-                        </ListGroup.Item>
-                      );
-                    }
-                  })
-              ) : (
-                <h1>Nothing here , go add some items !</h1>
-              )}
-            </div>
+            <Suspense fallback={<h1>Loading items...</h1>}>
+              <div className="cela-grupa" key={Math.random() * 1000}>
+                {todos ? (
+                  todos
+                    .filter((val) => {
+                      if (search === "") {
+                        return val;
+                      } else if (
+                        val.text.toLowerCase().includes(search.toLowerCase())
+                      ) {
+                        return val;
+                      }
+                    })
+                    .map((todo) => {
+                      if (todo.category === category) {
+                        return (
+                          <ListGroup.Item>
+                            <Item
+                              key={todo._id}
+                              item={todo}
+                              completeTodo={completeTodo}
+                              deleteToDo={deleteToDo}
+                            />
+                          </ListGroup.Item>
+                        );
+                      } else if (category === "Everything") {
+                        return (
+                          <ListGroup.Item>
+                            <Item
+                              key={todo._id}
+                              item={todo}
+                              completeTodo={completeTodo}
+                              deleteToDo={deleteToDo}
+                            />
+                          </ListGroup.Item>
+                        );
+                      }
+                    })
+                ) : (
+                  <h1>Nothing here , go add some items !</h1>
+                )}
+              </div>
+            </Suspense>
           </ListGroup>
         </>
       ) : (

@@ -2,7 +2,6 @@ import React from "react";
 import "../App.css";
 import { Modal, ListGroup } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 export default function News(props) {
   const { REACT_APP_API_URL } = process.env;

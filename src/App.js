@@ -141,6 +141,7 @@ function App() {
               </InputGroup>
             </Row>
           </Container>
+
           <Row>
             <Container className="button-container mb-3">
               <Button
@@ -174,6 +175,8 @@ function App() {
               </Button>{" "}
             </Container>
           </Row>
+          <div className="mb-3">{category}</div>
+
           <ListGroup>
             <Suspense fallback={<h1>Loading items...</h1>}>
               <div className="cela-grupa" key={Math.random() * 1000}>

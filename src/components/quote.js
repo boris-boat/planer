@@ -1,5 +1,6 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import Spinner from "react-bootstrap/Spinner";
 
 const Quote = () => {
   const [quote, setQuote] = useState("");
@@ -21,7 +22,9 @@ const Quote = () => {
           {quote.content} {quote.author}{" "}
         </h2>
       ) : (
-        <h2>Loading quote !!!</h2>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
       )}
     </div>
   );

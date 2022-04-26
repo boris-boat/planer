@@ -1,10 +1,8 @@
 import "./App.css";
 import "./index.css";
-
 import Item from "./components/Item";
 import { Suspense } from "react";
 import { ListGroup, Button, Container, Row, InputGroup } from "react-bootstrap";
-
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
 import Quote from "./components/quote";
@@ -12,18 +10,32 @@ import News from "./components/news";
 
 import { useNavigate } from "react-router-dom";
 import Topnavbar from "./components/navbar";
+import { useStateContext } from "./components/StateContext";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [VremeShow, setVremeShow] = useState(false);
-  const [newsShow, setNewsShow] = useState(false);
-  const [news, setNews] = useState([]);
+  const {
+    category,
+    setCategory,
+    VremeShow,
+    setVremeShow,
+    newsShow,
+    setNewsShow,
+    todos,
+    setTodos,
+    news,
+    setNews,
+    search,
+    setSearch,
+    newTodo,
+    setnewTodo,
+    creator,
+    setCreator,
+    addToDo,
+    deleteToDo,
+    completeTodo,
+  } = useStateContext();
 
   const user = localStorage.getItem("user");
-  const [category, setCategory] = useState("Everything");
-  const [search, setSearch] = useState("");
-  const [newTodo, setnewTodo] = useState("");
-  const [creator, setCreator] = useState("");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,61 +45,6 @@ function App() {
       localStorage.setItem("lat", position.coords.latitude);
     });
   }, []);
-
-  const { REACT_APP_API_URL } = process.env;
-
-  const getTodos = async () => {
-    fetch(REACT_APP_API_URL + "/todos" + user)
-      .then((res) => res.json())
-      .then((result) => setTodos(result))
-      .catch((e) => console.log("Database error  : " + e));
-  };
-  useEffect(() => {
-    getTodos();
-  }, []);
-  const addToDo = async () => {
-    let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: newTodo,
-        creator: creator,
-        category: category === "Everything" ? "General" : category,
-        completed: false,
-      }),
-    })
-      .then((res) => res.json())
-      .catch((e) => console.log(e));
-    setTodos([...todos, newestTodo]);
-  };
-
-  const deleteToDo = async (id) => {
-    await fetch(REACT_APP_API_URL + "/delete/" + id, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .catch((e) => console.log(e));
-
-    const todosCopy = todos;
-
-    setTodos(todosCopy.filter((todo) => todo._id !== id));
-  };
-  const completeTodo = async (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo._id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        } else {
-          return todo;
-        }
-      })
-    );
-  };
 
   const logout = () => {
     localStorage.removeItem("user");
@@ -107,9 +64,8 @@ function App() {
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
           <News show={newsShow} onHide={() => setNewsShow(false)} news={news} />
-          <Suspense fallback={<h1>Loading quote...</h1>}>
-            <Quote />
-          </Suspense>
+
+          <Quote />
 
           <Container className="">
             <Suspense fallback={<h1>Loading user...</h1>}>

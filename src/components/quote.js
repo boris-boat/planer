@@ -16,9 +16,13 @@ const Quote = () => {
   return (
     <div className="mt-2">
       <h3>Quote of the day : </h3>
-      <h2>
-        {quote.content} {quote.author}
-      </h2>
+      {quote ? (
+        <h2>
+          {quote.content} {quote.author}{" "}
+        </h2>
+      ) : (
+        <h2>Loading quote !!!</h2>
+      )}
     </div>
   );
 };

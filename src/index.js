@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/loginSignup";
 
 import { StateContext } from "./components/StateContext";
+import Tracker from "./components/Tracker";
 ReactDOM.render(
   <StateContext>
     <BrowserRouter>
@@ -13,10 +14,10 @@ ReactDOM.render(
         <Routes>
           <Route exact path="/home" element={<App />} />
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/tracker" element={<Tracker />} />
         </Routes>
       </React.StrictMode>
     </BrowserRouter>
-    ,
   </StateContext>,
   document.getElementById("root")
 );

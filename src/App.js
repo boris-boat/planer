@@ -2,7 +2,14 @@ import "./App.css";
 import "./index.css";
 import Item from "./components/Item";
 import { Suspense } from "react";
-import { ListGroup, Button, Container, Row, InputGroup } from "react-bootstrap";
+import {
+  ListGroup,
+  Button,
+  Container,
+  Row,
+  InputGroup,
+  Spinner,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
 import Quote from "./components/quote";
@@ -21,11 +28,10 @@ function App() {
     newsShow,
     setNewsShow,
     todos,
-    setTodos,
     news,
-    setNews,
+
     search,
-    setSearch,
+
     newTodo,
     setnewTodo,
     creator,
@@ -33,6 +39,8 @@ function App() {
     addToDo,
     deleteToDo,
     completeTodo,
+    getTrackerInfo,
+    getTodos,
   } = useStateContext();
 
   const user = localStorage.getItem("user");
@@ -43,22 +51,14 @@ function App() {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
+      getTrackerInfo();
+      getTodos();
     });
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("user");
-    navigate("/");
-  };
-
   return (
     <div className="App">
-      <Topnavbar
-        setSearch={setSearch}
-        setVremeShow={setVremeShow}
-        logout={logout}
-        setNewsShow={setNewsShow}
-      />
+      <Topnavbar />
 
       {user ? (
         <>
@@ -68,10 +68,7 @@ function App() {
           <Quote />
 
           <Container className="">
-            <Suspense fallback={<h1>Loading user...</h1>}>
-              {" "}
-              <h1 className="mt-3">Welcome {creator} !</h1>
-            </Suspense>
+            <h1 className="mt-3">Welcome {creator} !</h1>
 
             <Row className="d-inline-flex mt-3">
               <InputGroup
@@ -173,7 +170,9 @@ function App() {
                       }
                     })
                 ) : (
-                  <h1>Nothing here , go add some items !</h1>
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
                 )}
               </div>
             </Suspense>

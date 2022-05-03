@@ -11,6 +11,7 @@ export const StateContext = ({ children }) => {
   const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
   const [news, setNews] = useState([]);
+  const [data, setData] = useState();
 
   const deleteToDo = async (id) => {
     await fetch(REACT_APP_API_URL + "/delete/" + id, {
@@ -37,6 +38,12 @@ export const StateContext = ({ children }) => {
       })
     );
   };
+  const getTrackerInfo = async () => {
+    fetch("http://localhost:3001/trackerData" + user)
+      .then((res) => res.json())
+      .then((result) => setData(result))
+      .catch((e) => console.log("Database error  : " + e));
+  };
 
   const addToDo = async () => {
     let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
@@ -61,9 +68,7 @@ export const StateContext = ({ children }) => {
       .then((result) => setTodos(result))
       .catch((e) => console.log("Database error  : " + e));
   };
-  useEffect(() => {
-    getTodos();
-  }, []);
+
   return (
     <Context.Provider
       value={{
@@ -86,6 +91,10 @@ export const StateContext = ({ children }) => {
         addToDo,
         deleteToDo,
         completeTodo,
+        user,
+        data,
+        getTrackerInfo,
+        getTodos,
       }}
     >
       {children}

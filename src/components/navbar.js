@@ -1,9 +1,14 @@
-import react from "react";
+import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import { useStateContext } from "./StateContext";
 const Topnavbar = (props) => {
   const navigate = useNavigate();
+  const { setVremeShow, setSearch, setNewsShow } = useStateContext();
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate("/");
+  };
 
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
@@ -11,27 +16,34 @@ const Topnavbar = (props) => {
         <Navbar.Brand role="button" onClick={() => navigate("/home")}>
           imaSve
         </Navbar.Brand>
+
         <Nav className="me-auto">
-          <Nav.Item className="m-0 p-0">
-            <input
-              className="w-100 mt-1"
-              onChange={(event) => {
-                props.setSearch(event.target.value);
-              }}
-              placeholder="Search"
-            ></input>
-          </Nav.Item>
+          {window.location.pathname !== "/tracker" ? (
+            <Nav.Item className="m-0 p-0">
+              <input
+                className="w-100 mt-1"
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
+                placeholder="Search"
+              ></input>
+            </Nav.Item>
+          ) : (
+            ""
+          )}
 
           <NavDropdown title="Info" id="basic-nav-dropdown">
-            <NavDropdown.Item onClick={() => props.setVremeShow(true)}>
+            <NavDropdown.Item onClick={() => setVremeShow(true)}>
               Weather today
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={() => props.setNewsShow(true)}>
+            <NavDropdown.Item onClick={() => setNewsShow(true)}>
               News
             </NavDropdown.Item>
           </NavDropdown>
-
-          <Nav.Link onClick={() => props.logout()}>Logout</Nav.Link>
+          <Nav.Link onClick={() => navigate("/tracker")}>
+            Expense tracker
+          </Nav.Link>
+          <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

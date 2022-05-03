@@ -10,16 +10,18 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStateContext } from "./StateContext";
 
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
+  const { getTrackerInfo } = useStateContext();
   const navigate = useNavigate();
   const API_LOKACIJA = REACT_APP_API_URL;
 
   const addUser = async () => {
     try {
-      await fetch(API_LOKACIJA + "/createUser", {
+      await fetch("http://localhost:3001/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,6 +55,7 @@ const Login = () => {
       }).then((response) => {
         if (response.ok) {
           localStorage.setItem("user", username);
+          getTrackerInfo();
           navigate("/home");
         } else {
           setError("Invalid username/password combination");
@@ -169,7 +172,7 @@ const Login = () => {
           <Image
             className="loginImg m-0 "
             style={{ height: "100%", width: "100%" }}
-            src={require("./micah-williams-lmFJOx7hPc4-unsplash.jpg")}
+            src={require("./unsplash.jpg")}
             alt=""
             responsive
           />

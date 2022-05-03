@@ -51,8 +51,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
-      getTrackerInfo();
-      getTodos();
     });
   }, []);
 

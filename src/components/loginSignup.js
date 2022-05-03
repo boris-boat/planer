@@ -15,13 +15,21 @@ import { useStateContext } from "./StateContext";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const { getTrackerInfo } = useStateContext();
+  const { getTrackerInfo, getTodos } = useStateContext();
   const navigate = useNavigate();
   const API_LOKACIJA = REACT_APP_API_URL;
+  // async funkcija za dobavljanje todos i trackera
+  const startingApp = async () => {
+    localStorage
+      .setItem("user", username)
+      .then(getTodos())
+      .then(getTrackerInfo())
+      .then(navigate("/home"));
+  };
 
   const addUser = async () => {
     try {
-      await fetch("http://localhost:3001/createUser", {
+      await fetch(API_LOKACIJA + "/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,8 +62,7 @@ const Login = () => {
         }),
       }).then((response) => {
         if (response.ok) {
-          localStorage.setItem("user", username);
-          getTrackerInfo();
+          startingApp();
           navigate("/home");
         } else {
           setError("Invalid username/password combination");

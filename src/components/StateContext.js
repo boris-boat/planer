@@ -39,7 +39,7 @@ export const StateContext = ({ children }) => {
     );
   };
   const getTrackerInfo = async () => {
-    fetch("http://localhost:3001/trackerData" + user)
+    fetch(REACT_APP_API_URL + "/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setData(result))
       .catch((e) => console.log("Database error  : " + e));

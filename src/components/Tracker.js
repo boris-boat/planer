@@ -93,7 +93,7 @@ const Tracker = () => {
   ];
 
   const saveData = async () => {
-    await fetch("http://localhost:3001/saveData", {
+    await fetch(REACT_APP_API_URL + "/saveData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +113,7 @@ const Tracker = () => {
       .catch((e) => console.log(e));
   };
   const resetData = async () => {
-    await fetch("http://localhost:3001/resetData", {
+    await fetch(REACT_APP_API_URL + "/resetData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

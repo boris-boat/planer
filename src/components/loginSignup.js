@@ -15,17 +15,17 @@ import { useStateContext } from "./StateContext";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const { getTrackerInfo, getTodos } = useStateContext();
+  const [error, setError] = useState("");
+  const [signupError, setSignuperror] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [signUpUsername, setsignUpUsername] = useState("");
+  const [signUpPassword, setsignUpPassword] = useState("");
+  const { getTrackerInfo, getTodos, setCreator } = useStateContext();
   const navigate = useNavigate();
   const API_LOKACIJA = REACT_APP_API_URL;
   // async funkcija za dobavljanje todos i trackera
-  const startingApp = async () => {
-    localStorage
-      .setItem("user", username)
-      .then(getTodos())
-      .then(getTrackerInfo())
-      .then(navigate("/home"));
-  };
+  
 
   const addUser = async () => {
     try {
@@ -62,7 +62,9 @@ const Login = () => {
         }),
       }).then((response) => {
         if (response.ok) {
-          startingApp();
+          localStorage.setItem("user", username);
+          setCreator(localStorage.getItem("user"));
+          
           navigate("/home");
         } else {
           setError("Invalid username/password combination");
@@ -72,13 +74,6 @@ const Login = () => {
       console.log(e);
     }
   };
-
-  const [error, setError] = useState("");
-  const [signupError, setSignuperror] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [signUpUsername, setsignUpUsername] = useState("");
-  const [signUpPassword, setsignUpPassword] = useState("");
 
   useEffect(() => {}, []);
   return (

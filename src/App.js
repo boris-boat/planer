@@ -20,6 +20,9 @@ import Topnavbar from "./components/navbar";
 import { useStateContext } from "./components/StateContext";
 
 function App() {
+  const startingApp = async () => {
+    getTodos().then(() => getTrackerInfo());
+  };
   const {
     category,
     setCategory,
@@ -47,7 +50,7 @@ function App() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    setCreator(localStorage.getItem("user"));
+    startingApp();
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);

@@ -15,7 +15,7 @@ const Quote = () => {
   }, []);
 
   return (
-    <div className="mt-2">
+    <div className="mt-5">
       <h3>Quote of the day : </h3>
       {quote ? (
         <h2>

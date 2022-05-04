@@ -19,15 +19,17 @@ const Topnavbar = (props) => {
 
         <Nav className="me-auto">
           {window.location.pathname !== "/tracker" ? (
-            <Nav.Item className="m-0 p-0">
-              <input
-                className="w-100 mt-1"
-                onChange={(event) => {
-                  setSearch(event.target.value);
-                }}
-                placeholder="Search"
-              ></input>
-            </Nav.Item>
+            <Container class="kontejner" className="mt-3 me-0 p-0 d-flex">
+              <Nav.Item>
+                <input
+                  style={{ width: "100px" }}
+                  onChange={(event) => {
+                    setSearch(event.target.value);
+                  }}
+                  placeholder="Search"
+                ></input>
+              </Nav.Item>
+            </Container>
           ) : (
             ""
           )}

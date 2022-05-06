@@ -485,6 +485,7 @@ const Tracker = () => {
                   data={myData}
                   height={300}
                   width={600}
+                  labels={({ datum }) => (datum.y === 0 ? "" : datum.x)}
                   colorScale={[
                     "#34568B",
                     "#FF6F61",

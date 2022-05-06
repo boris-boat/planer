@@ -1,7 +1,7 @@
 import "./App.css";
 import "./index.css";
 import Item from "./components/Item";
-import { Suspense } from "react";
+
 import {
   ListGroup,
   Button,
@@ -38,7 +38,7 @@ function App() {
     newTodo,
     setnewTodo,
     creator,
-    setCreator,
+
     addToDo,
     deleteToDo,
     completeTodo,
@@ -132,51 +132,49 @@ function App() {
           <div className="mb-3">{category}</div>
 
           <ListGroup>
-            <Suspense fallback={<h1>Loading items...</h1>}>
-              <div className="cela-grupa" key={Math.random() * 1000}>
-                {todos ? (
-                  todos
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.text.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((todo) => {
-                      if (todo.category === category) {
-                        return (
-                          <ListGroup.Item>
-                            <Item
-                              key={todo._id}
-                              item={todo}
-                              completeTodo={completeTodo}
-                              deleteToDo={deleteToDo}
-                            />
-                          </ListGroup.Item>
-                        );
-                      } else if (category === "Everything") {
-                        return (
-                          <ListGroup.Item>
-                            <Item
-                              key={todo._id}
-                              item={todo}
-                              completeTodo={completeTodo}
-                              deleteToDo={deleteToDo}
-                            />
-                          </ListGroup.Item>
-                        );
-                      }
-                    })
-                ) : (
-                  <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </Spinner>
-                )}
-              </div>
-            </Suspense>
+            <div className="cela-grupa">
+              {todos ? (
+                todos
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.text.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((todo) => {
+                    if (todo.category === category) {
+                      return (
+                        <ListGroup.Item>
+                          <Item
+                            key={todo._id}
+                            item={todo}
+                            completeTodo={completeTodo}
+                            deleteToDo={deleteToDo}
+                          />
+                        </ListGroup.Item>
+                      );
+                    } else if (category === "Everything") {
+                      return (
+                        <ListGroup.Item>
+                          <Item
+                            key={todo._id}
+                            item={todo}
+                            completeTodo={completeTodo}
+                            deleteToDo={deleteToDo}
+                          />
+                        </ListGroup.Item>
+                      );
+                    }
+                  })
+              ) : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
+            </div>
           </ListGroup>
         </>
       ) : (

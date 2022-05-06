@@ -1,4 +1,4 @@
-Simple to do app for my friends and me.
+Simple to do and expense tracker app for my friends and me.
 
 Technologies used are :
 

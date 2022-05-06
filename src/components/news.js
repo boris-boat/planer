@@ -30,7 +30,7 @@ export default function News(props) {
           {news
             ? news.map((vest) => {
                 return (
-                  <ListGroup.Item key={vest.title}>
+                  <ListGroup.Item key={vest.link}>
                     {vest.title} <br></br>
                     <a href={`${vest.link}`}>Link</a>
                   </ListGroup.Item>

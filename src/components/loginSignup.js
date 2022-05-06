@@ -21,11 +21,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
   const [signUpPassword, setsignUpPassword] = useState("");
-  const { getTrackerInfo, getTodos, setCreator } = useStateContext();
+  const { setCreator } = useStateContext();
   const navigate = useNavigate();
   const API_LOKACIJA = REACT_APP_API_URL;
   // async funkcija za dobavljanje todos i trackera
-  
 
   const addUser = async () => {
     try {
@@ -64,7 +63,7 @@ const Login = () => {
         if (response.ok) {
           localStorage.setItem("user", username);
           setCreator(localStorage.getItem("user"));
-          
+
           navigate("/home");
         } else {
           setError("Invalid username/password combination");

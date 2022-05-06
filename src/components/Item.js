@@ -6,7 +6,7 @@ const Item = (props) => {
 
   useEffect(() => {
     setTodo(props.item);
-  }, []);
+  }, [props.item]);
 
   return (
     <div className="d-flex flex-row justify-content-between align-items-cente r">
@@ -21,7 +21,6 @@ const Item = (props) => {
           }}
         >
           {todo.text}
-          {/* <Item item={todo} /> */}
         </h5>
       </div>
       <div className="d-flex align-items-end">

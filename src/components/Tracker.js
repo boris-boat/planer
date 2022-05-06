@@ -39,12 +39,12 @@ const Tracker = () => {
       hideProgressBar: true,
     });
   };
+  let { bills, food, entertainment, health, transit, other } = data[0];
 
   useEffect(() => {
     addTotal();
   });
 
-  let { bills, food, entertainment, health, transit, other } = data[0];
   const [total, setTotal] = useState(0);
   const [newBill, setNewBill] = useState(null);
   const [billsTotal, setBillsTotal] = useState(bills);
@@ -79,6 +79,7 @@ const Tracker = () => {
     setHealthTotal(0);
     setTransitTotal(0);
     setOtherTotal(0);
+    resetSaved();
   };
   //console.log(window.location.pathname);
   const myData = [
@@ -146,6 +147,7 @@ const Tracker = () => {
                     }}
                   >
                     <InputGroup.Text id="basic-addon1">Bills</InputGroup.Text>
+
                     <input
                       className="input-field"
                       placeholder="Expense"
@@ -455,8 +457,11 @@ const Tracker = () => {
                     <Button
                       className="w-50 mt-3"
                       onClick={() => {
-                        resetData();
-                        resetSaved();
+                        window.confirm(
+                          "Are you sure you wish reset all data? This cannot be undone!!!"
+                        )
+                          ? resetData()
+                          : window.CloseEvent();
                       }}
                     >
                       Reset Data{" "}
@@ -464,8 +469,8 @@ const Tracker = () => {
                   </Row>
                 </Row>
               </Col>
-              <Col className="d-flex justify-items-start">
-                <div>
+              <Col>
+                <Container>
                   <h2>Bills : {billsTotal}</h2>
                   <h2>Food : {foodTotal}</h2>
                   <h2>Entertainment : {entertainmentTotal}</h2>
@@ -473,7 +478,7 @@ const Tracker = () => {
                   <h2>Transportation : {transitTotal}</h2>
                   <h2>Other : {otherTotal}</h2>
                   <h1>Total {total}</h1>
-                </div>
+                </Container>
               </Col>
             </Row>
             <Col>

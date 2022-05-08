@@ -46,7 +46,7 @@ const Tracker = () => {
   useEffect(() => {
     addTotal();
   });
-
+  let email;
   const [total, setTotal] = useState(0);
   const [newBill, setNewBill] = useState(null);
   const [billsTotal, setBillsTotal] = useState(bills);
@@ -60,7 +60,7 @@ const Tracker = () => {
   const [transitTotal, setTransitTotal] = useState(transit);
   const [newOther, setNewOther] = useState(null);
   const [otherTotal, setOtherTotal] = useState(other);
-  const [email, setEmail] = useState("");
+
   const d = new Date();
   const month = [
     "January",
@@ -87,7 +87,7 @@ const Tracker = () => {
     );
   };
   const templateParams = {
-    subject: "Expenses for the month of " + month[d.getMonth()] + "so far",
+    subject: "Expenses for the month of " + month[d.getMonth()] + " so far",
     bills: "Bills total : " + billsTotal,
     food: "Food total : " + foodTotal,
     entertainment: "Entertainment total : " + entertainmentTotal,
@@ -99,8 +99,8 @@ const Tracker = () => {
   };
 
   const handleEmailSendClick = async () => {
-    let email = window.prompt("Enter your email adress ");
-    templateParams.email = email;
+    templateParams.email = window.prompt("Enter your email adress ");
+    
     await emailjs
       .send(
         "service_8zjjwsl",

@@ -20,6 +20,7 @@ import Topnavbar from "./components/navbar";
 import { useStateContext } from "./components/StateContext";
 
 function App() {
+  let user = localStorage.getItem("user");
   const startingApp = async () => {
     getTodos().then(() => getTrackerInfo());
   };
@@ -32,21 +33,16 @@ function App() {
     setNewsShow,
     todos,
     news,
-
     search,
-
     newTodo,
     setnewTodo,
     creator,
-
     addToDo,
     deleteToDo,
     completeTodo,
     getTrackerInfo,
     getTodos,
   } = useStateContext();
-
-  const user = localStorage.getItem("user");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -179,7 +175,7 @@ function App() {
         </>
       ) : (
         <>
-          <h1>Please create an account or login !</h1>
+          <h1 className="mt-5">Please create an account or login !</h1>
           <Button variant="primary" onClick={() => navigate("/")}>
             Back
           </Button>

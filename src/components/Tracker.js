@@ -5,11 +5,13 @@ import { useStateContext } from "./StateContext";
 import Topnavbar from "./navbar";
 import Vreme from "./vreme";
 import News from "./news";
+import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getDefaultLocale } from "react-datepicker";
 
 const Tracker = () => {
-  const { REACT_APP_API_URL } = process.env;
+  const { REACT_APP_API_URL, EMAILJS_PUBLIC_KEY } = process.env;
   const { setVremeShow, setNewsShow, VremeShow, news, newsShow, user, data } =
     useStateContext();
 
@@ -58,7 +60,22 @@ const Tracker = () => {
   const [transitTotal, setTransitTotal] = useState(transit);
   const [newOther, setNewOther] = useState(null);
   const [otherTotal, setOtherTotal] = useState(other);
-
+  const [email, setEmail] = useState("");
+  const d = new Date();
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const addTotal = () => {
     setTotal(
       billsTotal +
@@ -68,6 +85,37 @@ const Tracker = () => {
         transitTotal +
         otherTotal
     );
+  };
+  const templateParams = {
+    subject: "Expenses for the month of " + month[d.getMonth()] + "so far",
+    bills: "Bills total : " + billsTotal,
+    food: "Food total : " + foodTotal,
+    entertainment: "Entertainment total : " + entertainmentTotal,
+    health: "Health total : " + healthTotal,
+    transit: "Transportation total : " + transitTotal,
+    other: "Other total : " + otherTotal,
+    total: "Total : " + total,
+    email: email,
+  };
+
+  const handleEmailSendClick = async () => {
+    let email = window.prompt("Enter your email adress ");
+    templateParams.email = email;
+    await emailjs
+      .send(
+        "service_8zjjwsl",
+        "template_jj6vqxs",
+        templateParams,
+        "user_i3lUVLnXsfDHhIpCb20P9"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
   };
   const setTrackerData = (result) => {
     data[0] = result;
@@ -441,7 +489,7 @@ const Tracker = () => {
                     >
                       Substract
                     </Button>
-                  </InputGroup>
+                  </InputGroup>{" "}
                   <Row>
                     <Button
                       className="w-50"
@@ -465,6 +513,16 @@ const Tracker = () => {
                       }}
                     >
                       Reset Data{" "}
+                    </Button>
+                  </Row>
+                  <Row>
+                    <Button
+                      className="w-50 mt-3"
+                      onClick={() => {
+                        handleEmailSendClick();
+                      }}
+                    >
+                      Send expense data to email.{" "}
                     </Button>
                   </Row>
                 </Row>

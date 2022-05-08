@@ -19,32 +19,31 @@ const Topnavbar = (props) => {
 
         <Nav className="me-auto">
           {window.location.pathname !== "/tracker" ? (
-            <Container class="kontejner" className="mt-3 me-0 p-0 d-flex">
-              <Nav.Item>
-                <input
-                  style={{ width: "100px" }}
-                  onChange={(event) => {
-                    setSearch(event.target.value);
-                  }}
-                  placeholder="Search"
-                ></input>
-              </Nav.Item>
-            </Container>
+            <Nav.Item className="mt-1">
+              <input
+                style={{ width: "100px" }}
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
+                placeholder="Search"
+              ></input>
+            </Nav.Item>
           ) : (
             ""
           )}
 
-          <NavDropdown title="Info" id="basic-nav-dropdown">
+          <NavDropdown title="More" id="basic-nav-dropdown">
             <NavDropdown.Item onClick={() => setVremeShow(true)}>
               Weather today
             </NavDropdown.Item>
             <NavDropdown.Item onClick={() => setNewsShow(true)}>
               News
             </NavDropdown.Item>
+            <NavDropdown.Item onClick={() => navigate("/tracker")}>
+              Expense tracker
+            </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link onClick={() => navigate("/tracker")}>
-            Expense tracker
-          </Nav.Link>
+
           <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
         </Nav>
       </Container>

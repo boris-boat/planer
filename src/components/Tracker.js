@@ -14,9 +14,13 @@ const Tracker = () => {
   const { REACT_APP_API_URL, EMAILJS_PUBLIC_KEY } = process.env;
   const { setVremeShow, setNewsShow, VremeShow, news, newsShow, user, data } =
     useStateContext();
-
   const notifyAdd = () =>
     toast("Added!", {
+      autoClose: 500,
+      hideProgressBar: true,
+    });
+  const emailSent = () =>
+    toast("Email sent !", {
       autoClose: 500,
       hideProgressBar: true,
     });
@@ -100,7 +104,7 @@ const Tracker = () => {
 
   const handleEmailSendClick = async () => {
     templateParams.email = window.prompt("Enter your email adress ");
-    
+
     await emailjs
       .send(
         "service_8zjjwsl",
@@ -111,6 +115,7 @@ const Tracker = () => {
       .then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
+          emailSent();
         },
         function (error) {
           console.log("FAILED...", error);
@@ -129,7 +134,7 @@ const Tracker = () => {
     setOtherTotal(0);
     resetSaved();
   };
-  //console.log(window.location.pathname);
+  console.log(EMAILJS_PUBLIC_KEY);
   const myData = [
     { x: "Bills", y: billsTotal },
     { x: "Food", y: foodTotal },
@@ -185,7 +190,7 @@ const Tracker = () => {
               md={2}
               sm={1}
             >
-              <Col className="mt-5">
+              <Col className="mt-4">
                 <Row>
                   <ToastContainer />
                   <InputGroup
@@ -528,7 +533,8 @@ const Tracker = () => {
                 </Row>
               </Col>
               <Col>
-                <Container>
+                <Container style={{ "margin-top": 20 }}>
+                  {<h1>{month[d.getMonth()]} expenses : </h1>}
                   <h2>Bills : {billsTotal}</h2>
                   <h2>Food : {foodTotal}</h2>
                   <h2>Entertainment : {entertainmentTotal}</h2>

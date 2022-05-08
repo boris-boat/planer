@@ -8,7 +8,7 @@ import News from "./news";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getDefaultLocale } from "react-datepicker";
+import DatePicker from "react-datepicker";
 
 const Tracker = () => {
   const { REACT_APP_API_URL, EMAILJS_PUBLIC_KEY } = process.env;

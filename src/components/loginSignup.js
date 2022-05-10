@@ -26,7 +26,7 @@ const Login = () => {
 
   const addUser = async () => {
     try {
-      await fetch("http://localhost:3001/createUser", {
+      await fetch(REACT_APP_API_URL + "/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Login = () => {
   };
   const loginUser = async () => {
     try {
-      await fetch("http://localhost:3001/login", {
+      await fetch(REACT_APP_API_URL + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

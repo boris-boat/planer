@@ -23,12 +23,10 @@ const Login = () => {
   const [signUpPassword, setsignUpPassword] = useState("");
   const { setCreator } = useStateContext();
   const navigate = useNavigate();
-  const API_LOKACIJA = REACT_APP_API_URL;
-  // async funkcija za dobavljanje todos i trackera
 
   const addUser = async () => {
     try {
-      await fetch(API_LOKACIJA + "/createUser", {
+      await fetch("http://localhost:3001/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +48,7 @@ const Login = () => {
   };
   const loginUser = async () => {
     try {
-      await fetch(API_LOKACIJA + "/login", {
+      await fetch("http://localhost:3001/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

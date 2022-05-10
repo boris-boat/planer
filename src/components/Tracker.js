@@ -497,7 +497,7 @@ const Tracker = () => {
                   </InputGroup>{" "}
                   <Row>
                     <Button
-                      className="w-50"
+                      className="w-100"
                       onClick={() => {
                         saveData();
                         changesSaved();
@@ -508,7 +508,7 @@ const Tracker = () => {
                   </Row>
                   <Row>
                     <Button
-                      className="w-50 mt-3"
+                      className="w-100 mt-3"
                       onClick={() => {
                         window.confirm(
                           "Are you sure you wish reset all data? This cannot be undone!!!"
@@ -522,7 +522,7 @@ const Tracker = () => {
                   </Row>
                   <Row>
                     <Button
-                      className="w-50 mt-3"
+                      className="w-100 mt-3"
                       onClick={() => {
                         handleEmailSendClick();
                       }}

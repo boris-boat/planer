@@ -14,37 +14,37 @@ const Tracker = () => {
   const { REACT_APP_API_URL, EMAILJS_PUBLIC_KEY } = process.env;
   const { setVremeShow, setNewsShow, VremeShow, news, newsShow, user, data } =
     useStateContext();
-  const notifyAdd = () =>
-    toast("Added!", {
+  const notify = (msg) =>
+    toast(msg, {
       autoClose: 500,
       hideProgressBar: true,
     });
-  const emailSent = () =>
-    toast("Email sent !", {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
-  const notifySub = () =>
-    toast("Substracted!", {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
-  const changesSaved = () =>
-    toast("Changes saved", {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
-  const resetSaved = () =>
-    toast("Data reset successful", {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
-  const notifyError = () => {
-    toast("Please enter a number", {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
-  };
+  // const emailSent = () =>
+  //   toast("Email sent !", {
+  //     autoClose: 500,
+  //     hideProgressBar: true,
+  //   });
+  // const notifySub = () =>
+  //   toast("Substracted!", {
+  //     autoClose: 500,
+  //     hideProgressBar: true,
+  //   });
+  // const changesSaved = () =>
+  //   toast("Changes saved", {
+  //     autoClose: 500,
+  //     hideProgressBar: true,
+  //   });
+  // const resetSaved = () =>
+  //   toast("Data reset successful", {
+  //     autoClose: 500,
+  //     hideProgressBar: true,
+  //   });
+  // const notifyError = () => {
+  //   toast("Please enter a number", {
+  //     autoClose: 500,
+  //     hideProgressBar: true,
+  //   });
+  // };
   let { bills, food, entertainment, health, transit, other } = data[0];
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const Tracker = () => {
       .then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
-          emailSent();
+          notify("Email sent !");
         },
         function (error) {
           console.log("FAILED...", error);
@@ -132,7 +132,7 @@ const Tracker = () => {
     setHealthTotal(0);
     setTransitTotal(0);
     setOtherTotal(0);
-    resetSaved();
+    notify("Data has been reset!");
   };
   console.log(EMAILJS_PUBLIC_KEY);
   const myData = [
@@ -215,10 +215,10 @@ const Tracker = () => {
                         if (typeof newBill === "number") {
                           setBillsTotal(billsTotal + newBill);
                           setNewBill("");
-                          notifyAdd();
+                          notify("Added");
                         } else {
                           setNewBill("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -231,10 +231,10 @@ const Tracker = () => {
                         if (typeof newBill === "number") {
                           setBillsTotal(billsTotal - newBill);
                           setNewBill("");
-                          notifySub();
+                          notify("Substracted");
                         } else {
                           setNewBill("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -263,10 +263,10 @@ const Tracker = () => {
                         if (typeof newFood === "number") {
                           setFoodTotal(foodTotal + newFood);
                           setNewFood("");
-                          notifyAdd();
+                          notify("Added");
                         } else {
                           setNewFood("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -279,10 +279,10 @@ const Tracker = () => {
                         if (typeof newFood === "number") {
                           setFoodTotal(foodTotal - newFood);
                           setNewFood("");
-                          notifySub();
+                          notify("Substracted");
                         } else {
                           setNewFood("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -315,10 +315,10 @@ const Tracker = () => {
                             entertainmentTotal + newEntertainment
                           );
                           setNewEntertainment("");
-                          notifyAdd();
+                          notify("Added");
                         } else {
                           setNewEntertainment("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -333,10 +333,10 @@ const Tracker = () => {
                             entertainmentTotal - newEntertainment
                           );
                           setNewEntertainment("");
-                          notifySub();
+                          notify("Subtracted");
                         } else {
                           setNewEntertainment("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -366,10 +366,10 @@ const Tracker = () => {
                         if (typeof newHealth === "number") {
                           setHealthTotal(healthTotal + newHealth);
                           setNewHealth("");
-                          notifyAdd();
+                          notify("Added");
                         } else {
                           setNewHealth("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -382,10 +382,10 @@ const Tracker = () => {
                         if (typeof newHealth === "number") {
                           setHealthTotal(healthTotal - newHealth);
                           setNewHealth("");
-                          notifySub();
+                          notify("Subtracted");
                         } else {
                           setNewHealth("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -416,10 +416,10 @@ const Tracker = () => {
                         if (typeof newTransit === "number") {
                           setTransitTotal(transitTotal + newTransit);
                           setNewTransit("");
-                          notifyAdd();
+                          notify("Added");
                         } else {
                           setNewTransit("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -432,10 +432,10 @@ const Tracker = () => {
                         if (typeof newTransit === "number") {
                           setTransitTotal(transitTotal - newTransit);
                           setNewTransit("");
-                          notifySub();
+                          notify("Subtracted");
                         } else {
                           setNewTransit("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -467,10 +467,10 @@ const Tracker = () => {
                             parseInt(otherTotal) + parseInt(newOther)
                           );
                           setNewOther("");
-                          notifyAdd();
+                          notify("Added");
                         } else {
                           setNewOther("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -485,10 +485,10 @@ const Tracker = () => {
                             parseInt(otherTotal) - parseInt(newOther)
                           );
                           setNewOther("");
-                          notifySub();
+                          notify("Subtracted");
                         } else {
                           setNewOther("");
-                          notifyError();
+                          notify("Please enter a number !");
                         }
                       }}
                     >
@@ -500,7 +500,7 @@ const Tracker = () => {
                       className="w-100"
                       onClick={() => {
                         saveData();
-                        changesSaved();
+                        notify("Data saved !");
                       }}
                     >
                       Save changes{" "}
@@ -511,7 +511,7 @@ const Tracker = () => {
                       className="w-100 mt-3"
                       onClick={() => {
                         window.confirm(
-                          "Are you sure you wish reset all data? This cannot be undone!!!"
+                          "Are you sure you wish to reset all data? This cannot be undone!!!"
                         )
                           ? resetData()
                           : window.CloseEvent();

@@ -17,12 +17,12 @@ const NewsReworked = () => {
   };
   useEffect(() => {
     getNews();
-  }, [news]);
+  }, []);
 
   return (
     <Container fluid>
       <Row>{user ? <Topnavbar /> : ""}</Row>
-
+      <>""</>
       <Container fluid className="mt-5">
         {" "}
         <Row>
@@ -73,115 +73,127 @@ const NewsReworked = () => {
           <Col>
             <h2>Blic</h2>
             <Card>
-              {news
-                ? news
-                    .filter((item) => {
-                      if (item.guid.includes("blic")) {
-                        return item;
-                      }
-                    })
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.title.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((item) => {
-                      return (
-                        <ListGroup.Item>
-                          <ListGroup.Item key={item.link}>
-                            {item.title} <br></br>
-                            <a
-                              rel="noreferrer noopener"
-                              target="_blank"
-                              href={`${item.link}`}
-                            >
-                              Link
-                            </a>
-                          </ListGroup.Item>
+              {news ? (
+                news
+                  .filter((item) => {
+                    if (item.guid.includes("blic")) {
+                      return item;
+                    }
+                  })
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.title.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((item) => {
+                    return (
+                      <ListGroup.Item>
+                        <ListGroup.Item key={item.link}>
+                          {item.title} <br></br>
+                          <a
+                            rel="noreferrer noopener"
+                            target="_blank"
+                            href={`${item.link}`}
+                          >
+                            Link
+                          </a>
                         </ListGroup.Item>
-                      );
-                    })
-                : ""}
+                      </ListGroup.Item>
+                    );
+                  })
+              ) : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
             </Card>
           </Col>
           <Col>
             <h2>Danas</h2>
             <Card>
-              {news
-                ? news
-                    .filter((item) => {
-                      if (item.guid.includes("danas")) {
-                        return item;
-                      }
-                    })
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.title.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((item) => {
-                      return (
-                        <ListGroup.Item>
-                          <ListGroup.Item key={item.link}>
-                            {item.title} <br></br>
-                            <a
-                              rel="noreferrer noopener"
-                              target="_blank"
-                              href={`${item.link}`}
-                            >
-                              Link
-                            </a>
-                          </ListGroup.Item>
+              {news ? (
+                news
+                  .filter((item) => {
+                    if (item.guid.includes("danas")) {
+                      return item;
+                    }
+                  })
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.title.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((item) => {
+                    return (
+                      <ListGroup.Item>
+                        <ListGroup.Item key={item.link}>
+                          {item.title} <br></br>
+                          <a
+                            rel="noreferrer noopener"
+                            target="_blank"
+                            href={`${item.link}`}
+                          >
+                            Link
+                          </a>
                         </ListGroup.Item>
-                      );
-                    })
-                : ""}
+                      </ListGroup.Item>
+                    );
+                  })
+              ) : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
             </Card>
           </Col>
           <Col>
             <h2>Mozzart</h2>
             <Card>
-              {news
-                ? news
-                    .filter((item) => {
-                      if (item.guid.includes("mozzart")) {
-                        return item;
-                      }
-                    })
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.title.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((item) => {
-                      return (
-                        <ListGroup.Item>
-                          <ListGroup.Item key={item.link}>
-                            {item.title} <br></br>
-                            <a
-                              rel="noreferrer noopener"
-                              target="_blank"
-                              href={`${item.link}`}
-                            >
-                              Link
-                            </a>
-                          </ListGroup.Item>
+              {news ? (
+                news
+                  .filter((item) => {
+                    if (item.guid.includes("mozzart")) {
+                      return item;
+                    }
+                  })
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.title.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((item) => {
+                    return (
+                      <ListGroup.Item>
+                        <ListGroup.Item key={item.link}>
+                          {item.title} <br></br>
+                          <a
+                            rel="noreferrer noopener"
+                            target="_blank"
+                            href={`${item.link}`}
+                          >
+                            Link
+                          </a>
                         </ListGroup.Item>
-                      );
-                    })
-                : ""}
+                      </ListGroup.Item>
+                    );
+                  })
+              ) : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
             </Card>
           </Col>
         </Row>

@@ -1,13 +1,13 @@
 import React from "react";
 import { useStateContext } from "./StateContext";
 import "../App.css";
-import { Container, ListGroup, Col, Row, Card } from "react-bootstrap";
+import { Container, ListGroup, Col, Row, Card, Spinner } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
 import Topnavbar from "./navbar";
 
 const NewsReworked = () => {
-  const { search } = useStateContext();
+  const { search, user } = useStateContext();
   const { REACT_APP_API_URL } = process.env;
   const [news, setNews] = useState([]);
   const getNews = async () => {
@@ -18,12 +18,10 @@ const NewsReworked = () => {
   useEffect(() => {
     getNews();
   }, [news]);
-  
+
   return (
     <Container fluid>
-      <Row>
-        <Topnavbar />
-      </Row>
+      <Row>{user ? <Topnavbar /> : ""}</Row>
 
       <Container fluid className="mt-5">
         {" "}
@@ -32,35 +30,43 @@ const NewsReworked = () => {
             <h2>N1</h2>
             <Card>
               {" "}
-              {news
-                ? news
-                    .filter((item) => {
-                      if (item.guid.includes("n1")) {
-                        return item;
-                      }
-                    })
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.title.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((item) => {
-                      return (
-                        <ListGroup.Item>
-                          <ListGroup.Item key={item.link}>
-                            {item.title} <br></br>
-                            <a rel="noreferrer noopener" href={`${item.link}`}>
-                              Link
-                            </a>
-                          </ListGroup.Item>
+              {news ? (
+                news
+                  .filter((item) => {
+                    if (item.guid.includes("n1")) {
+                      return item;
+                    }
+                  })
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.title.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((item) => {
+                    return (
+                      <ListGroup.Item>
+                        <ListGroup.Item key={item.link}>
+                          {item.title} <br></br>
+                          <a
+                            rel="noreferrer noopener"
+                            target="_blank"
+                            href={`${item.link}`}
+                          >
+                            Link
+                          </a>
                         </ListGroup.Item>
-                      );
-                    })
-                : ""}
+                      </ListGroup.Item>
+                    );
+                  })
+              ) : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
             </Card>
           </Col>
 
@@ -88,7 +94,11 @@ const NewsReworked = () => {
                         <ListGroup.Item>
                           <ListGroup.Item key={item.link}>
                             {item.title} <br></br>
-                            <a rel="noreferrer noopener" href={`${item.link}`}>
+                            <a
+                              rel="noreferrer noopener"
+                              target="_blank"
+                              href={`${item.link}`}
+                            >
                               Link
                             </a>
                           </ListGroup.Item>
@@ -122,7 +132,11 @@ const NewsReworked = () => {
                         <ListGroup.Item>
                           <ListGroup.Item key={item.link}>
                             {item.title} <br></br>
-                            <a rel="noreferrer noopener" href={`${item.link}`}>
+                            <a
+                              rel="noreferrer noopener"
+                              target="_blank"
+                              href={`${item.link}`}
+                            >
                               Link
                             </a>
                           </ListGroup.Item>
@@ -156,7 +170,11 @@ const NewsReworked = () => {
                         <ListGroup.Item>
                           <ListGroup.Item key={item.link}>
                             {item.title} <br></br>
-                            <a rel="noreferrer noopener" href={`${item.link}`}>
+                            <a
+                              rel="noreferrer noopener"
+                              target="_blank"
+                              href={`${item.link}`}
+                            >
                               Link
                             </a>
                           </ListGroup.Item>

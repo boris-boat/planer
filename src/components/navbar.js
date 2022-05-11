@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useStateContext } from "./StateContext";
 const Topnavbar = (props) => {
   const navigate = useNavigate();
-  const { setVremeShow, setSearch, setNewsShow } = useStateContext();
+  const { setVremeShow, setSearch } = useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
     navigate("/");
@@ -36,7 +36,7 @@ const Topnavbar = (props) => {
             <NavDropdown.Item onClick={() => setVremeShow(true)}>
               Weather today
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={() => setNewsShow(true)}>
+            <NavDropdown.Item onClick={() => navigate("/news")}>
               News
             </NavDropdown.Item>
             <NavDropdown.Item onClick={() => navigate("/tracker")}>

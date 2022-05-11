@@ -13,7 +13,6 @@ import {
 import { useState, useEffect } from "react";
 import Vreme from "./components/vreme";
 import Quote from "./components/quote";
-import News from "./components/news";
 
 import { useNavigate } from "react-router-dom";
 import Topnavbar from "./components/navbar";
@@ -29,10 +28,9 @@ function App() {
     setCategory,
     VremeShow,
     setVremeShow,
-    newsShow,
-    setNewsShow,
+
     todos,
-    news,
+
     search,
     newTodo,
     setnewTodo,
@@ -60,7 +58,6 @@ function App() {
       {user ? (
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
-          <News show={newsShow} onHide={() => setNewsShow(false)} news={news} />
 
           <Quote />
 

@@ -4,7 +4,7 @@ import { Button, Container, Row, Col, InputGroup } from "react-bootstrap";
 import { useStateContext } from "./StateContext";
 import Topnavbar from "./navbar";
 import Vreme from "./vreme";
-import News from "./news";
+
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,39 +12,13 @@ import DatePicker from "react-datepicker";
 
 const Tracker = () => {
   const { REACT_APP_API_URL, EMAILJS_PUBLIC_KEY } = process.env;
-  const { setVremeShow, setNewsShow, VremeShow, news, newsShow, user, data } =
-    useStateContext();
+  const { setVremeShow, VremeShow, user, data } = useStateContext();
   const notify = (msg) =>
     toast(msg, {
       autoClose: 500,
       hideProgressBar: true,
     });
-  // const emailSent = () =>
-  //   toast("Email sent !", {
-  //     autoClose: 500,
-  //     hideProgressBar: true,
-  //   });
-  // const notifySub = () =>
-  //   toast("Substracted!", {
-  //     autoClose: 500,
-  //     hideProgressBar: true,
-  //   });
-  // const changesSaved = () =>
-  //   toast("Changes saved", {
-  //     autoClose: 500,
-  //     hideProgressBar: true,
-  //   });
-  // const resetSaved = () =>
-  //   toast("Data reset successful", {
-  //     autoClose: 500,
-  //     hideProgressBar: true,
-  //   });
-  // const notifyError = () => {
-  //   toast("Please enter a number", {
-  //     autoClose: 500,
-  //     hideProgressBar: true,
-  //   });
-  // };
+
   let { bills, food, entertainment, health, transit, other } = data[0];
 
   useEffect(() => {
@@ -183,7 +157,7 @@ const Tracker = () => {
   return (
     <div>
       <div>
-        {data ? (
+        {data && user ? (
           <Container>
             <Row
               className="d-flex justify-content-center align-items-center mt-5"
@@ -576,7 +550,6 @@ const Tracker = () => {
         <Topnavbar />
 
         <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
-        <News show={newsShow} onHide={() => setNewsShow(false)} news={news} />
       </div>
     </div>
   );

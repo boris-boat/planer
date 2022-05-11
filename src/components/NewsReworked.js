@@ -5,7 +5,7 @@ import { Container, ListGroup, Col, Row, Card, Spinner } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
 import Topnavbar from "./navbar";
-
+import LinearProgress from "@mui/material/LinearProgress";
 const NewsReworked = () => {
   const { search, user } = useStateContext();
   const { REACT_APP_API_URL } = process.env;
@@ -30,7 +30,7 @@ const NewsReworked = () => {
             <h2>N1</h2>
             <Card>
               {" "}
-              {news ? (
+              {news.length > 1 ? (
                 news
                   .filter((item) => {
                     if (item.guid.includes("n1")) {
@@ -63,9 +63,7 @@ const NewsReworked = () => {
                     );
                   })
               ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                <LinearProgress />
               )}
             </Card>
           </Col>
@@ -73,7 +71,7 @@ const NewsReworked = () => {
           <Col>
             <h2>Blic</h2>
             <Card>
-              {news ? (
+              {news.length > 1 ? (
                 news
                   .filter((item) => {
                     if (item.guid.includes("blic")) {
@@ -106,16 +104,14 @@ const NewsReworked = () => {
                     );
                   })
               ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                <LinearProgress />
               )}
             </Card>
           </Col>
           <Col>
             <h2>Danas</h2>
             <Card>
-              {news ? (
+              {news.length > 1 ? (
                 news
                   .filter((item) => {
                     if (item.guid.includes("danas")) {
@@ -148,16 +144,14 @@ const NewsReworked = () => {
                     );
                   })
               ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                <LinearProgress />
               )}
             </Card>
           </Col>
           <Col>
             <h2>Mozzart</h2>
             <Card>
-              {news ? (
+              {news.length > 1 ? (
                 news
                   .filter((item) => {
                     if (item.guid.includes("mozzart")) {
@@ -190,9 +184,7 @@ const NewsReworked = () => {
                     );
                   })
               ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                <LinearProgress />
               )}
             </Card>
           </Col>

@@ -21,7 +21,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
   const [signUpPassword, setsignUpPassword] = useState("");
-  const { setCreator } = useStateContext();
+
   const navigate = useNavigate();
 
   const addUser = async () => {
@@ -60,7 +60,6 @@ const Login = () => {
       }).then((response) => {
         if (response.ok) {
           localStorage.setItem("user", username);
-          setCreator(localStorage.getItem("user"));
 
           navigate("/home");
         } else {

@@ -2,9 +2,10 @@ import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "./StateContext";
+import Vreme from "./vreme";
 const Topnavbar = (props) => {
   const navigate = useNavigate();
-  const { setVremeShow, setSearch } = useStateContext();
+  const { setVremeShow, setSearch, VremeShow } = useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
     navigate("/");
@@ -33,20 +34,25 @@ const Topnavbar = (props) => {
           )}
 
           <NavDropdown title="More" id="basic-nav-dropdown">
-            <NavDropdown.Item onClick={() => setVremeShow(true)}>
-              Weather today
+            <NavDropdown.Item onClick={() => navigate("/toDo")}>
+              ToDo/Reminder lists
             </NavDropdown.Item>
+
             <NavDropdown.Item onClick={() => navigate("/news")}>
               News
             </NavDropdown.Item>
             <NavDropdown.Item onClick={() => navigate("/tracker")}>
               Expense tracker
             </NavDropdown.Item>
+            <NavDropdown.Item onClick={() => setVremeShow(true)}>
+              Weather today
+            </NavDropdown.Item>
           </NavDropdown>
 
           <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
         </Nav>
       </Container>
+      <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
     </Navbar>
   );
 };

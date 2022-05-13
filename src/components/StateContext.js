@@ -5,13 +5,13 @@ export const StateContext = ({ children }) => {
   const { REACT_APP_API_URL } = process.env;
   const [category, setCategory] = useState("Everything");
   const [VremeShow, setVremeShow] = useState(false);
-  const [newsShow, setNewsShow] = useState(false);
+
   const [todos, setTodos] = useState([]);
   const [search, setSearch] = useState("");
   const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
-  const [news, setNews] = useState([]);
-  const [data, setData] = useState();
+
+  const [data, setData] = useState([]);
 
   const deleteToDo = async (id) => {
     await fetch(REACT_APP_API_URL + "/delete/" + id, {
@@ -38,12 +38,13 @@ export const StateContext = ({ children }) => {
       })
     );
   };
-  const getTrackerInfo = async () => {
-    fetch(REACT_APP_API_URL + "/trackerData" + user)
-      .then((res) => res.json())
-      .then((result) => setData(result))
-      .catch((e) => console.log("Database error  : " + e));
-  };
+  // const getTrackerInfo = async () => {
+  //   fetch(REACT_APP_API_URL + "/trackerData" + user)
+  //     .then((res) => res.json())
+  //     .then((result) => setData(result))
+  //     .catch((e) => console.log("Database error  : " + e));
+  //   console.log("cita tracker data i koristi : " + user);
+  // };
 
   const addToDo = async () => {
     let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
@@ -76,12 +77,8 @@ export const StateContext = ({ children }) => {
         setCategory,
         VremeShow,
         setVremeShow,
-        newsShow,
-        setNewsShow,
         todos,
         setTodos,
-        news,
-        setNews,
         search,
         setSearch,
         newTodo,
@@ -91,9 +88,9 @@ export const StateContext = ({ children }) => {
         addToDo,
         deleteToDo,
         completeTodo,
-        user,
+        setData,
         data,
-        getTrackerInfo,
+
         getTodos,
       }}
     >

@@ -3,7 +3,6 @@ import { VictoryPie } from "victory-pie";
 import { Button, Container, Row, Col, InputGroup } from "react-bootstrap";
 import { useStateContext } from "./StateContext";
 import Topnavbar from "./navbar";
-import Vreme from "./vreme";
 
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,20 +10,24 @@ import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 
 const Tracker = () => {
-  const { REACT_APP_API_URL, EMAILJS_PUBLIC_KEY } = process.env;
-  const { setVremeShow, VremeShow, user, data } = useStateContext();
+  const user = localStorage.getItem("user");
+  const { REACT_APP_API_URL } = process.env;
+  const { data } = useStateContext();
+  
   const notify = (msg) =>
     toast(msg, {
       autoClose: 500,
       hideProgressBar: true,
     });
-
-  let { bills, food, entertainment, health, transit, other } = data[0];
+  const setTrackerData = (result) => {
+    data[0] = result;
+  };
 
   useEffect(() => {
     addTotal();
-  });
+  }, [data]);
   let email;
+  let { bills, food, entertainment, health, transit, other } = data[0];
   const [total, setTotal] = useState(0);
   const [newBill, setNewBill] = useState(null);
   const [billsTotal, setBillsTotal] = useState(bills);
@@ -96,9 +99,7 @@ const Tracker = () => {
         }
       );
   };
-  const setTrackerData = (result) => {
-    data[0] = result;
-  };
+
   const resetAll = () => {
     setBillsTotal(0);
     setFoodTotal(0);
@@ -108,7 +109,7 @@ const Tracker = () => {
     setOtherTotal(0);
     notify("Data has been reset!");
   };
-  console.log(EMAILJS_PUBLIC_KEY);
+
   const myData = [
     { x: "Bills", y: billsTotal },
     { x: "Food", y: foodTotal },
@@ -548,8 +549,6 @@ const Tracker = () => {
           <h1>Expense tracker loading</h1>
         )}
         <Topnavbar />
-
-        <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
       </div>
     </div>
   );

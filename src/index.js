@@ -8,6 +8,7 @@ import Login from "./components/loginSignup";
 import { StateContext } from "./components/StateContext";
 import Tracker from "./components/Tracker";
 import NewsReworked from "./components/NewsReworked";
+import ToDo from "./components/ToDo";
 ReactDOM.render(
   <StateContext>
     <BrowserRouter>
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Route exact path="/" element={<Login />} />
           <Route exact path="/tracker" element={<Tracker />} />
           <Route exact path="/news" element={<NewsReworked />} />
+          <Route exact path="/toDo" element={<ToDo />} />
         </Routes>
       </React.StrictMode>
     </BrowserRouter>

@@ -42,7 +42,7 @@ function ToDo() {
     addToDo,
     deleteToDo,
     completeTodo,
-    getTrackerInfo,
+
     getTodos,
   } = useStateContext();
 

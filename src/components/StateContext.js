@@ -38,13 +38,13 @@ export const StateContext = ({ children }) => {
       })
     );
   };
-  // const getTrackerInfo = async () => {
-  //   fetch(REACT_APP_API_URL + "/trackerData" + user)
-  //     .then((res) => res.json())
-  //     .then((result) => setData(result))
-  //     .catch((e) => console.log("Database error  : " + e));
-  //   console.log("cita tracker data i koristi : " + user);
-  // };
+  const getTrackerInfo = async () => {
+    fetch(REACT_APP_API_URL + "/trackerData" + user)
+      .then((res) => res.json())
+      .then((result) => setData(result))
+      .catch((e) => console.log("Database error  : " + e));
+    console.log("cita tracker data i koristi : " + user);
+  };
 
   const addToDo = async () => {
     let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
@@ -69,7 +69,7 @@ export const StateContext = ({ children }) => {
       .then((result) => setTodos(result))
       .catch((e) => console.log("Database error  : " + e));
   };
-
+  console.log(data);
   return (
     <Context.Provider
       value={{
@@ -90,7 +90,7 @@ export const StateContext = ({ children }) => {
         completeTodo,
         setData,
         data,
-
+        getTrackerInfo,
         getTodos,
       }}
     >

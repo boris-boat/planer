@@ -12,8 +12,9 @@ import DatePicker from "react-datepicker";
 const Tracker = () => {
   const user = localStorage.getItem("user");
   const { REACT_APP_API_URL } = process.env;
-  const { data } = useStateContext();
-  
+
+  const { data, getTrackerInfo } = useStateContext();
+
   const notify = (msg) =>
     toast(msg, {
       autoClose: 500,
@@ -24,22 +25,24 @@ const Tracker = () => {
   };
 
   useEffect(() => {
+    getTrackerInfo();
     addTotal();
-  }, [data]);
+  }, []);
   let email;
+
   let { bills, food, entertainment, health, transit, other } = data[0];
   const [total, setTotal] = useState(0);
-  const [newBill, setNewBill] = useState(null);
+  const [newBill, setNewBill] = useState();
   const [billsTotal, setBillsTotal] = useState(bills);
-  const [newFood, setNewFood] = useState(null);
+  const [newFood, setNewFood] = useState();
   const [foodTotal, setFoodTotal] = useState(food);
-  const [newEntertainment, setNewEntertainment] = useState(null);
+  const [newEntertainment, setNewEntertainment] = useState();
   const [entertainmentTotal, setEntertainmentTotal] = useState(entertainment);
-  const [newHealth, setNewHealth] = useState(null);
+  const [newHealth, setNewHealth] = useState();
   const [healthTotal, setHealthTotal] = useState(health);
-  const [newTransit, setNewTransit] = useState(null);
+  const [newTransit, setNewTransit] = useState();
   const [transitTotal, setTransitTotal] = useState(transit);
-  const [newOther, setNewOther] = useState(null);
+  const [newOther, setNewOther] = useState();
   const [otherTotal, setOtherTotal] = useState(other);
 
   const d = new Date();

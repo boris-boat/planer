@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -13,37 +13,74 @@ import Quote from "./quote";
 import Vreme from "./vreme";
 import { useStateContext } from "./StateContext";
 import Item from "./Item";
-let user;
+
 function ToDo() {
-  const startingApp = async () => {
-    user = localStorage.getItem("user");
-    getTodos();
+  let user = localStorage.getItem("user");
+  const [todos, setTodos] = useState([]);
+  const { REACT_APP_API_URL } = process.env;
+
+  const getTodos = async () => {
+    fetch(REACT_APP_API_URL + "/todos" + user)
+      .then((res) => res.json())
+      .then((result) => setTodos(result))
+      .catch((e) => console.log("Database error  : " + e));
+  };
+  const addToDo = async () => {
+    let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: newTodo,
+        creator: user,
+        category: category === "Everything" ? "General" : category,
+        completed: false,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+    setTodos([...todos, newestTodo]);
+  };
+  const deleteToDo = async (id) => {
+    await fetch(REACT_APP_API_URL + "/delete/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+
+    const todosCopy = todos;
+
+    setTodos(todosCopy.filter((todo) => todo._id !== id));
+  };
+  const completeTodo = async (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo._id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
   };
 
   const navigate = useNavigate();
   useEffect(() => {
-    startingApp();
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-      localStorage.setItem("long", position.coords.longitude);
-      localStorage.setItem("lat", position.coords.latitude);
-    });
+    getTodos();
   }, []);
   const {
     category,
     setCategory,
     VremeShow,
     setVremeShow,
-    todos,
+
     search,
     newTodo,
     setnewTodo,
-
-    addToDo,
-    deleteToDo,
-    completeTodo,
-
-    getTodos,
   } = useStateContext();
 
   return (

@@ -1,28 +1,23 @@
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import "./App.css";
 import Topnavbar from "./components/navbar";
-import { useEffect } from "react";
-import { useStateContext } from "./components/StateContext";
+
 import "./index.css";
 import { useNavigate } from "react-router-dom";
+import { useStateContext } from "./components/StateContext";
+import { useEffect } from "react";
+
 function App() {
   const navigate = useNavigate();
   let user = localStorage.getItem("user");
-  const { setData } = useStateContext();
-
-  const { REACT_APP_API_URL } = process.env;
-  const getTrackerInfo = async () => {
-    fetch(REACT_APP_API_URL + "/trackerData" + user)
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result);
-      })
-      .catch((e) => console.log("Database error  : " + e));
-    console.log("cita tracker data i koristi : " + user);
-  };
+  const { setUser } = useStateContext();
+  setUser(localStorage.getItem("user"));
   useEffect(() => {
-    getTrackerInfo();
-  }, []);
+    navigator.geolocation.getCurrentPosition(function (position) {
+      localStorage.setItem("long", position.coords.longitude);
+      localStorage.setItem("lat", position.coords.latitude);
+    });
+  });
 
   return (
     <>

@@ -10,10 +10,40 @@ import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 
 const Tracker = () => {
-  const user = localStorage.getItem("user");
   const { REACT_APP_API_URL } = process.env;
+  let user = localStorage.getItem("user");
 
-  const { data, getTrackerInfo } = useStateContext();
+  const [initialState, setInitialState] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [newBill, setNewBill] = useState();
+  const [billsTotal, setBillsTotal] = useState(0);
+  const [newFood, setNewFood] = useState();
+  const [foodTotal, setFoodTotal] = useState(0);
+  const [newEntertainment, setNewEntertainment] = useState();
+  const [entertainmentTotal, setEntertainmentTotal] = useState(0);
+  const [newHealth, setNewHealth] = useState();
+  const [healthTotal, setHealthTotal] = useState(0);
+  const [newTransit, setNewTransit] = useState();
+  const [transitTotal, setTransitTotal] = useState(0);
+  const [newOther, setNewOther] = useState();
+  const [otherTotal, setOtherTotal] = useState(0);
+
+  const getTrackerInfo = async () => {
+    fetch(REACT_APP_API_URL + "/trackerData" + user)
+      .then((res) => res.json())
+      .then((result) => setInitialState(result[0]))
+      .catch((e) => console.log("Database error  : " + e));
+    //setInitialState((prevState) => ({ ...prevState, bills: 5 }));
+  };
+  const setValues = () => {
+    setFoodTotal(initialState.food);
+    setBillsTotal(initialState.bills);
+    setEntertainmentTotal(initialState.entertainment);
+    setHealthTotal(initialState.health);
+    setTransitTotal(initialState.transit);
+    setOtherTotal(initialState.other);
+    addTotal();
+  };
 
   const notify = (msg) =>
     toast(msg, {
@@ -21,29 +51,27 @@ const Tracker = () => {
       hideProgressBar: true,
     });
   const setTrackerData = (result) => {
-    data[0] = result;
+    setInitialState(result);
   };
 
   useEffect(() => {
     getTrackerInfo();
-    addTotal();
   }, []);
-  let email;
+  useEffect(() => {
+    setValues();
+  }, [initialState]);
 
-  let { bills, food, entertainment, health, transit, other } = data[0];
-  const [total, setTotal] = useState(0);
-  const [newBill, setNewBill] = useState();
-  const [billsTotal, setBillsTotal] = useState(bills);
-  const [newFood, setNewFood] = useState();
-  const [foodTotal, setFoodTotal] = useState(food);
-  const [newEntertainment, setNewEntertainment] = useState();
-  const [entertainmentTotal, setEntertainmentTotal] = useState(entertainment);
-  const [newHealth, setNewHealth] = useState();
-  const [healthTotal, setHealthTotal] = useState(health);
-  const [newTransit, setNewTransit] = useState();
-  const [transitTotal, setTransitTotal] = useState(transit);
-  const [newOther, setNewOther] = useState();
-  const [otherTotal, setOtherTotal] = useState(other);
+  let email;
+  const addTotal = () => {
+    setTotal(
+      initialState.bills +
+        initialState.food +
+        initialState.entertainment +
+        initialState.health +
+        initialState.transit +
+        initialState.other
+    );
+  };
 
   const d = new Date();
   const month = [
@@ -60,16 +88,7 @@ const Tracker = () => {
     "November",
     "December",
   ];
-  const addTotal = () => {
-    setTotal(
-      billsTotal +
-        foodTotal +
-        entertainmentTotal +
-        healthTotal +
-        transitTotal +
-        otherTotal
-    );
-  };
+
   const templateParams = {
     subject: "Expenses for the month of " + month[d.getMonth()] + " so far",
     bills: "Bills total : " + billsTotal,
@@ -114,12 +133,12 @@ const Tracker = () => {
   };
 
   const myData = [
-    { x: "Bills", y: billsTotal },
-    { x: "Food", y: foodTotal },
-    { x: "Entertainment", y: entertainmentTotal },
-    { x: "Health", y: healthTotal },
-    { x: "Transportation", y: transitTotal },
-    { x: "Other", y: otherTotal },
+    { x: "Bills", y: initialState.bills },
+    { x: "Food", y: initialState.food },
+    { x: "Entertainment", y: initialState.entertainment },
+    { x: "Health", y: initialState.health },
+    { x: "Transportation", y: initialState.transit },
+    { x: "Other", y: initialState.other },
   ];
 
   const saveData = async () => {
@@ -161,7 +180,7 @@ const Tracker = () => {
   return (
     <div>
       <div>
-        {data && user ? (
+        {initialState && user ? (
           <Container>
             <Row
               className="d-flex justify-content-center align-items-center mt-5"
@@ -510,8 +529,8 @@ const Tracker = () => {
                   </Row>
                 </Row>
               </Col>
-              <Col>
-                <Container style={{ "margin-top": 20 }}>
+              <Col style={{ "margin-top": 10 }}>
+                <Container>
                   {<h1>{month[d.getMonth()]} expenses : </h1>}
                   <h2>Bills : {billsTotal}</h2>
                   <h2>Food : {foodTotal}</h2>

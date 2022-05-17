@@ -7,8 +7,7 @@ import { useEffect, useState } from "react";
 import Topnavbar from "./navbar";
 import LinearProgress from "@mui/material/LinearProgress";
 const NewsReworked = () => {
-  let user = localStorage.getItem("user");
-  const { search } = useStateContext();
+  const { search, user } = useStateContext();
   const { REACT_APP_API_URL } = process.env;
   const [news, setNews] = useState([]);
   const getNews = async () => {
@@ -19,7 +18,7 @@ const NewsReworked = () => {
   useEffect(() => {
     getNews();
   }, []);
-
+  console.log(news);
   return (
     <Container fluid>
       <Row>{user ? <Topnavbar /> : ""}</Row>

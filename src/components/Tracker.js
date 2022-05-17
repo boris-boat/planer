@@ -82,9 +82,7 @@ const Tracker = () => {
   useEffect(() => {
     setValues();
   }, [initialState]);
-  // useEffect(() => {
-  //   addTotal();
-  // }, [total]);
+
   let email;
   const addTotal = (num) => {
     setTotal(num);

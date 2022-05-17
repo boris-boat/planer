@@ -8,9 +8,10 @@ import {
   Alert,
   Image,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStateContext } from "./StateContext";
+
+import App from "../App";
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -23,7 +24,7 @@ const Login = () => {
   const [signUpPassword, setsignUpPassword] = useState("");
 
   const navigate = useNavigate();
-
+  let user = localStorage.getItem("user");
   const addUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/createUser", {
@@ -71,111 +72,114 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {}, []);
   return (
     <Container fluid className="m-0 p-0">
-      <Row>
-        <Col sm={4}>
-          <Col>
+      {user ? (
+        <App />
+      ) : (
+        <Row>
+          <Col sm={4}>
             <Col>
-              <Row>
-                <Row className="m-0 p-0">
-                  <Image
-                    className="m-0 p-0"
-                    src={require("./logosiroki.png")}
-                  ></Image>
+              <Col>
+                <Row>
+                  <Row className="m-0 p-0">
+                    <Image
+                      className="m-0 p-0"
+                      src={require("./logosiroki.png")}
+                    ></Image>
+                  </Row>
+                  <Row className="d-flex align-items-end m-0">
+                    <h1 className="mt-3 px-4">LOGIN</h1>
+                  </Row>
                 </Row>
-                <Row className="d-flex align-items-end m-0">
-                  <h1 className="mt-3 px-4">LOGIN</h1>
-                </Row>
-              </Row>
+              </Col>
+              <Form className="mt-3 px-4 ">
+                <Form.Group
+                  className="mb-3 expand-sm"
+                  controlId="formBasicUsername"
+                >
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Username"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3 " controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Form.Group>
+
+                <Button
+                  variant="primary"
+                  type="submit"
+                  onClick={(e) => {
+                    loginUser();
+                    e.preventDefault();
+                  }}
+                >
+                  Login
+                </Button>
+              </Form>
+              <br />
+              {error ? <Alert variant="danger">{error}</Alert> : ""}
             </Col>
-            <Form className="mt-3 px-4 ">
-              <Form.Group
-                className="mb-3 expand-sm"
-                controlId="formBasicUsername"
-              >
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </Form.Group>
 
-              <Form.Group className="mb-3 " controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Form.Group>
+            <Col>
+              <h1 className="mt-2 px-4">SIGNUP</h1>
+              <Form className="mt-2 px-4">
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Username"
+                    value={signUpUsername}
+                    onChange={(e) => setsignUpUsername(e.target.value)}
+                  />
+                </Form.Group>
 
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => {
-                  loginUser();
-                  e.preventDefault();
-                }}
-              >
-                Login
-              </Button>
-            </Form>
-            <br />
-            {error ? <Alert variant="danger">{error}</Alert> : ""}
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={signUpPassword}
+                    onChange={(e) => setsignUpPassword(e.target.value)}
+                  />
+                </Form.Group>
+
+                <Button
+                  variant="primary"
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    addUser();
+                  }}
+                >
+                  Signup
+                </Button>
+              </Form>
+              <br />
+              {signupError ? <Alert>{signupError}</Alert> : ""}
+            </Col>
           </Col>
-
-          <Col>
-            <h1 className="mt-2 px-4">SIGNUP</h1>
-            <Form className="mt-2 px-4">
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  value={signUpUsername}
-                  onChange={(e) => setsignUpUsername(e.target.value)}
-                />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={signUpPassword}
-                  onChange={(e) => setsignUpPassword(e.target.value)}
-                />
-              </Form.Group>
-
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  addUser();
-                }}
-              >
-                Signup
-              </Button>
-            </Form>
-            <br />
-            {signupError ? <Alert>{signupError}</Alert> : ""}
+          <Col className="m-0 p-0">
+            <Image
+              className="loginImg m-0 "
+              style={{ height: "100%", width: "100%" }}
+              src={require("./unsplash.jpg")}
+              alt=""
+              responsive
+            />
           </Col>
-        </Col>
-        <Col className="m-0 p-0">
-          <Image
-            className="loginImg m-0 "
-            style={{ height: "100%", width: "100%" }}
-            src={require("./unsplash.jpg")}
-            alt=""
-            responsive
-          />
-        </Col>
-      </Row>
+        </Row>
+      )}
     </Container>
   );
 };

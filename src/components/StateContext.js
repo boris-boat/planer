@@ -10,14 +10,6 @@ export const StateContext = ({ children }) => {
   const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
 
-  // const getTrackerInfo = async () => {
-  //   fetch(REACT_APP_API_URL + "/trackerData" + user)
-  //     .then((res) => res.json())
-  //     .then((result) => setData(result))
-  //     .catch((e) => console.log("Database error  : " + e));
-  //   console.log("cita tracker data i koristi : " + user, data);
-  // };
-
   return (
     <Context.Provider
       value={{
@@ -32,8 +24,6 @@ export const StateContext = ({ children }) => {
         setnewTodo,
         creator,
         setCreator,
-
-        // getTrackerInfo,
 
         setUser,
         user,

@@ -172,9 +172,8 @@ function ToDo() {
                   .map((todo) => {
                     if (todo.category === category) {
                       return (
-                        <ListGroup.Item>
+                        <ListGroup.Item key={todo._id}>
                           <Item
-                            key={todo._id}
                             item={todo}
                             completeTodo={completeTodo}
                             deleteToDo={deleteToDo}
@@ -183,9 +182,8 @@ function ToDo() {
                       );
                     } else if (category === "Everything") {
                       return (
-                        <ListGroup.Item>
+                        <ListGroup.Item key={todo._id}>
                           <Item
-                            key={todo._id}
                             item={todo}
                             completeTodo={completeTodo}
                             deleteToDo={deleteToDo}

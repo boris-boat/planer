@@ -11,11 +11,12 @@ function App() {
   const navigate = useNavigate();
   let user = localStorage.getItem("user");
   const { setUser } = useStateContext();
-  setUser(localStorage.getItem("user"));
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
+      setUser(localStorage.getItem("user"));
     });
   });
 

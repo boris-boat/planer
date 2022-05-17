@@ -19,7 +19,7 @@ const NewsReworked = () => {
   useEffect(() => {
     getNews();
   }, []);
-  console.log(news);
+
   return (
     <Container fluid>
       <Row>{user ? <Topnavbar /> : ""}</Row>

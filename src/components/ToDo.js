@@ -84,7 +84,7 @@ function ToDo() {
   } = useStateContext();
 
   return (
-    <div>
+    <div className="App">
       <Topnavbar />
 
       {user && todos ? (

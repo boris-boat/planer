@@ -87,7 +87,7 @@ function ToDo() {
     <div className="App">
       <Topnavbar />
 
-      {user ? (
+      {user && todos ? (
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
 

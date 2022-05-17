@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { VictoryPie } from "victory-pie";
-import { Button, Container, Row, Col, InputGroup } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  InputGroup,
+  Spinner,
+} from "react-bootstrap";
 import { useStateContext } from "./StateContext";
 import Topnavbar from "./navbar";
 
@@ -35,6 +42,7 @@ const Tracker = () => {
       .catch((e) => console.log("Database error  : " + e));
     //setInitialState((prevState) => ({ ...prevState, bills: 5 }));
   };
+
   const setValues = () => {
     setFoodTotal(initialState.food);
     setBillsTotal(initialState.bills);
@@ -42,9 +50,23 @@ const Tracker = () => {
     setHealthTotal(initialState.health);
     setTransitTotal(initialState.transit);
     setOtherTotal(initialState.other);
-    addTotal();
+    setTotal(
+      initialState.bills +
+        initialState.food +
+        initialState.entertainment +
+        initialState.health +
+        initialState.transit +
+        initialState.other
+    );
   };
-
+  const myData = [
+    { x: "Bills", y: billsTotal },
+    { x: "Food", y: foodTotal },
+    { x: "Entertainment", y: entertainmentTotal },
+    { x: "Health", y: healthTotal },
+    { x: "Transportation", y: transitTotal },
+    { x: "Other", y: otherTotal },
+  ];
   const notify = (msg) =>
     toast(msg, {
       autoClose: 500,
@@ -60,17 +82,12 @@ const Tracker = () => {
   useEffect(() => {
     setValues();
   }, [initialState]);
-
+  // useEffect(() => {
+  //   addTotal();
+  // }, [total]);
   let email;
-  const addTotal = () => {
-    setTotal(
-      initialState.bills +
-        initialState.food +
-        initialState.entertainment +
-        initialState.health +
-        initialState.transit +
-        initialState.other
-    );
+  const addTotal = (num) => {
+    setTotal(num);
   };
 
   const d = new Date();
@@ -131,15 +148,6 @@ const Tracker = () => {
     setOtherTotal(0);
     notify("Data has been reset!");
   };
-
-  const myData = [
-    { x: "Bills", y: initialState.bills },
-    { x: "Food", y: initialState.food },
-    { x: "Entertainment", y: initialState.entertainment },
-    { x: "Health", y: initialState.health },
-    { x: "Transportation", y: initialState.transit },
-    { x: "Other", y: initialState.other },
-  ];
 
   const saveData = async () => {
     await fetch(REACT_APP_API_URL + "/saveData", {
@@ -213,6 +221,8 @@ const Tracker = () => {
                           setBillsTotal(billsTotal + newBill);
                           setNewBill("");
                           notify("Added");
+
+                          addTotal((prevState) => prevState + newBill);
                         } else {
                           setNewBill("");
                           notify("Please enter a number !");
@@ -229,6 +239,7 @@ const Tracker = () => {
                           setBillsTotal(billsTotal - newBill);
                           setNewBill("");
                           notify("Substracted");
+                          addTotal((prevState) => prevState - newBill);
                         } else {
                           setNewBill("");
                           notify("Please enter a number !");
@@ -261,6 +272,7 @@ const Tracker = () => {
                           setFoodTotal(foodTotal + newFood);
                           setNewFood("");
                           notify("Added");
+                          addTotal((prevState) => prevState + newFood);
                         } else {
                           setNewFood("");
                           notify("Please enter a number !");
@@ -277,6 +289,7 @@ const Tracker = () => {
                           setFoodTotal(foodTotal - newFood);
                           setNewFood("");
                           notify("Substracted");
+                          addTotal((prevState) => prevState - newFood);
                         } else {
                           setNewFood("");
                           notify("Please enter a number !");
@@ -313,6 +326,7 @@ const Tracker = () => {
                           );
                           setNewEntertainment("");
                           notify("Added");
+                          addTotal((prevState) => prevState + newEntertainment);
                         } else {
                           setNewEntertainment("");
                           notify("Please enter a number !");
@@ -331,6 +345,7 @@ const Tracker = () => {
                           );
                           setNewEntertainment("");
                           notify("Subtracted");
+                          addTotal((prevState) => prevState - newEntertainment);
                         } else {
                           setNewEntertainment("");
                           notify("Please enter a number !");
@@ -364,6 +379,7 @@ const Tracker = () => {
                           setHealthTotal(healthTotal + newHealth);
                           setNewHealth("");
                           notify("Added");
+                          addTotal((prevState) => prevState + newHealth);
                         } else {
                           setNewHealth("");
                           notify("Please enter a number !");
@@ -380,6 +396,7 @@ const Tracker = () => {
                           setHealthTotal(healthTotal - newHealth);
                           setNewHealth("");
                           notify("Subtracted");
+                          addTotal((prevState) => prevState - newHealth);
                         } else {
                           setNewHealth("");
                           notify("Please enter a number !");
@@ -414,6 +431,7 @@ const Tracker = () => {
                           setTransitTotal(transitTotal + newTransit);
                           setNewTransit("");
                           notify("Added");
+                          addTotal((prevState) => prevState + newTransit);
                         } else {
                           setNewTransit("");
                           notify("Please enter a number !");
@@ -430,6 +448,7 @@ const Tracker = () => {
                           setTransitTotal(transitTotal - newTransit);
                           setNewTransit("");
                           notify("Subtracted");
+                          addTotal((prevState) => prevState - newTransit);
                         } else {
                           setNewTransit("");
                           notify("Please enter a number !");
@@ -460,11 +479,10 @@ const Tracker = () => {
                       id="button-addon2"
                       onClick={() => {
                         if (typeof newOther === "number") {
-                          setOtherTotal(
-                            parseInt(otherTotal) + parseInt(newOther)
-                          );
+                          setOtherTotal(otherTotal + newOther);
                           setNewOther("");
                           notify("Added");
+                          addTotal((prevState) => prevState + newOther);
                         } else {
                           setNewOther("");
                           notify("Please enter a number !");
@@ -478,9 +496,9 @@ const Tracker = () => {
                       id="button-addon2"
                       onClick={() => {
                         if (typeof newOther === "number") {
-                          setOtherTotal(
-                            parseInt(otherTotal) - parseInt(newOther)
-                          );
+                          setOtherTotal(otherTotal - newOther);
+                          console.log(otherTotal);
+                          addTotal((prevState) => prevState - newOther);
                           setNewOther("");
                           notify("Subtracted");
                         } else {
@@ -543,7 +561,7 @@ const Tracker = () => {
               </Col>
             </Row>
             <Col>
-              {total !== 0 ? (
+              {total ? (
                 <VictoryPie
                   animate={{
                     duration: 1000,
@@ -563,7 +581,9 @@ const Tracker = () => {
                   radius={100}
                 />
               ) : (
-                ""
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
               )}
             </Col>
           </Container>

@@ -29,7 +29,7 @@ function App() {
       >
         {user ? (
           <Col>
-            <Row>"</Row>
+            <Row> </Row>
             <Row className="mb-5">
               <h1 className="d-flex mt-5 align-content-center justify-content-center align-items-center">
                 Greetings {user}

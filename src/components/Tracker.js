@@ -190,7 +190,7 @@ const Tracker = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       <div>
         {user ? (
           <Container>
@@ -592,12 +592,12 @@ const Tracker = () => {
             </Col>
           </Container>
         ) : (
-          <>
+          <div className="App">
             <h1 className="mt-5">Please create an account or login !</h1>
             <Button variant="primary" onClick={() => navigate("/")}>
               Back
             </Button>
-          </>
+          </div>
         )}
         <Topnavbar />
       </div>

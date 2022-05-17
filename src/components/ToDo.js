@@ -84,7 +84,7 @@ function ToDo() {
   } = useStateContext();
 
   return (
-    <div className="App">
+    <div>
       <Topnavbar />
 
       {user && todos ? (
@@ -201,12 +201,12 @@ function ToDo() {
           </ListGroup>
         </>
       ) : (
-        <>
+        <div className="App">
           <h1 className="mt-5">Please create an account or login !</h1>
           <Button variant="primary" onClick={() => navigate("/")}>
             Back
           </Button>
-        </>
+        </div>
       )}
     </div>
   );

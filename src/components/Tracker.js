@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { VictoryPie } from "victory-pie";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Container,
@@ -17,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 
 const Tracker = () => {
+  const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user");
 
@@ -77,10 +79,14 @@ const Tracker = () => {
   };
 
   useEffect(() => {
-    getTrackerInfo();
+    try {
+      getTrackerInfo();
+    } catch (error) {}
   }, []);
   useEffect(() => {
-    setValues();
+    try {
+      setValues();
+    } catch (error) {}
   }, [initialState]);
 
   let email;
@@ -184,9 +190,9 @@ const Tracker = () => {
   };
 
   return (
-    <div>
+    <div className="App">
       <div>
-        {initialState && user ? (
+        {user ? (
           <Container>
             <Row
               className="d-flex justify-content-center align-items-center mt-5"
@@ -586,7 +592,12 @@ const Tracker = () => {
             </Col>
           </Container>
         ) : (
-          <h1>Expense tracker loading</h1>
+          <>
+            <h1 className="mt-5">Please create an account or login !</h1>
+            <Button variant="primary" onClick={() => navigate("/")}>
+              Back
+            </Button>
+          </>
         )}
         <Topnavbar />
       </div>

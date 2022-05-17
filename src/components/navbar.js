@@ -10,47 +10,52 @@ const Topnavbar = (props) => {
     localStorage.removeItem("user");
     navigate("/");
   };
-
+  let user = localStorage.getItem("user");
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand role="button" onClick={() => navigate("/home")}>
-          imaSve
-        </Navbar.Brand>
+        {user ? (
+          <>
+            <Navbar.Brand role="button" onClick={() => navigate("/home")}>
+              imaSve
+            </Navbar.Brand>
+            <Nav className="me-auto">
+              {window.location.pathname !== "/tracker" ? (
+                <Nav.Item className="mt-1">
+                  <input
+                    style={{ width: "100px" }}
+                    onChange={(event) => {
+                      setSearch(event.target.value);
+                    }}
+                    placeholder="Search"
+                  ></input>
+                </Nav.Item>
+              ) : (
+                ""
+              )}
 
-        <Nav className="me-auto">
-          {window.location.pathname !== "/tracker" ? (
-            <Nav.Item className="mt-1">
-              <input
-                style={{ width: "100px" }}
-                onChange={(event) => {
-                  setSearch(event.target.value);
-                }}
-                placeholder="Search"
-              ></input>
-            </Nav.Item>
-          ) : (
-            ""
-          )}
+              <NavDropdown title="More" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => navigate("/toDo")}>
+                  ToDo/Reminder lists
+                </NavDropdown.Item>
 
-          <NavDropdown title="More" id="basic-nav-dropdown">
-            <NavDropdown.Item onClick={() => navigate("/toDo")}>
-              ToDo/Reminder lists
-            </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate("/news")}>
+                  News
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate("/tracker")}>
+                  Expense tracker
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setVremeShow(true)}>
+                  Weather today
+                </NavDropdown.Item>
+              </NavDropdown>
 
-            <NavDropdown.Item onClick={() => navigate("/news")}>
-              News
-            </NavDropdown.Item>
-            <NavDropdown.Item onClick={() => navigate("/tracker")}>
-              Expense tracker
-            </NavDropdown.Item>
-            <NavDropdown.Item onClick={() => setVremeShow(true)}>
-              Weather today
-            </NavDropdown.Item>
-          </NavDropdown>
-
-          <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
-        </Nav>
+              <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+            </Nav>
+          </>
+        ) : (
+          <h1></h1>
+        )}
       </Container>
       <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
     </Navbar>

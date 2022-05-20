@@ -5,7 +5,7 @@ export const StateContext = ({ children }) => {
   const [category, setCategory] = useState("Everything");
   const [VremeShow, setVremeShow] = useState(false);
   const [user, setUser] = useState("");
-
+  const [searchBar, setSearchBar] = useState(true);
   const [search, setSearch] = useState("");
   const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
@@ -13,6 +13,8 @@ export const StateContext = ({ children }) => {
   return (
     <Context.Provider
       value={{
+        searchBar,
+        setSearchBar,
         category,
         setCategory,
         VremeShow,

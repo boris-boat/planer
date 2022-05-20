@@ -77,12 +77,12 @@ function ToDo() {
     setCategory,
     VremeShow,
     setVremeShow,
-
+    setSearchBar,
     search,
     newTodo,
     setnewTodo,
   } = useStateContext();
-
+  setSearchBar(true);
   return (
     <div className="App">
       <Topnavbar />
@@ -93,7 +93,7 @@ function ToDo() {
 
           <Quote />
 
-          <Container className="">
+          <Container>
             <h1 className="mt-3">Welcome {user} !</h1>
 
             <Row className="d-inline-flex mt-3">
@@ -158,7 +158,7 @@ function ToDo() {
 
           <ListGroup>
             <div className="cela-grupa">
-              {todos ? (
+              {todos.length !== 0 ? (
                 todos
                   .filter((val) => {
                     if (search === "") {

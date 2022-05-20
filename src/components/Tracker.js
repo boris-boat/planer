@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 
 const Tracker = () => {
+  const { setSearchBar } = useStateContext();
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user");
@@ -44,7 +45,7 @@ const Tracker = () => {
       .catch((e) => console.log("Database error  : " + e));
     //setInitialState((prevState) => ({ ...prevState, bills: 5 }));
   };
-
+  setSearchBar(false);
   const setValues = () => {
     setFoodTotal(initialState.food);
     setBillsTotal(initialState.bills);

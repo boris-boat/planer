@@ -5,12 +5,14 @@ import { useStateContext } from "./StateContext";
 import Vreme from "./vreme";
 const Topnavbar = (props) => {
   const navigate = useNavigate();
-  const { setVremeShow, setSearch, VremeShow } = useStateContext();
+  const { setVremeShow, setSearch, VremeShow, searchBar, showSearchBar } =
+    useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
     navigate("/");
   };
   let user = localStorage.getItem("user");
+  
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>
@@ -20,7 +22,7 @@ const Topnavbar = (props) => {
               imaSve
             </Navbar.Brand>
             <Nav className="me-auto">
-              {window.location.pathname !== "/tracker" ? (
+              {searchBar === true ? (
                 <Nav.Item className="mt-1">
                   <input
                     style={{ width: "100px" }}

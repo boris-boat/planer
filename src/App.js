@@ -10,7 +10,7 @@ import { useEffect } from "react";
 function App() {
   const navigate = useNavigate();
   let user = localStorage.getItem("user");
-  const { setUser } = useStateContext();
+  const { setUser, searchBar, setSearchBar } = useStateContext();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -19,7 +19,8 @@ function App() {
       setUser(localStorage.getItem("user"));
     });
   });
-
+  setSearchBar(false);
+  console.log(searchBar);
   return (
     <>
       <Topnavbar />

@@ -195,362 +195,370 @@ const Tracker = () => {
       <div>
         {user ? (
           <Container>
-            <Row
-              className="d-flex justify-content-center align-items-center mt-5"
-              md={2}
-              sm={1}
-            >
+            <Row className="d-flex justify-content-center  mt-5" md={2} sm={1}>
               <Col className="mt-4">
-                <Row>
-                  <ToastContainer />
-                  <InputGroup
-                    className="mb-3"
-                    onChange={(e) => {
-                      setNewBill(parseInt(e.target.value));
-                    }}
-                  >
-                    <InputGroup.Text id="basic-addon1">Bills</InputGroup.Text>
+                <Container className="d-grid justify-content-center align-items-center">
+                  <Row>
+                    <ToastContainer />
+                    <InputGroup
+                      className="mb-3"
+                      onChange={(e) => {
+                        setNewBill(parseInt(e.target.value));
+                      }}
+                    >
+                      <InputGroup.Text id="basic-addon1">Bills</InputGroup.Text>
 
-                    <input
-                      className="input-field"
-                      placeholder="Expense"
-                      value={newBill}
-                      type="number"
-                      pattern="/d+"
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newBill === "number") {
-                          setBillsTotal(billsTotal + newBill);
-                          setNewBill("");
-                          notify("Added");
+                      <input
+                        className="input-field"
+                        placeholder="Expense"
+                        value={newBill}
+                        type="number"
+                        pattern="/d+"
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newBill === "number") {
+                            setBillsTotal(billsTotal + newBill);
+                            setNewBill("");
+                            notify("Added");
 
-                          addTotal((prevState) => prevState + newBill);
-                        } else {
-                          setNewBill("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Add
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newBill === "number") {
-                          setBillsTotal(billsTotal - newBill);
-                          setNewBill("");
-                          notify("Substracted");
-                          addTotal((prevState) => prevState - newBill);
-                        } else {
-                          setNewBill("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Substract
-                    </Button>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <InputGroup
-                    className="mb-3"
-                    onChange={(e) => {
-                      setNewFood(parseInt(e.target.value));
-                    }}
-                  >
-                    <InputGroup.Text id="basic-addon1">Food</InputGroup.Text>
-                    <input
-                      className="input-field"
-                      placeholder="Expense"
-                      value={newFood}
-                      type="number"
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newFood === "number") {
-                          setFoodTotal(foodTotal + newFood);
-                          setNewFood("");
-                          notify("Added");
-                          addTotal((prevState) => prevState + newFood);
-                        } else {
-                          setNewFood("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Add
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newFood === "number") {
-                          setFoodTotal(foodTotal - newFood);
-                          setNewFood("");
-                          notify("Substracted");
-                          addTotal((prevState) => prevState - newFood);
-                        } else {
-                          setNewFood("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Substract
-                    </Button>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <InputGroup
-                    className="mb-3"
-                    onChange={(e) => {
-                      setNewEntertainment(parseInt(e.target.value));
-                    }}
-                  >
-                    <InputGroup.Text id="basic-addon1">
-                      Entertainment
-                    </InputGroup.Text>
-                    <input
-                      type="number"
-                      className="input-field"
-                      placeholder="Expense"
-                      value={newEntertainment}
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newEntertainment === "number") {
-                          setEntertainmentTotal(
-                            entertainmentTotal + newEntertainment
-                          );
-                          setNewEntertainment("");
-                          notify("Added");
-                          addTotal((prevState) => prevState + newEntertainment);
-                        } else {
-                          setNewEntertainment("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Add
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newEntertainment === "number") {
-                          setEntertainmentTotal(
-                            entertainmentTotal - newEntertainment
-                          );
-                          setNewEntertainment("");
-                          notify("Subtracted");
-                          addTotal((prevState) => prevState - newEntertainment);
-                        } else {
-                          setNewEntertainment("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Substract
-                    </Button>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  {" "}
-                  <InputGroup
-                    className="mb-3"
-                    onChange={(e) => {
-                      setNewHealth(parseInt(e.target.value));
-                    }}
-                  >
-                    <InputGroup.Text id="basic-addon1">Health</InputGroup.Text>
-                    <input
-                      className="input-field"
-                      placeholder="Expense"
-                      value={newHealth}
-                      type="number"
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newHealth === "number") {
-                          setHealthTotal(healthTotal + newHealth);
-                          setNewHealth("");
-                          notify("Added");
-                          addTotal((prevState) => prevState + newHealth);
-                        } else {
-                          setNewHealth("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Add
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newHealth === "number") {
-                          setHealthTotal(healthTotal - newHealth);
-                          setNewHealth("");
-                          notify("Subtracted");
-                          addTotal((prevState) => prevState - newHealth);
-                        } else {
-                          setNewHealth("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Substract
-                    </Button>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <InputGroup
-                    className="mb-3"
-                    onChange={(e) => {
-                      setNewTransit(parseInt(e.target.value));
-                    }}
-                  >
-                    <InputGroup.Text id="basic-addon1">
-                      Transportation
-                    </InputGroup.Text>
-                    <input
-                      className="input-field"
-                      placeholder="Expense"
-                      value={newTransit}
-                      type="number"
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newTransit === "number") {
-                          setTransitTotal(transitTotal + newTransit);
-                          setNewTransit("");
-                          notify("Added");
-                          addTotal((prevState) => prevState + newTransit);
-                        } else {
-                          setNewTransit("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Add
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newTransit === "number") {
-                          setTransitTotal(transitTotal - newTransit);
-                          setNewTransit("");
-                          notify("Subtracted");
-                          addTotal((prevState) => prevState - newTransit);
-                        } else {
-                          setNewTransit("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Substract
-                    </Button>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  {" "}
-                  <InputGroup
-                    className="mb-3"
-                    onChange={(e) => {
-                      setNewOther(parseInt(e.target.value));
-                    }}
-                  >
-                    <InputGroup.Text id="basic-addon1">Other</InputGroup.Text>
-                    <input
-                      className="input-field"
-                      placeholder="Expense"
-                      value={newOther}
-                      type="number"
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newOther === "number") {
-                          setOtherTotal(otherTotal + newOther);
-                          setNewOther("");
-                          notify("Added");
-                          addTotal((prevState) => prevState + newOther);
-                        } else {
-                          setNewOther("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Add
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      id="button-addon2"
-                      onClick={() => {
-                        if (typeof newOther === "number") {
-                          setOtherTotal(otherTotal - newOther);
-                          console.log(otherTotal);
-                          addTotal((prevState) => prevState - newOther);
-                          setNewOther("");
-                          notify("Subtracted");
-                        } else {
-                          setNewOther("");
-                          notify("Please enter a number !");
-                        }
-                      }}
-                    >
-                      Substract
-                    </Button>
-                  </InputGroup>{" "}
-                  <Row>
-                    <Button
-                      className="w-100"
-                      onClick={() => {
-                        saveData();
-                        notify("Data saved !");
-                      }}
-                    >
-                      Save changes{" "}
-                    </Button>
+                            addTotal((prevState) => prevState + newBill);
+                          } else {
+                            setNewBill("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newBill === "number") {
+                            setBillsTotal(billsTotal - newBill);
+                            setNewBill("");
+                            notify("Substracted");
+                            addTotal((prevState) => prevState - newBill);
+                          } else {
+                            setNewBill("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Substract
+                      </Button>
+                    </InputGroup>
                   </Row>
                   <Row>
-                    <Button
-                      className="w-100 mt-3"
-                      onClick={() => {
-                        window.confirm(
-                          "Are you sure you wish to reset all data? This cannot be undone!!!"
-                        )
-                          ? resetData()
-                          : window.CloseEvent();
+                    <InputGroup
+                      className="mb-3"
+                      onChange={(e) => {
+                        setNewFood(parseInt(e.target.value));
                       }}
                     >
-                      Reset Data{" "}
-                    </Button>
+                      <InputGroup.Text id="basic-addon1">Food</InputGroup.Text>
+                      <input
+                        className="input-field"
+                        placeholder="Expense"
+                        value={newFood}
+                        type="number"
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newFood === "number") {
+                            setFoodTotal(foodTotal + newFood);
+                            setNewFood("");
+                            notify("Added");
+                            addTotal((prevState) => prevState + newFood);
+                          } else {
+                            setNewFood("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newFood === "number") {
+                            setFoodTotal(foodTotal - newFood);
+                            setNewFood("");
+                            notify("Substracted");
+                            addTotal((prevState) => prevState - newFood);
+                          } else {
+                            setNewFood("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Substract
+                      </Button>
+                    </InputGroup>
                   </Row>
                   <Row>
-                    <Button
-                      className="w-100 mt-3"
-                      onClick={() => {
-                        handleEmailSendClick();
+                    <InputGroup
+                      className="mb-3"
+                      onChange={(e) => {
+                        setNewEntertainment(parseInt(e.target.value));
                       }}
                     >
-                      Send expense data to email.{" "}
-                    </Button>
+                      <InputGroup.Text id="basic-addon1">
+                        Entertainment
+                      </InputGroup.Text>
+                      <input
+                        type="number"
+                        className="input-field"
+                        placeholder="Expense"
+                        value={newEntertainment}
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newEntertainment === "number") {
+                            setEntertainmentTotal(
+                              entertainmentTotal + newEntertainment
+                            );
+                            setNewEntertainment("");
+                            notify("Added");
+                            addTotal(
+                              (prevState) => prevState + newEntertainment
+                            );
+                          } else {
+                            setNewEntertainment("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newEntertainment === "number") {
+                            setEntertainmentTotal(
+                              entertainmentTotal - newEntertainment
+                            );
+                            setNewEntertainment("");
+                            notify("Subtracted");
+                            addTotal(
+                              (prevState) => prevState - newEntertainment
+                            );
+                          } else {
+                            setNewEntertainment("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Substract
+                      </Button>
+                    </InputGroup>
                   </Row>
-                </Row>
+                  <Row>
+                    {" "}
+                    <InputGroup
+                      className="mb-3"
+                      onChange={(e) => {
+                        setNewHealth(parseInt(e.target.value));
+                      }}
+                    >
+                      <InputGroup.Text id="basic-addon1">
+                        Health
+                      </InputGroup.Text>
+                      <input
+                        className="input-field"
+                        placeholder="Expense"
+                        value={newHealth}
+                        type="number"
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newHealth === "number") {
+                            setHealthTotal(healthTotal + newHealth);
+                            setNewHealth("");
+                            notify("Added");
+                            addTotal((prevState) => prevState + newHealth);
+                          } else {
+                            setNewHealth("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newHealth === "number") {
+                            setHealthTotal(healthTotal - newHealth);
+                            setNewHealth("");
+                            notify("Subtracted");
+                            addTotal((prevState) => prevState - newHealth);
+                          } else {
+                            setNewHealth("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Substract
+                      </Button>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup
+                      className="mb-3"
+                      onChange={(e) => {
+                        setNewTransit(parseInt(e.target.value));
+                      }}
+                    >
+                      <InputGroup.Text id="basic-addon1">
+                        Transportation
+                      </InputGroup.Text>
+                      <input
+                        className="input-field"
+                        placeholder="Expense"
+                        value={newTransit}
+                        type="number"
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newTransit === "number") {
+                            setTransitTotal(transitTotal + newTransit);
+                            setNewTransit("");
+                            notify("Added");
+                            addTotal((prevState) => prevState + newTransit);
+                          } else {
+                            setNewTransit("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newTransit === "number") {
+                            setTransitTotal(transitTotal - newTransit);
+                            setNewTransit("");
+                            notify("Subtracted");
+                            addTotal((prevState) => prevState - newTransit);
+                          } else {
+                            setNewTransit("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Substract
+                      </Button>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    {" "}
+                    <InputGroup
+                      className="mb-3"
+                      onChange={(e) => {
+                        setNewOther(parseInt(e.target.value));
+                      }}
+                    >
+                      <InputGroup.Text id="basic-addon1">Other</InputGroup.Text>
+                      <input
+                        className="input-field"
+                        placeholder="Expense"
+                        value={newOther}
+                        type="number"
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newOther === "number") {
+                            setOtherTotal(otherTotal + newOther);
+                            setNewOther("");
+                            notify("Added");
+                            addTotal((prevState) => prevState + newOther);
+                          } else {
+                            setNewOther("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        id="button-addon2"
+                        onClick={() => {
+                          if (typeof newOther === "number") {
+                            setOtherTotal(otherTotal - newOther);
+                            console.log(otherTotal);
+                            addTotal((prevState) => prevState - newOther);
+                            setNewOther("");
+                            notify("Subtracted");
+                          } else {
+                            setNewOther("");
+                            notify("Please enter a number !");
+                          }
+                        }}
+                      >
+                        Substract
+                      </Button>
+                    </InputGroup>{" "}
+                  </Row>
+                </Container>
+                <Container>
+                  <Container className="p-3" style={{ width: "85%" }}>
+                    <Row>
+                      <Button
+                        className="w-100"
+                        onClick={() => {
+                          saveData();
+                          notify("Data saved !");
+                        }}
+                      >
+                        Save changes{" "}
+                      </Button>
+                    </Row>
+                    <Row>
+                      <Button
+                        className="w-100 mt-3"
+                        onClick={() => {
+                          window.confirm(
+                            "Are you sure you wish to reset all data? This cannot be undone!!!"
+                          )
+                            ? resetData()
+                            : window.CloseEvent();
+                        }}
+                      >
+                        Reset Data{" "}
+                      </Button>
+                    </Row>
+                    <Row>
+                      <Button
+                        className="w-100 mt-3"
+                        onClick={() => {
+                          handleEmailSendClick();
+                        }}
+                      >
+                        Send expense data to email.{" "}
+                      </Button>
+                    </Row>
+                  </Container>
+                </Container>
               </Col>
               <Col style={{ "margin-top": 10 }}>
                 <Container>

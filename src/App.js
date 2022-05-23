@@ -13,7 +13,7 @@ import ToDo from "./pages/ToDo";
 
 function App() {
   return (
-    <>
+    <div>
       <StateContext>
         <BrowserRouter>
           <Topnavbar />
@@ -26,7 +26,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </StateContext>
-    </>
+    </div>
   );
 }
 

@@ -8,7 +8,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Topnavbar from "../components/navbar";
+
 import Quote from "../components/quote";
 import Vreme from "../components/vreme";
 import { useStateContext } from "../components/StateContext";
@@ -85,7 +85,7 @@ function ToDo() {
   setSearchBar(true);
   return (
     <div className="App">
-      <Topnavbar />
+      
 
       {user && todos ? (
         <>

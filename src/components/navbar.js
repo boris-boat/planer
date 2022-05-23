@@ -12,7 +12,7 @@ const Topnavbar = (props) => {
     navigate("/");
   };
   let user = localStorage.getItem("user");
-  
+
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>

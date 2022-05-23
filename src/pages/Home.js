@@ -5,7 +5,6 @@ import "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
 import { useEffect } from "react";
-import Topnavbar from "../components/navbar";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,14 +15,12 @@ const Home = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
-      setUser(localStorage.getItem("user"));
     });
   });
   setSearchBar(false);
-  console.log(searchBar);
+
   return (
     <>
-      <Topnavbar />
       ""
       <Container
         className="d-flex mt-5 align-content-center justify-content-center align-items-center"

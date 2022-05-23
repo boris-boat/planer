@@ -10,7 +10,6 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { useStateContext } from "../components/StateContext";
-import Topnavbar from "../components/navbar";
 
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
@@ -608,7 +607,6 @@ const Tracker = () => {
             </Button>
           </div>
         )}
-        <Topnavbar />
       </div>
     </div>
   );

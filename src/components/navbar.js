@@ -56,9 +56,7 @@ const Topnavbar = () => {
           </Container>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
         </Navbar>
-      ) : (
-        <h1></h1>
-      )}
+      ) : null}
     </>
   );
 };

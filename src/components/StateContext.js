@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 const Context = createContext();
 export const StateContext = ({ children }) => {
   const { REACT_APP_API_URL } = process.env;

@@ -3,10 +3,9 @@ import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "./StateContext";
 import Vreme from "./vreme";
-const Topnavbar = (props) => {
+const Topnavbar = () => {
   const navigate = useNavigate();
-  const { setVremeShow, setSearch, VremeShow, searchBar, showSearchBar } =
-    useStateContext();
+  const { setVremeShow, setSearch, VremeShow, searchBar } = useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
     navigate("/");
@@ -14,10 +13,10 @@ const Topnavbar = (props) => {
   let user = localStorage.getItem("user");
 
   return (
-    <Navbar bg="primary" variant="dark" fixed="top">
-      <Container>
-        {user ? (
-          <>
+    <>
+      {user ? (
+        <Navbar bg="primary" variant="dark" fixed="top">
+          <Container>
             <Navbar.Brand role="button" onClick={() => navigate("/home")}>
               imaSve
             </Navbar.Brand>
@@ -54,13 +53,13 @@ const Topnavbar = (props) => {
 
               <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
             </Nav>
-          </>
-        ) : (
-          <h1></h1>
-        )}
-      </Container>
-      <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
-    </Navbar>
+          </Container>
+          <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
+        </Navbar>
+      ) : (
+        <h1></h1>
+      )}
+    </>
   );
 };
 export default Topnavbar;

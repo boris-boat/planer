@@ -8,11 +8,11 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Topnavbar from "./navbar";
-import Quote from "./quote";
-import Vreme from "./vreme";
-import { useStateContext } from "./StateContext";
-import Item from "./Item";
+import Topnavbar from "../components/navbar";
+import Quote from "../components/quote";
+import Vreme from "../components/vreme";
+import { useStateContext } from "../components/StateContext";
+import Item from "../components/Item";
 
 function ToDo() {
   let user = localStorage.getItem("user");

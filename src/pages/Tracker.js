@@ -9,8 +9,8 @@ import {
   InputGroup,
   Spinner,
 } from "react-bootstrap";
-import { useStateContext } from "./StateContext";
-import Topnavbar from "./navbar";
+import { useStateContext } from "../components/StateContext";
+import Topnavbar from "../components/navbar";
 
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";

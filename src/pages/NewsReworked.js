@@ -1,10 +1,10 @@
 import React from "react";
-import { useStateContext } from "./StateContext";
+import { useStateContext } from "../components/StateContext";
 import "../App.css";
 import { Container, ListGroup, Col, Row, Card, Spinner } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
-import Topnavbar from "./navbar";
+import Topnavbar from "../components/navbar";
 import LinearProgress from "@mui/material/LinearProgress";
 const NewsReworked = () => {
   let user = localStorage.getItem("user");

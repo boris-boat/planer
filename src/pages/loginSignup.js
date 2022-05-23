@@ -85,7 +85,7 @@ const Login = () => {
                   <Row className="m-0 p-0">
                     <Image
                       className="m-0 p-0"
-                      src={require("./logosiroki.png")}
+                      src={require("../components/logosiroki.png")}
                     ></Image>
                   </Row>
                   <Row className="d-flex align-items-end m-0">
@@ -173,7 +173,7 @@ const Login = () => {
             <Image
               className="loginImg m-0 "
               style={{ height: "100%", width: "100%" }}
-              src={require("./unsplash.jpg")}
+              src={require("../components/unsplash.jpg")}
               alt=""
               responsive
             />

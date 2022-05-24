@@ -11,7 +11,8 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import App from "../App";
+
+import Home from "./Home";
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -75,7 +76,7 @@ const Login = () => {
   return (
     <Container fluid className="m-0 p-0">
       {user ? (
-        <App />
+        <Home />
       ) : (
         <Row>
           <Col sm={4}>

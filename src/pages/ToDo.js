@@ -5,7 +5,7 @@ import {
   InputGroup,
   ListGroup,
   Row,
-  Spinner,
+ 
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -193,9 +193,7 @@ function ToDo() {
                     }
                   })
               ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                null
               )}
             </div>
           </ListGroup>

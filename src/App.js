@@ -14,7 +14,9 @@ import ToDo from "./pages/ToDo";
 function App() {
   return (
     <div>
+      <Topnavbar/>
       <Routes>
+      
       <Route exact path="/home" element={<Home />} />
       <Route exact path="/*" element={<Login />} />
       <Route exact path="/tracker" element={<Tracker />} />

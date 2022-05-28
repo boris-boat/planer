@@ -4,12 +4,17 @@ import "../App.css";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+
 
 const Home = () => {
   const navigate = useNavigate();
-  let user = localStorage.getItem("user");
-  const { setUser, searchBar, setSearchBar } = useStateContext();
+  //const {testToken} = useStateContext()
+  let user = localStorage.getItem("user")?.split(" ")[0];
+
+  let token = localStorage.getItem("token");
+
+  const { setSearchBar,validated } = useStateContext();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -18,15 +23,17 @@ const Home = () => {
     });
   });
   setSearchBar(false);
-
+  
+  
+  
   return (
     <>
       ""
       <Container
-        className="d-flex mt-5 align-content-center justify-content-center align-items-center"
-        style={{ height: "600px" }}
+        className="d-flex align-content-center justify-content-center align-items-center"
+        style={{ height: "600px",marginTop : "70px" }}
       >
-        {user ? (
+        {user && validated === true ? (
           <Col>
             <Row> </Row>
             <Row className="mb-5">

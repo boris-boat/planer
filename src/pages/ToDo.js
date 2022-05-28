@@ -15,7 +15,17 @@ import { useStateContext } from "../components/StateContext";
 import Item from "../components/Item";
 
 function ToDo() {
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem("user").split(" ")[0]
+  const validate = async ()=> {
+    const createTokenTest = async () => {
+      let value =await fetch("http://localhost:3001/").then(response => response.json())
+      return value 
+      }
+    let token = localStorage.getItem("token")
+    let tokenTest = await createTokenTest()
+    console.log(tokenTest === token)
+    return  localStorage.getItem("user") && tokenTest === token && localStorage.getItem("user") === user + " " + token
+    }
   const [todos, setTodos] = useState([]);
   const { REACT_APP_API_URL } = process.env;
 
@@ -81,13 +91,15 @@ function ToDo() {
     search,
     newTodo,
     setnewTodo,
+    validated
   } = useStateContext();
   setSearchBar(true);
+  
   return (
     <div className="App">
       
 
-      {user && todos ? (
+      {user && todos && validated ? (
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
 

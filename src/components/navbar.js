@@ -5,16 +5,18 @@ import { useStateContext } from "./StateContext";
 import Vreme from "./vreme";
 const Topnavbar = () => {
   const navigate = useNavigate();
-  const { setVremeShow, setSearch, VremeShow, searchBar } = useStateContext();
+  const { setVremeShow, setSearch, VremeShow, searchBar,validated } = useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token")
     navigate("/");
   };
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem("user")?.split(" ")[0];
+  
 
   return (
     <>
-      {user ? (
+      {user && validated ? (
         <Navbar bg="primary" variant="dark" fixed="top">
           <Container>
             <Navbar.Brand role="button" onClick={() => navigate("/home")}>

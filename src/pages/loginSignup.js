@@ -13,10 +13,13 @@ import { useNavigate } from "react-router-dom";
 
 
 import Home from "./Home";
+import { useStateContext } from "../components/StateContext";
+
 
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
+  const {validated} = useStateContext()
   const [error, setError] = useState("");
   const [signupError, setSignuperror] = useState("");
   const [username, setUsername] = useState("");
@@ -25,7 +28,12 @@ const Login = () => {
   const [signUpPassword, setsignUpPassword] = useState("");
 
   const navigate = useNavigate();
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem("user")?.split(" ")[0];
+  
+  
+    
+  
+  
   const addUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/createUser", {
@@ -59,9 +67,10 @@ const Login = () => {
           username: username,
           password: password,
         }),
-      }).then((response) => {
-        if (response.ok) {
-          localStorage.setItem("user", username);
+      }).then((response) => response.json()).then((data) => {
+        localStorage.setItem("token",data.token)
+        if (data) {
+          localStorage.setItem("user", username + " " + data.token);
 
           navigate("/home");
         } else {
@@ -75,7 +84,7 @@ const Login = () => {
 
   return (
     <Container fluid className="m-0 p-0">
-      {user ? (
+      {user && validated === true ? (
         <Home />
       ) : (
         <Row>

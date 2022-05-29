@@ -16,7 +16,7 @@ const Topnavbar = () => {
 
   return (
     <>
-      {user && validated ? (
+      {user  ? (
         <Navbar bg="primary" variant="dark" fixed="top">
           <Container>
             <Navbar.Brand role="button" onClick={() => navigate("/home")}>

@@ -14,12 +14,13 @@ const Home = () => {
 
   let token = localStorage.getItem("token");
 
-  const { setSearchBar,validated } = useStateContext();
+  const { setSearchBar,validated,validate } = useStateContext();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
+      // validate()
     });
   });
   setSearchBar(false);
@@ -33,11 +34,11 @@ const Home = () => {
         className="d-flex align-content-center justify-content-center align-items-center"
         style={{ height: "600px",marginTop : "70px" }}
       >
-        {user && validated === true ? (
+        {user  ? (
           <Col>
-            <Row> </Row>
-            <Row className="mb-5">
-              <h1 className="d-flex mt-5 align-content-center justify-content-center align-items-center">
+            <Row className="mt-5"> </Row>
+            <Row className="mb-5 d-flex align-content-center justify-content-center align-items-center text-center">
+              <h1 className="mt-5 ">
                 Greetings {user}
               </h1>
             </Row>

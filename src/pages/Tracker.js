@@ -202,7 +202,7 @@ const Tracker = () => {
   return (
     <div>
       <div>
-        {user && validated ? (
+        {user  ? (
           <Container>
             <Row className="d-flex justify-content-center  mt-5" md={2} sm={1}>
               <Col className="mt-4">

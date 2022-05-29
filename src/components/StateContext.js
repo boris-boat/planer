@@ -13,28 +13,28 @@ export const StateContext = ({ children }) => {
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);
   let user = localStorage.getItem("user")?.split(" ")[0];
-  const validate = async () => {
-    const createTokenTest = async () => {
-      let value = await fetch("http://localhost:3001/").then((response) =>
-        response.json()
-      );
-      return value;
-    };
-    let token = localStorage.getItem("token");
-    let tokenTest = await createTokenTest();
-
-    setValidated(
-      localStorage.getItem("user") &&
-        tokenTest === token &&
-        localStorage.getItem("user") === user + " " + token
-    );
-  };
-  validate();
-
+  // const validate = async () => {
+  //   const createTokenTest = async () => {
+  //     let value = await fetch("http://localhost:3001/").then((response) =>
+  //       response.json()
+  //     );
+  //     return value;
+  //   };
+  //   let token = localStorage.getItem("token");
+  //   setValidated(
+  //     localStorage.getItem("user") &&
+  //     localStorage.getItem("user") === user + " " + token
+  //   );
+    
+  // };
+ 
+  
+  
+  
   return (
     <Context.Provider
       value={{
-        validate,
+       
         validated,
         setValidated,
         searchBar,

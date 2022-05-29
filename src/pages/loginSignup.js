@@ -84,7 +84,7 @@ const Login = () => {
 
   return (
     <Container fluid className="m-0 p-0">
-      {user && validated === true ? (
+      {user  ? (
         <Home />
       ) : (
         <Row>

@@ -48,7 +48,7 @@ const Tracker = () => {
   const [otherTotal, setOtherTotal] = useState(0);
 
   const getTrackerInfo = async () => {
-    fetch(REACT_APP_API_URL + "/trackerData" + user)
+    fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
       .catch((e) => console.log("Database error  : " + e));
@@ -164,7 +164,7 @@ const Tracker = () => {
   };
 
   const saveData = async () => {
-    await fetch(REACT_APP_API_URL + "/saveData", {
+    await fetch(REACT_APP_API_URL + "/tracker/saveData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +184,7 @@ const Tracker = () => {
       .catch((e) => console.log(e));
   };
   const resetData = async () => {
-    await fetch(REACT_APP_API_URL + "/resetData", {
+    await fetch(REACT_APP_API_URL + "/tracker/resetData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

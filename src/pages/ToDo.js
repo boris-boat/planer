@@ -21,13 +21,13 @@ function ToDo() {
   const { REACT_APP_API_URL } = process.env;
 
   const getTodos = async () => {
-    fetch(REACT_APP_API_URL + "/todos" + user)
+    fetch(REACT_APP_API_URL + "/todos/" + user)
       .then((res) => res.json())
       .then((result) => setTodos(result))
       .catch((e) => console.log("Database error  : " + e));
   };
   const addToDo = async () => {
-    let newestTodo = await fetch(REACT_APP_API_URL + "/createTodo", {
+    let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function ToDo() {
     setTodos([...todos, newestTodo]);
   };
   const deleteToDo = async (id) => {
-    await fetch(REACT_APP_API_URL + "/delete/" + id, {
+    await fetch(REACT_APP_API_URL + "/todos/delete" + id, {
       method: "DELETE",
     })
       .then((res) => res.json())

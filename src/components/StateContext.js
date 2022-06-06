@@ -25,16 +25,12 @@ export const StateContext = ({ children }) => {
   //     localStorage.getItem("user") &&
   //     localStorage.getItem("user") === user + " " + token
   //   );
-    
+
   // };
- 
-  
-  
-  
+
   return (
     <Context.Provider
       value={{
-       
         validated,
         setValidated,
         searchBar,

@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import {
   Button,
   Container,
+  Form,
   InputGroup,
   ListGroup,
   Row,
@@ -27,6 +28,7 @@ function ToDo() {
       .catch((e) => console.log("Database error  : " + e));
   };
   const addToDo = async () => {
+    
     let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
       method: "POST",
       headers: {
@@ -100,27 +102,34 @@ function ToDo() {
             <h1 className="mt-3">Welcome {user} !</h1>
 
             <Row className="d-inline-flex mt-3">
+              <Form  onSubmit={(e) => {
+                e.preventDefault()
+                  addToDo();
+                  setnewTodo("");
+                }}>
               <InputGroup
+              
                 className="mb-3"
                 onChange={(e) => setnewTodo(e.target.value)}
                 value={newTodo}
+               
               >
                 <input
                   className="input-field"
                   placeholder="Add new item"
                   value={newTodo}
+                  
                 />
                 <Button
+                  type="submit"
                   variant="outline-secondary"
                   id="button-addon2"
-                  onClick={() => {
-                    addToDo();
-                    setnewTodo("");
-                  }}
+                
                 >
                   Add
                 </Button>
               </InputGroup>
+              </Form>
             </Row>
           </Container>
 

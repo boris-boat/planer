@@ -8,7 +8,9 @@
  
 
 }
-
+.mt-5{
+  height: 100vh;
+}
 .chatContainer {
   display: flex;
   flex-direction: column;

@@ -33,7 +33,7 @@ const Chat = () => {
     });
 
     return () => {
-      socket.disconnect()
+      
       socket.off();
     };
   }, []);
@@ -57,7 +57,7 @@ const Chat = () => {
   };
 
   return (
-    <div>
+    <div className="mt-5">
       {name ? (
         <div className="outerContainer">
           <div className="chatContainer">

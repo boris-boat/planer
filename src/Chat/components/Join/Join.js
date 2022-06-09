@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./Join.css";
@@ -10,9 +11,10 @@ export default function SignIn() {
   let user = localStorage.getItem("user")?.split(" ")[0];
 
   return (
-    <div className="joinOuterContainer">
+    <div>
+      {user ? ( <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">Create a room !!!</h1>
+        <h1 className="heading">Create a room</h1>
 
         <div>
           <input
@@ -29,10 +31,18 @@ export default function SignIn() {
           to={`/chat?room=${room}`}
         >
           <button className={"button mt-20"} type="submit">
-            Sign In
+            Create
           </button>
         </Link>
       </div>
+    </div>) : (<div className="App">
+      <h1 className="mt-5">Please create an account or login !</h1>
+      <Button variant="primary" onClick={() => navigate("/")}>
+        Back
+      </Button>
+    </div>) }
+     
     </div>
+    
   );
 }

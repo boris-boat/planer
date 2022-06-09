@@ -52,7 +52,7 @@ const Topnavbar = () => {
                   Weather today
                 </NavDropdown.Item>
               </NavDropdown>
-
+              <Nav.Link onClick={() => navigate("/join")}>Chat</Nav.Link>
               <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
             </Nav>
           </Container>

@@ -6,7 +6,6 @@ import {
   InputGroup,
   ListGroup,
   Row,
- 
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -14,21 +13,15 @@ import Quote from "../components/quote";
 import Vreme from "../components/vreme";
 import { useStateContext } from "../components/StateContext";
 import Item from "../components/Item";
+import CategorySelector from "../components/CategorySelector";
 
 function ToDo() {
-  let user = localStorage.getItem("user").split(" ")[0]
- 
+  let user = localStorage.getItem("user").split(" ")[0];
+
   const [todos, setTodos] = useState([]);
   const { REACT_APP_API_URL } = process.env;
 
-  const getTodos = async () => {
-    fetch(REACT_APP_API_URL + "/todos/" + user)
-      .then((res) => res.json())
-      .then((result) => setTodos(result))
-      .catch((e) => console.log("Database error  : " + e));
-  };
   const addToDo = async () => {
-    
     let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
       method: "POST",
       headers: {
@@ -73,25 +66,28 @@ function ToDo() {
 
   const navigate = useNavigate();
   useEffect(() => {
+    const getTodos = async () => {
+      fetch(REACT_APP_API_URL + "/todos/" + user)
+        .then((res) => res.json())
+        .then((result) => setTodos(result))
+        .catch((e) => console.log("Database error  : " + e));
+    };
     getTodos();
-  }, []);
+  });
   const {
     category,
-    setCategory,
+
     VremeShow,
     setVremeShow,
     setSearchBar,
     search,
     newTodo,
     setnewTodo,
-    validated
   } = useStateContext();
   setSearchBar(true);
-  
+
   return (
     <div className="App">
-      
-
       {user && todos ? (
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
@@ -102,111 +98,77 @@ function ToDo() {
             <h1 className="mt-3">Welcome {user} !</h1>
 
             <Row className="d-inline-flex mt-3">
-              <Form  onSubmit={(e) => {
-                e.preventDefault()
+              <Form
+                onSubmit={(e) => {
+                  e.preventDefault();
                   addToDo();
                   setnewTodo("");
-                }}>
-              <InputGroup
-              
-                className="mb-3"
-                onChange={(e) => setnewTodo(e.target.value)}
-                value={newTodo}
-               
+                }}
               >
-                <input
-                  className="input-field"
-                  placeholder="Add new item"
+                <InputGroup
+                  className="mb-3"
+                  onChange={(e) => setnewTodo(e.target.value)}
                   value={newTodo}
-                  
-                />
-                <Button
-                  type="submit"
-                  variant="outline-secondary"
-                  id="button-addon2"
-                
                 >
-                  Add
-                </Button>
-              </InputGroup>
+                  <input
+                    className="input-field"
+                    placeholder="Add new item"
+                    value={newTodo}
+                  />
+                  <Button
+                    type="submit"
+                    variant="outline-secondary"
+                    id="button-addon2"
+                  >
+                    Add
+                  </Button>
+                </InputGroup>
               </Form>
             </Row>
           </Container>
 
           <Row>
-            <Container className="button-container mb-3">
-              <Button
-                className="btn-sm"
-                variant="success"
-                onClick={() => setCategory("General")}
-              >
-                General
-              </Button>{" "}
-              <Button
-                className="btn-sm"
-                variant="success"
-                onClick={() => setCategory("Reminders")}
-              >
-                Reminders
-              </Button>{" "}
-              <Button
-                className="btn-sm"
-                variant="success"
-                onClick={() => setCategory("Shoping List")}
-              >
-                Shoping List
-              </Button>{" "}
-              <Button
-                className="btn-sm"
-                class="btn-l"
-                variant="success"
-                onClick={() => setCategory("Everything")}
-              >
-                Everything
-              </Button>{" "}
-            </Container>
+            <CategorySelector />
           </Row>
           <div className="mb-3">{category}</div>
 
           <ListGroup>
             <div className="cela-grupa">
-              {todos.length !== 0 ? (
-                todos
-                  .filter((val) => {
-                    if (search === "") {
-                      return val;
-                    } else if (
-                      val.text.toLowerCase().includes(search.toLowerCase())
-                    ) {
-                      return val;
-                    }
-                  })
-                  .map((todo) => {
-                    if (todo.category === category) {
-                      return (
-                        <ListGroup.Item key={todo._id}>
-                          <Item
-                            item={todo}
-                            completeTodo={completeTodo}
-                            deleteToDo={deleteToDo}
-                          />
-                        </ListGroup.Item>
-                      );
-                    } else if (category === "Everything") {
-                      return (
-                        <ListGroup.Item key={todo._id}>
-                          <Item
-                            item={todo}
-                            completeTodo={completeTodo}
-                            deleteToDo={deleteToDo}
-                          />
-                        </ListGroup.Item>
-                      );
-                    }
-                  })
-              ) : (
-                null
-              )}
+              {todos.length !== 0
+                ? todos
+                    .filter((val) => {
+                      if (search === "") {
+                        return val;
+                      } else if (
+                        val.text.toLowerCase().includes(search.toLowerCase())
+                      ) {
+                        return val;
+                      }
+                    })
+                    .map((todo) => {
+                      if (todo.category === category) {
+                        return (
+                          <ListGroup.Item key={todo._id}>
+                            <Item
+                              item={todo}
+                              completeTodo={completeTodo}
+                              deleteToDo={deleteToDo}
+                            />
+                          </ListGroup.Item>
+                        );
+                      } else if (category === "Everything") {
+                        return (
+                          <ListGroup.Item key={todo._id}>
+                            <Item
+                              item={todo}
+                              completeTodo={completeTodo}
+                              deleteToDo={deleteToDo}
+                            />
+                          </ListGroup.Item>
+                        );
+                      }
+                    })
+                : null}
             </div>
           </ListGroup>
         </>

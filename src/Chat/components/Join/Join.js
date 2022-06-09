@@ -14,7 +14,7 @@ export default function SignIn() {
     <div className="mt-5" style={{height : "100vh"}}>
       {user ? ( <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">Create a room</h1>
+        <h1 className="heading">Create or join a room</h1>
 
         <div>
           <input

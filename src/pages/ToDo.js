@@ -6,6 +6,7 @@ import {
   InputGroup,
   ListGroup,
   Row,
+  Spinner,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -88,7 +89,8 @@ function ToDo() {
 
   return (
     <div className="App">
-      {user && todos ? (
+      {user  ? (
+
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
 
@@ -134,6 +136,7 @@ function ToDo() {
 
           <ListGroup>
             <div className="cela-grupa">
+              
               {todos.length !== 0
                 ? todos
                     .filter((val) => {
@@ -165,10 +168,13 @@ function ToDo() {
                               deleteToDo={deleteToDo}
                             />
                           </ListGroup.Item>
-                        );
+                        )
+                        ;
                       }
                     })
-                : null}
+                : (<Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>)}
             </div>
           </ListGroup>
         </>

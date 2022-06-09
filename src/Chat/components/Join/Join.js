@@ -11,7 +11,7 @@ export default function SignIn() {
   let user = localStorage.getItem("user")?.split(" ")[0];
 
   return (
-    <div>
+    <div className="mt-5">
       {user ? ( <div className="joinOuterContainer">
       <div className="joinInnerContainer">
         <h1 className="heading">Create a room</h1>

@@ -1,13 +1,13 @@
 import React from "react";
 import { useStateContext } from "../components/StateContext";
 import "../App.css";
-import { Container, ListGroup, Col, Row, Card, Spinner } from "react-bootstrap";
+import { Container, ListGroup, Col, Row, Card } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
 
 import LinearProgress from "@mui/material/LinearProgress";
 const NewsReworked = () => {
-  let user = localStorage.getItem("user")?.split(" ")[0]
+  
 
   const { search, setSearchBar } = useStateContext();
   const { REACT_APP_API_URL } = process.env;
@@ -19,7 +19,7 @@ const NewsReworked = () => {
   };
   useEffect(() => {
     getNews();
-  }, []);
+  });
   setSearchBar(true);
   return (
     <Container fluid>
@@ -37,7 +37,7 @@ const NewsReworked = () => {
                   .filter((item) => {
                     if (item.guid.includes("n1")) {
                       return item;
-                    }
+                    } return null
                   })
                   .filter((val) => {
                     if (search === "") {
@@ -46,7 +46,7 @@ const NewsReworked = () => {
                       val.title.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
-                    }
+                    }return null
                   })
                   .map((item) => {
                     return (
@@ -78,7 +78,7 @@ const NewsReworked = () => {
                   .filter((item) => {
                     if (item.guid.includes("blic")) {
                       return item;
-                    }
+                    }return null
                   })
                   .filter((val) => {
                     if (search === "") {
@@ -87,7 +87,7 @@ const NewsReworked = () => {
                       val.title.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
-                    }
+                    }return null
                   })
                   .map((item) => {
                     return (
@@ -118,7 +118,7 @@ const NewsReworked = () => {
                   .filter((item) => {
                     if (item.guid.includes("danas")) {
                       return item;
-                    }
+                    }return null
                   })
                   .filter((val) => {
                     if (search === "") {
@@ -127,7 +127,7 @@ const NewsReworked = () => {
                       val.title.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
-                    }
+                    }return null
                   })
                   .map((item) => {
                     return (
@@ -158,7 +158,7 @@ const NewsReworked = () => {
                   .filter((item) => {
                     if (item.guid.includes("mozzart")) {
                       return item;
-                    }
+                    }return null
                   })
                   .filter((val) => {
                     if (search === "") {
@@ -167,7 +167,7 @@ const NewsReworked = () => {
                       val.title.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
-                    }
+                    }return null
                   })
                   .map((item) => {
                     return (

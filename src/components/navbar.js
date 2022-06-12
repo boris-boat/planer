@@ -5,7 +5,7 @@ import { useStateContext } from "./StateContext";
 import Vreme from "./vreme";
 const Topnavbar = () => {
   const navigate = useNavigate();
-  const { setVremeShow, setSearch, VremeShow, searchBar,validated } = useStateContext();
+  const { setVremeShow, setSearch, VremeShow, searchBar } = useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token")

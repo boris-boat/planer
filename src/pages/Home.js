@@ -4,7 +4,7 @@ import "../App.css";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
-import { useEffect,useState } from "react";
+import { useEffect } from "react";
 
 
 const Home = () => {
@@ -12,9 +12,9 @@ const Home = () => {
   //const {testToken} = useStateContext()
   let user = localStorage.getItem("user")?.split(" ")[0];
 
-  let token = localStorage.getItem("token");
+  // let token = localStorage.getItem("token");
 
-  const { setSearchBar,validated,validate } = useStateContext();
+  const { setSearchBar } = useStateContext();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {

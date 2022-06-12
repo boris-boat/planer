@@ -11,15 +11,11 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 import Home from "./Home";
-import { useStateContext } from "../components/StateContext";
-
 
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const {validated} = useStateContext()
   const [error, setError] = useState("");
   const [signupError, setSignuperror] = useState("");
   const [username, setUsername] = useState("");
@@ -29,11 +25,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   let user = localStorage.getItem("user")?.split(" ")[0];
-  
-  
-    
-  
-  
+
   const addUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/createUser", {
@@ -67,32 +59,34 @@ const Login = () => {
           username: username,
           password: password,
         }),
-      }).then((response) => response.json()).then((data) => {
-        localStorage.setItem("token",data.token)
-        if (data) {
-          localStorage.setItem("user", username + " " + data.token);
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem("token", data.token);
+          if (data) {
+            localStorage.setItem("user", username + " " + data.token);
 
-          navigate("/home");
-        } else {
-          setError("Invalid username/password combination");
-        }
-      });
+            navigate("/home");
+          } else {
+            setError("Invalid username/password combination");
+          }
+        });
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <Container fluid className="m-0 p-0">
-      {user  ? (
+    <Container fluid className="m-0 p-0"  >
+      {user ? (
         <Home />
       ) : (
-        <Row>
+        <Row >
           <Col sm={4}>
-            <Col>
-              <Col>
-                <Row>
-                  <Row className="m-0 p-0">
+            <Col >
+              <Col >
+                <Row >
+                  <Row className="m-0 p-0 " >
                     <Image
                       className="m-0 p-0"
                       src={require("../components/logosiroki.png")}
@@ -179,11 +173,11 @@ const Login = () => {
               {signupError ? <Alert>{signupError}</Alert> : ""}
             </Col>
           </Col>
-          <Col className="m-0 p-0">
-            <Image
+          <Col className="m-0 p-0 d-flex align-content-center justify-content-center" >
+            <Image 
               className="loginImg m-0 "
-              style={{ height: "100%", width: "100%" }}
-              src={require("../components/unsplash.jpg")}
+              style={{ height: "890px", width: "900px" }}
+              src={require("../components/login.jpg")}
               alt=""
               responsive
             />

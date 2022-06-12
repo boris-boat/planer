@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { useEffect } from "react/cjs/react.production.min";
+
 
 const Context = createContext();
 export const StateContext = ({ children }) => {
@@ -12,7 +12,7 @@ export const StateContext = ({ children }) => {
   const [creator, setCreator] = useState("");
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);
-  let user = localStorage.getItem("user")?.split(" ")[0];
+
   // const validate = async () => {
   //   const createTokenTest = async () => {
   //     let value = await fetch("http://localhost:3001/").then((response) =>

@@ -4,9 +4,10 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import Recept from "../components/Recept";
 import ingredients from "../components/ingredients";
 import "react-bootstrap-typeahead/css/Typeahead.css";
+import { useStateContext } from "../components/StateContext";
 const CookBook = () => {
   const { REACT_APP_COOKBOOK_API } = process.env;
-
+  const {  setSearchBar } = useStateContext();
   let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
   let query = [];
   const [multiSelections, setMultiSelections] = useState([]);
@@ -20,7 +21,7 @@ const CookBook = () => {
     const { ...data } = await response.json();
     setFoundRecipes(data);
   };
-
+  setSearchBar(false)
   const createQuery = () => {
     multiSelections.forEach((ajtem) => {
       base += `&includeIngredients=${ajtem.label}`;

@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 
 const Recept = ({ recipes }) => {
-  console.log(recipes.results);
+  
 
   return (
     <div
@@ -21,7 +21,7 @@ const Recept = ({ recipes }) => {
                   src={item.image}
                   style={{ height: "100px", width: "130px", padding: "0" }}
                 />
-              <Col>{item.dishTypes.map((item)=> <h5>{item}</h5>)}</Col>
+              <Col>{item.dishTypes.map((dishType)=> <h5>{dishType}</h5>)}</Col>
               </Row>{" "}
               
               

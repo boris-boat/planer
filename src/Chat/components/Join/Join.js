@@ -31,7 +31,7 @@ export default function SignIn() {
           to={`/chat?room=${room}`}
         >
           <button className={"button mt-20"} type="submit">
-            Create
+            Create/Join
           </button>
         </Link>
       </div>

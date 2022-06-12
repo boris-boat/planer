@@ -1,5 +1,5 @@
-import React, { useState, useEffect,useRef } from "react";
-import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import React, { useState, useRef } from "react";
+import { Button, Col, Container, Form,  } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 import Recept from "../components/Recept";
 import ingredients from "../components/ingredients";
@@ -35,8 +35,8 @@ const CookBook = () => {
       
       <Container
         className="justify-content-center align-items-center d-flex flex-column"
-        style={{ width: "70%"}}
-      ><Container className="d-flex justify-content-center align-items-center">
+        style={{ width: "80%",textAlign:"center"}}
+      ><Container className="d-flex justify-content-center">
       Welcome to the ultimate cooking experience!Please select as many
       ingredients as you like and the algorithm will provide a recipe with
       those ingredients included !
@@ -61,6 +61,7 @@ const CookBook = () => {
                   ref.current.clear()
                   setFoundRecipes("")
                   setMultiSelections([])
+                  
                 }
                
                 }>Clear</Button>

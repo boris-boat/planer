@@ -1,8 +1,9 @@
 import React from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 
 const Recept = ({ recipes }) => {
   console.log(recipes.results);
+
   return (
     <div
       style={{ width: "100%" }}
@@ -10,13 +11,20 @@ const Recept = ({ recipes }) => {
     >
       {recipes ? (
         recipes.results.map((item) => {
+          item.dishTypes.length = 3
           return (
             <Card style={{ height: "150px", width: "300px" }} fluid>
-              <Card.Img
-                variant="top"
-                src={item.image}
-                style={{ height: "100px", width: "100px" }}
-              />{" "}
+              <Row style={{width :"300px",marginLeft:"5px"}} >
+                
+                <Card.Img
+                  variant="top"
+                  src={item.image}
+                  style={{ height: "100px", width: "100px", padding: "0" }}
+                />
+              <Col>{item.dishTypes.map((item)=> <h5>{item}</h5>)}</Col>
+              </Row>{" "}
+              
+              
               <Card.Text>
                 {" "}
                 <a
@@ -26,6 +34,7 @@ const Recept = ({ recipes }) => {
                 >
                   {item.title}
                 </a>
+                {}
               </Card.Text>
             </Card>
           );

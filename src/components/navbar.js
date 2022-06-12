@@ -41,7 +41,9 @@ const Topnavbar = () => {
                 <NavDropdown.Item onClick={() => navigate("/toDo")}>
                   ToDo/Reminder lists
                 </NavDropdown.Item>
-
+                <NavDropdown.Item onClick={() => navigate("/cookbook")}>
+                  Cookbook
+                </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate("/news")}>
                   News
                 </NavDropdown.Item>

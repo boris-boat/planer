@@ -19,7 +19,7 @@ const Recept = ({ recipes }) => {
                 <Card.Img
                   variant="top"
                   src={item.image}
-                  style={{ height: "100px", width: "100px", padding: "0" }}
+                  style={{ height: "100px", width: "130px", padding: "0" }}
                 />
               <Col>{item.dishTypes.map((item)=> <h5>{item}</h5>)}</Col>
               </Row>{" "}

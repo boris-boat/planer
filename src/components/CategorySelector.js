@@ -4,9 +4,11 @@ import { useStateContext } from "./StateContext";
 
 const CategorySelector = () => {
   const { setCategory } = useStateContext();
+  
   return (
-    <Container className="button-container mb-3">
+    <Container fluid className="button-container mb-3 d-flex">
       <Button
+      
         className="btn-sm"
         variant="success"
         onClick={() => setCategory("General")}
@@ -14,6 +16,7 @@ const CategorySelector = () => {
         General
       </Button>{" "}
       <Button
+      
         className="btn-sm"
         variant="success"
         onClick={() => setCategory("Reminders")}
@@ -21,6 +24,7 @@ const CategorySelector = () => {
         Reminders
       </Button>{" "}
       <Button
+    
         className="btn-sm"
         variant="success"
         onClick={() => setCategory("Shoping List")}
@@ -28,6 +32,7 @@ const CategorySelector = () => {
         Shoping List
       </Button>{" "}
       <Button
+       
         className="btn-sm"
         class="btn-l"
         variant="success"

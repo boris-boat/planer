@@ -11,12 +11,14 @@ import Tracker from "./pages/Tracker";
 import NewsReworked from "./pages/NewsReworked";
 import ToDo from "./pages/ToDo";
 import Chat from "./Chat/Chat/Chat";
+import CookBook from "./pages/CookBook";
 
 function App() {
   return (
     <div>
       <Topnavbar/>
       <Routes>
+      <Route path="/cookbook" element={<CookBook />} />
       <Route path="/chat" element={<Chat />} />
       <Route exact path="/join" element={<Join />} />
       <Route exact path="/home" element={<Home />} />

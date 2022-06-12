@@ -129,7 +129,7 @@ function ToDo() {
             </Row>
           </Container>
 
-          <Row>
+          <Row style={{width : "400px",marginLeft : "0"}} className="d-flex justify-content-center align-items-center">
             <CategorySelector />
           </Row>
           <div className="mb-3">{category}</div>

@@ -35,13 +35,13 @@ const CookBook = () => {
       
       <Container
         className="justify-content-center align-items-center d-flex flex-column"
-        style={{ width: "60%"}}
+        style={{ width: "70%"}}
       ><Container className="d-flex justify-content-center align-items-center">
       Welcome to the ultimate cooking experience!Please select as many
       ingredients as you like and the algorithm will provide a recipe with
       those ingredients included !
     </Container>
-        <Col style={{ width: "100%" }}>
+        <Col style={{ width: "100%",marginTop : "20px" }}>
         
             <Form.Group>
               <Typeahead
@@ -60,18 +60,19 @@ const CookBook = () => {
                 () => {
                   ref.current.clear()
                   setFoundRecipes("")
+                  setMultiSelections([])
                 }
                
                 }>Clear</Button>
             </Container>
          
         </Col>
-        <Col style={{width : "100%"}} className="d-flex">
+        <Col  style={{width : "100%"}} className="d-flex justify-content-center align-items-center align-content-center mt-3">
          
-            {foundRecipes ? (
+            {foundRecipes && foundRecipes.length !== 0 ? (
               <Recept recipes={foundRecipes} />
-            ) : (
-              <h1>Please select ingredients and press search!</h1>
+            ) : (<div ><h1 >Please select ingredients and press search!</h1></div>
+              
             )}
          
         </Col>

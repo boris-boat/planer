@@ -44,7 +44,7 @@ const Home = () => {
             </Row>
 
             <Row className="d-flex justify-content-center align-content-center align-items-center ">
-              <Card style={{ width: "18rem" }}>
+              <Card style={{ width: "18rem",height :"18rem"}}>
                 <Card.Body>
                   <Card.Title>ToDo's / Reminders</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
@@ -56,7 +56,7 @@ const Home = () => {
                   <Card.Link href="/toDo"> ToDo's/Reminders</Card.Link>
                 </Card.Body>
               </Card>
-              <Card style={{ width: "18rem" }}>
+              <Card style={{ width: "18rem" ,height :"18rem"}}>
                 <Card.Body>
                   <Card.Title>Daily news from multiple sources</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
@@ -66,7 +66,7 @@ const Home = () => {
                   <Card.Link href="/news">News</Card.Link>
                 </Card.Body>
               </Card>
-              <Card style={{ width: "18rem" }}>
+              <Card style={{ width: "18rem",height :"18rem" }}>
                 <Card.Body>
                   <Card.Title>Expense tracker </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
@@ -76,6 +76,18 @@ const Home = () => {
                     Keep track with expenses throughout the month
                   </Card.Text>
                   <Card.Link href="/tracker">Expense tracker</Card.Link>
+                </Card.Body>
+              </Card>
+              <Card style={{ width: "18rem",height :"18rem" }}>
+                <Card.Body>
+                  <Card.Title>Kitchen Assistant</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Cant decide what to eat ?
+                  </Card.Subtitle>
+                  <Card.Text>
+                    Give us what you have and we will figure something out!
+                  </Card.Text>
+                  <Card.Link href="/cookbook">Cookbook</Card.Link>
                 </Card.Body>
               </Card>
             </Row>

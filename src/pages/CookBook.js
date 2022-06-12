@@ -7,7 +7,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 const CookBook = () => {
   const { REACT_APP_COOKBOOK_API } = process.env;
 
-  let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5`;
+  let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
   let query = [];
   const [multiSelections, setMultiSelections] = useState([]);
   const [foundRecipes, setFoundRecipes] = useState("");
@@ -54,7 +54,7 @@ const CookBook = () => {
                 placeholder="Choose several ingredients..."
               />
             </Form.Group>
-            <Container className="d-flex justify-content-center align-items-center align-content-center">
+            <Container className="d-flex justify-content-center align-items-center align-content-center mt-2">
               <Button onClick={handleSearch}>Search</Button>
               <Button onClick={
                 () => {

@@ -2,14 +2,14 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 
 const Recept = ({ recipes }) => {
-  console.log(recipes)
+  console.log(recipes.results)
 
   return (
     <div
       style={{ width: "100%" }}
       className="d-flex flex-row flex-wrap justify-content-center align-items-center align-content-center "
     >
-      {recipes.length !==0 ? (
+      {recipes.results.length !==0 ? (
         recipes.results.map((item) => {
           item.dishTypes.length = 3
           return (

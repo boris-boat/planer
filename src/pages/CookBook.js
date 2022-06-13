@@ -71,7 +71,7 @@ const CookBook = () => {
         </Col>
         <Col  style={{width : "100%"}} className="d-flex justify-content-center align-items-center align-content-center mt-3">
          
-            {foundRecipes && foundRecipes.length !== 0 ? (
+            {foundRecipes  ? (
               <Recept recipes={foundRecipes} />
             ) : (<div ><h1 >Please select ingredients and press search!</h1></div>
               

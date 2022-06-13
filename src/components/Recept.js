@@ -2,18 +2,18 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 
 const Recept = ({ recipes }) => {
-  
+  console.log(recipes)
 
   return (
     <div
       style={{ width: "100%" }}
-      className="d-flex flex-column justify-content-center align-items-center align-content-center "
+      className="d-flex flex-row flex-wrap justify-content-center align-items-center align-content-center "
     >
-      {recipes ? (
+      {recipes.length !==0 ? (
         recipes.results.map((item) => {
           item.dishTypes.length = 3
           return (
-            <Card style={{ height: "150px", width: "300px" }} fluid>
+            <Card style={{ minHeight: "150px", minWidth: "300px" }} fluid>
               <Row style={{width :"300px",marginLeft:"5px"}} >
                 
                 <Card.Img
@@ -40,7 +40,8 @@ const Recept = ({ recipes }) => {
           );
         })
       ) : (
-        <h1>No recipes found!</h1>
+        <div><h1>No recipes found!</h1></div>
+        
       )}
     </div>
   );

@@ -1,9 +1,9 @@
 .messageBox {
-  background: #F3F3F3;
+  display: flex;
+  background: #f3f3f3;
   border-radius: 20px;
   padding: 5px 20px;
   color: white;
-  display: inline-block;
   max-width: 80%;
 }
 
@@ -13,6 +13,9 @@
   float: left;
   font-size: 1.1em;
   word-wrap: break-word;
+  align-self: center;
+  margin-bottom: 6px;
+  margin-top: 3px;
 }
 
 .messageText img {
@@ -59,9 +62,9 @@
 }
 
 .backgroundBlue {
-  background: #2979FF;
+  background: #2979ff;
 }
 
 .backgroundLight {
-  background: #F3F3F3;
+  background: #f3f3f3;
 }

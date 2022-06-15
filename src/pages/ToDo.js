@@ -23,21 +23,23 @@ function ToDo() {
   const { REACT_APP_API_URL } = process.env;
 
   const addToDo = async () => {
-    let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: newTodo,
-        creator: user,
-        category: category === "Everything" ? "General" : category,
-        completed: false,
-      }),
-    })
-      .then((res) => res.json())
-      .catch((e) => console.log(e));
-    setTodos([...todos, newestTodo]);
+    
+      let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: newTodo,
+          creator: user,
+          category: category === "Everything" ? "General" : category,
+          completed: false,
+        }),
+      })
+        .then((res) => res.json())
+        .catch((e) => console.log(e));
+      setTodos([...todos, newestTodo]);
+   
   };
   const deleteToDo = async (id) => {
     await fetch(REACT_APP_API_URL + "/todos/delete" + id, {
@@ -84,13 +86,13 @@ function ToDo() {
     search,
     newTodo,
     setnewTodo,
+    notify,
   } = useStateContext();
   setSearchBar(true);
 
   return (
     <div className="App">
-      {user  ? (
-
+      {user ? (
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
 
@@ -103,6 +105,7 @@ function ToDo() {
               <Form
                 onSubmit={(e) => {
                   e.preventDefault();
+
                   addToDo();
                   setnewTodo("");
                 }}
@@ -129,52 +132,55 @@ function ToDo() {
             </Row>
           </Container>
 
-          <Row style={{width : "400px",marginLeft : "0"}} className="d-flex justify-content-center align-items-center">
+          <Row
+            style={{ width: "400px", marginLeft: "0" }}
+            className="d-flex justify-content-center align-items-center"
+          >
             <CategorySelector />
           </Row>
           <div className="mb-3">{category}</div>
 
           <ListGroup>
             <div className="cela-grupa">
-              
-              {todos.length !== 0
-                ? todos
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.text.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((todo) => {
-                      if (todo.category === category) {
-                        return (
-                          <ListGroup.Item key={todo._id}>
-                            <Item
-                              item={todo}
-                              completeTodo={completeTodo}
-                              deleteToDo={deleteToDo}
-                            />
-                          </ListGroup.Item>
-                        );
-                      } else if (category === "Everything") {
-                        return (
-                          <ListGroup.Item key={todo._id}>
-                            <Item
-                              item={todo}
-                              completeTodo={completeTodo}
-                              deleteToDo={deleteToDo}
-                            />
-                          </ListGroup.Item>
-                        )
-                        ;
-                      }
-                    })
-                : (<Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>)}
+              {todos.length !== 0 ? (
+                todos
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.text.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((todo) => {
+                    if (todo.category === category) {
+                      return (
+                        <ListGroup.Item key={todo._id}>
+                          <Item
+                            item={todo}
+                            completeTodo={completeTodo}
+                            deleteToDo={deleteToDo}
+                          />
+                        </ListGroup.Item>
+                      );
+                    } else if (category === "Everything") {
+                      return (
+                        <ListGroup.Item key={todo._id}>
+                          <Item
+                            item={todo}
+                            completeTodo={completeTodo}
+                            deleteToDo={deleteToDo}
+                          />
+                        </ListGroup.Item>
+                      );
+                    }
+                  })
+              ) : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
             </div>
           </ListGroup>
         </>

@@ -14,10 +14,10 @@ import { useStateContext } from "../components/StateContext";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 
 const Tracker = () => {
-  const { setSearchBar } = useStateContext();
+  const { setSearchBar,notify } = useStateContext();
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user")?.split(" ")[0]
@@ -79,11 +79,7 @@ const Tracker = () => {
     { x: "Transportation", y: transitTotal },
     { x: "Other", y: otherTotal },
   ];
-  const notify = (msg) =>
-    toast(msg, {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
+ 
   const setTrackerData = (result) => {
     setInitialState(result);
   };
@@ -569,7 +565,7 @@ const Tracker = () => {
                   </Container>
                 </Container>
               </Col>
-              <Col style={{ "margin-top": 10 }}>
+              <Col style={{ marginTop: 10 }}>
                 <Container>
                   {<h1>{month[d.getMonth()]} expenses : </h1>}
                   <h2>Bills : {billsTotal}</h2>

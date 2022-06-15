@@ -29,6 +29,7 @@ const CookBook = () => {
   };
 
   return (
+    <Container>
     <Container
       className="d-flex flex-column justify-content-center align-items-center flex-wrap"
       style={{ marginTop : "200px"}}
@@ -55,7 +56,7 @@ const CookBook = () => {
                 placeholder="Choose several ingredients..."
               />
             </Form.Group>
-            <Container className="d-flex justify-content-center align-items-center align-content-center mt-2">
+            <Container className="d-flex justify-content-center align-items-center align-content-center mt-2 space-between">
               <Button onClick={handleSearch}>Search</Button>
               <Button onClick={
                 () => {
@@ -65,7 +66,7 @@ const CookBook = () => {
                   
                 }
                
-                }>Clear</Button>
+                } style={{marginLeft : "20px"}}>Clear</Button>
             </Container>
          
         </Col>
@@ -79,6 +80,7 @@ const CookBook = () => {
          
         </Col>
       </Container>
+    </Container>
     </Container>
   );
 };

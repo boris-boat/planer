@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 
 const Context = createContext();
@@ -8,11 +9,15 @@ export const StateContext = ({ children }) => {
 
   const [searchBar, setSearchBar] = useState(true);
   const [search, setSearch] = useState("");
-  const [newTodo, setnewTodo] = useState("");
+  const [newTodo, setnewTodo] = useState(null);
   const [creator, setCreator] = useState("");
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);
-
+  const notify = (msg) =>
+  toast(msg, {
+    autoClose: 500,
+    hideProgressBar: true,
+  });
   // const validate = async () => {
   //   const createTokenTest = async () => {
   //     let value = await fetch("http://localhost:3001/").then((response) =>
@@ -47,6 +52,7 @@ export const StateContext = ({ children }) => {
         setnewTodo,
         creator,
         setCreator,
+        notify
       }}
     >
       {children}

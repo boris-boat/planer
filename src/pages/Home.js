@@ -38,7 +38,7 @@ const Home = () => {
           <Col style={{marginTop:"50px"}}>
             <Row style={{marginTop:"50px"}}> </Row>
             <Row className="mb-5 d-flex align-content-center justify-content-center align-items-center text-center">
-              <h1 className="mt-5 ">
+              <h1 className="mt-5" style={{color : "white"}}>
                 Greetings {user}
               </h1>
             </Row>

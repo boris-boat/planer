@@ -38,8 +38,8 @@ const CookBook = () => {
           className="justify-content-center align-items-center d-flex flex-column"
           style={{ width: "80%", textAlign: "center" }}
         >
-          <Container style={{fontFamily : "Noto Serif",fontSize:"30px"}}>Welcome to the ultimate cooking experience!</Container>
-          <Container className="d-flex justify-content-center mt-3">
+          <Container style={{fontFamily : "Noto Serif",fontSize:"30px",color : "white"}}>Welcome to the ultimate cooking experience!</Container>
+          <Container className="d-flex justify-content-center mt-3" style={{color : "white"}}>
             Please select as many ingredients as you like and the algorithm will
             provide a recipe with those ingredients included !
           </Container>
@@ -77,7 +77,7 @@ const CookBook = () => {
               <Recept recipes={foundRecipes} />
             ) : (
               <div>
-                <h1>Please select ingredients and press search!</h1>
+                <h1 style={{color : "white"}}>Please select ingredients and press search!</h1>
               </div>
             )}
           </Col>

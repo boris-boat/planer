@@ -99,7 +99,7 @@ function ToDo() {
           <Quote />
 
           <Container>
-            <h1 className="mt-3">Welcome {user} !</h1>
+            <h1 className="mt-3" style={{color : "white"}}>Welcome {user} !</h1>
 
             <Row className="d-inline-flex mt-3">
               <Form
@@ -138,7 +138,7 @@ function ToDo() {
           >
             <CategorySelector />
           </Row>
-          <div className="mb-3">{category}</div>
+          <div className="mb-3" style={{color : "white"}}>{category}</div>
 
           <ListGroup>
             <div className="cela-grupa">

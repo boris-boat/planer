@@ -16,9 +16,9 @@ const Quote = () => {
 
   return (
     <div className="mt-5">
-      <h3>Quote of the day : </h3>
+      <h3 style={{color : "white"}}>Quote of the day : </h3>
       {quote ? (
-        <h2>
+        <h2 style={{color : "white"}}>
           {quote.content} {quote.author}{" "}
         </h2>
       ) : (

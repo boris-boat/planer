@@ -12,19 +12,19 @@ import {
 import { useStateContext } from "../components/StateContext";
 
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //import DatePicker from "react-datepicker";
 
 const Tracker = () => {
-  const { setSearchBar,notify } = useStateContext();
+  const { setSearchBar, notify } = useStateContext();
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
-  let user = localStorage.getItem("user")?.split(" ")[0]
+  let user = localStorage.getItem("user")?.split(" ")[0];
   // const validate = async ()=> {
   //   const createTokenTest = async () => {
   //     let value =await fetch("http://localhost:3001/").then(response => response.json())
-  //     return value 
+  //     return value
   //     }
   //   let token = localStorage.getItem("token")
   //   let tokenTest = await createTokenTest()
@@ -79,7 +79,7 @@ const Tracker = () => {
     { x: "Transportation", y: transitTotal },
     { x: "Other", y: otherTotal },
   ];
- 
+
   const setTrackerData = (result) => {
     setInitialState(result);
   };
@@ -198,7 +198,7 @@ const Tracker = () => {
   return (
     <div>
       <div>
-        {user  ? (
+        {user ? (
           <Container>
             <Row className="d-flex justify-content-center  mt-5" md={2} sm={1}>
               <Col className="mt-4">
@@ -221,7 +221,8 @@ const Tracker = () => {
                         pattern="/d+"
                       />
                       <Button
-                        variant="outline-secondary"
+                      style={{marginRight : "15px"}}
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newBill === "number") {
@@ -239,7 +240,7 @@ const Tracker = () => {
                         Add
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newBill === "number") {
@@ -271,8 +272,8 @@ const Tracker = () => {
                         value={newFood}
                         type="number"
                       />
-                      <Button
-                        variant="outline-secondary"
+                      <Button style={{marginRight : "15px"}}
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newFood === "number") {
@@ -289,7 +290,7 @@ const Tracker = () => {
                         Add
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newFood === "number") {
@@ -323,8 +324,8 @@ const Tracker = () => {
                         placeholder="Expense"
                         value={newEntertainment}
                       />
-                      <Button
-                        variant="outline-secondary"
+                      <Button style={{marginRight : "15px"}}
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newEntertainment === "number") {
@@ -345,7 +346,7 @@ const Tracker = () => {
                         Add
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newEntertainment === "number") {
@@ -384,8 +385,8 @@ const Tracker = () => {
                         value={newHealth}
                         type="number"
                       />
-                      <Button
-                        variant="outline-secondary"
+                      <Button style={{marginRight : "15px"}}
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newHealth === "number") {
@@ -402,7 +403,7 @@ const Tracker = () => {
                         Add
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newHealth === "number") {
@@ -436,8 +437,8 @@ const Tracker = () => {
                         value={newTransit}
                         type="number"
                       />
-                      <Button
-                        variant="outline-secondary"
+                      <Button style={{marginRight : "15px"}}
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newTransit === "number") {
@@ -454,7 +455,7 @@ const Tracker = () => {
                         Add
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newTransit === "number") {
@@ -487,8 +488,8 @@ const Tracker = () => {
                         value={newOther}
                         type="number"
                       />
-                      <Button
-                        variant="outline-secondary"
+                      <Button style={{marginRight : "15px"}}
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newOther === "number") {
@@ -505,7 +506,7 @@ const Tracker = () => {
                         Add
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="info"
                         id="button-addon2"
                         onClick={() => {
                           if (typeof newOther === "number") {
@@ -566,7 +567,7 @@ const Tracker = () => {
                 </Container>
               </Col>
               <Col style={{ marginTop: 10 }}>
-                <Container>
+                <Container style={{ color: "white" }}>
                   {<h1>{month[d.getMonth()]} expenses : </h1>}
                   <h2>Bills : {billsTotal}</h2>
                   <h2>Food : {foodTotal}</h2>

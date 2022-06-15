@@ -122,7 +122,7 @@ function ToDo() {
                   />
                   <Button
                     type="submit"
-                    variant="outline-secondary"
+                    variant="info"
                     id="button-addon2"
                   >
                     Add
@@ -140,8 +140,8 @@ function ToDo() {
           </Row>
           <div className="mb-3" style={{color : "white"}}>{category}</div>
 
-          <ListGroup>
-            <div className="cela-grupa">
+          <ListGroup >
+            <div className="cela-grupa" style={{borderRadius : "10px"}} >
               {todos.length !== 0 ? (
                 todos
                   .filter((val) => {

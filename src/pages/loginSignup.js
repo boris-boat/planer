@@ -77,19 +77,19 @@ const Login = () => {
   };
 
   return (
-    <Container fluid className="m-0 p-0"  >
+    <Container fluid className="m-0 p-0">
       {user ? (
         <Home />
       ) : (
-        <Row >
+        <Row>
           <Col sm={4}>
-            <Col >
-              <Col >
-                <Row >
-                  <Row className="m-0 p-0 " >
+            <Col>
+              <Col>
+                <Row>
+                  <Row className="m-0 p-0 ">
                     <Image
                       className="m-0 p-0"
-                      src={require("../components/logosiroki-removebg-preview.png")}
+                      src={require("../components/media/logosiroki-removebg-preview.png")}
                     ></Image>
                   </Row>
                   <Row className="d-flex align-items-end m-0">
@@ -173,14 +173,25 @@ const Login = () => {
               {signupError ? <Alert>{signupError}</Alert> : ""}
             </Col>
           </Col>
-          <Col className="m-0 p-0 d-flex align-content-center justify-content-center" >
-            <Image 
+          <Col className="m-0 p-0 d-flex align-content-center justify-content-center">
+            <video
+              loop
+              autoPlay
+              className="loginImg m-0 "
+              style={{ height: "890px", width: "900px" }}
+            >
+              <source
+                src={require("../components/media/Final-Shot-5.mp4")}
+                type="video/mp4"
+              />
+            </video>
+            {/* <Image 
               className="loginImg m-0 "
               style={{ height: "890px", width: "900px" }}
               src={require("../components/login-removebg-preview.png")}
               alt=""
               responsive
-            />
+            /> */}
           </Col>
         </Row>
       )}

@@ -97,10 +97,10 @@ const Login = () => {
               </Col>
               {newUser === false ? (
                 <>
-                  <Row className="d-flex align-items-end m-0">
+                
                     <h1 className="mt-3 px-4">LOGIN</h1>
-                  </Row>
-                  <Form className="mt-3 px-4 ">
+                 
+                  <Form className="px-4 ">
                     <Form.Group
                       className="mb-3 expand-sm"
                       controlId="formBasicUsername"
@@ -139,6 +139,7 @@ const Login = () => {
                       }}>Sign Up</Button>
                     </div>
                   </Form>
+                  {signupError ? <Alert>{signupError}</Alert> : ""}
                   {error ? <Alert variant="danger">{error}</Alert> : ""}
                 </>
               ) : (
@@ -172,10 +173,12 @@ const Login = () => {
                         e.preventDefault();
 
                         addUser();
+                        setNewUser(false)
                       }}
                     >
                       Signup
                     </Button>
+                    
                     <div style={{ marginTop: "10px",display : "flex" }}>
                       <h4 style={{marginRight : "10px"}}>Allready a member? </h4>
                       <Button variant="primary" onClick={()=> {

@@ -181,7 +181,7 @@ const Login = () => {
               style={{ height: "890px", width: "900px" }}
             >
               <source
-                src={require("../components/media/Final-Shot-5.mp4")}
+                src={require("../components/media/Final-Shot.mp4")}
                 type="video/mp4"
               />
             </video>

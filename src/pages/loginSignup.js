@@ -22,7 +22,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
   const [signUpPassword, setsignUpPassword] = useState("");
-  const [newUser, setNewUser] = useState(true);
+  const [newUser, setNewUser] = useState(false);
 
   const navigate = useNavigate();
   let user = localStorage.getItem("user")?.split(" ")[0];

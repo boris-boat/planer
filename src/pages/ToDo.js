@@ -76,7 +76,7 @@ function ToDo() {
         .catch((e) => console.log("Database error  : " + e));
     };
     getTodos();
-  });
+  },[]);
   const {
     category,
 

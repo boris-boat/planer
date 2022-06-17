@@ -97,9 +97,8 @@ const Login = () => {
               </Col>
               {newUser === false ? (
                 <>
-                
-                    <h1 className="mt-3 px-4">LOGIN</h1>
-                 
+                  <h1 className="mt-3 px-4">LOGIN</h1>
+
                   <Form className="px-4 ">
                     <Form.Group
                       className="mb-3 expand-sm"
@@ -132,11 +131,18 @@ const Login = () => {
                     >
                       Login
                     </Button>
-                    <div style={{ marginTop: "10px",display : "flex" }}>
-                      <h4 style={{marginRight : "10px"}}>Dont have an account? </h4>
-                      <Button  variant="primary" onClick={()=> {
-                        setNewUser(true)
-                      }}>Sign Up</Button>
+                    <div style={{ marginTop: "10px", display: "flex" }}>
+                      <h4 style={{ marginRight: "10px" }}>
+                        Dont have an account?{" "}
+                      </h4>
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          setNewUser(true);
+                        }}
+                      >
+                        Sign Up
+                      </Button>
                     </div>
                   </Form>
                   {signupError ? <Alert>{signupError}</Alert> : ""}
@@ -173,17 +179,24 @@ const Login = () => {
                         e.preventDefault();
 
                         addUser();
-                        setNewUser(false)
+                        setNewUser(false);
                       }}
                     >
                       Signup
                     </Button>
-                    
-                    <div style={{ marginTop: "10px",display : "flex" }}>
-                      <h4 style={{marginRight : "10px"}}>Allready a member? </h4>
-                      <Button variant="primary" onClick={()=> {
-                        setNewUser(false)
-                      }}>Login</Button>
+
+                    <div style={{ marginTop: "10px", display: "flex" }}>
+                      <h4 style={{ marginRight: "10px" }}>
+                        Allready a member?{" "}
+                      </h4>
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          setNewUser(false);
+                        }}
+                      >
+                        Login
+                      </Button>
                     </div>
                   </Form>
 
@@ -196,17 +209,21 @@ const Login = () => {
             </Col>
           </Col>
           <Col className="m-0 p-0 d-flex align-content-center justify-content-center">
-            <video
-              loop
-              autoPlay
-              className="loginImg m-0 "
-              style={{ height: "890px", width: "900px" }}
-            >
-              <source
-                src={require("../components/media/Final-Shot.mp4")}
-                type="video/mp4"
-              />
-            </video>
+            <div >
+              {" "}
+              <video
+                loop
+                autoPlay
+                className="loginImg m-0 "
+                style={{ height: "890px", width: "900px", borderRadius: "5px" }}
+              >
+                <source
+                  src={require("../components/media/Final-Shot.mp4")}
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+
             {/* <Image 
               className="loginImg m-0 "
               style={{ height: "890px", width: "900px" }}

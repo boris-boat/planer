@@ -22,7 +22,7 @@ const Home = () => {
       localStorage.setItem("lat", position.coords.latitude);
       // validate()
     });
-  });
+  },[]);
   setSearchBar(false);
   
   

@@ -17,9 +17,13 @@ const NewsReworked = () => {
       .then((res) => res.json())
       .then((result) => setNews(result));
   };
+
+
   useEffect(() => {
     getNews();
-  });
+    
+
+  },[]);
   setSearchBar(true);
   return (
     <Container fluid>

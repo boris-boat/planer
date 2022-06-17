@@ -55,7 +55,15 @@ const Topnavbar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link onClick={() => navigate("/join")}>Chat</Nav.Link>
-              <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+              <NavDropdown title="My account" id="basic-nav-dropdown">
+              <NavDropdown.Item  disabled>
+                 {user}
+                </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => logout()}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+             
             </Nav>
           </Container>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />

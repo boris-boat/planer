@@ -60,7 +60,7 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title>Torrent tracker</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    Looking for something you allready legaly own?
+                    Looking for something you allready legally own?
                   </Card.Subtitle>
                   <Card.Text>
                     Let us help!

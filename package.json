@@ -28,6 +28,7 @@
     "react-toastify": "^8.2.0",
     "rss-parser": "^3.12.0",
     "socket.io-client": "^4.5.1",
+    "torrent-search-api": "^2.1.4",
     "victory-pie": "^36.3.2",
     "web-vitals": "^2.1.3"
   },

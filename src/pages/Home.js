@@ -15,7 +15,7 @@ const Home = () => {
   // let token = localStorage.getItem("token");
 
   const { setSearchBar } = useStateContext();
-
+  
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
@@ -29,10 +29,10 @@ const Home = () => {
   
   return (
     <>
-      ""
+    
       <Container
         className="d-flex align-content-center justify-content-center align-items-center"
-        style={{ height: "60%",marginTop : "20px" }}
+        style={{ height: "60%"}}
       >
         {user  ? (
           <Col style={{marginTop:"50px"}}>
@@ -54,6 +54,18 @@ const Home = () => {
                     Simple app to create lists and reminders
                   </Card.Text>
                   <Card.Link href="/toDo"> ToDo's/Reminders</Card.Link>
+                </Card.Body>
+              </Card>
+              <Card style={{ width: "18rem",height :"13rem"}}>
+                <Card.Body>
+                  <Card.Title>Torrent tracker</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Looking for something you allready legaly own?
+                  </Card.Subtitle>
+                  <Card.Text>
+                    Let us help!
+                  </Card.Text>
+                  <Card.Link href="/torrent"> Torrent tracker</Card.Link>
                 </Card.Body>
               </Card>
               <Card style={{ width: "19rem" ,height :"13rem"}}>

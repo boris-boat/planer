@@ -53,6 +53,9 @@ const Topnavbar = () => {
                 <NavDropdown.Item onClick={() => setVremeShow(true)}>
                   Weather today
                 </NavDropdown.Item>
+                <NavDropdown.Item onClick={() =>  navigate("/torrent")}>
+                  Torrent tracker
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link onClick={() => navigate("/join")}>Chat</Nav.Link>
               <NavDropdown title="My account" id="basic-nav-dropdown">

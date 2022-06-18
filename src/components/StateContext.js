@@ -12,6 +12,7 @@ export const StateContext = ({ children }) => {
   const [creator, setCreator] = useState("");
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);
+  const [numberOfResults, setNumberOfResults] = useState(10);
   const notify = (msg) =>
     toast(msg, {
       autoClose: 500,
@@ -35,6 +36,8 @@ export const StateContext = ({ children }) => {
   return (
     <Context.Provider
       value={{
+        numberOfResults,
+        setNumberOfResults,
         torrentCategory,
         setTorrentCategory,
         validated,

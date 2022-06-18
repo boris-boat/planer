@@ -5,14 +5,14 @@ import Torrent from "../components/torrent";
 import TorrentCategorySelector from "../components/TorrentCategorySelector";
 
 const TorrentExplorer = () => {
-  const { setSearchBar, torrentCategory } = useStateContext();
+  const { setSearchBar, torrentCategory,numberOfResults } = useStateContext();
   setSearchBar(false);
   const [query, setQuery] = useState("");
   const [foundTorrents, setFoundTorrents] = useState([]);
   const handleSubmit = async () => {
     if (query) {
       fetch(
-        "http://localhost:3001/torrentSearch/" + query + "/" + torrentCategory
+        "http://localhost:3001/torrentSearch/" + query + "/" + torrentCategory +"/"+ numberOfResults
       )
         .then((res) => res.json())
         .then((result) => setFoundTorrents(result))

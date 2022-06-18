@@ -33,8 +33,9 @@ const TorrentExplorer = () => {
         >
           TORRENT TRACKER
         </Container>
-        <Form
+        <Form style={{width : "60%"}} className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
+            foundTorrents.length = 0
             e.preventDefault();
 
             handleSubmit();
@@ -44,7 +45,7 @@ const TorrentExplorer = () => {
           <Form.Group>
             <InputGroup >
               <input
-              style={{width : "500px"}}
+              
                 className="input-field"
                 placeholder="Search"
                 value={query}

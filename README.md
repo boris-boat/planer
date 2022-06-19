@@ -1,62 +1,69 @@
+
+
 # ImaSve
 
+## Instalation instructions 
 
+npm start
 
-Ima sve je moj najveci projekat iskucan od nule i konstantno nadogradjivan.U sebi sadrzi :
+## Description
 
-- ToDo aplikaciju sa filterima,dodavanjima i brisanjima.Takodje izreka dana
-- News aplikaciju sa vestima sa 4 razlicita sajta
-- Tracker aplikaciju sa mogucnosti pracenja troskova i slanja izvestaja na mail
-- Vreme danas kao modal koji se pali iz navbara
-- Chat aplikaciju uz mogucnosti pravljenja soba
-- Cookbook aplikaciju sa mogucnost izabira odredjenih sastojaka i pretraga jela po tim parametrima.
+imaSve is my biggest project made from scratch and is constantly being updated. It contains:
 
-## ToDo 
+- ToDo application with filters, additions and deletions. Also the saying of the day
+- News application with news from 4 different sites
+- Tracker application with the ability to track expenses and send reports by mail
+- Weather today as a modal that gets activated from the navbara
+- Chat application with the possibility of making rooms
+- Cookbook application with the ability to select certain ingredients and search for dishes by these parameters.
 
-- Tehnologije koriscene : React,React-bootstrap,NodeJs,Express,MongoDB
+## ToDo
 
-Jednostavan app koji preko inputa i useState hook-a salje fetch u mongoDb i upisuje/cita/brise podatke.Quote radi sa quotable api-ajem.
+- Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB
+
+A simple app that sends a fetch to mongoDb via input and useState hook and then writes / reads / deletes data. Quote works with quotable api.
 
 ## News
 
-- Tehnologije koriscene : React,React-bootstrap,NodeJs,Express,MongoDB,ParseRss
+- Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB, ParseRss
 
-App koji preko backenda i parseRss bibilioteke izvlaci RSS feedove sa 4 sajta i salje ih u frontend koji ih prikazuje na jednoj stranici.
+An app that extracts RSS feeds from 4 sites via backend and parseRss library then sends them to a frontend that displays them on one page.
 
 ## Expense Tracker
 
-- Tehnologije koriscene : React,React-bootstrap,NodeJs,Express,MongoDB,VictoryPie za pie chart,react-toastify,emailJs
+- Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB, VictoryPie for pie chart, react-toastify, emailJs
 
-Expense tracker stilizovan pomocu bootstrapa,CRUD operacije pomocu front i backenda.Ceo mesec se kasnije prikaze preko pie charta i opcija slanja maila sa trenutnim vrednostima.Koriscen i toastify za notifikacije o slanju maila i menjanju vrednosti.
+Expense tracker stylized using bootstrap, CRUD operation using front and backend. A whole month data is displayed via pie chart and the option of sending emails with current values. Used toastify for notifications about sending emails and changing values.
 
 ## Vreme danas
 
-- Tehnologije koriscene : React,React-bootstrap
+- Technologies used: React, React-bootstrap
 
-Modal koji koristi openweather API i trenutnu lokaciju preuzetu iz browsera i pokazuje trenutne vrednosti jer za prognozu treba vise nego free nalog :D
+Modal that uses the openweather API and the current location extracted from the browser and shows the current values because the forecast requires more than a free account: D
 
 ## Chat
+- Technologies used: React, React-bootstrap, socket-io
 
-- Tehnologije koriscene : React,React-bootstrap,socket-io
-
-Real time chat aplikacija uradjena koriscenjem socket.io na serverskoj kao i na klijentskoj strani.Mogucnost pravljenja soba za razgovore vise naloga.Za sada nepostoji opcija cuvanja poruka ali je u planu da se i to implementira.
-
+Real time chat application made using socket.io on the server as well as on the client side. Possibility of creating chat rooms. For now, there is no option to save messages, but it is planned to be implemented.
 
 ## CookBook
 
-- Tehnologije koriscene : React,React-bootstrap,
+- Technologies used: React, React-bootstrap,
 
-Aplikacija kuvar koja prema inputu sastojaka pronalazi zeljeni recept preko spoonacular api.U planu je mogucnost dodavanja zeljenih sastojaka u todo deo aplikacije u odeljak shoping list.
+A cookbook application that finds the desired recipe via spoonacular api according to the ingredient input. The plan is to add the desired ingredients to the todo part of the application in the shopping list section.
 
+## Torent tracker
 
-## Uputstvo za koriscenje 
+- Technologies used: React, React-bootstrap,torrent-search-api
 
-Napravite nalog na pocetnoj strani i svi resursi su vam na raspolaganju.
+Simple api call to different torrent tracking sites and the results are being displayed in a table.
 
-## Planovi za buducnost 
+## How to use
 
-- Dodavanje sasatojaka iz cookbooka u shoping listu u todo deo
-- automatsko resetovanje tracker komponente na 0 na kraju meseca
-- cuvanje poruka i mogucnost nastavka razgovora u chat aplikaciji
-- 
+Create an account on the home page and all the resources are at your disposal.
 
+## Future plans
+
+- Adding ingredients from the cookbook to the shopping list in the todo part
+- Automatic reset of the tracker component to 0 at the end of the month
+- saving messages and the ability to continue conversations in the chat application

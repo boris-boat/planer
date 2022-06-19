@@ -8,7 +8,7 @@ export const StateContext = ({ children }) => {
   const [torrentCategory, setTorrentCategory] = useState("All");
   const [searchBar, setSearchBar] = useState(true);
   const [search, setSearch] = useState("");
-  const [newTodo, setnewTodo] = useState(null);
+  const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);

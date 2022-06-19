@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Col, Container, Form } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 import Recept from "../components/Recept";
@@ -21,7 +21,11 @@ const CookBook = () => {
     const { ...data } = await response.json();
     setFoundRecipes(data);
   };
-  setSearchBar(false);
+  useEffect(() => {
+    setSearchBar(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
   const createQuery = () => {
     multiSelections.forEach((ajtem) => {
       base += `&includeIngredients=${ajtem.label}`;

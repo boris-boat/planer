@@ -17,13 +17,15 @@ const Home = () => {
   const { setSearchBar } = useStateContext();
   
   useEffect(() => {
+    setSearchBar(false);
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
       // validate()
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
-  setSearchBar(false);
+ 
   
   
   

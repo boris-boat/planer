@@ -76,6 +76,7 @@ function ToDo() {
         .catch((e) => console.log("Database error  : " + e));
     };
     getTodos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   const {
     category,
@@ -86,7 +87,7 @@ function ToDo() {
     search,
     newTodo,
     setnewTodo,
-    notify,
+    
   } = useStateContext();
   setSearchBar(true);
 
@@ -118,7 +119,7 @@ function ToDo() {
                   <input
                     className="input-field"
                     placeholder="Add new item"
-                    value={newTodo}
+                    
                   />
                   <Button
                     type="submit"
@@ -151,7 +152,7 @@ function ToDo() {
                       val.text.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
-                    }
+                    }else{return null}
                   })
                   .map((todo) => {
                     if (todo.category === category) {
@@ -175,6 +176,7 @@ function ToDo() {
                         </ListGroup.Item>
                       );
                     }
+                    else{return null}
                   })
               ) : (
                 <Spinner animation="border" role="status">

@@ -1,25 +1,36 @@
-import React, { useState } from "react";
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Container, Form, InputGroup, Spinner } from "react-bootstrap";
 import { useStateContext } from "../components/StateContext";
 import Torrent from "../components/torrent";
 import TorrentCategorySelector from "../components/TorrentCategorySelector";
 
 const TorrentExplorer = () => {
-    const { REACT_APP_API_URL } = process.env;
-  const { setSearchBar, torrentCategory,numberOfResults } = useStateContext();
-  setSearchBar(false);
+  const { REACT_APP_API_URL } = process.env;
+  const { setSearchBar, torrentCategory, numberOfResults } = useStateContext();
+
   const [query, setQuery] = useState("");
   const [foundTorrents, setFoundTorrents] = useState([]);
+  const [searching, setSearching] = useState(false);
   const handleSubmit = async () => {
     if (query) {
       fetch(
-        REACT_APP_API_URL + "/torrentSearch/" + query + "/" + torrentCategory +"/"+ numberOfResults
+        REACT_APP_API_URL +
+          "/torrentSearch/" +
+          query +
+          "/" +
+          torrentCategory +
+          "/" +
+          numberOfResults
       )
         .then((res) => res.json())
-        .then((result) => setFoundTorrents(result))
+        .then((result) => setFoundTorrents(result)).then(() => {setSearching(false)})
         .catch((e) => console.log("Database error  : " + e));
     }
   };
+useEffect(() => {
+    setSearchBar(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
   return (
     <>
@@ -33,9 +44,13 @@ const TorrentExplorer = () => {
         >
           TORRENT TRACKER
         </Container>
-        <Form style={{width : "60%"}} className="d-flex  justify-content-center align-items-center flex-wrap"
+        <Form
+          style={{ width: "60%" }}
+          className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
-            foundTorrents.length = 0
+            setSearching(true);
+
+            setFoundTorrents([]);
             e.preventDefault();
 
             handleSubmit();
@@ -43,9 +58,8 @@ const TorrentExplorer = () => {
         >
           {" "}
           <Form.Group>
-            <InputGroup >
+            <InputGroup>
               <input
-              
                 className="input-field"
                 placeholder="Search"
                 value={query}
@@ -58,11 +72,14 @@ const TorrentExplorer = () => {
             </InputGroup>
           </Form.Group>
         </Form>
-        {foundTorrents.length > 0 ?  <Torrent foundTorrents={foundTorrents} /> : (
-            <h1 style={{marginTop : "20px",color : "white"}}>Please enter search terms !</h1>
-            )}
-        
-  
+
+        {foundTorrents.length > 0 ? (
+          <Torrent foundTorrents={foundTorrents} />
+        ) : null}
+
+        {searching ? (
+          <Spinner animation="border" role="status" style={{marginTop : "50px"}}></Spinner>
+        ) : null}
       </div>
     </>
   );

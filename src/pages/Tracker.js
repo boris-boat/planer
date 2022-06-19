@@ -54,7 +54,7 @@ const Tracker = () => {
       .catch((e) => console.log("Database error  : " + e));
     //setInitialState((prevState) => ({ ...prevState, bills: 5 }));
   };
-  setSearchBar(false);
+ 
   const setValues = () => {
     setFoodTotal(initialState.food);
     setBillsTotal(initialState.bills);
@@ -85,14 +85,17 @@ const Tracker = () => {
   };
 
   useEffect(() => {
+    setSearchBar(false);
     try {
       getTrackerInfo();
     } catch (error) {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     try {
       setValues();
     } catch (error) {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState]);
 
   let email;

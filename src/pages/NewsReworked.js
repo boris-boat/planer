@@ -21,10 +21,10 @@ const NewsReworked = () => {
 
   useEffect(() => {
     getNews();
-    
-
+    setSearchBar(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
-  setSearchBar(true);
+  
   return (
     <Container fluid>
       
@@ -32,9 +32,9 @@ const NewsReworked = () => {
       <Container fluid className="mt-5">
         {" "}
         <Row>
-          <Col>
+          <Col >
             <h2>N1</h2>
-            <Card>
+            <Card >
               {" "}
               {news.length > 1 ? (
                 news
@@ -54,7 +54,7 @@ const NewsReworked = () => {
                   })
                   .map((item) => {
                     return (
-                      <ListGroup.Item>
+                      
                         <ListGroup.Item key={item.link}>
                           {item.title} <br></br>
                           <a
@@ -65,7 +65,7 @@ const NewsReworked = () => {
                             Link
                           </a>
                         </ListGroup.Item>
-                      </ListGroup.Item>
+                  
                     );
                   })
               ) : (
@@ -95,7 +95,7 @@ const NewsReworked = () => {
                   })
                   .map((item) => {
                     return (
-                      <ListGroup.Item>
+                      
                         <ListGroup.Item key={item.link}>
                           {item.title} <br></br>
                           <a
@@ -106,7 +106,7 @@ const NewsReworked = () => {
                             Link
                           </a>
                         </ListGroup.Item>
-                      </ListGroup.Item>
+                    
                     );
                   })
               ) : (
@@ -135,7 +135,7 @@ const NewsReworked = () => {
                   })
                   .map((item) => {
                     return (
-                      <ListGroup.Item>
+                    
                         <ListGroup.Item key={item.link}>
                           {item.title} <br></br>
                           <a
@@ -146,7 +146,7 @@ const NewsReworked = () => {
                             Link
                           </a>
                         </ListGroup.Item>
-                      </ListGroup.Item>
+                     
                     );
                   })
               ) : (
@@ -175,7 +175,7 @@ const NewsReworked = () => {
                   })
                   .map((item) => {
                     return (
-                      <ListGroup.Item>
+                    
                         <ListGroup.Item key={item.link}>
                           {item.title} <br></br>
                           <a
@@ -186,7 +186,7 @@ const NewsReworked = () => {
                             Link
                           </a>
                         </ListGroup.Item>
-                      </ListGroup.Item>
+                     
                     );
                   })
               ) : (

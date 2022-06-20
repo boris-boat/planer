@@ -43,12 +43,12 @@ const TorrentExplorer = () => {
       >
         <Container
           style={{ fontSize: "30px", color: "white", marginBottom: "30px" }}
-          className="d-flex flex-column justify-content-center align-items-center flex-wrap"
+          className="d-flex flex-column align-items-center"
         >
           TORRENT TRACKER
         </Container>
         <Form
-          style={{ width: "60%" }}
+          style={{ width: "80%" }}
           className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
             setSearching(true);
@@ -60,8 +60,8 @@ const TorrentExplorer = () => {
           }}
         >
           {" "}
-          <Form.Group>
-            <InputGroup>
+          <Form.Group >
+            <InputGroup  className="d-flex flex-nowrap">
               <input
                 className="input-field"
                 placeholder="Search"

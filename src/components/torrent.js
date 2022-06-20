@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 const Torrent = ({ foundTorrents }) => {
   console.log(foundTorrents);
   return (
-    <div style={{ marginTop: "20px",maxWidth : "60%" }}>
+    <div style={{ marginTop: "20px",maxWidth : "100%" }}>
       <Table striped bordered hover style={{background : "white"}} responsive="sm">
         <thead>
           <tr>

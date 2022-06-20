@@ -4,8 +4,8 @@ import { Table } from "react-bootstrap";
 const Torrent = ({ foundTorrents }) => {
   console.log(foundTorrents);
   return (
-    <div style={{ marginTop: "20px" }}>
-      <Table striped bordered hover style={{background : "white"}}>
+    <div style={{ marginTop: "20px",maxWidth : "60%" }}>
+      <Table striped bordered hover style={{background : "white"}} responsive="sm">
         <thead>
           <tr>
             <th>File name</th>
@@ -15,12 +15,12 @@ const Torrent = ({ foundTorrents }) => {
 
           </tr>
         </thead>
-        <tbody>
+        <tbody  >
           
             {foundTorrents.length !== 0 ? (
               foundTorrents.map((torrent) => (
                 <tr>
-                  <td>
+                  <td >
                     <a
                       rel="noreferrer noopener"
                       target="_blank"

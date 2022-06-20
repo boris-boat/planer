@@ -23,14 +23,17 @@ const TorrentExplorer = () => {
           numberOfResults
       )
         .then((res) => res.json())
-        .then((result) => setFoundTorrents(result)).then(() => {setSearching(false)})
+        .then((result) => setFoundTorrents(result))
+        .then(() => {
+          setSearching(false);
+        })
         .catch((e) => console.log("Database error  : " + e));
     }
   };
-useEffect(() => {
+  useEffect(() => {
     setSearchBar(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+  }, []);
 
   return (
     <>
@@ -72,14 +75,19 @@ useEffect(() => {
             </InputGroup>
           </Form.Group>
         </Form>
-
-        {foundTorrents.length > 0 ? (
-          <Torrent foundTorrents={foundTorrents} />
-        ) : null}
-
-        {searching ? (
-          <Spinner animation="border" role="status" style={{marginTop : "50px"}}></Spinner>
-        ) : null}
+        <Container className="d-flex flex-column justify-content-center align-items-center" >
+          {" "}
+          {foundTorrents.length > 0 ? (
+            <Torrent foundTorrents={foundTorrents}  style={{maxWidt : "60%"}}/>
+          ) : null}
+          {searching ? (
+            <Spinner
+              animation="border"
+              role="status"
+              style={{ marginTop: "50px" }}
+            ></Spinner>
+          ) : null}
+        </Container>
       </div>
     </>
   );

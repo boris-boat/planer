@@ -32,7 +32,7 @@ const NewsReworked = () => {
       <Container fluid className="mt-5">
         {" "}
         <Row>
-          <Col >
+          <Col style={{minWidth : "300px"}} >
             <h2>N1</h2>
             <Card >
               {" "}
@@ -74,7 +74,7 @@ const NewsReworked = () => {
             </Card>
           </Col>
 
-          <Col>
+          <Col style={{minWidth : "300px"}}>
             <h2>Blic</h2>
             <Card>
               {news.length > 1 ? (
@@ -114,7 +114,7 @@ const NewsReworked = () => {
               )}
             </Card>
           </Col>
-          <Col>
+          <Col style={{minWidth : "300px"}}>
             <h2>Danas</h2>
             <Card>
               {news.length > 1 ? (
@@ -154,7 +154,7 @@ const NewsReworked = () => {
               )}
             </Card>
           </Col>
-          <Col>
+          <Col style={{minWidth : "300px"}}>
             <h2>Mozzart</h2>
             <Card>
               {news.length > 1 ? (

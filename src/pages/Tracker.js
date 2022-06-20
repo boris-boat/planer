@@ -199,12 +199,12 @@ const Tracker = () => {
   };
 
   return (
-    <div>
+    <div style={{paddingTop : "60px"}}>
       <div>
         {user ? (
           <Container>
-            <Row className="d-flex justify-content-center  mt-5" md={2} sm={1}>
-              <Col className="mt-4">
+            <Row className="d-flex justify-content-center " md={2} sm={1}>
+              <Col style={{paddingTop : "10px"}}>
                 <Container className="d-grid justify-content-center align-items-center">
                   <Row>
                     <ToastContainer />
@@ -569,7 +569,7 @@ const Tracker = () => {
                   </Container>
                 </Container>
               </Col>
-              <Col style={{ marginTop: 10 }}>
+              <Col >
                 <Container style={{ color: "white" }}>
                   {<h1>{month[d.getMonth()]} expenses : </h1>}
                   <h2>Bills : {billsTotal}</h2>

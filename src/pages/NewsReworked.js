@@ -29,7 +29,7 @@ const NewsReworked = () => {
     <Container fluid>
       
       <>""</>
-      <Container fluid className="mt-5">
+      <Container fluid style={{paddingTop : "40px"}}>
         {" "}
         <Row>
           <Col style={{minWidth : "300px"}} >

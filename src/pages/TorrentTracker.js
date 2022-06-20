@@ -37,9 +37,9 @@ const TorrentExplorer = () => {
 
   return (
     <>
-      <div
-        style={{ marginTop: "200px" }}
-        className="d-flex flex-column justify-content-center align-items-center flex-wrap"
+      <div 
+        style={{height:"auto",paddingTop : "150px" }}
+        className="d-flex flex-column  align-items-center torrent"
       >
         <Container
           style={{ fontSize: "30px", color: "white", marginBottom: "30px" }}
@@ -78,7 +78,7 @@ const TorrentExplorer = () => {
         <Container className="d-flex flex-column justify-content-center align-items-center" >
           {" "}
           {foundTorrents.length > 0 ? (
-            <Torrent foundTorrents={foundTorrents}  style={{maxWidt : "60%"}}/>
+            <Torrent foundTorrents={foundTorrents}  />
           ) : null}
           {searching ? (
             <Spinner

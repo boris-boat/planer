@@ -15,7 +15,7 @@ const Quote = () => {
   }, []);
 
   return (
-    <div className="mt-5">
+    <div style={{paddingTop : "70px"}}>
       <h3 style={{color : "white"}}>Quote of the day : </h3>
       {quote ? (
         <h2 style={{color : "white"}}>

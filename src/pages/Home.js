@@ -38,8 +38,8 @@ const Home = () => {
                 <h1 style={{ color: "white" }}>Greetings {user}</h1>
               </Col>
 
-              <Col className="d-flex justify-content-center align-content-center align-items-center ">
-                <Container style={{ width: "60%" }}>
+              <Col className="d-flex justify-content-center align-content-center align-items-center">
+                <Container style={{ width: "60%" }} className="homeContainer">
                   {" "}
                   <div className="home" onClick={() => navigate("/todo")}>
                     <h4 className="align-self-center">ToDo's / Reminders</h4>{" "}

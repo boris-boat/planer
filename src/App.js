@@ -1,7 +1,7 @@
 import "./App.css";
 import Topnavbar from "./components/navbar";
 
-import "./index.css";
+
 import { Route, Routes } from "react-router-dom";
 
 import Join from "./Chat/components/Join/Join";

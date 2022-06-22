@@ -43,8 +43,8 @@ const Home = () => {
                   {" "}
                   <div className="home" onClick={() => navigate("/todo")}>
                     <h4>ToDo's / Reminders</h4>{" "}
-                    <img
-                      className="logo"
+                    <img 
+                      className="logo align-self-center"
                       src={require("../components/media/Icons/todo.jpg")}
                       alt=""
                     ></img>
@@ -69,15 +69,15 @@ const Home = () => {
                   <div className="home" onClick={() => navigate("/tracker")}>
                     <h4>Expense tracker </h4>
                     <img
-                      className="logo"
+                      className="logo align-self-center"
                       src={require("../components/media/Icons/money.png")}
                       alt=""
                     ></img>{" "}
                   </div>
-                  <div className="home" onClick={() => navigate("/cookbook")}>
+                  <div className="home " onClick={() => navigate("/cookbook")}>
                     <h4>Kitchen Assistant</h4>
                     <img
-                      className="logo"
+                      className="logo align-self-center"
                       src={require("../components/media/Icons/hat.png")}
                       alt=""
                     ></img>

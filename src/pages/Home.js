@@ -1,11 +1,10 @@
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Col, Button } from "react-bootstrap";
 import "../App.css";
 
 import "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
 import { useEffect } from "react";
-
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const Home = () => {
   // let token = localStorage.getItem("token");
 
   const { setSearchBar } = useStateContext();
-  
+
   useEffect(() => {
     setSearchBar(false);
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -24,88 +23,69 @@ const Home = () => {
       // validate()
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
- 
-  
-  
-  
+  }, []);
+
   return (
     <>
-    
       <Container
         className="d-flex align-content-center justify-content-center align-items-center"
-        style={{ height: "60%"}}
+        style={{ height: "100vh" }}
       >
-        {user  ? (
-          <Col style={{marginTop:"50px"}}>
-            <Row style={{marginTop:"50px"}}> </Row>
-            <Row className="mb-5 d-flex align-content-center justify-content-center align-items-center text-center">
-              <h1 className="mt-5" style={{color : "white"}}>
-                Greetings {user}
-              </h1>
-            </Row>
+        {user ? (
+          <>
+            <Col style={{ paddingTop: "100px", height: "100vh" }}>
+              <Col className="mb-5 d-flex align-content-center justify-content-center align-items-center text-center">
+                <h1 style={{ color: "white" }}>Greetings {user}</h1>
+              </Col>
 
-            <Row className="d-flex justify-content-center align-content-center align-items-center ">
-              <Card style={{ width: "18rem",height :"13rem"}}>
-                <Card.Body>
-                  <Card.Title>ToDo's / Reminders</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Keep your life in order
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Simple app to create lists and reminders
-                  </Card.Text>
-                  <Card.Link href="/toDo"> ToDo's/Reminders</Card.Link>
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem",height :"13rem"}}>
-                <Card.Body>
-                  <Card.Title>Torrent tracker</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Looking for something you allready legally own?
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Let us help!
-                  </Card.Text>
-                  <Card.Link href="/torrent"> Torrent tracker</Card.Link>
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "19rem" ,height :"13rem"}}>
-                <Card.Body>
-                  <Card.Title>Daily news from multiple sources</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Stay in touch with current events
-                  </Card.Subtitle>
-                  <Card.Text>Assorted news from various sites</Card.Text>
-                  <Card.Link href="/news">News</Card.Link>
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem",height :"13rem" }}>
-                <Card.Body>
-                  <Card.Title>Expense tracker </Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Dont wonder where the money went
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Keep track with expenses throughout the month
-                  </Card.Text>
-                  <Card.Link href="/tracker">Expense tracker</Card.Link>
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem",height :"13rem" }}>
-                <Card.Body>
-                  <Card.Title>Kitchen Assistant</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Cant decide what to eat ?
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Give us what you have and we will figure something out!
-                  </Card.Text>
-                  <Card.Link href="/cookbook">Cookbook</Card.Link>
-                </Card.Body>
-              </Card>
-            </Row>
-          </Col>
+              <Col className="d-flex justify-content-center align-content-center align-items-center ">
+                <Container style={{ width: "60%" }}>
+                  {" "}
+                  <div className="home" onClick={() => navigate("/todo")}>
+                    <h4>ToDo's / Reminders</h4>{" "}
+                    <img
+                      className="logo"
+                      src={require("../components/media/Icons/todo.jpg")}
+                      alt=""
+                    ></img>
+                  </div>
+                  <div className="home" onClick={() => navigate("/torrent")}>
+                    {" "}
+                    <h4>Torrent tracker</h4>
+                    <img
+                      className="logo"
+                      src={require("../components/media/Icons/torrent.png")}
+                      alt=""
+                    ></img>
+                  </div>
+                  <div className="home" onClick={() => navigate("/news")}>
+                    <h4>Daily news</h4>{" "}
+                    <img
+                      className="logo"
+                      src={require("../components/media/Icons/news.png")}
+                      alt=""
+                    ></img>{" "}
+                  </div>
+                  <div className="home" onClick={() => navigate("/tracker")}>
+                    <h4>Expense tracker </h4>
+                    <img
+                      className="logo"
+                      src={require("../components/media/Icons/money.png")}
+                      alt=""
+                    ></img>{" "}
+                  </div>
+                  <div className="home" onClick={() => navigate("/cookbook")}>
+                    <h4>Kitchen Assistant</h4>
+                    <img
+                      className="logo"
+                      src={require("../components/media/Icons/hat.png")}
+                      alt=""
+                    ></img>
+                  </div>
+                </Container>
+              </Col>
+            </Col>
+          </>
         ) : (
           <div className="App">
             <h1 className="mt-5">Please create an account or login !</h1>

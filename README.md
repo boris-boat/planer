@@ -2,8 +2,13 @@
 
 # ImaSve
 
+## Live website 
+
+https://imasve.netlify.app
+
 ## Instalation instructions 
 
+npm install
 npm start
 
 ## Description

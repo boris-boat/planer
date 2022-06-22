@@ -23,23 +23,21 @@ function ToDo() {
   const { REACT_APP_API_URL } = process.env;
 
   const addToDo = async () => {
-    
-      let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          text: newTodo,
-          creator: user,
-          category: category === "Everything" ? "General" : category,
-          completed: false,
-        }),
-      })
-        .then((res) => res.json())
-        .catch((e) => console.log(e));
-      setTodos([...todos, newestTodo]);
-   
+    let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: newTodo,
+        creator: user,
+        category: category === "Everything" ? "General" : category,
+        completed: false,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+    setTodos([...todos, newestTodo]);
   };
   const deleteToDo = async (id) => {
     await fetch(REACT_APP_API_URL + "/todos/delete" + id, {
@@ -69,6 +67,7 @@ function ToDo() {
 
   const navigate = useNavigate();
   useEffect(() => {
+    setSearchBar(true);
     const getTodos = async () => {
       fetch(REACT_APP_API_URL + "/todos/" + user)
         .then((res) => res.json())
@@ -77,7 +76,7 @@ function ToDo() {
     };
     getTodos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
   const {
     category,
 
@@ -87,9 +86,7 @@ function ToDo() {
     search,
     newTodo,
     setnewTodo,
-    
   } = useStateContext();
-  setSearchBar(true);
 
   return (
     <div className="App">
@@ -99,92 +96,94 @@ function ToDo() {
 
           <Quote />
 
-          <Container>
-            <h1 className="mt-3" style={{color : "white"}}>Welcome {user} !</h1>
+          <Container style={{ height: "auto" }}>
+            <h1 className="mt-3" style={{ color: "white" }}>
+              Welcome {user} !
+            </h1>
 
             <Row className="d-inline-flex mt-3">
               <Form
                 onSubmit={(e) => {
+                  console.log("submit");
                   e.preventDefault();
-
-                  addToDo();
                   setnewTodo("");
+                  addToDo();
+                  console.log(newTodo);
                 }}
               >
-                <InputGroup
-                  className="mb-3"
-                  onChange={(e) => setnewTodo(e.target.value)}
-                  value={newTodo}
-                >
+                <InputGroup className="mb-3">
                   <input
                     className="input-field"
                     placeholder="Add new item"
-                    
+                    value={newTodo}
+                    onChange={(e) => setnewTodo(e.target.value)}
                   />
-                  <Button
-                    type="submit"
-                    variant="info"
-                    id="button-addon2"
-                  >
+                  <Button type="submit" variant="info" id="button-addon2">
                     Add
                   </Button>
                 </InputGroup>
               </Form>
             </Row>
           </Container>
-
-          <Row
-            style={{ width: "400px", marginLeft: "0" }}
-            className="d-flex justify-content-center align-items-center"
-          >
-            <CategorySelector />
-          </Row>
-          <div className="mb-3" style={{color : "white"}}>{category}</div>
-
-          <ListGroup >
-            <div className="cela-grupa" style={{borderRadius : "10px"}} >
-              {todos.length !== 0 ? (
-                todos
-                  .filter((val) => {
-                    if (search === "") {
-                      return val;
-                    } else if (
-                      val.text.toLowerCase().includes(search.toLowerCase())
-                    ) {
-                      return val;
-                    }else{return null}
-                  })
-                  .map((todo) => {
-                    if (todo.category === category) {
-                      return (
-                        <ListGroup.Item key={todo._id}>
-                          <Item
-                            item={todo}
-                            completeTodo={completeTodo}
-                            deleteToDo={deleteToDo}
-                          />
-                        </ListGroup.Item>
-                      );
-                    } else if (category === "Everything") {
-                      return (
-                        <ListGroup.Item key={todo._id}>
-                          <Item
-                            item={todo}
-                            completeTodo={completeTodo}
-                            deleteToDo={deleteToDo}
-                          />
-                        </ListGroup.Item>
-                      );
-                    }
-                    else{return null}
-                  })
-              ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
-              )}
+          <Container className="d-flex justify-content-center align-items-center flex-column">
+            <Row
+              style={{ width: "400px", marginLeft: "0" }}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <CategorySelector />
+            </Row>
+            <div className="mb-3" style={{ color: "white" }}>
+              {category}
             </div>
-          </ListGroup>
+
+            <ListGroup>
+              <div className="cela-grupa" style={{ borderRadius: "10px" }}>
+                {todos.length !== 0 ? (
+                  todos
+                    .filter((val) => {
+                      if (search === "") {
+                        return val;
+                      } else if (
+                        val.text.toLowerCase().includes(search.toLowerCase())
+                      ) {
+                        return val;
+                      } else {
+                        return null;
+                      }
+                    })
+                    .map((todo) => {
+                      if (todo.category === category) {
+                        return (
+                          <ListGroup.Item key={todo._id}>
+                            <Item
+                              item={todo}
+                              completeTodo={completeTodo}
+                              deleteToDo={deleteToDo}
+                            />
+                          </ListGroup.Item>
+                        );
+                      } else if (category === "Everything") {
+                        return (
+                          <ListGroup.Item key={todo._id}>
+                            <Item
+                              item={todo}
+                              completeTodo={completeTodo}
+                              deleteToDo={deleteToDo}
+                            />
+                          </ListGroup.Item>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })
+                ) : (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                )}
+              </div>
+            </ListGroup>
+          </Container>
         </>
       ) : (
         <div className="App">

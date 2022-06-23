@@ -20,8 +20,9 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
-root {
-  height: auto;
+#root {
+  height: auto !important;
+  min-height: 100vh;
 }
 body {
   padding-top: 60px;
@@ -30,7 +31,6 @@ body {
     rgba(151, 156, 236, 1) 24%,
     rgba(68, 143, 201, 1) 54%
   );
-  background-size: auto;
 
   margin: 0;
   padding: 0;
@@ -55,8 +55,12 @@ code {
   cursor: pointer;
   padding: 10px;
   background-color: white;
-background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
-background-repeat: space;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(97, 186, 255, 1) 0%,
+    rgba(166, 239, 253, 1) 90.1%
+  );
+  background-repeat: space;
 }
 .home:hover {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
@@ -65,30 +69,13 @@ background-repeat: space;
   height: 40px;
   width: 40px;
 }
-body {
-  padding-top: 60px;
-  background: linear-gradient(
-    56deg,
-    rgba(151, 156, 236, 1) 24%,
-    rgba(68, 143, 201, 1) 54%
-  );
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 @media (min-width: 220px) and (max-width: 680px) {
- 
-.homeContainer {
-  width: 100% !important;
-
-}
+  .homeContainer {
+    width: 100% !important;
+  }
 }

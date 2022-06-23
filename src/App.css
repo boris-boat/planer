@@ -75,7 +75,8 @@ code {
     monospace;
 }
 @media (min-width: 220px) and (max-width: 680px) {
-  .homeContainer {
+ 
+  .homeContainer,.torrent {
     width: 100% !important;
   }
 }

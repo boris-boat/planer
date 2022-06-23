@@ -36,7 +36,7 @@ const CookBook = () => {
     <Container>
       <Container
         className="d-flex flex-column justify-content-center align-items-center flex-wrap"
-        style={{ paddingTop: "150px" }}
+        style={{ paddingTop: "130px" }}
       >
         <Container
           className="justify-content-center align-items-center d-flex flex-column"

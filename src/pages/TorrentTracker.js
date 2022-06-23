@@ -3,7 +3,7 @@ import { Button, Container, Form, InputGroup, Spinner } from "react-bootstrap";
 import { useStateContext } from "../components/StateContext";
 import Torrent from "../components/torrent";
 import TorrentCategorySelector from "../components/TorrentCategorySelector";
-
+import "../App.css";
 const TorrentExplorer = () => {
   const { REACT_APP_API_URL } = process.env;
   const { setSearchBar, torrentCategory, numberOfResults } = useStateContext();
@@ -39,7 +39,7 @@ const TorrentExplorer = () => {
     <>
       <div 
         style={{height:"auto",paddingTop : "150px" }}
-        className="d-flex flex-column  align-items-center torrent"
+        className="d-flex flex-column  align-items-center torrent "
       >
         <Container
           style={{ fontSize: "30px", color: "white", marginBottom: "30px" }}
@@ -48,7 +48,7 @@ const TorrentExplorer = () => {
           TORRENT TRACKER
         </Container>
         <Form
-          style={{ width: "80%" }}
+          style={{ width: "90%" }}
           className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
             setSearching(true);
@@ -61,8 +61,9 @@ const TorrentExplorer = () => {
         >
           {" "}
           <Form.Group >
-            <InputGroup  className="d-flex flex-nowrap">
+            <InputGroup  className="d-flex flex-nowrap ">
               <input
+              style={{width : "40%"}}
                 className="input-field"
                 placeholder="Search"
                 value={query}

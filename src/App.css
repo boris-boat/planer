@@ -5,7 +5,7 @@
 .btn {
   padding: 0.375rem 0.75rem !important;
 }
-.App {
+.todoContainer {
   text-align: center;
   align-items: center;
   display: flex;

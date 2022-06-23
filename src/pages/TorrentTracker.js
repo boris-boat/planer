@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Form, InputGroup, Spinner } from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Spinner } from "react-bootstrap";
 import { useStateContext } from "../components/StateContext";
 import Torrent from "../components/torrent";
 import TorrentCategorySelector from "../components/TorrentCategorySelector";
@@ -45,7 +45,11 @@ const TorrentExplorer = () => {
           style={{ fontSize: "30px", color: "white", marginBottom: "30px" }}
           className="d-flex flex-column align-items-center"
         >
-          TORRENT TRACKER
+          <Col>TORRENT TRACKER</Col>
+          <Col>Search through different online trackers on one location!</Col>
+          
+
+         
         </Container>
         <Form
           style={{ width: "90%" }}

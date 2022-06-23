@@ -89,7 +89,7 @@ function ToDo() {
   } = useStateContext();
 
   return (
-    <div className="App">
+    <div className="todoContainer">
       {user ? (
         <>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />

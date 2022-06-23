@@ -42,11 +42,11 @@ const TorrentExplorer = () => {
         className="d-flex flex-column  align-items-center torrent "
       >
         <Container
-          style={{ fontSize: "30px", color: "white", marginBottom: "30px" }}
+          style={{ fontSize: "30px", color: "white", marginBottom: "30px",textAlign : "center" }}
           className="d-flex flex-column align-items-center"
         >
           <Col>TORRENT TRACKER</Col>
-          <Col>Search through different online trackers on one location!</Col>
+          <Col >Search through different online trackers on one location!</Col>
           
 
          

@@ -21,16 +21,7 @@ const Tracker = () => {
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user")?.split(" ")[0];
-  // const validate = async ()=> {
-  //   const createTokenTest = async () => {
-  //     let value =await fetch("http://localhost:3001/").then(response => response.json())
-  //     return value
-  //     }
-  //   let token = localStorage.getItem("token")
-  //   let tokenTest = await createTokenTest()
-  //   console.log(tokenTest === token)
-  //   return  localStorage.getItem("user") && tokenTest === token && localStorage.getItem("user") === user + " " + token
-  //   }
+ 
 
   const [initialState, setInitialState] = useState(0);
   const [total, setTotal] = useState(0);

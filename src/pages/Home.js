@@ -14,7 +14,7 @@ const Home = () => {
   // let token = localStorage.getItem("token");
 
   const { setSearchBar } = useStateContext();
-
+  const center = "d-flex align-content-center justify-content-center align-items-center"
   useEffect(() => {
     setSearchBar(false);
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -26,19 +26,20 @@ const Home = () => {
   }, []);
 
   return (
+
     <>
       <Container
-        className="d-flex align-content-center justify-content-center align-items-center"
+        className={center}
         style={{ height: "100vh" }}
       >
         {user ? (
           <>
             <Col style={{ paddingTop: "100px", height: "100vh" }}>
-              <Col className="mb-5 d-flex align-content-center justify-content-center align-items-center text-center">
+              <Col className={`mb-5 ${center} text-center`}>
                 <h1 style={{ color: "white" }}>Greetings {user}</h1>
               </Col>
 
-              <Col className="d-flex justify-content-center align-content-center align-items-center">
+              <Col className={center}>
                 <Container style={{ width: "60%" }} className="homeContainer">
                   {" "}
                   <div className="home" onClick={() => navigate("/todo")}>

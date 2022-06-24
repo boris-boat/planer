@@ -87,7 +87,7 @@ function ToDo() {
     newTodo,
     setnewTodo,
   } = useStateContext();
-
+  const center = "d-flex justify-content-center align-items-center"
   return (
     <div className="todoContainer">
       {user ? (
@@ -125,10 +125,10 @@ function ToDo() {
               </Form>
             </Row>
           </Container>
-          <Container className="d-flex justify-content-center align-items-center flex-column">
+          <Container className={`${center} flex-column`}>
             <Row
               style={{ width: "400px", marginLeft: "0" }}
-              className="d-flex justify-content-center align-items-center"
+              className={center}
             >
               <CategorySelector />
             </Row>

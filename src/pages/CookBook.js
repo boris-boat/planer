@@ -31,11 +31,11 @@ const CookBook = () => {
       base += `&includeIngredients=${ajtem.label}`;
     });
   };
-
+  const center = "d-flex justify-content-center align-items-center align-content-center"
   return (
     <Container>
       <Container
-        className="d-flex flex-column justify-content-center align-items-center flex-wrap"
+        className={`flex-column  flex-wrap ${center}`}
         style={{ paddingTop: "130px" }}
       >
         <Container
@@ -59,7 +59,7 @@ const CookBook = () => {
                 placeholder="Choose several ingredients..."
               />
             </Form.Group>
-            <Container className="d-flex justify-content-center align-items-center align-content-center mt-2 space-between">
+            <Container className={`${center}  pt-3 space-between`}>
               <Button onClick={handleSearch}>Search</Button>
               <Button
                 onClick={() => {
@@ -74,8 +74,8 @@ const CookBook = () => {
             </Container>
           </Col>
           <Col
-            style={{ width: "100%" }}
-            className="d-flex justify-content-center align-items-center align-content-center mt-3"
+            style={{ width: "100%",paddingTop : "10px" }}
+            
           >
             {foundRecipes ? (
               <Recept recipes={foundRecipes} />

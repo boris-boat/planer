@@ -74,6 +74,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
 @media (min-width: 220px) and (max-width: 680px) {
  
   .homeContainer,.torrent {
@@ -95,5 +97,8 @@ code {
     width: 100% !important;
     
   }
-
+  .cattegorySelector {
+ min-width: 100% !important;
+  
+  }
 }

@@ -127,10 +127,10 @@ function ToDo() {
           </Container>
           <Container className={`${center} flex-column`}>
             <Row
-              style={{ width: "80%", marginLeft: "0" }}
+              style={{ width: "100vw", margin: "0" }}
               className={center}
             >
-              <CategorySelector />
+              <CategorySelector style={{width : "100%"}} />
             </Row>
             <div className="mb-3" style={{ color: "white" }}>
               {category}

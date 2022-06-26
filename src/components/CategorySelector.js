@@ -1,14 +1,15 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
 import { useStateContext } from "./StateContext";
-
+import "../App.css";
 const CategorySelector = () => {
   const { setCategory } = useStateContext();
 
   return (
     <Container
-      fluid
-      className="button-container mb-3 d-flex d-flex justify-content-center align-items-center "
+      
+      className="button-container mb-3 d-flex  justify-content-center align-items-center cattegorySelector"
+      style={{padding : "0"}}
     >
       <Button
         className="btn-sm"

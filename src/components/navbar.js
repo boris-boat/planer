@@ -56,6 +56,9 @@ const Topnavbar = () => {
                 <NavDropdown.Item onClick={() =>  navigate("/torrent")}>
                   Torrent tracker
                 </NavDropdown.Item>
+                <NavDropdown.Item onClick={() =>  navigate("/quiz")}>
+                  Quiz
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link onClick={() => navigate("/join")}>Chat</Nav.Link>
               <NavDropdown title="My account" id="basic-nav-dropdown">

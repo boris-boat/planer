@@ -132,17 +132,18 @@ const Login = () => {
                       Login
                     </Button>
                     <div style={{ marginTop: "10px", display: "flex" }}>
-                      <h4 style={{ marginRight: "10px" }}>
+                      <h5 style={{ marginRight: "10px" }}>
                         Dont have an account?{" "}
-                      </h4>
-                      <Button
-                        variant="primary"
-                        onClick={() => {
+                      </h5>
+                      <a
+                         href="/"
+                        onClick={(e) => {
+e.preventDefault()
                           setNewUser(true);
                         }}
                       >
                         Sign Up
-                      </Button>
+                      </a>
                     </div>
                   </Form>
                   {signupError ? <Alert>{signupError}</Alert> : ""}
@@ -186,17 +187,18 @@ const Login = () => {
                     </Button>
 
                     <div style={{ marginTop: "10px", display: "flex" }}>
-                      <h4 style={{ marginRight: "10px" }}>
+                      <h5 style={{ marginRight: "10px" }}>
                         Allready a member?{" "}
-                      </h4>
-                      <Button
-                        variant="primary"
-                        onClick={() => {
+                      </h5>
+                      <a
+                        href="/"
+                        onClick={(e) => {
+                          e.preventDefault()
                           setNewUser(false);
                         }}
                       >
                         Login
-                      </Button>
+                      </a>
                     </div>
                   </Form>
 

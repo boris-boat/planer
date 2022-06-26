@@ -208,7 +208,7 @@ const Login = () => {
               <br />
             </Col>
           </Col>
-          <Col className="m-0 p-0 d-flex align-content-center justify-content-center video">
+          <Col className="m-0 p-0 d-flex align-content-center justify-content-center video loginVideo">
             <div >
               {" "}
               <video

@@ -101,4 +101,7 @@ code {
  min-width: 100% !important;
   
   }
+  .loginImg {
+    display: none!important;
+  }
 }

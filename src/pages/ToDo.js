@@ -104,11 +104,11 @@ function ToDo() {
             <Row className="d-inline-flex mt-3">
               <Form
                 onSubmit={(e) => {
-                  console.log("submit");
+                  
                   e.preventDefault();
                   setnewTodo("");
                   addToDo();
-                  console.log(newTodo);
+                  
                 }}
               >
                 <InputGroup className="mb-3">
@@ -127,7 +127,7 @@ function ToDo() {
           </Container>
           <Container className={`${center} flex-column`}>
             <Row
-              style={{ width: "400px", marginLeft: "0" }}
+              style={{ width: "80%", marginLeft: "0" }}
               className={center}
             >
               <CategorySelector />
@@ -136,7 +136,7 @@ function ToDo() {
               {category}
             </div>
 
-            <ListGroup>
+            <ListGroup style={{textAlign : "start",width :"50%"}} className={`${center}`}>
               <div className="cela-grupa" style={{ borderRadius: "10px" }}>
                 {todos.length !== 0 ? (
                   todos
@@ -178,7 +178,7 @@ function ToDo() {
                     })
                 ) : (
                   <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
+                    
                   </Spinner>
                 )}
               </div>

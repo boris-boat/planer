@@ -79,4 +79,21 @@ code {
   .homeContainer,.torrent {
     width: 100% !important;
   }
+  .quizCointainer {
+    flex-direction: column;
+    height: 100vh;
+  
+  
+    position: fixed;
+
+  }
+  .questionCointainer{
+    width: 100% !important;
+    height: 30%;
+  }
+  .answersCointainer {
+    width: 100% !important;
+    
+  }
+
 }

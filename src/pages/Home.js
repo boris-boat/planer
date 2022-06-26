@@ -83,6 +83,14 @@ const Home = () => {
                       alt=""
                     ></img>
                   </div>
+                  <div className="home " onClick={() => navigate("/quiz")}>
+                    <h4 className="align-self-center">Quiz</h4>
+                    <img
+                      className="logo align-self-center"
+                      src={require("../components/media/Icons/quiz.png")}
+                      alt=""
+                    ></img>
+                  </div>
                 </Container>
               </Col>
             </Col>

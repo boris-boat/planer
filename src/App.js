@@ -1,7 +1,6 @@
 import "./App.css";
 import Topnavbar from "./components/navbar";
 
-
 import { Route, Routes } from "react-router-dom";
 
 import Join from "./Chat/components/Join/Join";
@@ -13,6 +12,7 @@ import ToDo from "./pages/ToDo";
 import Chat from "./Chat/Chat/Chat";
 import CookBook from "./pages/CookBook";
 import TorrentExplorer from "./pages/TorrentTracker";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
       <Topnavbar />
       <Routes>
         <Route exact path="/cookbook" element={<CookBook />} />
+        <Route exact path="/quiz" element={<Quiz />} />
         <Route exact path="/torrent" element={<TorrentExplorer />} />
         <Route path="/chat" element={<Chat />} />
         <Route exact path="/join" element={<Join />} />

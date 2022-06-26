@@ -9,7 +9,7 @@ const Item = (props) => {
   }, [props.item]);
 
   return (
-    <div className="d-flex flex-row justify-content-between align-items-cente r">
+    <div className="d-flex flex-row justify-content-between align-items-cente">
       <div>
         <h5
           style={{

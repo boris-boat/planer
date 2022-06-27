@@ -44,6 +44,7 @@ const Quiz = () => {
     };
 
     getQuestions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadNext]);
   useEffect(() => {
     if (question[0]?.incorrectAnswers.length) {
@@ -83,10 +84,19 @@ const Quiz = () => {
                   style={{ width: "50%", margin: "10px" }}
                   key={option}
                   onClick={(e) => {
-                    if (question[0]?.correctAnswer === e.target.textContent)
+                    if (question[0]?.correctAnswer === e.target.textContent) {
+                      e.currentTarget.style.backgroundColor = 'green';
                       setScore((score) => score + 1);
-                    setLoadNext(e.target.textContent);
-                    setTotalQuestions((prev) => prev - 1);
+                    }else {
+                      e.currentTarget.style.backgroundColor = 'red';
+                    }
+                    console.log(e.target.style)
+                    setTimeout(() => {
+                      setTotalQuestions((prev) => prev - 1);
+                      setLoadNext(e.target.textContent);
+                    }, 1000);
+
+                    
                   }}
                 >
                   {option}

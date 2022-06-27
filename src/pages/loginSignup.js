@@ -1,23 +1,15 @@
 import React from "react";
-import {
-  Form,
-  Button,
-  Container,
-  Col,
-  Row,
-  Alert,
-  Image,
-} from "react-bootstrap";
+import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useStateContext } from "../components/StateContext";
 import Home from "./Home";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const [error, setError] = useState("");
-  const [signupError, setSignuperror] = useState("");
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -26,7 +18,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   let user = localStorage.getItem("user")?.split(" ")[0];
-
+  const { notify } = useStateContext();
   const addUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/createUser", {
@@ -40,9 +32,10 @@ const Login = () => {
         }),
       }).then((response) => {
         if (response.status === 500) {
-          setSignuperror("Username allready taken");
+          notify("Username allready taken");
         } else {
-          setSignuperror("Account created.");
+          notify("Account created.");
+          setNewUser(false)
         }
       });
     } catch (e) {
@@ -63,17 +56,18 @@ const Login = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          
           localStorage.setItem("token", data.token);
           if (data) {
             localStorage.setItem("user", username + " " + data.token);
 
             navigate("/home");
-          } else {
-            setError("Invalid username/password combination");
           }
         });
     } catch (e) {
+      notify("Invalid username/password combination");
       console.log(e);
+      
     }
   };
 
@@ -125,8 +119,11 @@ const Login = () => {
                       variant="primary"
                       type="submit"
                       onClick={(e) => {
-                        loginUser();
                         e.preventDefault();
+                        
+                       
+                        loginUser();
+                        
                       }}
                     >
                       Login
@@ -136,9 +133,9 @@ const Login = () => {
                         Dont have an account?{" "}
                       </h5>
                       <a
-                         href="/"
+                        href="/"
                         onClick={(e) => {
-e.preventDefault()
+                          e.preventDefault();
                           setNewUser(true);
                         }}
                       >
@@ -146,8 +143,6 @@ e.preventDefault()
                       </a>
                     </div>
                   </Form>
-                  {signupError ? <Alert>{signupError}</Alert> : ""}
-                  {error ? <Alert variant="danger">{error}</Alert> : ""}
                 </>
               ) : (
                 <Col>
@@ -178,9 +173,8 @@ e.preventDefault()
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault();
-
+                      
                         addUser();
-                        setNewUser(false);
                       }}
                     >
                       Signup
@@ -193,7 +187,7 @@ e.preventDefault()
                       <a
                         href="/"
                         onClick={(e) => {
-                          e.preventDefault()
+                          e.preventDefault();
                           setNewUser(false);
                         }}
                       >
@@ -203,7 +197,6 @@ e.preventDefault()
                   </Form>
 
                   <br />
-                  {signupError ? <Alert>{signupError}</Alert> : ""}
                 </Col>
               )}
 
@@ -211,7 +204,7 @@ e.preventDefault()
             </Col>
           </Col>
           <Col className="m-0 p-0 d-flex align-content-center justify-content-center video loginVideo">
-            <div >
+            <div>
               {" "}
               <video
                 loop
@@ -225,17 +218,10 @@ e.preventDefault()
                 />
               </video>
             </div>
-
-            {/* <Image 
-              className="loginImg m-0 "
-              style={{ height: "890px", width: "900px" }}
-              src={require("../components/login-removebg-preview.png")}
-              alt=""
-              responsive
-            /> */}
           </Col>
         </Row>
       )}
+      <ToastContainer position="bottom-left"/>
     </Container>
   );
 };

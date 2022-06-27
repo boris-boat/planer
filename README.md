@@ -21,6 +21,7 @@ imaSve is my biggest project made from scratch and is constantly being updated. 
 - Weather today as a modal that gets activated from the navbara
 - Chat application with the possibility of making rooms
 - Cookbook application with the ability to select certain ingredients and search for dishes by these parameters.
+- Quiz app where you can choose how many rounds you wish to play and then get the score after the game with live validation of answers with css
 
 ## ToDo
 
@@ -62,6 +63,12 @@ A cookbook application that finds the desired recipe via spoonacular api accordi
 - Technologies used: React, React-bootstrap,torrent-search-api
 
 Simple api call to different torrent tracking sites and the results are being displayed in a table.
+
+## Quiz
+
+-- Technologies used: React, React-bootstrap,quiz api,material ui
+
+A quiz app designed for simplicity.Pick how many rounds you wish to play and enjoy.
 
 ## How to use
 

@@ -104,4 +104,8 @@ code {
   .loginImg {
     display: none!important;
   }
+  .modalContainer {
+    width: 90% !important;
+   
+  }
 }

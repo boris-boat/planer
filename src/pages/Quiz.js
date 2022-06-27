@@ -23,7 +23,7 @@ const Quiz = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: 500,
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -150,12 +150,14 @@ const Quiz = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className={center}>
+            <Box sx={style} className={`${center} modalContainer`}>
               <Typography
+            
                 id="modal-modal-title"
                 variant="h6"
                 component="h2"
                 align="center"
+                style={{marginRight : "20px"}}
               >
                 <h5>Congratulations {user}</h5>
                 <h5>
@@ -178,9 +180,7 @@ const Quiz = () => {
               </Button>
             </Box>
           </Modal>
-          {/* <Alert>
-           
-          </Alert> */}
+        
         </Container>
       )}
     </Container>

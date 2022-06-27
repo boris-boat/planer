@@ -10,7 +10,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin:0;
+  margin: 0;
   background-size: cover;
 }
 .cela-grupa {
@@ -75,37 +75,35 @@ code {
     monospace;
 }
 
-
 @media (min-width: 220px) and (max-width: 680px) {
- 
-  .homeContainer,.torrent {
+  .homeContainer,
+  .torrent {
     width: 100% !important;
   }
   .quizCointainer {
     flex-direction: column;
     height: 100vh;
-  
-  
-    position: fixed;
 
+    position: fixed;
   }
-  .questionCointainer{
+  .questionCointainer {
     width: 100% !important;
     height: 30%;
   }
   .answersCointainer {
     width: 100% !important;
-    
   }
   .cattegorySelector {
- min-width: 100% !important;
-  
+    min-width: 100% !important;
   }
   .loginImg {
-    display: none!important;
+    display: none !important;
   }
   .modalContainer {
     width: 90% !important;
-   
+  }
+  .lginPage {
+    margin: 0;
+    padding: 0;
   }
 }

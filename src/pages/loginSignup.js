@@ -6,6 +6,7 @@ import { useStateContext } from "../components/StateContext";
 import Home from "./Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../index.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
@@ -72,11 +73,11 @@ const Login = () => {
   };
 
   return (
-    <Container fluid className="m-0 p-0">
+    <Container fluid className="m-0">
       {user ? (
         <Home />
       ) : (
-        <Row style={{margin : "0",padding : "0"}}>
+        <Row style={{margin : "0",padding : "0"}} className="lginPage">
           <Col sm={4} style={{margin : "0",padding : "0"}}>
             <Col>
               <Col>

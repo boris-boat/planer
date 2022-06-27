@@ -5,11 +5,11 @@ import "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
+
 
 const Home = () => {
   const navigate = useNavigate();
- const {notify} = useStateContext()
+
   let user = localStorage.getItem("user")?.split(" ")[0];
 
   // let token = localStorage.getItem("token");
@@ -17,7 +17,7 @@ const Home = () => {
   const { setSearchBar } = useStateContext();
   const center = "d-flex align-content-center justify-content-center align-items-center"
   useEffect(() => {
-    notify("Login successful!")
+    
     setSearchBar(false);
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
@@ -105,7 +105,7 @@ const Home = () => {
             </Button>
           </div>
         )}
-        <ToastContainer/>
+    
       </Container>
     </>
   );

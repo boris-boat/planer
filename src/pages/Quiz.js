@@ -85,18 +85,16 @@ const Quiz = () => {
                   key={option}
                   onClick={(e) => {
                     if (question[0]?.correctAnswer === e.target.textContent) {
-                      e.currentTarget.style.backgroundColor = 'green';
+                      e.currentTarget.style.backgroundColor = "green";
                       setScore((score) => score + 1);
-                    }else {
-                      e.currentTarget.style.backgroundColor = 'red';
+                    } else {
+                      e.currentTarget.style.backgroundColor = "red";
                     }
-                    console.log(e.target.style)
+                
                     setTimeout(() => {
                       setTotalQuestions((prev) => prev - 1);
                       setLoadNext(e.target.textContent);
                     }, 1000);
-
-                    
                   }}
                 >
                   {option}
@@ -152,18 +150,28 @@ const Quiz = () => {
           >
             <Box sx={style} className={`${center} modalContainer`}>
               <Typography
-            
                 id="modal-modal-title"
                 variant="h6"
                 component="h2"
                 align="center"
-                style={{marginRight : "20px"}}
+                style={{ marginRight: "20px" }}
               >
-                <h5>Congratulations {user}</h5>
-                <h5>
-                  {" "}
-                  Your score is {score} out of {questionCount}
-                </h5>
+                {score / questionCount > 0.5 ? (
+                  <>
+                    <h5>Congratulations {user}</h5>
+                    <h5>
+                      {" "}
+                      Your score is {score} out of {questionCount}
+                    </h5>
+                  </>
+                ) : (
+                  <>
+                    <h5>Hey it all counts !</h5>
+                    <h5>
+                      Your score is {score} out of {questionCount}
+                    </h5>
+                  </>
+                )}
               </Typography>
               <Button
                 style={{ marginLeft: "10px" }}
@@ -180,7 +188,6 @@ const Quiz = () => {
               </Button>
             </Box>
           </Modal>
-        
         </Container>
       )}
     </Container>

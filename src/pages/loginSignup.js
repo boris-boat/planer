@@ -76,8 +76,8 @@ const Login = () => {
       {user ? (
         <Home />
       ) : (
-        <Row>
-          <Col sm={4}>
+        <Row style={{margin : "0",padding : "0"}}>
+          <Col sm={4} style={{margin : "0",padding : "0"}}>
             <Col>
               <Col>
                 <Row>

@@ -26,7 +26,7 @@ const Topnavbar = () => {
               {searchBar === true ? (
                 <Nav.Item className="mt-1">
                   <input
-                    style={{ width: "100px" }}
+                    style={{ width: "100px",marginLeft : "-5px" }}
                     onChange={(event) => {
                       setSearch(event.target.value);
                     }}

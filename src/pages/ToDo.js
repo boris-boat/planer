@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { ReactComponent as ToDoImg } from "../components/media/ilustrations/undraw_to_do_re_jaef.svg";
+
 import {
   Button,
   Container,

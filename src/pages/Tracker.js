@@ -191,11 +191,11 @@ const Tracker = () => {
 
   return (
     <div style={{paddingTop : "60px"}}>
-      <div>
+      <div style={{paddingTop : "100px"}} className="trackerBigConitainer" >
         {user ? (
-          <Container style={{width : "100%"}}>
-            <Row className="d-flex justify-content-center " md={2} sm={1}>
-              <Col style={{paddingTop : "10px"}}>
+          <Container style={{width : "100%"}} className="d-flex flex-wrap-no-wrap justify-content-center trackerContainer">
+            <Row className="d-flex justify-content-center" md={2} sm={1} style={{width : "100%"}}>
+              <Col style={{padding : "0",width : "50%"}}>
                 <Container className="d-grid justify-content-center align-items-center">
                   <Row>
                     <ToastContainer />
@@ -309,7 +309,7 @@ const Tracker = () => {
                         setNewEntertainment(parseInt(e.target.value));
                       }}
                     >
-                      <InputGroup.Text id="basic-addon1">
+                      <InputGroup.Text id="basic-addon1" style={{padding : "0"}}>
                         Entertainment
                       </InputGroup.Text>
                       <input
@@ -318,7 +318,7 @@ const Tracker = () => {
                         placeholder="Expense"
                         value={newEntertainment}
                       />
-                      <Button style={{marginRight : "15px"}}
+                      <Button style={{marginRight : "5px"}}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -422,7 +422,7 @@ const Tracker = () => {
                         setNewTransit(parseInt(e.target.value));
                       }}
                     >
-                      <InputGroup.Text id="basic-addon1">
+                      <InputGroup.Text id="basic-addon1" style={{padding : "0"}}>
                         Transportation
                       </InputGroup.Text>
                       <input
@@ -431,7 +431,7 @@ const Tracker = () => {
                         value={newTransit}
                         type="number"
                       />
-                      <Button style={{marginRight : "15px"}}
+                      <Button style={{marginRight : "5px"}}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -573,15 +573,15 @@ const Tracker = () => {
                 </Container>
               </Col>
             </Row>
-            <Col>
+            <Row style={{width : "30%"}}>
               {total ? (
                 <VictoryPie
                   animate={{
                     duration: 1000,
                   }}
                   data={myData}
-                  height={300}
-                  width={600}
+                  height={400}
+                  width={200}
                   labels={({ datum }) => (datum.y === 0 ? "" : datum.x)}
                   colorScale={[
                     "#34568B",
@@ -598,7 +598,7 @@ const Tracker = () => {
                   <span className="visually-hidden">Loading...</span>
                 </Spinner>
               )}
-            </Col>
+            </Row>
           </Container>
         ) : (
           <div className="App">

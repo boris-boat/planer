@@ -111,5 +111,11 @@ code {
   .todoSvg {
     display: none !important;
   }
- 
+  .trackerContainer {
+    flex-wrap: wrap;
+    
+  }
+ .trackerBigConitainer{
+  padding: 10px !important;
+ }
 }

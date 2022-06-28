@@ -93,10 +93,10 @@ function ToDo() {
     <div className="todoContainer">
       {user ? (
         <>
-          <Row className="todoListContainer" >
+          <Row className="todoListContainer" style={{margin : "0"}}>
             <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
             <Quote />
-            <Container style={{ height: "auto" }}>
+            <Container style={{ height: "auto",padding : "0" }}>
               <h1 className="mt-3" style={{ color: "white" }}>
                 Welcome {user} !
               </h1>
@@ -124,7 +124,7 @@ function ToDo() {
               </Row>
             </Container>
 
-            <Container className={`${center} flex-column`}>
+            <Container className={`${center} flex-column`} style={{padding : "0"}}>
               <Row style={{ width: "100vw", margin: "0" }} className={center}>
                 <CategorySelector style={{ width: "100%" }} />
               </Row>

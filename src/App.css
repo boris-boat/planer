@@ -9,9 +9,10 @@
   text-align: center;
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0;
   background-size: cover;
+  
 }
 .cela-grupa {
   width: 300px;
@@ -60,6 +61,7 @@ code {
     rgba(97, 186, 255, 1) 0%,
     rgba(166, 239, 253, 1) 90.1%
   );
+
   background-repeat: space;
 }
 .home:hover {
@@ -106,4 +108,8 @@ code {
     margin: 0;
     padding: 0;
   }
+  .todoSvg {
+    display: none !important;
+  }
+ 
 }

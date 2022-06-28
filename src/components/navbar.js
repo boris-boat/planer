@@ -19,14 +19,14 @@ const Topnavbar = () => {
       {user  ? (
         <Navbar bg="primary" variant="dark" fixed="top">
           <Container>
-            <Navbar.Brand role="button" onClick={() => navigate("/home")}>
+            <Navbar.Brand role="button" onClick={() => navigate("/home")}  style={{marginLeft : "-7px"}}>
               imaSve
             </Navbar.Brand>
             <Nav className="me-auto">
               {searchBar === true ? (
-                <Nav.Item className="mt-1">
+                <Nav.Item className="mt-1" >
                   <input
-                    style={{ width: "100px",marginLeft : "-5px" }}
+                    style={{ width: "85px",marginLeft : "-10px" }}
                     onChange={(event) => {
                       setSearch(event.target.value);
                     }}

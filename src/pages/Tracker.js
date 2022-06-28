@@ -193,7 +193,7 @@ const Tracker = () => {
     <div style={{paddingTop : "60px"}}>
       <div>
         {user ? (
-          <Container>
+          <Container style={{width : "100%"}}>
             <Row className="d-flex justify-content-center " md={2} sm={1}>
               <Col style={{paddingTop : "10px"}}>
                 <Container className="d-grid justify-content-center align-items-center">

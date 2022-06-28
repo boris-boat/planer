@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { ReactComponent as ToDoImg } from "../components/media/ilustrations/undraw_to_do_re_jaef.svg";
 import {
   Button,
   Container,
@@ -87,103 +88,101 @@ function ToDo() {
     newTodo,
     setnewTodo,
   } = useStateContext();
-  const center = "d-flex justify-content-center align-items-center"
+  const center = "d-flex justify-content-center align-items-center";
   return (
     <div className="todoContainer">
       {user ? (
         <>
-          <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
+          <Row className="todoListContainer" >
+            <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
+            <Quote />
+            <Container style={{ height: "auto" }}>
+              <h1 className="mt-3" style={{ color: "white" }}>
+                Welcome {user} !
+              </h1>
 
-          <Quote />
+              <Row className="d-inline-flex mt-3">
+                <Form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setnewTodo("");
+                    addToDo();
+                  }}
+                >
+                  <InputGroup className="mb-3 flex-wrap-nowrap">
+                    <input
+                      className="input-field"
+                      placeholder="Add new item"
+                      value={newTodo}
+                      onChange={(e) => setnewTodo(e.target.value)}
+                    />
+                    <Button type="submit" variant="info" id="button-addon2">
+                      Add
+                    </Button>
+                  </InputGroup>
+                </Form>
+              </Row>
+            </Container>
 
-          <Container style={{ height: "auto" }}>
-            <h1 className="mt-3" style={{ color: "white" }}>
-              Welcome {user} !
-            </h1>
-
-            <Row className="d-inline-flex mt-3">
-              <Form
-                onSubmit={(e) => {
-                  
-                  e.preventDefault();
-                  setnewTodo("");
-                  addToDo();
-                  
-                }}
-              >
-                <InputGroup className="mb-3">
-                  <input
-                    className="input-field"
-                    placeholder="Add new item"
-                    value={newTodo}
-                    onChange={(e) => setnewTodo(e.target.value)}
-                  />
-                  <Button type="submit" variant="info" id="button-addon2">
-                    Add
-                  </Button>
-                </InputGroup>
-              </Form>
-            </Row>
-          </Container>
-          <Container className={`${center} flex-column`}>
-            <Row
-              style={{ width: "100vw", margin: "0" }}
-              className={center}
-            >
-              <CategorySelector style={{width : "100%"}} />
-            </Row>
-            <div className="mb-3" style={{ color: "white" }}>
-              {category}
-            </div>
-
-            <ListGroup style={{textAlign : "start",width :"50%"}} className={`${center}`}>
-              <div className="cela-grupa" style={{ borderRadius: "10px" }}>
-                {todos.length !== 0 ? (
-                  todos
-                    .filter((val) => {
-                      if (search === "") {
-                        return val;
-                      } else if (
-                        val.text.toLowerCase().includes(search.toLowerCase())
-                      ) {
-                        return val;
-                      } else {
-                        return null;
-                      }
-                    })
-                    .map((todo) => {
-                      if (todo.category === category) {
-                        return (
-                          <ListGroup.Item key={todo._id}>
-                            <Item
-                              item={todo}
-                              completeTodo={completeTodo}
-                              deleteToDo={deleteToDo}
-                            />
-                          </ListGroup.Item>
-                        );
-                      } else if (category === "Everything") {
-                        return (
-                          <ListGroup.Item key={todo._id}>
-                            <Item
-                              item={todo}
-                              completeTodo={completeTodo}
-                              deleteToDo={deleteToDo}
-                            />
-                          </ListGroup.Item>
-                        );
-                      } else {
-                        return null;
-                      }
-                    })
-                ) : (
-                  <Spinner animation="border" role="status">
-                    
-                  </Spinner>
-                )}
+            <Container className={`${center} flex-column`}>
+              <Row style={{ width: "100vw", margin: "0" }} className={center}>
+                <CategorySelector style={{ width: "100%" }} />
+              </Row>
+              <div className="mb-3" style={{ color: "white" }}>
+                {category}
               </div>
-            </ListGroup>
-          </Container>
+
+              <ListGroup
+                style={{ textAlign: "start", width: "50%" }}
+                className={`${center}`}
+              >
+                <div className="cela-grupa" style={{ borderRadius: "10px" }}>
+                  {todos.length !== 0 ? (
+                    todos
+                      .filter((val) => {
+                        if (search === "") {
+                          return val;
+                        } else if (
+                          val.text.toLowerCase().includes(search.toLowerCase())
+                        ) {
+                          return val;
+                        } else {
+                          return null;
+                        }
+                      })
+                      .map((todo) => {
+                        if (todo.category === category) {
+                          return (
+                            <ListGroup.Item key={todo._id}>
+                              <Item
+                                item={todo}
+                                completeTodo={completeTodo}
+                                deleteToDo={deleteToDo}
+                              />
+                            </ListGroup.Item>
+                          );
+                        } else if (category === "Everything") {
+                          return (
+                            <ListGroup.Item key={todo._id}>
+                              <Item
+                                item={todo}
+                                completeTodo={completeTodo}
+                                deleteToDo={deleteToDo}
+                              />
+                            </ListGroup.Item>
+                          );
+                        } else {
+                          return null;
+                        }
+                      })
+                  ) : (
+                    <Spinner animation="border" role="status"></Spinner>
+                  )}
+                </div>
+              </ListGroup>
+            </Container>
+          </Row>
+          
         </>
       ) : (
         <div className="App">

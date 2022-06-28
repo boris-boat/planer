@@ -8,6 +8,11 @@ import { useEffect } from "react";
 
 
 const Home = () => {
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token")
+    navigate("/");
+  };
   const navigate = useNavigate();
 
   let user = localStorage.getItem("user")?.split(" ")[0];
@@ -90,6 +95,14 @@ const Home = () => {
                     <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/quiz.png")}
+                      alt=""
+                    ></img>
+                  </div>
+                  <div className="home " onClick={() => logout()}>
+                    <h4 className="align-self-center">Logout</h4>
+                    <img
+                      className="logo align-self-center"
+                      src={require("../components/media/Icons/logout.png")}
                       alt=""
                     ></img>
                   </div>

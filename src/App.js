@@ -1,8 +1,6 @@
 import "./App.css";
 import Topnavbar from "./components/navbar";
-
 import { Route, Routes } from "react-router-dom";
-
 import Join from "./Chat/components/Join/Join";
 import Home from "./pages/Home";
 import Login from "./pages/loginSignup";

@@ -12,7 +12,6 @@
   flex-direction: row;
   margin: 0;
   background-size: cover;
-  
 }
 .cela-grupa {
   width: 300px;
@@ -52,7 +51,7 @@ code {
   display: flex;
   justify-content: space-between;
   height: auto;
-  max-height: auto;
+
   cursor: pointer;
   padding: 10px;
   background-color: white;
@@ -70,11 +69,6 @@ code {
 .logo {
   height: 40px;
   width: 40px;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 @media (min-width: 220px) and (max-width: 680px) {
@@ -113,9 +107,8 @@ code {
   }
   .trackerContainer {
     flex-wrap: wrap;
-    
   }
- .trackerBigConitainer{
-  padding: 10px !important;
- }
+  .trackerBigConitainer {
+    padding: 10px !important;
+  }
 }

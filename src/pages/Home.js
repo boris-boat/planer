@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
 import { useEffect } from "react";
 
-
 const Home = () => {
   const logout = () => {
     localStorage.removeItem("user");
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
     navigate("/");
   };
   const navigate = useNavigate();
@@ -20,9 +19,9 @@ const Home = () => {
   // let token = localStorage.getItem("token");
 
   const { setSearchBar } = useStateContext();
-  const center = "d-flex align-content-center justify-content-center align-items-center"
+  const center =
+    "d-flex align-content-center justify-content-center align-items-center";
   useEffect(() => {
-    
     setSearchBar(false);
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
@@ -33,12 +32,8 @@ const Home = () => {
   }, []);
 
   return (
-
     <>
-      <Container
-        className={center}
-        style={{ height: "100vh" }}
-      >
+      <Container className={center} style={{ height: "100vh" }}>
         {user ? (
           <>
             <Col style={{ paddingTop: "100px", height: "100vh" }}>
@@ -46,12 +41,12 @@ const Home = () => {
                 <h1 style={{ color: "white" }}>Greetings {user}</h1>
               </Col>
 
-              <Col className={center}>
+              <Col className={`${center}`}>
                 <Container style={{ width: "60%" }} className="homeContainer">
                   {" "}
                   <div className="home" onClick={() => navigate("/todo")}>
                     <h4 className="align-self-center">ToDo's / Reminders</h4>{" "}
-                    <img 
+                    <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/todo.jpg")}
                       alt=""
@@ -118,7 +113,6 @@ const Home = () => {
             </Button>
           </div>
         )}
-    
       </Container>
     </>
   );

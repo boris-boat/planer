@@ -28,8 +28,8 @@ const NewsReworked = () => {
   return (
     <Container fluid>
       
-      <>""</>
-      <Container fluid style={{paddingTop : "40px"}}>
+      
+      <Container fluid style={{paddingTop : "60px"}}>
         {" "}
         <Row>
           <Col style={{minWidth : "300px"}} >

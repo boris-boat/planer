@@ -202,7 +202,7 @@ function ToDo() {
                         }
                       })
                   ) : (
-                    <div style={{ width: "400px",alignSelf : "center",textAlign : "center"}}>
+                    <div style={{ width: "auto",alignSelf : "center",textAlign : "center"}}>
                       <h3 style={{ color: "white" }}>Please add some todos!</h3>
                     </div>
                   )}

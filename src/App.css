@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  
+  
 }
 #root {
   height: auto !important;

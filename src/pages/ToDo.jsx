@@ -21,6 +21,7 @@ function ToDo() {
   let user = localStorage.getItem("user").split(" ")[0];
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { REACT_APP_API_URL } = process.env;
 
   const addToDo = async () => {
@@ -76,6 +77,7 @@ function ToDo() {
         .catch((e) => console.log("Database error  : " + e));
     };
     getTodos();
+    setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const {
@@ -132,20 +134,35 @@ function ToDo() {
                 <CategorySelector style={{ width: "100%" }} />
               </Row>
               <div className="mb-3" style={{ color: "white" }}>
-               Category :  {category}
+                Category : {category}
               </div>
-            
-             
+
               <ListGroup
                 className={`${center} listGrupaToDo`}
                 style={{ textAlign: "start", width: "50%" }}
-              >  <div style={{width : "70%"}} className="d-flex justify-content-center"  > <input  style={{width : "60%",marginBottom : "10px"}}
-              onChange={(event) => {
-                setSearch(event.target.value);
-              }}
-              placeholder="Search ToDos"
-            ></input></div>
+              >
+                {" "}
+                <div
+                  style={{ width: "70%" }}
+                  className="d-flex justify-content-center"
+                >
+                  {" "}
+                  <input
+                    style={{ width: "60%", marginBottom: "10px" }}
+                    onChange={(event) => {
+                      setSearch(event.target.value);
+                    }}
+                    placeholder="Search ToDos"
+                  ></input>
+                </div>
                 <div className="cela-grupa" style={{ borderRadius: "10px" }}>
+                  {loading && (
+                    <Spinner
+                      style={{ display: "flex", alignContent: "center" }}
+                      animation="border"
+                      role="status"
+                    ></Spinner>
+                  )}
                   {todos.length !== 0 ? (
                     todos
                       .filter((val) => {
@@ -184,10 +201,8 @@ function ToDo() {
                           return null;
                         }
                       })
-                  ) : todos.length > 0 ? (
-                    <Spinner animation="border" role="status"></Spinner>
                   ) : (
-                    <div style={{ width: "400px" }}>
+                    <div style={{ width: "400px",alignSelf : "center",marginLeft : "90px" }}>
                       <h3 style={{ color: "white" }}>Please add some todos!</h3>
                     </div>
                   )}

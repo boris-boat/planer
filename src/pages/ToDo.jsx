@@ -18,7 +18,7 @@ import Item from "../components/Item";
 import CategorySelector from "../components/CategorySelector";
 
 function ToDo() {
-  let user = localStorage.getItem("user").split(" ")[0];
+  let user = localStorage?.getItem("user")?.split(" ")[0];
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -202,7 +202,7 @@ function ToDo() {
                         }
                       })
                   ) : (
-                    <div style={{ width: "400px",alignSelf : "center",marginLeft : "90px" }}>
+                    <div style={{ width: "400px",alignSelf : "center",textAlign : "center"}}>
                       <h3 style={{ color: "white" }}>Please add some todos!</h3>
                     </div>
                   )}

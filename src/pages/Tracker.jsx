@@ -612,7 +612,7 @@ const Tracker = () => {
                   radius={100}
                 />
               ) : (
-                (total = 0 ? null : (
+                (total === 0 ? null : (
                   <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </Spinner>

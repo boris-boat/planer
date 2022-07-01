@@ -19,6 +19,7 @@ const Home = () => {
   // let token = localStorage.getItem("token");
 
   const { setSearchBar } = useStateContext();
+  const textStyle = {verticalAlign : "middle",marginBottom : "0"}
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
   useEffect(() => {
@@ -45,16 +46,16 @@ const Home = () => {
                 <Container style={{ width: "60%" }} className="homeContainer">
                   {" "}
                   <div className="home" onClick={() => navigate("/todo")}>
-                    <h4 className="align-self-center">ToDo's / Reminders</h4>{" "}
+                    <h4 style={textStyle}>ToDo's / Reminders</h4>{" "}
                     <img
-                      className="logo align-self-center"
+                      className="logo"
                       src={require("../components/media/Icons/todo.jpg")}
                       alt=""
                     ></img>
                   </div>
                   <div className="home" onClick={() => navigate("/torrent")}>
                     {" "}
-                    <h4 className="align-self-center">Torrent tracker</h4>
+                    <h4 style={textStyle}>Torrent tracker</h4>
                     <img
                       className="logo"
                       src={require("../components/media/Icons/torrent.png")}
@@ -62,7 +63,7 @@ const Home = () => {
                     ></img>
                   </div>
                   <div className="home" onClick={() => navigate("/news")}>
-                    <h4 className="align-self-center">Daily news</h4>{" "}
+                    <h4 style={textStyle}>Daily news</h4>{" "}
                     <img
                       className="logo"
                       src={require("../components/media/Icons/news.png")}
@@ -70,7 +71,7 @@ const Home = () => {
                     ></img>{" "}
                   </div>
                   <div className="home" onClick={() => navigate("/tracker")}>
-                    <h4 className="align-self-center">Expense tracker </h4>
+                    <h4 style={textStyle}>Expense tracker </h4>
                     <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/money.png")}
@@ -78,7 +79,7 @@ const Home = () => {
                     ></img>{" "}
                   </div>
                   <div className="home " onClick={() => navigate("/cookbook")}>
-                    <h4 className="align-self-center">Kitchen Assistant</h4>
+                    <h4 style={textStyle}>Kitchen Assistant</h4>
                     <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/hat.png")}
@@ -86,7 +87,7 @@ const Home = () => {
                     ></img>
                   </div>
                   <div className="home " onClick={() => navigate("/quiz")}>
-                    <h4 className="align-self-center">Quiz</h4>
+                    <h4 style={textStyle}>Quiz</h4>
                     <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/quiz.png")}
@@ -94,7 +95,7 @@ const Home = () => {
                     ></img>
                   </div>
                   <div className="home " onClick={() => logout()}>
-                    <h4 className="align-self-center">Logout</h4>
+                    <h4 style={textStyle}>Logout</h4>
                     <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/logout.png")}

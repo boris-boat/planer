@@ -210,7 +210,7 @@ const Login = () => {
               <video
                 loop
                 autoPlay
-                mute
+                mute="true"
                 className="loginImg m-0 "
                 style={{ height: "890px", width: "900px", borderRadius: "5px" }}
               >

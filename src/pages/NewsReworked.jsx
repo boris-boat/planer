@@ -21,7 +21,7 @@ const NewsReworked = () => {
 
   useEffect(() => {
     getNews();
-    setSearchBar(true);
+    setSearchBar(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   

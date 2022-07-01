@@ -68,7 +68,7 @@ function ToDo() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    setSearchBar(true);
+    setSearchBar(false);
     const getTodos = async () => {
       fetch(REACT_APP_API_URL + "/todos/" + user)
         .then((res) => res.json())
@@ -93,10 +93,10 @@ function ToDo() {
     <div className="todoContainer">
       {user ? (
         <>
-          <Row className="todoListContainer" style={{margin : "0"}}>
+          <Row className="todoListContainer" style={{ margin: "0" }}>
             <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
             <Quote />
-            <Container style={{ height: "auto",padding : "0" }}>
+            <Container style={{ height: "auto", padding: "0" }}>
               <h1 className="mt-3" style={{ color: "white" }}>
                 Welcome {user} !
               </h1>
@@ -124,7 +124,10 @@ function ToDo() {
               </Row>
             </Container>
 
-            <Container className={`${center} flex-column`} style={{padding : "0"}}>
+            <Container
+              className={`${center} flex-column`}
+              style={{ padding: "0" }}
+            >
               <Row style={{ width: "100vw", margin: "0" }} className={center}>
                 <CategorySelector style={{ width: "100%" }} />
               </Row>
@@ -175,14 +178,17 @@ function ToDo() {
                           return null;
                         }
                       })
-                  ) : (
+                  ) : todos.length > 0 ? (
                     <Spinner animation="border" role="status"></Spinner>
+                  ) : (
+                    <div style={{ width: "400px" }}>
+                      <h3 style={{color : "white"}}>Please add some todos!</h3>
+                    </div>
                   )}
                 </div>
               </ListGroup>
             </Container>
           </Row>
-          
         </>
       ) : (
         <div className="App">

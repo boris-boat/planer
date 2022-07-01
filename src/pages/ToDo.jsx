@@ -19,7 +19,7 @@ import CategorySelector from "../components/CategorySelector";
 
 function ToDo() {
   let user = localStorage.getItem("user").split(" ")[0];
-
+  const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
   const { REACT_APP_API_URL } = process.env;
 
@@ -84,7 +84,7 @@ function ToDo() {
     VremeShow,
     setVremeShow,
     setSearchBar,
-    search,
+
     newTodo,
     setnewTodo,
   } = useStateContext();
@@ -132,14 +132,19 @@ function ToDo() {
                 <CategorySelector style={{ width: "100%" }} />
               </Row>
               <div className="mb-3" style={{ color: "white" }}>
-                {category}
+               Category :  {category}
               </div>
-
+            
+             
               <ListGroup
-               className={`${center} listGrupaToDo`}
+                className={`${center} listGrupaToDo`}
                 style={{ textAlign: "start", width: "50%" }}
-               
-              >
+              >  <div style={{width : "70%"}} className="d-flex justify-content-center"  > <input  style={{width : "60%",marginBottom : "10px"}}
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+              placeholder="Search ToDos"
+            ></input></div>
                 <div className="cela-grupa" style={{ borderRadius: "10px" }}>
                   {todos.length !== 0 ? (
                     todos
@@ -157,9 +162,8 @@ function ToDo() {
                       .map((todo) => {
                         if (todo.category === category) {
                           return (
-                            <ListGroup.Item key={todo._id} >
+                            <ListGroup.Item key={todo._id}>
                               <Item
-                             
                                 item={todo}
                                 completeTodo={completeTodo}
                                 deleteToDo={deleteToDo}
@@ -184,7 +188,7 @@ function ToDo() {
                     <Spinner animation="border" role="status"></Spinner>
                   ) : (
                     <div style={{ width: "400px" }}>
-                      <h3 style={{color : "white"}}>Please add some todos!</h3>
+                      <h3 style={{ color: "white" }}>Please add some todos!</h3>
                     </div>
                   )}
                 </div>

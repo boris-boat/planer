@@ -127,7 +127,7 @@ const Quiz = () => {
 
             <InputGroup className={`${center} flex-column`}>
               <input
-                min={"0"}
+                min={"1"}
                 className="input-field mb-2"
                 type="number"
                 onChange={(e) => {

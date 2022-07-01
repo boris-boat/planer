@@ -136,8 +136,9 @@ function ToDo() {
               </div>
 
               <ListGroup
+               className={`${center} listGrupaToDo`}
                 style={{ textAlign: "start", width: "50%" }}
-                className={`${center}`}
+               
               >
                 <div className="cela-grupa" style={{ borderRadius: "10px" }}>
                   {todos.length !== 0 ? (
@@ -156,8 +157,9 @@ function ToDo() {
                       .map((todo) => {
                         if (todo.category === category) {
                           return (
-                            <ListGroup.Item key={todo._id}>
+                            <ListGroup.Item key={todo._id} >
                               <Item
+                             
                                 item={todo}
                                 completeTodo={completeTodo}
                                 deleteToDo={deleteToDo}

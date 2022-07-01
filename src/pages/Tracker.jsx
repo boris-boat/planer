@@ -215,6 +215,7 @@ const Tracker = () => {
                       <InputGroup.Text id="basic-addon1">Bills</InputGroup.Text>
 
                       <input
+                      min={"1"}
                         className="input-field"
                         placeholder="Expense"
                         value={newBill}

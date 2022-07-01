@@ -14,7 +14,7 @@
   background-size: cover;
 }
 .cela-grupa {
-  width: 300px;
+  width: 60%;
   border: none;
   display: flex;
   flex-direction: column;
@@ -112,5 +112,11 @@ code {
   }
   .trackerBigConitainer {
     padding: 10px !important;
+  }
+  .listGrupaToDo {
+    width: 100% !important;
+  }
+  .cela-grupa {
+    width : 80% !important;
   }
 }

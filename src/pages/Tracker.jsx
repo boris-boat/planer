@@ -21,7 +21,6 @@ const Tracker = () => {
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user")?.split(" ")[0];
- 
 
   const [initialState, setInitialState] = useState(0);
   const [total, setTotal] = useState(0);
@@ -45,7 +44,7 @@ const Tracker = () => {
       .catch((e) => console.log("Database error  : " + e));
     //setInitialState((prevState) => ({ ...prevState, bills: 5 }));
   };
- 
+
   const setValues = () => {
     setFoodTotal(initialState.food);
     setBillsTotal(initialState.bills);
@@ -190,12 +189,20 @@ const Tracker = () => {
   };
 
   return (
-    <div style={{paddingTop : "60px"}}>
-      <div style={{paddingTop : "100px"}} className="trackerBigConitainer" >
+    <div style={{ paddingTop: "60px" }}>
+      <div style={{ paddingTop: "100px" }} className="trackerBigConitainer">
         {user ? (
-          <Container style={{width : "100%"}} className="d-flex flex-wrap-no-wrap justify-content-center trackerContainer">
-            <Row className="d-flex justify-content-center" md={2} sm={1} style={{width : "100%"}}>
-              <Col style={{padding : "0",width : "50%"}}>
+          <Container
+            style={{ width: "100%" }}
+            className="d-flex flex-wrap-no-wrap justify-content-center trackerContainer"
+          >
+            <Row
+              className="d-flex justify-content-center"
+              md={2}
+              sm={1}
+              style={{ width: "100%" }}
+            >
+              <Col style={{ padding: "0", width: "50%" }}>
                 <Container className="d-grid justify-content-center align-items-center">
                   <Row>
                     <ToastContainer />
@@ -215,7 +222,7 @@ const Tracker = () => {
                         pattern="/d+"
                       />
                       <Button
-                      style={{marginRight : "15px"}}
+                        style={{ marginRight: "15px" }}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -266,7 +273,8 @@ const Tracker = () => {
                         value={newFood}
                         type="number"
                       />
-                      <Button style={{marginRight : "15px"}}
+                      <Button
+                        style={{ marginRight: "15px" }}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -309,7 +317,10 @@ const Tracker = () => {
                         setNewEntertainment(parseInt(e.target.value));
                       }}
                     >
-                      <InputGroup.Text id="basic-addon1" style={{padding : "0"}}>
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        style={{ padding: "0" }}
+                      >
                         Entertainment
                       </InputGroup.Text>
                       <input
@@ -318,7 +329,8 @@ const Tracker = () => {
                         placeholder="Expense"
                         value={newEntertainment}
                       />
-                      <Button style={{marginRight : "5px"}}
+                      <Button
+                        style={{ marginRight: "5px" }}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -379,7 +391,8 @@ const Tracker = () => {
                         value={newHealth}
                         type="number"
                       />
-                      <Button style={{marginRight : "15px"}}
+                      <Button
+                        style={{ marginRight: "15px" }}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -422,7 +435,10 @@ const Tracker = () => {
                         setNewTransit(parseInt(e.target.value));
                       }}
                     >
-                      <InputGroup.Text id="basic-addon1" style={{padding : "0"}}>
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        style={{ padding: "0" }}
+                      >
                         Transportation
                       </InputGroup.Text>
                       <input
@@ -431,7 +447,8 @@ const Tracker = () => {
                         value={newTransit}
                         type="number"
                       />
-                      <Button style={{marginRight : "5px"}}
+                      <Button
+                        style={{ marginRight: "5px" }}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -482,7 +499,8 @@ const Tracker = () => {
                         value={newOther}
                         type="number"
                       />
-                      <Button style={{marginRight : "15px"}}
+                      <Button
+                        style={{ marginRight: "15px" }}
                         variant="info"
                         id="button-addon2"
                         onClick={() => {
@@ -560,7 +578,7 @@ const Tracker = () => {
                   </Container>
                 </Container>
               </Col>
-              <Col >
+              <Col>
                 <Container style={{ color: "white" }}>
                   {<h1>{month[d.getMonth()]} expenses : </h1>}
                   <h2>Bills : {billsTotal}</h2>
@@ -573,7 +591,7 @@ const Tracker = () => {
                 </Container>
               </Col>
             </Row>
-            <Row style={{width : "30%"}}>
+            <Row style={{ width: "30%" }}>
               {total ? (
                 <VictoryPie
                   animate={{
@@ -594,9 +612,11 @@ const Tracker = () => {
                   radius={100}
                 />
               ) : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                (total = 0 ? null : (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ))
               )}
             </Row>
           </Container>

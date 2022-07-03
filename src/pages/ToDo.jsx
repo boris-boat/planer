@@ -67,7 +67,7 @@ function ToDo() {
     );
   };
 
-  const navigate = useNavigate();
+ 
   useEffect(() => {
     setSearchBar(false);
     const getTodos = async () => {
@@ -93,7 +93,7 @@ function ToDo() {
   const center = "d-flex justify-content-center align-items-center";
   return (
     <div className="todoContainer">
-      {user ? (
+  
         <>
           <Row className="todoListContainer" style={{ margin: "0" }}>
             <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
@@ -211,14 +211,7 @@ function ToDo() {
             </Container>
           </Row>
         </>
-      ) : (
-        <div className="App">
-          <h1 className="mt-5">Please create an account or login !</h1>
-          <Button variant="primary" onClick={() => navigate("/")}>
-            Back
-          </Button>
-        </div>
-      )}
+     
     </div>
   );
 }

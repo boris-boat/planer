@@ -1,7 +1,7 @@
 import "./App.css";
 import Topnavbar from "./components/navbar";
 import { Route, Routes } from "react-router-dom";
-import Join from "./Chat/components/Join/Join";
+
 import Home from "./pages/Home";
 import Login from "./pages/loginSignup";
 
@@ -12,22 +12,80 @@ import CookBook from "./pages/CookBook";
 import TorrentExplorer from "./pages/TorrentTracker";
 import Quiz from "./pages/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+  let user = localStorage.getItem("user")?.split(" ")[0];
+  console.log(user)
   return (
     <div>
       <Topnavbar />
       <Routes>
-        <Route exact path="/cookbook" element={<CookBook />} />
-        <Route exact path="/quiz" element={<Quiz />} />
-        <Route exact path="/torrent" element={<TorrentExplorer />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route exact path="/join" element={<Join />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route
+          exact
+          path="/cookbook"
+          element={
+            <ProtectedRoute user={user}>
+              <CookBook />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/quiz"
+          element={
+            <ProtectedRoute user={user}>
+              <Quiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/torrent"
+          element={
+            <ProtectedRoute user={user}>
+              <TorrentExplorer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute user={user}>
+              <Chat />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/home"
+          element={
+            <ProtectedRoute user={user}>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route exact path="/" element={<Login />} />
-        <Route exact path="/tracker" element={<Tracker />} />
+        <Route
+          exact
+          path="/tracker"
+          element={
+            <ProtectedRoute user={user}>
+              <Tracker />
+            </ProtectedRoute>
+          }
+        />
         <Route exact path="/news" element={<NewsReworked />} />
-        <Route exact path="/toDo" element={<ToDo />} />
+        <Route
+          exact
+          path="/toDo"
+          element={
+            <ProtectedRoute user={user}>
+              <ToDo />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );

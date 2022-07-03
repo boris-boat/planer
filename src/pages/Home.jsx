@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <>
       <Container className={center} style={{ height: "100vh" }}>
-        {user ? (
+     
           <>
             <Col style={{ paddingTop: "100px", height: "100vh" }}>
               <Col className={`mb-5 ${center} text-center`}>
@@ -95,14 +95,7 @@ const Home = () => {
               </Col>
             </Col>
           </>
-        ) : (
-          <div className="App">
-            <h1 className="mt-5">Please create an account or login !</h1>
-            <Button variant="primary" onClick={() => navigate("/")}>
-              Back
-            </Button>
-          </div>
-        )}
+      
       </Container>
     </>
   );

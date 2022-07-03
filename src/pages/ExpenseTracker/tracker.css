@@ -31,6 +31,7 @@
 @media (min-width: 220px) and (max-width: 680px) {
   .inputButtonContainer {
     width: auto !important;
+    padding: 0 !important;
   }
   .p-inputtext {
     width: 80px !important;
@@ -48,6 +49,7 @@
     display: flex;
     justify-content: flex-start;
     width: 70% !important;
+    
   }
   .p-dropdown {
     width: auto!important;

@@ -276,7 +276,7 @@ const Tracker = () => {
 
   return (
     <div style={{ paddingTop: "60px" }}>
-      <ToastContainer position="top-center"/>
+      <ToastContainer position="top-center" />
       <div style={{ paddingTop: "50px" }} className="trackerBigContainer">
         {user ? (
           <Container
@@ -361,8 +361,7 @@ const Tracker = () => {
                 <Container
                   className="buttonContainer"
                   style={{
-                    width: "85%",
-                    marginTop: "10px",
+                    marginTop: "20px",
                     display: "flex",
                     justifyContent: "space-between",
                   }}
@@ -377,7 +376,7 @@ const Tracker = () => {
                       Save changes{" "}
                     </Button>
                   </Row>
-                  <Row style={{ width: "30%" }}>
+                  <Row style={{ width: "30%"}}>
                     <Button
                       onClick={() => {
                         window.confirm(
@@ -390,7 +389,7 @@ const Tracker = () => {
                       Reset Data{" "}
                     </Button>
                   </Row>
-                  <Row style={{ width: "30%" }}>
+                  <Row style={{ width: "40%" }}>
                     <Button
                       onClick={() => {
                         handleEmailSendClick();

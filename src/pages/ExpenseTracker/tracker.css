@@ -14,6 +14,7 @@
 }
 .leftInputContainer{
     width: 60%;
+   
 }
 .inputContainer {
   display: flex;
@@ -23,11 +24,13 @@
 .inputButtonContainer {
   width: 40% !important;
   display: flex;
-  justify-content: space-between !important;
+  padding: 0 !important;
+  justify-content: space-evenly !important;
 }
 .p-autocomplete-input {
   width: 100%;
 }
+
 @media (min-width: 220px) and (max-width: 680px) {
   .inputButtonContainer {
     width: auto !important;

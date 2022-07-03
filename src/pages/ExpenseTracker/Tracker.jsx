@@ -44,21 +44,22 @@ const Tracker = () => {
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
       .catch((e) => console.log("Database error  : " + e));
-    //setInitialState((prevState) => ({ ...prevState, bills: 5 }));
   };
 
   const handleClick = async (expense) => {
+    operand === "+"
+      ? addTotal((prevState) => prevState + parseInt(value))
+      : addTotal((prevState) => prevState - parseInt(value));
     switch (expense) {
       case "Bills":
         if (operand === "+") {
           setBillsTotal(billsTotal + parseInt(value));
-          addTotal((prevState) => prevState + parseInt(value));
 
           resetValue("Added");
         }
         if (operand === "-") {
           setBillsTotal(billsTotal - parseInt(value));
-          addTotal((prevState) => prevState - parseInt(value));
+
           resetValue("Subtracted");
         }
 
@@ -127,6 +128,7 @@ const Tracker = () => {
         }
 
         break;
+
       default:
         break;
     }
@@ -237,7 +239,7 @@ const Tracker = () => {
     setOtherTotal(0);
     notify("Data has been reset!");
   };
-
+  //stavi save data posle svakog klika
   const saveData = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/saveData", {
       method: "POST",
@@ -258,6 +260,7 @@ const Tracker = () => {
       .then((result) => setTrackerData(result))
       .catch((e) => console.log(e));
   };
+
   const resetData = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/resetData", {
       method: "POST",
@@ -376,7 +379,7 @@ const Tracker = () => {
                       Save changes{" "}
                     </Button>
                   </Row>
-                  <Row style={{ width: "30%"}}>
+                  <Row style={{ width: "30%" }}>
                     <Button
                       onClick={() => {
                         window.confirm(

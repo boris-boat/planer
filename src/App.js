@@ -4,13 +4,14 @@ import { Route, Routes } from "react-router-dom";
 import Join from "./Chat/components/Join/Join";
 import Home from "./pages/Home";
 import Login from "./pages/loginSignup";
-import Tracker from "./pages/Tracker";
+
 import NewsReworked from "./pages/NewsReworked";
 import ToDo from "./pages/ToDo";
 import Chat from "./Chat/Chat/Chat";
 import CookBook from "./pages/CookBook";
 import TorrentExplorer from "./pages/TorrentTracker";
 import Quiz from "./pages/Quiz";
+import Tracker from "./pages/ExpenseTracker/Tracker";
 
 function App() {
   return (

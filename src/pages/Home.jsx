@@ -70,14 +70,14 @@ const Home = () => {
                       alt=""
                     ></img>{" "}
                   </div>
-                  {/* <div className="home" onClick={() => navigate("/tracker")}>
+                  <div className="home" onClick={() => navigate("/tracker")}>
                     <h4 style={textStyle}>Expense tracker </h4>
                     <img
                       className="logo align-self-center"
                       src={require("../components/media/Icons/money.png")}
                       alt=""
                     ></img>{" "}
-                  </div> */}
+                  </div>
                   <div className="home " onClick={() => navigate("/cookbook")}>
                     <h4 style={textStyle}>Kitchen Assistant</h4>
                     <img

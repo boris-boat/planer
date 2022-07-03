@@ -19,8 +19,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  
-  
 }
 #root {
   height: auto !important;
@@ -51,7 +49,6 @@ code {
   margin-top: 10px;
   border-radius: 10px;
   display: flex;
-
   height: auto;
   justify-content: center;
   align-items: center;
@@ -74,10 +71,15 @@ code {
   height: 40px;
   width: 40px;
 }
-
+.siteName {
+  margin-right: -30px !important;
+}
 @media (min-width: 220px) and (max-width: 680px) {
   .homeContainer,
-  .torrent {
+  .torrent,
+  .answersCointainer,
+  .cattegorySelector,
+  .listGrupaToDo {
     width: 100% !important;
   }
   .quizCointainer {
@@ -90,12 +92,7 @@ code {
     width: 100% !important;
     height: 30%;
   }
-  .answersCointainer {
-    width: 100% !important;
-  }
-  .cattegorySelector {
-    min-width: 100% !important;
-  }
+
   .loginImg {
     display: none !important;
   }
@@ -115,10 +112,11 @@ code {
   .trackerBigConitainer {
     padding: 10px !important;
   }
-  .listGrupaToDo {
-    width: 100% !important;
-  }
+
   .cela-grupa {
-    width : 80% !important;
+    width: 80% !important;
+  }
+  .siteName {
+    margin-right: -30px !important;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { VictoryPie } from "victory-pie";
+
 import { useNavigate } from "react-router-dom";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
@@ -404,32 +404,7 @@ const Tracker = () => {
                 </Container>
               </Col>
             </Row>
-            {/* <Row style={{ width: "30%" }}>
-              {total ? (
-                <VictoryPie
-                  animate={{
-                    duration: 1000,
-                  }}
-                  data={myData}
-                  height={400}
-                  width={200}
-                  labels={({ datum }) => (datum.y === 0 ? "" : datum.x)}
-                  colorScale={[
-                    "#34568B",
-                    "#FF6F61",
-                    "#6B5B95",
-                    "#F7CAC9",
-                    "#92A8D1",
-                    "#B565A7",
-                  ]}
-                  radius={100}
-                />
-              ) : total === 0 ? null : (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
-              )}
-            </Row> */}
+       
           </Container>
         ) : (
           <div className="App">

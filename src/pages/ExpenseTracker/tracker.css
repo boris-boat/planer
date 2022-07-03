@@ -26,6 +26,7 @@
   display: flex;
   padding: 0 !important;
   justify-content: space-evenly !important;
+  margin-left: -40px !important;
 }
 .p-autocomplete-input {
   width: 100%;

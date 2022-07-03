@@ -1,17 +1,13 @@
 import { Container, Col, Button } from "react-bootstrap";
 import "../App.css";
 
-import "../index.css";
+
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
 import { useEffect } from "react";
 
 const Home = () => {
-  const logout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    navigate("/");
-  };
+
   const navigate = useNavigate();
 
   let user = localStorage.getItem("user")?.split(" ")[0];
@@ -94,14 +90,7 @@ const Home = () => {
                       alt=""
                     ></img>
                   </div>
-                  <div className="home " onClick={() => logout()}>
-                    <h4 style={textStyle}>Logout</h4>
-                    <img
-                      className="logo align-self-center"
-                      src={require("../components/media/Icons/logout.png")}
-                      alt=""
-                    ></img>
-                  </div>
+                 
                 </Container>
               </Col>
             </Col>

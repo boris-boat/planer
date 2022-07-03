@@ -68,6 +68,17 @@ const Topnavbar = () => {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
+                 onClick={() => {
+                  setVremeShow(true)
+                  setShow(false)}
+                }
+                >
+                  Weather
+                </Nav.Link>
+              </Nav.Item>
+              
+              <Nav.Item>
+                <Nav.Link
                   onClick={() => {
                     navigate("/torrent");
                     setShow(false);

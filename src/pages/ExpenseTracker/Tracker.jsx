@@ -54,12 +54,10 @@ const Tracker = () => {
       case "Bills":
         if (operand === "+") {
           setBillsTotal(billsTotal + parseInt(value));
-
           resetValue("Added");
         }
         if (operand === "-") {
           setBillsTotal(billsTotal - parseInt(value));
-
           resetValue("Subtracted");
         }
 
@@ -67,12 +65,10 @@ const Tracker = () => {
       case "Food":
         if (operand === "+") {
           setFoodTotal(foodTotal + parseInt(value));
-          addTotal((prevState) => prevState + parseInt(value));
           resetValue("Added");
         }
         if (operand === "-") {
           setFoodTotal(foodTotal - parseInt(value));
-          addTotal((prevState) => prevState - parseInt(value));
           resetValue("Subtracted");
         }
         resetValue();
@@ -80,24 +76,20 @@ const Tracker = () => {
       case "Entertainment":
         if (operand === "+") {
           setEntertainmentTotal(entertainmentTotal + parseInt(value));
-          addTotal((prevState) => prevState + parseInt(value));
           resetValue("Added");
         }
         if (operand === "-") {
           setEntertainmentTotal(entertainmentTotal - parseInt(value));
-          addTotal((prevState) => prevState - parseInt(value));
           resetValue("Subtracted");
         }
         break;
       case "Health":
         if (operand === "+") {
           setHealthTotal(healthTotal + parseInt(value));
-          addTotal((prevState) => prevState + parseInt(value));
           resetValue("Added");
         }
         if (operand === "-") {
           setHealthTotal(healthTotal - parseInt(value));
-          addTotal((prevState) => prevState - parseInt(value));
           resetValue("Subtracted");
         }
 
@@ -105,12 +97,10 @@ const Tracker = () => {
       case "Transportation":
         if (operand === "+") {
           setTransitTotal(transitTotal + parseInt(value));
-          addTotal((prevState) => prevState + parseInt(value));
           resetValue("Added");
         }
         if (operand === "-") {
           setTransitTotal(transitTotal - parseInt(value));
-          addTotal((prevState) => prevState - parseInt(value));
           resetValue("Subtracted");
         }
 
@@ -118,12 +108,10 @@ const Tracker = () => {
       case "Other":
         if (operand === "+") {
           setOtherTotal(otherTotal + parseInt(value));
-          addTotal((prevState) => prevState + parseInt(value));
           resetValue("Added");
         }
         if (operand === "-") {
           setOtherTotal(otherTotal - parseInt(value));
-          addTotal((prevState) => prevState - parseInt(value));
           resetValue("Subtracted");
         }
 
@@ -404,7 +392,6 @@ const Tracker = () => {
                 </Container>
               </Col>
             </Row>
-       
           </Container>
         ) : (
           <div className="App">

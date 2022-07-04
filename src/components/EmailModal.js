@@ -22,8 +22,9 @@ const EmailModal = (props) => {
           onSubmit={(e) => {
             e.preventDefault();
             setUserEmail(email);
-            setShowUserMailModal(false);
+           
             setEmail("")
+            setShowUserMailModal(false);
           }}
         >
           <InputGroup>

@@ -33,10 +33,11 @@ const EmailModal = (props) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            ></input>
+            ></input><Button type="submit">Send mail</Button>
           </InputGroup>
-          <Button type="submit">Send mail</Button>
+          
         </Form>
+        
       </Modal.Body>
     </Modal>
   );

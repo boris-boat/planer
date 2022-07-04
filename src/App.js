@@ -13,14 +13,17 @@ import TorrentExplorer from "./pages/TorrentTracker";
 import Quiz from "./pages/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NoUser from "./pages/NoUser/NoUser";
+import { useStateContext } from "./components/StateContext";
 
 function App() {
-  let user = localStorage.getItem("user")?.split(" ")[0];
-  console.log(user)
+  const { user } = useStateContext();
+  
   return (
     <div>
       <Topnavbar />
       <Routes>
+        <Route exact path="/nouser" element={<NoUser/>} />
         <Route
           exact
           path="/cookbook"

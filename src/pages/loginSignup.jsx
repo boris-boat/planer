@@ -3,14 +3,16 @@ import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../components/StateContext";
-import Home from "./Home";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../index.css";
+import NoUser from "./NoUser/NoUser";
+import Home from "./Home";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-
+  let user = localStorage.getItem("user")?.split(" ")[0];
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -18,7 +20,7 @@ const Login = () => {
   const [newUser, setNewUser] = useState(false);
 
   const navigate = useNavigate();
-  let user = localStorage.getItem("user")?.split(" ")[0];
+
   const { notify } = useStateContext();
   const addUser = async () => {
     try {
@@ -36,7 +38,7 @@ const Login = () => {
           notify("Username allready taken");
         } else {
           notify("Account created.");
-          setNewUser(false)
+          setNewUser(false);
         }
       });
     } catch (e) {
@@ -57,7 +59,6 @@ const Login = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          
           localStorage.setItem("token", data.token);
           if (data) {
             localStorage.setItem("user", username + " " + data.token);
@@ -68,17 +69,14 @@ const Login = () => {
     } catch (e) {
       notify("Invalid username/password combination");
       console.log(e);
-      
     }
   };
 
   return (
     <Container fluid className="m-0">
-      {user ? (
-        <Home />
-      ) : (
-        <Row style={{margin : "0",padding : "0"}} className="lginPage">
-          <Col sm={4} style={{margin : "0",padding : "0"}}>
+      {!user ? (
+        <Row style={{ margin: "0", padding: "0" }} className="lginPage">
+          <Col sm={4} style={{ margin: "0", padding: "0" }}>
             <Col>
               <Col>
                 <Row>
@@ -121,10 +119,8 @@ const Login = () => {
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault();
-                        
-                       
+
                         loginUser();
-                        
                       }}
                     >
                       Login
@@ -174,7 +170,7 @@ const Login = () => {
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault();
-                      
+
                         addUser();
                       }}
                     >
@@ -222,8 +218,11 @@ const Login = () => {
             </div>
           </Col>
         </Row>
+      ) : (
+        <Home />
       )}
-      <ToastContainer position="bottom-left"/>
+
+      <ToastContainer position="bottom-left" />
     </Container>
   );
 };

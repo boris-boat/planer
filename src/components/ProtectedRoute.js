@@ -1,11 +1,12 @@
 import {Navigate } from 'react-router-dom';
 
 
-const ProtectedRoute = ({ user, children }) => {
+const ProtectedRoute = ({children }) => {
+    let user = localStorage.getItem("user")?.split(" ")[0];
     if (!user) {
-      return <Navigate to="/" replace />;
+      return <Navigate to="/nouser" replace />;
     }
-  
+    
     return children;
   };
 

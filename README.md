@@ -11,6 +11,10 @@ https://imasve.netlify.app
 npm install
 npm start
 
+## Note
+
+App ,being hosted on Heroku, takes arround 15 sec to start up the backend so it may take some time to login or get info sometimes. 
+
 ## Description
 
 imaSve is my biggest project made from scratch and is constantly being updated. It contains:

@@ -13,13 +13,14 @@ const Home = () => {
   let user = localStorage.getItem("user")?.split(" ")[0];
 
   // let token = localStorage.getItem("token");
-
+  user = localStorage.getItem("user")?.split(" ")[0];
   const { setSearchBar } = useStateContext();
   const textStyle = {verticalAlign : "middle",marginBottom : "0"}
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
   useEffect(() => {
     setSearchBar(false);
+    
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);

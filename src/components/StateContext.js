@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 const Context = createContext();
 export const StateContext = ({ children }) => {
+  
   const [category, setCategory] = useState("Everything");
   const [VremeShow, setVremeShow] = useState(false);
   const [torrentCategory, setTorrentCategory] = useState("All");
@@ -36,6 +37,7 @@ export const StateContext = ({ children }) => {
   return (
     <Context.Provider
       value={{
+        
         numberOfResults,
         setNumberOfResults,
         torrentCategory,

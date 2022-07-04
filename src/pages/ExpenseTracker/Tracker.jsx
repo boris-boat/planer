@@ -276,7 +276,7 @@ const Tracker = () => {
     <div style={{ paddingTop: "60px" }}>
       <ToastContainer position="top-center" />
       <div style={{ paddingTop: "50px" }} className="trackerBigContainer">
-        {user ? (
+      
           <Container
             style={{ width: "100%" }}
             className="d-flex flex-wrap-no-wrap justify-content-center trackerContainer"
@@ -411,14 +411,9 @@ const Tracker = () => {
               show={showUserMailModal}
             />
           </Container>
-        ) : (
-          <div className="App">
-            <h1 className="mt-5">Please create an account or login !</h1>
-            <Button variant="primary" onClick={() => navigate("/")}>
-              Back
-            </Button>
-          </div>
-        )}
+        
+          
+        
       </div>
     </div>
   );

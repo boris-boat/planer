@@ -1,5 +1,5 @@
 import "./App.css";
-import Topnavbar from "./components/navbar";
+import Topnavbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -14,10 +14,10 @@ import Quiz from "./pages/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
-import { useStateContext } from "./components/StateContext";
+
 
 function App() {
-  const { user } = useStateContext();
+  let user = localStorage.getItem("user")?.split(" ")[0];
   
   return (
     <div>

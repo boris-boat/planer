@@ -14,11 +14,18 @@ import "./tracker.css";
 import emailjs from "@emailjs/browser";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EmailModal from "../../components/EmailModal";
 
-//import DatePicker from "react-datepicker";
+
 
 const Tracker = () => {
-  const { setSearchBar, notify } = useStateContext();
+  const {
+    setSearchBar,
+    notify,
+    userEmail,
+    showUserMailModal,
+    setShowUserMailModal,
+  } = useStateContext();
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user")?.split(" ")[0];
@@ -164,7 +171,7 @@ const Tracker = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState]);
 
-  let email;
+ 
   const addTotal = (num) => {
     setTotal(num);
   };
@@ -194,11 +201,11 @@ const Tracker = () => {
     transit: "Transportation total : " + transitTotal,
     other: "Other total : " + otherTotal,
     total: "Total : " + total,
-    email: email,
+    email: userEmail,
   };
 
   const handleEmailSendClick = async () => {
-    templateParams.email = window.prompt("Enter your email adress ");
+    console.log(userEmail);
 
     await emailjs
       .send(
@@ -383,7 +390,8 @@ const Tracker = () => {
                   <Row style={{ width: "40%" }}>
                     <Button
                       onClick={() => {
-                        handleEmailSendClick();
+                       
+                        setShowUserMailModal(true);
                       }}
                     >
                       Send expense data to email.{" "}
@@ -392,6 +400,16 @@ const Tracker = () => {
                 </Container>
               </Col>
             </Row>
+           
+            <EmailModal
+              onExited={() => {
+                if (userEmail) handleEmailSendClick();
+              }}
+              onHide={() => {
+                setShowUserMailModal(false);
+              }}
+              show={showUserMailModal}
+            />
           </Container>
         ) : (
           <div className="App">

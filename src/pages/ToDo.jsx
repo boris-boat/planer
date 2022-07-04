@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 
 
-import Quote from "../components/quote";
+import Quote from "../components/Quote";
 import Vreme from "../components/vreme";
 import { useStateContext } from "../components/StateContext";
 import Item from "../components/Item";

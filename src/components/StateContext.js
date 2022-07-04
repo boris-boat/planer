@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 
 const Context = createContext();
 export const StateContext = ({ children }) => {
-  
+  const [showUserMailModal, setShowUserMailModal] = useState(false);
+  const [userEmail, setUserEmail] = useState(null);
   const [category, setCategory] = useState("Everything");
   const [VremeShow, setVremeShow] = useState(false);
   const [torrentCategory, setTorrentCategory] = useState("All");
@@ -37,7 +38,10 @@ export const StateContext = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        
+        userEmail,
+        setUserEmail,
+        showUserMailModal,
+        setShowUserMailModal,
         numberOfResults,
         setNumberOfResults,
         torrentCategory,

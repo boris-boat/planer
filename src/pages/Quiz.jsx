@@ -1,10 +1,10 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Card, Container, Form, InputGroup, Spinner } from "react-bootstrap";
-import { useStateContext } from "../components/StateContext";
+
 
 const Quiz = () => {
-  const { setSearchBar } = useStateContext();
+
   const [question, setQuestion] = useState([]);
   const [options, setOptions] = useState([]);
   const [loadNext, setLoadNext] = useState("");
@@ -36,7 +36,7 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    setSearchBar(false);
+    
     const getQuestions = async () => {
       fetch("https://the-trivia-api.com/api/questions?limit=1")
         .then((res) => res.json())

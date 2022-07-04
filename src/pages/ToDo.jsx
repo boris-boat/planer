@@ -9,7 +9,7 @@ import {
   Row,
   Spinner,
 } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
 
 import Quote from "../components/quote";
 import Vreme from "../components/vreme";
@@ -69,7 +69,7 @@ function ToDo() {
 
  
   useEffect(() => {
-    setSearchBar(false);
+  
     const getTodos = async () => {
       fetch(REACT_APP_API_URL + "/todos/" + user)
         .then((res) => res.json())
@@ -85,7 +85,7 @@ function ToDo() {
 
     VremeShow,
     setVremeShow,
-    setSearchBar,
+
 
     newTodo,
     setnewTodo,

@@ -1,25 +1,25 @@
-import { Container, Col, Button } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import "../App.css";
 
 
 import { useNavigate } from "react-router-dom";
-import { useStateContext } from "../components/StateContext";
+
 import { useEffect } from "react";
 
 const Home = () => {
 
   const navigate = useNavigate();
 
-  let user = localStorage.getItem("user")?.split(" ")[0];
+  let user = localStorage?.getItem("user")?.split(" ")[0];
 
   // let token = localStorage.getItem("token");
-  user = localStorage.getItem("user")?.split(" ")[0];
-  const { setSearchBar } = useStateContext();
+ 
+ 
   const textStyle = {verticalAlign : "middle",marginBottom : "0"}
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
   useEffect(() => {
-    setSearchBar(false);
+   
     
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);

@@ -6,7 +6,7 @@ import TorrentCategorySelector from "../components/TorrentCategorySelector";
 import "../App.css";
 const TorrentExplorer = () => {
   const { REACT_APP_API_URL } = process.env;
-  const { setSearchBar, torrentCategory, numberOfResults } = useStateContext();
+  const {  torrentCategory, numberOfResults } = useStateContext();
 
   const [query, setQuery] = useState("");
   const [foundTorrents, setFoundTorrents] = useState([]);
@@ -30,10 +30,6 @@ const TorrentExplorer = () => {
         .catch((e) => console.log("Database error  : " + e));
     }
   };
-  useEffect(() => {
-    setSearchBar(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>

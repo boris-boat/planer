@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Col, Container, Form } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 import Recept from "../components/Recept";
 import ingredients from "../components/ingredients";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-import { useStateContext } from "../components/StateContext";
+
 const CookBook = () => {
   const { REACT_APP_COOKBOOK_API } = process.env;
-  const { setSearchBar } = useStateContext();
+
   let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
   let query = [];
   const [multiSelections, setMultiSelections] = useState([]);
@@ -21,10 +21,7 @@ const CookBook = () => {
     const { ...data } = await response.json();
     setFoundRecipes(data);
   };
-  useEffect(() => {
-    setSearchBar(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+
   
   const createQuery = () => {
     multiSelections.forEach((ajtem) => {

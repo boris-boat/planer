@@ -7,7 +7,7 @@ import { useStateContext } from "../components/StateContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../index.css";
-import NoUser from "./NoUser/NoUser";
+
 import Home from "./Home";
 const { REACT_APP_API_URL } = process.env;
 

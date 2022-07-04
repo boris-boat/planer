@@ -36,6 +36,7 @@ const Chat = () => {
       
       socket.off();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

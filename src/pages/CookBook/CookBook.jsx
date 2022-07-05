@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Button, Col, Container, Form } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
-import Recept from "../components/Recept";
-import ingredients from "../components/ingredients";
+import Recept from "../../components/Recept";
+import ingredients from "../../components/ingredients";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 
 const CookBook = () => {

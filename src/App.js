@@ -3,14 +3,14 @@ import Topnavbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
-import Login from "./pages/LoginSignup";
+import Login from "./pages/LoginSignup/LoginSignup";
 
-import NewsReworked from "./pages/NewsReworked";
-import ToDo from "./pages/ToDo";
+import NewsReworked from "./pages/NewsReworked/NewsReworked";
+import ToDo from "./pages/ToDo/ToDo";
 import Chat from "./Chat/Chat/Chat";
-import CookBook from "./pages/CookBook";
-import TorrentExplorer from "./pages/TorrentTracker";
-import Quiz from "./pages/Quiz";
+import CookBook from "./pages/CookBook/CookBook";
+import TorrentExplorer from "./pages/TorrentTracker/TorrentTracker";
+import Quiz from "./pages/Quiz/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";

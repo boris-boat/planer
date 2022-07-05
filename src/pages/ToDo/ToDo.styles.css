@@ -1,0 +1,15 @@
+.todoContainer {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  background-size: cover;
+}
+.cela-grupa {
+  width: 60%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

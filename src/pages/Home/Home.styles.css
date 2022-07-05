@@ -1,3 +1,32 @@
+.home {
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(97, 186, 255, 1) 0%,
+    rgba(166, 239, 253, 1) 90.1%
+  );
+  background-repeat: space;
+}
+.home:hover {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.toDoListImg {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  margin-top: 130px;
+  z-index: -1;
+  display: none;
+}
 .torrentImg {
   position: absolute;
   left: 20px;
@@ -17,7 +46,7 @@
   left: 0;
   top: 120px;
   display: none;
-    z-index: -1;
+  z-index: -1;
 }
 .newsImg {
   position: absolute;
@@ -34,6 +63,10 @@
 
   z-index: -1;
 }
+.logo {
+  height: 40px;
+  width: 40px;
+}
 @media (min-width: 680px) {
   .torrent:hover + .torrentImg {
     display: block;
@@ -49,5 +82,11 @@
   }
   .cook:hover + .cookImg {
     display: block;
+  }
+}
+@media (min-width: 680px) {
+  .toDo:hover + .toDoListImg {
+    display: block;
+    
   }
 }

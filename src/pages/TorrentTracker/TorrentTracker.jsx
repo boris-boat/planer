@@ -1,9 +1,9 @@
 import React, {useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Spinner } from "react-bootstrap";
-import { useStateContext } from "../components/StateContext";
-import Torrent from "../components/torrent";
-import TorrentCategorySelector from "../components/TorrentCategorySelector";
-import "../App.css";
+import { useStateContext } from "../../components/StateContext";
+import Torrent from "../../components/torrent";
+import TorrentCategorySelector from "../../components/TorrentCategorySelector";
+import "../../App.css";
 const TorrentExplorer = () => {
   const { REACT_APP_API_URL } = process.env;
   const {  torrentCategory, numberOfResults } = useStateContext();

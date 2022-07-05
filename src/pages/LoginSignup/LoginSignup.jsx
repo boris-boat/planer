@@ -2,13 +2,13 @@ import React from "react";
 import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStateContext } from "../components/StateContext";
+import { useStateContext } from "../../components/StateContext";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../index.css";
 
-import Home from "./Home/Home";
+
+import Home from "../Home/Home";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
@@ -83,7 +83,7 @@ const Login = () => {
                   <Row className="m-0 p-0 ">
                     <Image
                       className="m-0 p-0"
-                      src={require("../components/media/logosiroki-removebg-preview.png")}
+                      src={require("../../components/media/logosiroki-removebg-preview.png")}
                     ></Image>
                   </Row>
                 </Row>
@@ -211,7 +211,7 @@ const Login = () => {
                 style={{ height: "890px", width: "900px", borderRadius: "5px" }}
               >
                 <source
-                  src={require("../components/media/Final-Shot.mp4")}
+                  src={require("../../components/media/Final-Shot.mp4")}
                   type="video/mp4"
                 />
               </video>

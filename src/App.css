@@ -1,34 +1,8 @@
-.loginImg {
-  margin: 0 !important;
-  padding: 0 !important;
-}
+
 .btn {
   padding: 0.375rem 0.75rem !important;
 }
 
-.toDoListImg {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  margin-top: 130px;
-  z-index: -1;
-  display: none
-}
-.todoContainer {
-  text-align: center;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  background-size: cover;
-}
-.cela-grupa {
-  width: 60%;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
 #root {
   height: auto !important;
   min-height: 100vh;
@@ -53,41 +27,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.home {
-  margin-top: 10px;
-  border-radius: 10px;
-  display: flex;
-  height: auto;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  padding: 10px;
-  background-color: white;
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(97, 186, 255, 1) 0%,
-    rgba(166, 239, 253, 1) 90.1%
-  );
-  background-repeat: space;
-}
 
-.home:hover {
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-}
-.logo {
-  height: 40px;
-  width: 40px;
-}
 .siteName {
   margin-right: -30px !important;
 }
-@media (min-width: 680px) {
-  .toDo:hover + .toDoListImg {
-    display: block;
-    
-  }
-}
+
 @media (min-width: 220px) and (max-width: 680px) {
   .homeContainer,
   .torrent,
@@ -99,7 +43,6 @@ code {
   .quizCointainer {
     flex-direction: column;
     height: 100vh;
-
     position: fixed;
   }
   .questionCointainer {
@@ -117,9 +60,7 @@ code {
     margin: 0;
     padding: 0;
   }
-  .todoSvg {
-    display: none !important;
-  }
+
   .trackerContainer {
     flex-wrap: wrap;
   }

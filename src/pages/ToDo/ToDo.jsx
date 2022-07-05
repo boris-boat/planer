@@ -9,12 +9,12 @@ import {
   Row,
   Spinner,
 } from "react-bootstrap";
-
-import Quote from "../components/Quote";
-import Vreme from "../components/vreme";
-import { useStateContext } from "../components/StateContext";
-import Item from "../components/Item";
-import CategorySelector from "../components/CategorySelector";
+import "./ToDo.styles.css"
+import Quote from "../../components/Quote";
+import Vreme from "../../components/vreme";
+import { useStateContext } from "../../components/StateContext";
+import Item from "../../components/Item";
+import CategorySelector from "../../components/CategorySelector";
 
 function ToDo() {
   let user = localStorage?.getItem("user")?.split(" ")[0];

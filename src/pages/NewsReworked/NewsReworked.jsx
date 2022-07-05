@@ -1,6 +1,6 @@
 import React from "react";
-import { useStateContext } from "../components/StateContext";
-import "../App.css";
+import { useStateContext } from "../../components/StateContext";
+import "../../App.css";
 import { Container, ListGroup, Col, Row, Card } from "react-bootstrap";
 
 import { useEffect, useState } from "react";

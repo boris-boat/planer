@@ -1,7 +1,16 @@
-import { Container, Col } from "react-bootstrap";
-import "../App.css";
-import { ReactComponent as ToDoImg } from "../components/media/ilustrations/to_do_list.svg";
+import { Col, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "../../App.css";
+import "./Home.styles.css";
+import { ReactComponent as ToDoImg } from "../../components/media/ilustrations/to_do_list.svg";
+import { ReactComponent as TorrentImg } from "../../components/media/ilustrations/download.svg";
+import { ReactComponent as NewsImg } from "../../components/media/ilustrations/news.svg";
+import { ReactComponent as ExpenseImg } from "../../components/media/ilustrations/reciept.svg";
+import { ReactComponent as CookingImg } from "../../components/media/ilustrations/cook.svg";
+import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
+
+
+
 
 import { useEffect } from "react";
 
@@ -40,53 +49,71 @@ const Home = () => {
                   <h4 style={textStyle}>ToDo's / Reminders</h4>{" "}
                   <img
                     className="logo"
-                    src={require("../components/media/Icons/todo.jpg")}
+                    src={require("../../components/media/Icons/todo.jpg")}
                     alt=""
                   ></img>
                 </div>
-                <div className="logo align-self-center toDoListImg">
+                <div className="align-self-center toDoListImg">
                   <ToDoImg />
                 </div>
-                <div className="home" onClick={() => navigate("/torrent")}>
+                <div
+                  className="home torrent"
+                  onClick={() => navigate("/torrent")}
+                >
                   {" "}
                   <h4 style={textStyle}>Torrent tracker</h4>
                   <img
                     className="logo"
-                    src={require("../components/media/Icons/torrent.png")}
+                    src={require("../../components/media/Icons/torrent.png")}
                     alt=""
                   ></img>
                 </div>
-                <div className="home" onClick={() => navigate("/news")}>
+                <div className="align-self-center torrentImg">
+                  <TorrentImg />
+                </div>
+                <div className="home news" onClick={() => navigate("/news")}>
                   <h4 style={textStyle}>Daily news</h4>{" "}
                   <img
                     className="logo"
-                    src={require("../components/media/Icons/news.png")}
+                    src={require("../../components/media/Icons/news.png")}
                     alt=""
                   ></img>{" "}
                 </div>
-                <div className="home" onClick={() => navigate("/tracker")}>
+                <div className="align-self-center newsImg">
+                  <NewsImg />
+                </div>
+                <div className="home expense" onClick={() => navigate("/tracker")}>
                   <h4 style={textStyle}>Expense tracker </h4>
                   <img
                     className="logo align-self-center"
-                    src={require("../components/media/Icons/money.png")}
+                    src={require("../../components/media/Icons/money.png")}
                     alt=""
                   ></img>{" "}
                 </div>
-                <div className="home " onClick={() => navigate("/cookbook")}>
+                <div className="align-self-center expenseImg">
+                  <ExpenseImg />
+                </div>
+                <div className="home cook" onClick={() => navigate("/cookbook")}>
                   <h4 style={textStyle}>Kitchen Assistant</h4>
                   <img
                     className="logo align-self-center"
-                    src={require("../components/media/Icons/hat.png")}
+                    src={require("../../components/media/Icons/hat.png")}
                     alt=""
                   ></img>
                 </div>
-                <div className="home " onClick={() => navigate("/quiz")}>
+                <div className="align-self-center cookImg">
+                  <CookingImg />
+                </div>
+                <div className="home quiz" onClick={() => navigate("/quiz")}>
                   <h4 style={textStyle}>Quiz</h4>
                   <img
                     className="logo align-self-center"
-                    src={require("../components/media/Icons/quiz.png")}
+                    src={require("../../components/media/Icons/quiz.png")}
                     alt=""
                   ></img>
+                </div>
+                <div className="align-self-center quizImg">
+                  <QuizImg />
                 </div>
               </Container>
             </Col>

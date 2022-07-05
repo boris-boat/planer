@@ -1,0 +1,53 @@
+.torrentImg {
+  position: absolute;
+  left: 20px;
+  top: 100px;
+  display: none;
+  z-index: -1;
+}
+.expenseImg {
+  position: absolute;
+  left: 20px;
+  top: 150px;
+  display: none;
+  z-index: -1;
+}
+.quizImg {
+  position: absolute;
+  left: 0;
+  top: 120px;
+  display: none;
+    z-index: -1;
+}
+.newsImg {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  display: none;
+  z-index: -1;
+}
+.cookImg {
+  position: absolute;
+  right: 50px;
+  top: 60px;
+  display: none;
+
+  z-index: -1;
+}
+@media (min-width: 680px) {
+  .torrent:hover + .torrentImg {
+    display: block;
+  }
+  .news:hover + .newsImg {
+    display: block;
+  }
+  .quiz:hover + .quizImg {
+    display: block;
+  }
+  .expense:hover + .expenseImg {
+    display: block;
+  }
+  .cook:hover + .cookImg {
+    display: block;
+  }
+}

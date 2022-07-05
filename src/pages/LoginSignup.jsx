@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../index.css";
 
-import Home from "./Home";
+import Home from "./Home/Home";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {

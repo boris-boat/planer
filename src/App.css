@@ -5,6 +5,15 @@
 .btn {
   padding: 0.375rem 0.75rem !important;
 }
+
+.toDoListImg {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  margin-top: 130px;
+  z-index: -1;
+  display: none
+}
 .todoContainer {
   text-align: center;
   align-items: center;
@@ -61,9 +70,9 @@ code {
     rgba(97, 186, 255, 1) 0%,
     rgba(166, 239, 253, 1) 90.1%
   );
-
   background-repeat: space;
 }
+
 .home:hover {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
@@ -73,6 +82,12 @@ code {
 }
 .siteName {
   margin-right: -30px !important;
+}
+@media (min-width: 680px) {
+  .toDo:hover + .toDoListImg {
+    display: block;
+    
+  }
 }
 @media (min-width: 220px) and (max-width: 680px) {
   .homeContainer,

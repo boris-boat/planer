@@ -7,7 +7,7 @@ import Login from "./pages/LoginSignup/LoginSignup";
 
 import NewsReworked from "./pages/NewsReworked/NewsReworked";
 import ToDo from "./pages/ToDo/ToDo";
-import Chat from "./Chat/Chat/Chat";
+import Join from "./Chat/components/Join/Join";
 import CookBook from "./pages/CookBook/CookBook";
 import TorrentExplorer from "./pages/TorrentTracker/TorrentTracker";
 import Quiz from "./pages/Quiz/Quiz";
@@ -55,7 +55,7 @@ function App() {
           path="/chat"
           element={
             <ProtectedRoute user={user}>
-              <Chat />
+              <Join />
             </ProtectedRoute>
           }
         />

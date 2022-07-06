@@ -8,11 +8,11 @@ import { ReactComponent as NewsImg } from "../../components/media/ilustrations/n
 import { ReactComponent as ExpenseImg } from "../../components/media/ilustrations/reciept.svg";
 import { ReactComponent as CookingImg } from "../../components/media/ilustrations/cook.svg";
 import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
-
-
+import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
 
 
 import { useEffect } from "react";
+import Chat from "../../Chat/Chat/Chat";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -56,6 +56,18 @@ const Home = () => {
                 <div className="align-self-center toDoListImg">
                   <ToDoImg />
                 </div>
+                {/* <div className="home chat" onClick={() => navigate("/chat")}>
+                  <h4 style={textStyle}>Chat</h4>{" "}
+                  <img
+                    style={{borderRadius : "10px"}}
+                    className="logo"
+                    src={require("../../components/media/Icons/chat.png")}
+                    alt=""
+                  ></img>
+                </div>
+                <div className="align-self-center chatImg">
+                  <ChatImg />
+                </div> */}
                 <div
                   className="home torrent"
                   onClick={() => navigate("/torrent")}
@@ -82,7 +94,10 @@ const Home = () => {
                 <div className="align-self-center newsImg">
                   <NewsImg />
                 </div>
-                <div className="home expense" onClick={() => navigate("/tracker")}>
+                <div
+                  className="home expense"
+                  onClick={() => navigate("/tracker")}
+                >
                   <h4 style={textStyle}>Expense tracker </h4>
                   <img
                     className="logo align-self-center"
@@ -93,7 +108,10 @@ const Home = () => {
                 <div className="align-self-center expenseImg">
                   <ExpenseImg />
                 </div>
-                <div className="home cook" onClick={() => navigate("/cookbook")}>
+                <div
+                  className="home cook"
+                  onClick={() => navigate("/cookbook")}
+                >
                   <h4 style={textStyle}>Kitchen Assistant</h4>
                   <img
                     className="logo align-self-center"

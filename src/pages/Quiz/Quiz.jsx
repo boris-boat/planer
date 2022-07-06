@@ -1,8 +1,9 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Card, Container, Form, InputGroup, Spinner } from "react-bootstrap";
 
 const Quiz = () => {
+  const div = useRef(null);
   const [question, setQuestion] = useState([]);
   const [options, setOptions] = useState([]);
   const [loadNext, setLoadNext] = useState("");
@@ -33,18 +34,24 @@ const Quiz = () => {
     return Math.floor(Math.random() * 4);
   };
   const handleAnswer = (e) => {
+    for (let child of div.current.children) {
+      if (child.textContent === question[0].correctAnswer) {
+        child.style.backgroundColor = "green";
+      }
+    }
+
     if (question[0]?.correctAnswer === e.target.textContent) {
       e.currentTarget.style.backgroundColor = "green";
       setScore((score) => score + 1);
     } else {
       e.currentTarget.style.backgroundColor = "red";
     }
+  
 
     setTimeout(() => {
       setTotalQuestions((prev) => prev - 1);
       setLoadNext(e.target.textContent);
     }, 1000);
-    console.log(options);
   };
   useEffect(() => {
     const getQuestions = async () => {
@@ -84,6 +91,7 @@ const Quiz = () => {
             )}
           </Container>
           <Container
+            ref={div}
             className={`${center} flex-column answersCointainer`}
             style={{ width: "30%", height: "70%" }}
           >

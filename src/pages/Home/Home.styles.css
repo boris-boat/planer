@@ -48,6 +48,14 @@
   display: none;
   z-index: -1;
 }
+.chatImg {
+  position: absolute;
+  right: 20px;
+  top: 120px;
+  display: none;
+
+  z-index: -1;
+}
 .newsImg {
   position: absolute;
   right: 0;
@@ -83,10 +91,12 @@
   .cook:hover + .cookImg {
     display: block;
   }
+  .chat:hover + .chatImg {
+    display: block;
+  }
 }
 @media (min-width: 680px) {
   .toDo:hover + .toDoListImg {
     display: block;
-    
   }
 }

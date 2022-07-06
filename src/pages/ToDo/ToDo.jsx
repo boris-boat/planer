@@ -72,8 +72,11 @@ function ToDo() {
         .then((res) => res.json())
         .then((result) => setTodos(result))
         .catch((e) => console.log("Database error  : " + e));
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1500);  
     };
+
     getTodos();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -156,7 +159,7 @@ function ToDo() {
               <div className="cela-grupa" style={{ borderRadius: "10px" }}>
                 {loading ? (
                   <Spinner
-                    style={{ display: "flex", alignContent: "center" }}
+                    style={{ display: "flex", alignSelf : "center",marginTop : "50px" }}
                     animation="border"
                     role="status"
                   ></Spinner>

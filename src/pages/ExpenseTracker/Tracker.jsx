@@ -26,7 +26,7 @@ const Tracker = () => {
     showUserMailModal,
     setShowUserMailModal,
   } = useStateContext();
-  const navigate = useNavigate();
+
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user")?.split(" ")[0];
 

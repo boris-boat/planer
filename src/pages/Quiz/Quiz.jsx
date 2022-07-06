@@ -2,9 +2,7 @@ import { Box, Button, Modal, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Card, Container, Form, InputGroup, Spinner } from "react-bootstrap";
 
-
 const Quiz = () => {
-
   const [question, setQuestion] = useState([]);
   const [options, setOptions] = useState([]);
   const [loadNext, setLoadNext] = useState("");
@@ -34,9 +32,21 @@ const Quiz = () => {
   let randomGenerator = () => {
     return Math.floor(Math.random() * 4);
   };
+  const handleAnswer = (e) => {
+    if (question[0]?.correctAnswer === e.target.textContent) {
+      e.currentTarget.style.backgroundColor = "green";
+      setScore((score) => score + 1);
+    } else {
+      e.currentTarget.style.backgroundColor = "red";
+    }
 
+    setTimeout(() => {
+      setTotalQuestions((prev) => prev - 1);
+      setLoadNext(e.target.textContent);
+    }, 1000);
+    console.log(options);
+  };
   useEffect(() => {
-    
     const getQuestions = async () => {
       fetch("https://the-trivia-api.com/api/questions?limit=1")
         .then((res) => res.json())
@@ -84,17 +94,7 @@ const Quiz = () => {
                   style={{ width: "50%", margin: "10px" }}
                   key={option}
                   onClick={(e) => {
-                    if (question[0]?.correctAnswer === e.target.textContent) {
-                      e.currentTarget.style.backgroundColor = "green";
-                      setScore((score) => score + 1);
-                    } else {
-                      e.currentTarget.style.backgroundColor = "red";
-                    }
-                
-                    setTimeout(() => {
-                      setTotalQuestions((prev) => prev - 1);
-                      setLoadNext(e.target.textContent);
-                    }, 1000);
+                    handleAnswer(e);
                   }}
                 >
                   {option}

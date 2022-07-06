@@ -14,6 +14,7 @@ import Quiz from "./pages/Quiz/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
+import Chat from "./Chat/Chat/Chat";
 
 
 function App() {
@@ -53,6 +54,15 @@ function App() {
         />
         <Route
           path="/chat"
+          element={
+            <ProtectedRoute user={user}>
+              <Chat />
+            </ProtectedRoute>
+          }
+        />
+           <Route
+           exact
+          path="/join"
           element={
             <ProtectedRoute user={user}>
               <Join />

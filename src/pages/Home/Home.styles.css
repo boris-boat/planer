@@ -51,7 +51,7 @@
 .chatImg {
   position: absolute;
   right: 20px;
-  top: 120px;
+  top: 50px;
   display: none;
 
   z-index: -1;

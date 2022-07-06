@@ -12,7 +12,7 @@ import { ReactComponent as ChatImg } from "../../components/media/ilustrations/c
 
 
 import { useEffect } from "react";
-import Chat from "../../Chat/Chat/Chat";
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const Home = () => {
                 <div className="align-self-center toDoListImg">
                   <ToDoImg />
                 </div>
-                {/* <div className="home chat" onClick={() => navigate("/chat")}>
+                <div className="home chat" onClick={() => navigate("/join")}>
                   <h4 style={textStyle}>Chat</h4>{" "}
                   <img
                     style={{borderRadius : "10px"}}
@@ -67,7 +67,7 @@ const Home = () => {
                 </div>
                 <div className="align-self-center chatImg">
                   <ChatImg />
-                </div> */}
+                </div>
                 <div
                   className="home torrent"
                   onClick={() => navigate("/torrent")}

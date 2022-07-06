@@ -7,14 +7,14 @@ import {
   InputGroup,
   ListGroup,
   Row,
-  Spinner,
 } from "react-bootstrap";
-import "./ToDo.styles.css"
+import "./ToDo.styles.css";
 import Quote from "../../components/Quote";
 import Vreme from "../../components/vreme";
 import { useStateContext } from "../../components/StateContext";
 import Item from "../../components/Item";
 import CategorySelector from "../../components/CategorySelector";
+
 
 function ToDo() {
   let user = localStorage?.getItem("user")?.split(" ")[0];
@@ -74,7 +74,7 @@ function ToDo() {
         .catch((e) => console.log("Database error  : " + e));
       setTimeout(() => {
         setLoading(false);
-      }, 1500);  
+      }, 1500);
     };
 
     getTodos();
@@ -158,11 +158,11 @@ function ToDo() {
               )}
               <div className="cela-grupa" style={{ borderRadius: "10px" }}>
                 {loading ? (
-                  <Spinner
-                    style={{ display: "flex", alignSelf : "center",marginTop : "50px" }}
-                    animation="border"
-                    role="status"
-                  ></Spinner>
+                  <img
+                  className="loadingGif"
+                    src={require("../../components/media/loading.gif")}
+                    alt=""
+                  ></img>
                 ) : todos.length !== 0 ? (
                   todos
                     .filter((val) => {

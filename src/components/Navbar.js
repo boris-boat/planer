@@ -68,6 +68,16 @@ const Topnavbar = () => {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
+                  onClick={() => {
+                    navigate("/join");
+                    setShow(false);
+                  }}
+                >
+                  Chat
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
                  onClick={() => {
                   setVremeShow(true)
                   setShow(false)}

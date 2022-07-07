@@ -1,0 +1,12 @@
+.notFoundImg {
+    margin: auto;
+    padding-top: 100px;
+}
+
+
+@media (min-width: 220px) and (max-width: 680px) {
+
+.imidz {
+    width:100%;
+}  
+}

@@ -91,7 +91,7 @@ function App() {
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
-        <Route exact path="/ne8ws" element={<FourOFour/>} />
+        <Route exact path="/*" element={<FourOFour/>} />
 
         <Route
           exact

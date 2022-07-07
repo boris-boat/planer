@@ -48,7 +48,7 @@ const TorrentExplorer = () => {
          
         </Container>
         <Form
-          style={{ width: "90%" }}
+          style={{ width: "90%",paddingLeft : "30px" }}
           className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
             setSearching(true);
@@ -61,7 +61,7 @@ const TorrentExplorer = () => {
         >
           {" "}
           <Form.Group >
-            <InputGroup  className="d-flex flex-nowrap ">
+            <InputGroup  className="d-flex flex-nowrap">
               <input
               style={{width : "40%"}}
                 className="input-field"

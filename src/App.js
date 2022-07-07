@@ -15,6 +15,7 @@ import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
 import Chat from "./Chat/Chat/Chat";
+import FourOFour from "./pages/PageNotFound/404";
 
 
 function App() {
@@ -90,6 +91,8 @@ function App() {
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
+        <Route exact path="/ne8ws" element={<FourOFour/>} />
+
         <Route
           exact
           path="/toDo"

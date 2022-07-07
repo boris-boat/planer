@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 .loadingGif {
   opacity: 0.5;
@@ -19,4 +20,8 @@
   width: 50%;
   align-self: center;
   margin-top: 50px;
+}
+.list-group-item {
+  overflow: auto;
+  max-width: 100%;
 }

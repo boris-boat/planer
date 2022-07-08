@@ -6,6 +6,7 @@ import {
   Form,
   InputGroup,
   ListGroup,
+  NavLink,
   Row,
 } from "react-bootstrap";
 import "./ToDo.styles.css";
@@ -142,19 +143,19 @@ function ToDo() {
               <div className="mb-3" style={{ color: "white" }}>
                 Category : {category}
               </div>
-              <a
-                style={{ marginLeft: "10px" }}
+              <NavLink
+                style={{ marginLeft: "10px",padding : "0"  }}
                 onClick={() => {
                   handleShare();
                 }}
                 href={`viber://forward?text=${list}`}
               >
                 <img
-                  style={{ width: "100px" }}
+                  style={{ width: "100px"}}
                   src={require("../../components/media/Icons/shareviber.png")}
                   alt=""
                 ></img>
-              </a>
+              </NavLink>
             </div>
 
             <ListGroup

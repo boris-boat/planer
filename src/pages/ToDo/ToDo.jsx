@@ -69,7 +69,7 @@ function ToDo() {
 
   useEffect(() => {
     const getTodos = async () => {
-      fetch(REACT_APP_API_URL + "/todos/" + user)
+      fetch("http://imasverver.ddns.net:1112/todos/" + user)
         .then((res) => res.json())
         .then((result) => setTodos(result))
         .catch((e) => console.log("Database error  : " + e));

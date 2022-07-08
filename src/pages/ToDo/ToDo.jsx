@@ -15,12 +15,12 @@ import { useStateContext } from "../../components/StateContext";
 import Item from "../../components/Item";
 import CategorySelector from "../../components/CategorySelector";
 
-
 function ToDo() {
   let user = localStorage?.getItem("user")?.split(" ")[0];
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [list, setList] = useState();
   const { REACT_APP_API_URL } = process.env;
 
   const addToDo = async () => {
@@ -81,16 +81,21 @@ function ToDo() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const {
-    category,
+  const handleShare = () => {
+    let tempList = [];
+    todos.forEach((todo) => {
+      if (category === "Everything") {
+        tempList.push(todo.text);
+      } else if (todo.category === category) tempList.push(todo.text);
+    });
+    setList(tempList);
+    console.log(tempList);
+  };
+  const { category, VremeShow, setVremeShow, newTodo, setnewTodo } =
+    useStateContext();
 
-    VremeShow,
-    setVremeShow,
-
-    newTodo,
-    setnewTodo,
-  } = useStateContext();
   const center = "d-flex justify-content-center align-items-center";
+
   return (
     <div className="todoContainer">
       <>
@@ -132,8 +137,24 @@ function ToDo() {
             <Row style={{ width: "100vw", margin: "0" }} className={center}>
               <CategorySelector style={{ width: "100%" }} />
             </Row>
-            <div className="mb-3" style={{ color: "white" }}>
-              Category : {category}
+            <div className="d-flex flex-row wrap-nowrap justify-content-between shareContainer" style={{width : "20%"}}>
+              {" "}
+              <div className="mb-3" style={{ color: "white" }}>
+                Category : {category}
+              </div>
+              <a
+                style={{ marginLeft: "10px" }}
+                onClick={() => {
+                  handleShare();
+                }}
+                href={`viber://forward?text=${list}`}
+              >
+                <img
+                  style={{ width: "100px" }}
+                  src={require("../../components/media/Icons/shareviber.png")}
+                  alt=""
+                ></img>
+              </a>
             </div>
 
             <ListGroup
@@ -159,7 +180,7 @@ function ToDo() {
               <div className="cela-grupa" style={{ borderRadius: "10px" }}>
                 {loading ? (
                   <img
-                  className="loadingGif"
+                    className="loadingGif"
                     src={require("../../components/media/loading.gif")}
                     alt=""
                   ></img>

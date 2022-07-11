@@ -3,12 +3,10 @@ import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../../components/StateContext";
-import "../../App.css"
-
+import "../../App.css";
+import "../Home/Home.styles.css"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
 import Home from "../Home/Home";
 const { REACT_APP_API_URL } = process.env;
 
@@ -220,7 +218,7 @@ const Login = () => {
           </Col>
         </Row>
       ) : (
-      <Home/>
+        <Home />
       )}
 
       <ToastContainer position="bottom-left" />

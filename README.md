@@ -4,7 +4,7 @@
 
 ## Live website 
 
-https://imasve.netlify.app
+https://imasve.co
 
 ## Instalation instructions 
 

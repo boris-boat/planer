@@ -25,7 +25,9 @@
   overflow: auto;
   max-width: 100%;
 }
-
+.listGrupaToDo {
+max-width: 50% !important;
+}
 @media (min-width: 220px) and (max-width: 680px) {
   .cela-grupa {
     width: 90% !important;

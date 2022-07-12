@@ -22,7 +22,7 @@ const Topnavbar = () => {
   return (
     <>
       {user ? (
-        <Navbar bg="primary" variant="dark" fixed="top">
+        <Navbar bg="primary" variant="dark" fixed="top" style={{margin : "auto"}}>
           <Container>
             <Nav.Item>
               <MenuIcon

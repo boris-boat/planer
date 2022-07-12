@@ -100,7 +100,7 @@ function ToDo() {
   return (
     <div className="todoContainer">
       <>
-        <Row className="todoListContainer" style={{ margin: "0" }}>
+        <Row className="todoListContainer" style={{ margin: "0",width : "100%" }}>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
           <Quote />
           <Container style={{ height: "auto", padding: "0" }}>

@@ -26,7 +26,7 @@ const Topnavbar = () => {
           <Container>
             <Nav.Item>
               <MenuIcon
-                style={{ color: "white",cursor: "pointer" }}
+                style={{ color: "white",cursor: "pointer" }} 
                 onClick={() => setShow(true)}
               />
             </Nav.Item>

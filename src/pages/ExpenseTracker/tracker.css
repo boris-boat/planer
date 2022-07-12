@@ -34,6 +34,7 @@
 .otherNote {
   cursor : pointer;
   margin : 0;
+  padding-right: 10px;
 }
 @media (min-width: 220px) and (max-width: 680px) {
   .inputButtonContainer {

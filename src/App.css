@@ -32,9 +32,10 @@ code {
   margin-right: -30px !important;
 }
 .accImg{
-  width: 30px;
+  width: 25px;
   
 }
+
 @media (min-width: 220px) and (max-width: 680px) {
   .homeContainer,
   .torrent,

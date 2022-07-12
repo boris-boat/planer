@@ -38,4 +38,7 @@ max-width: 50% !important;
   .list-group-item {
     max-width: 100% !important;
   }
+  .listGrupaToDo {
+    max-width: 100% !important;
+    }
 }

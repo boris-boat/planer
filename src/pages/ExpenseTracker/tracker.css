@@ -31,7 +31,10 @@
 .p-autocomplete-input {
   width: 100%;
 }
-
+.otherNote {
+  cursor : pointer;
+  margin : 0;
+}
 @media (min-width: 220px) and (max-width: 680px) {
   .inputButtonContainer {
     width: auto !important;

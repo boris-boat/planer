@@ -43,7 +43,7 @@ const Home = () => {
             </Col>
 
             <Col className={`${center}`}>
-              <Container style={{ width: "60%" }} className="homeContainer">
+              <Container className="homeContainer">
                 {" "}
                 <div className="home toDo" onClick={() => navigate("/todo")}>
                   <h4 style={textStyle}>ToDo's / Reminders</h4>{" "}

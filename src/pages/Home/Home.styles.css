@@ -75,6 +75,9 @@
   height: 40px;
   width: 40px;
 }
+.homeContainer {
+  width: 60% !important;
+}
 @media (min-width: 680px) {
   .torrent:hover + .torrentImg {
     display: block;
@@ -94,9 +97,13 @@
   .chat:hover + .chatImg {
     display: block;
   }
-}
-@media (min-width: 680px) {
   .toDo:hover + .toDoListImg {
     display: block;
+  }
+}
+
+@media (min-width: 220px) and (max-width: 680px) {
+  .homeContainer {
+    width: 100% !important;
   }
 }

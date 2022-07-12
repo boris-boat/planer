@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
+import { Nav, Navbar, Container, Offcanvas, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "./StateContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../App.css";
 import Vreme from "./vreme";
+
 
 const Topnavbar = () => {
   const navigate = useNavigate();
@@ -37,18 +38,17 @@ const Topnavbar = () => {
             >
               <h3 style={{ margin: "0" }} >imaSve</h3>
             </Navbar.Brand>
+            <Dropdown>
+      <Dropdown.Toggle  id="dropdown-basic" variant="primary" >
+        <img src={require("./media/Icons/account2.png")} alt="" className="accImg"></img>
+      </Dropdown.Toggle>
 
-            <h5
-              style={{
-                color: "white",
-                cursor: "pointer",
-                padding: "0",
-                marginBottom: "0",
-              }}
-              onClick={() => logout()}
-            >
-              Logout
-            </h5>
+      <Dropdown.Menu align={{ sm: 'start' }}>
+        <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
+       
+      </Dropdown.Menu>
+    </Dropdown>
+            
           </Container>
 
           <Offcanvas show={show} onHide={handleClose}>

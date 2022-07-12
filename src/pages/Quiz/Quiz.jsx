@@ -79,11 +79,12 @@ const Quiz = () => {
           style={{ height: "80%" }}
         >
           <Container
-            className="questionCointainer d-flex  justify-content-center align-items-center "
+            className="questionCointainer d-flex  justify-content-center align-items-center flex-column "
             style={{ width: "30%", height: "70%" }}
-          >
+          >{totalQuestions > 1  ? (<h2>{totalQuestions} rounds left</h2>) : (<h2>Last round</h2>)} 
             {question.length !== 0 ? (
               <Card style={{ backgroundColor: "black", color: "white" }}>
+                
                 {question[0].question}
               </Card>
             ) : (

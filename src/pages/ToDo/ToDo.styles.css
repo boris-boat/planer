@@ -33,4 +33,7 @@
   .shareContainer {
     width : 80% !important
   }
+  .list-group-item {
+    max-width: 100% !important;
+  }
 }

@@ -10,7 +10,7 @@ const Item = (props) => {
 
   return (
     <div className="d-flex flex-row justify-content-between align-items-cente" >
-      <div>
+      <div style={{border : "black"}}>
         <h5
           style={{
             textDecorationLine: props.item.completed ? "line-through" : "",

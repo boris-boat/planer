@@ -6,13 +6,14 @@ import "primeicons/primeicons.css"; //icons
 import { AutoComplete } from "primereact/autocomplete";
 import { Dropdown } from "primereact/dropdown";
 import { Button as ButtonPrime } from "primereact/button";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useStateContext } from "../../components/StateContext";
 import "./tracker.css";
 import emailjs from "@emailjs/browser";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailModal from "../../components/EmailModal";
+
 
 const Tracker = () => {
   const {
@@ -36,6 +37,9 @@ const Tracker = () => {
   const [healthTotal, setHealthTotal] = useState(0);
   const [transitTotal, setTransitTotal] = useState(0);
   const [otherTotal, setOtherTotal] = useState(0);
+  const [otherNote, setOtherNote] = useState("");
+  const [showNoteModal, setshowNoteModal] = useState(false);
+
   let operand;
   const resetValue = (msg) => {
     setValue(0);
@@ -131,6 +135,7 @@ const Tracker = () => {
     setHealthTotal(initialState.health);
     setTransitTotal(initialState.transit);
     setOtherTotal(initialState.other);
+    setOtherNote(initialState.otherNote)
     setTotal(
       initialState.bills +
         initialState.food +
@@ -200,8 +205,6 @@ const Tracker = () => {
   };
 
   const handleEmailSendClick = async () => {
-    console.log(userEmail);
-
     await emailjs
       .send(
         "service_8zjjwsl",
@@ -244,6 +247,7 @@ const Tracker = () => {
         health: healthTotal,
         other: otherTotal,
         transit: transitTotal,
+        otherNote: otherNote,
       }),
     })
       .then((res) => res.json())
@@ -266,7 +270,7 @@ const Tracker = () => {
       .catch((e) => console.log(e));
     resetAll();
   };
-
+  console.log(otherNote);
   return (
     <div style={{ paddingTop: "60px" }}>
       <ToastContainer position="top-center" />
@@ -346,7 +350,15 @@ const Tracker = () => {
                 <h2>Entertainment : {entertainmentTotal}</h2>
                 <h2>Health : {healthTotal}</h2>
                 <h2>Transportation : {transitTotal}</h2>
-                <h2>Other : {otherTotal}</h2>
+                <h2 className="d-flex flex-row justify-content-between">
+                  Other : {otherTotal}{" "}
+                  <h2
+                    className="otherNote"
+                    onClick={() => setshowNoteModal(true)}
+                  >
+                    Note
+                  </h2>
+                </h2>
                 <h1 className="total">Total {total}</h1>
               </Container>
 
@@ -393,7 +405,22 @@ const Tracker = () => {
               </Container>
             </Col>
           </Row>
-
+        
+          <Modal
+          onHide={() => {setshowNoteModal(false)}}
+            show={showNoteModal} 
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          ><Modal.Header closeButton>NOTES</Modal.Header>
+            <Modal.Body>
+              <textarea
+                style={{ width: "100%", height: "300px" }}
+                value={otherNote}
+                onChange={(e) => setOtherNote(e.target.value)}
+              ></textarea>
+            </Modal.Body>
+          </Modal>
           <EmailModal
             onExited={() => {
               if (userEmail) handleEmailSendClick();

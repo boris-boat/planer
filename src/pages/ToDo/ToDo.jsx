@@ -52,6 +52,7 @@ function ToDo() {
 
     setTodos(todosCopy.filter((todo) => todo._id !== id));
   };
+  //sets striketrough for completed todos
   const completeTodo = async (id) => {
     setTodos(
       todos.map((todo) => {
@@ -68,6 +69,7 @@ function ToDo() {
   };
 
   useEffect(() => {
+    //first population of todos
     const getTodos = async () => {
       fetch(REACT_APP_API_URL + "/todos/" + user)
         .then((res) => res.json())
@@ -82,6 +84,7 @@ function ToDo() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  //handles sharing with viber
   const handleShare = () => {
     let tempList = [];
     todos.forEach((todo) => {

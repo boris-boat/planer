@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./404.styles.css"
 const FourOFour = () => {
+  //page showing 404 no page found
   const navigate = useNavigate();
   const center =
     "d-flex align-content-center justify-content-center align-items-center flex-column";

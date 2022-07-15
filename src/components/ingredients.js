@@ -1,4 +1,5 @@
 /* eslint-disable no-dupe-keys */
+// list of ingredients for cookbook app
 let ingredients = 
 [
     

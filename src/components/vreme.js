@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 const { REACT_APP_WEATHERID } = process.env;
 
 export default function Vreme(props) {
+//weather info modal
+
   const [trenutnoVreme, settrenutnoVreme] = useState([]);
   const [grad, setGrad] = useState("");
   const { temp, feels_like, temp_min, temp_max, humidity } = trenutnoVreme;

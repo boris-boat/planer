@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Item = (props) => {
+  //single todo item
   const [todo, setTodo] = useState("");
 
   useEffect(() => {

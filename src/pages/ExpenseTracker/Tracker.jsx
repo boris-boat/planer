@@ -28,131 +28,78 @@ const Tracker = () => {
   const [otherNote, setOtherNote] = useState("");
   const [showNoteModal, setshowNoteModal] = useState(false);
 
-  let operand;
-  const resetValue = (msg) => {
-    setValue(0);
-    notify(msg);
-  };
 
+//gets initial values
   const getTrackerInfo = async () => {
     fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
       .catch((e) => console.log("Database error  : " + e));
   };
+ //resets the values to zero in db and sets initial values 
 
-  const handleClick =  (expense) => {
+  const resetValue = (msg) => {
+    setValue(0);
+    notify(msg);
+  };
+  //declares constant operand and uses it in calculations 
+  let operand;
+  const calculate = (initial, value) => {
+    if (operand === "+") {
+      resetValue("Added");
+      
+      return initial + value;
+    }
+    if (operand === "-") {
+      resetValue("Subtracted");
+      return initial - value;
+    }
+  };
+  const handleClick = (expense) => {
+    //total calculated regardles of expense
     operand === "+"
       ? setTotal((prevState) => prevState + parseInt(value))
       : setTotal((prevState) => prevState - parseInt(value));
     switch (expense) {
       case "Bills":
-        if (operand === "+") {
-          setInitialState((prev) => ({
-            ...prev,
-            bills: initialState.bills + parseInt(value),
-          }));
-          resetValue("Added");
-        }
-        if (operand === "-") {
-          setInitialState((prev) => ({
-            ...prev,
-            bills: initialState.bills - parseInt(value),
-          }));
-          resetValue("Subtracted");
-        }
+        setInitialState((prev) => ({
+          ...prev,
+          bills: calculate(initialState.bills, parseInt(value)),
+        }));
 
         break;
       case "Food":
-        if (operand === "+") {
-          setInitialState((prev) => ({
-            ...prev,
-            food: initialState.food + parseInt(value),
-          }));
+        setInitialState((prev) => ({
+          ...prev,
+          food: calculate(initialState.food, parseInt(value)),
+        }));
 
-          resetValue("Added");
-        }
-        if (operand === "-") {
-          setInitialState((prev) => ({
-            ...prev,
-            food: initialState.food - parseInt(value),
-          }));
-
-          resetValue("Subtracted");
-        }
-        resetValue();
         break;
       case "Entertainment":
-        if (operand === "+") {
-          setInitialState((prev) => ({
-            ...prev,
-            entertainment: initialState.entertainment + parseInt(value),
-          }));
-
-          resetValue("Added");
-        }
-        if (operand === "-") {
-          setInitialState((prev) => ({
-            ...prev,
-            entertainment: initialState.entertainment - parseInt(value),
-          }));
-
-          resetValue("Subtracted");
-        }
+        setInitialState((prev) => ({
+          ...prev,
+          entertainment: calculate(initialState.entertainment, parseInt(value)),
+        }));
         break;
       case "Health":
-        if (operand === "+") {
-          setInitialState((prev) => ({
-            ...prev,
-            health: initialState.health + parseInt(value),
-          }));
-
-          resetValue("Added");
-        }
-        if (operand === "-") {
-          setInitialState((prev) => ({
-            ...prev,
-            health: initialState.health - parseInt(value),
-          }));
-
-          resetValue("Subtracted");
-        }
+        setInitialState((prev) => ({
+          ...prev,
+          health: calculate(initialState.health, parseInt(value)),
+        }));
 
         break;
       case "Transportation":
-        if (operand === "+") {
-          setInitialState((prev) => ({
-            ...prev,
-            transit: initialState.transit + parseInt(value),
-          }));
-
-          resetValue("Added");
-        }
-        if (operand === "-") {
-          setInitialState((prev) => ({
-            ...prev,
-            transit: initialState.transit - parseInt(value),
-          }));
-          resetValue("Subtracted");
-        }
+        setInitialState((prev) => ({
+          ...prev,
+          transit: calculate(initialState.transit, parseInt(value)),
+        }));
 
         break;
       case "Other":
-        if (operand === "+") {
-          setInitialState((prev) => ({
-            ...prev,
-            other: initialState.other + parseInt(value),
-          }));
-          resetValue("Added");
-        }
-        if (operand === "-") {
-          setInitialState((prev) => ({
-            ...prev,
-            other: initialState.other - parseInt(value),
-          }));
-
-          resetValue("Subtracted");
-        }
+        setInitialState((prev) => ({
+          ...prev,
+          other: calculate(initialState.other, parseInt(value)),
+        }));
 
         break;
 
@@ -184,7 +131,7 @@ const Tracker = () => {
       totalExpenses = totalExpenses + parseInt(Object.values(initialState)[i]);
     }
     setTotal(totalExpenses);
-    setOtherNote(initialState.otherNote)
+    setOtherNote(initialState.otherNote);
   }, [initialState]);
 
   const d = new Date();
@@ -202,7 +149,7 @@ const Tracker = () => {
     "November",
     "December",
   ];
-
+//template for sending emails
   const templateParams = {
     subject: "Expenses for the month of " + month[d.getMonth()] + " so far",
     bills: "Bills total : " + initialState.bills,
@@ -234,7 +181,7 @@ const Tracker = () => {
       );
   };
 
-  //stavi save data posle svakog klika
+
   const saveData = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/saveData", {
       method: "POST",
@@ -253,9 +200,9 @@ const Tracker = () => {
       }),
     })
       .then((res) => res.json())
-      .then((result) => setInitialState(result)).then(setOtherNote(initialState.otherNote))
+      .then((result) => setInitialState(result))
+      .then(setOtherNote(initialState.otherNote))
       .catch((e) => console.log(e));
-     
   };
 
   const resetData = async () => {

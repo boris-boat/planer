@@ -21,6 +21,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { notify } = useStateContext();
+  //creates user in the database
   const addUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/createUser", {

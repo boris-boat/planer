@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import "./NoUser.styles.css"
 const NoUser = () => {
     const navigate = useNavigate();
-    
+//page that displays no current user alert    
   return (
     <div className="noUserContainer">
         <div className="noUserSmallContainer">

@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 const Torrent = ({ foundTorrents }) => {
-  
+  //single torrent found in torrent search app
   return (
     <div style={{ marginTop: "20px",maxWidth : "100%" }}>
       <Table striped bordered hover style={{background : "white"}} responsive="sm">

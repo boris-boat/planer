@@ -2,8 +2,8 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 
 const Recept = ({ recipes }) => {
-  console.log(recipes.results)
 
+//single recipe result for cookbook app
   return (
     <div
       style={{ width: "100%" }}

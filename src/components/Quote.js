@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 
 const Quote = () => {
+  //quote of the day for todo app
   const [quote, setQuote] = useState("");
   const updateQuote = async () => {
     const response = await fetch("https://api.quotable.io/random?maxLength=50");

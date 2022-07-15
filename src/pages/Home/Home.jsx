@@ -25,6 +25,7 @@ const Home = () => {
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
   useEffect(() => {
+    //gets current location for weather info
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);

@@ -1,12 +1,19 @@
-import React, {useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Spinner } from "react-bootstrap";
+import React, { useState } from "react";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  InputGroup,
+  Spinner,
+} from "react-bootstrap";
 import { useStateContext } from "../../components/StateContext";
 import Torrent from "../../components/torrent";
 import TorrentCategorySelector from "../../components/TorrentCategorySelector";
 import "../../App.css";
 const TorrentExplorer = () => {
   const { REACT_APP_API_URL } = process.env;
-  const {  torrentCategory, numberOfResults } = useStateContext();
+  const { torrentCategory, numberOfResults } = useStateContext();
 
   const [query, setQuery] = useState("");
   const [foundTorrents, setFoundTorrents] = useState([]);
@@ -33,22 +40,24 @@ const TorrentExplorer = () => {
 
   return (
     <>
-      <div 
-        style={{height:"auto",paddingTop : "150px" }}
+      <div
+        style={{ height: "auto", paddingTop: "150px" }}
         className="d-flex flex-column  align-items-center torrent "
       >
         <Container
-          style={{ fontSize: "30px", color: "white", marginBottom: "30px",textAlign : "center" }}
+          style={{
+            fontSize: "30px",
+            color: "white",
+            marginBottom: "30px",
+            textAlign: "center",
+          }}
           className="d-flex flex-column align-items-center"
         >
           <Col>TORRENT TRACKER</Col>
-          <Col >Search through different online trackers on one location!</Col>
-          
-
-         
+          <Col>Search through different online trackers on one location!</Col>
         </Container>
         <Form
-          style={{ width: "90%",paddingLeft : "30px" }}
+          style={{ width: "90%", paddingLeft: "30px" }}
           className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
             setSearching(true);
@@ -60,10 +69,10 @@ const TorrentExplorer = () => {
           }}
         >
           {" "}
-          <Form.Group >
-            <InputGroup  className="d-flex flex-nowrap">
+          <Form.Group>
+            <InputGroup className="d-flex flex-nowrap">
               <input
-              style={{width : "40%"}}
+                style={{ width: "40%" }}
                 className="input-field"
                 placeholder="Search"
                 value={query}
@@ -76,10 +85,10 @@ const TorrentExplorer = () => {
             </InputGroup>
           </Form.Group>
         </Form>
-        <Container className="d-flex flex-column justify-content-center align-items-center" >
+        <Container className="d-flex flex-column justify-content-center align-items-center">
           {" "}
           {foundTorrents.length > 0 ? (
-            <Torrent foundTorrents={foundTorrents}  />
+            <Torrent foundTorrents={foundTorrents} />
           ) : null}
           {searching ? (
             <Spinner

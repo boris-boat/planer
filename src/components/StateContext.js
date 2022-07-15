@@ -20,20 +20,7 @@ export const StateContext = ({ children }) => {
       autoClose: 500,
       hideProgressBar: true,
     });
-  // const validate = async () => {
-  //   const createTokenTest = async () => {
-  //     let value = await fetch("http://localhost:3001/").then((response) =>
-  //       response.json()
-  //     );
-  //     return value;
-  //   };
-  //   let token = localStorage.getItem("token");
-  //   setValidated(
-  //     localStorage.getItem("user") &&
-  //     localStorage.getItem("user") === user + " " + token
-  //   );
-
-  // };
+ 
 
   return (
     <Context.Provider

@@ -5,6 +5,7 @@ import { useStateContext } from "./StateContext";
 const EmailModal = (props) => {
   const [email, setEmail] = useState("");
   const { setUserEmail, setShowUserMailModal } = useStateContext();
+  //modal that asks user for their email to be sent with expenses
   return (
     <Modal
       {...props}

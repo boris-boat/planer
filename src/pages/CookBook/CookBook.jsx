@@ -13,21 +13,21 @@ const CookBook = () => {
   const [multiSelections, setMultiSelections] = useState([]);
   const [foundRecipes, setFoundRecipes] = useState("");
   const ref = useRef();
+   //creates a querry to be used for search 
+   const createQuery = () => {
+    multiSelections.forEach((ajtem) => {
+      base += `&includeIngredients=${ajtem.label}`;
+    });
+  };
   const handleSearch = async () => {
     multiSelections.map((selection) => query.push(selection.label));
     createQuery();
-
     const response = await fetch(base);
     const { ...data } = await response.json();
     setFoundRecipes(data);
   };
 
-  
-  const createQuery = () => {
-    multiSelections.forEach((ajtem) => {
-      base += `&includeIngredients=${ajtem.label}`;
-    });
-  };
+ 
   const center = "d-flex justify-content-center align-items-center align-content-center"
   return (
     <Container>

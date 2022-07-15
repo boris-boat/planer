@@ -7,6 +7,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 const NewsReworked = () => {
   const { REACT_APP_API_URL } = process.env;
   const [news, setNews] = useState([]);
+  //sends fetch to node server which returns sorted news
   const getNews = async () => {
     fetch(REACT_APP_API_URL + "/news/getnews")
       .then((res) => res.json())

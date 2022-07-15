@@ -4,7 +4,7 @@ import { useStateContext } from "./StateContext";
 import "../App.css";
 const CategorySelector = () => {
   const { setCategory } = useStateContext();
-
+//category selector for todo app
   return (
     <Container
       

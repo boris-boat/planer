@@ -31,6 +31,7 @@
 
 .sentText {
   display: flex;
+  margin: 0;
   align-items: center;
   font-family: Helvetica;
   color: #828282;

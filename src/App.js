@@ -7,14 +7,14 @@ import Login from "./pages/LoginSignup/LoginSignup";
 
 import NewsReworked from "./pages/NewsReworked/NewsReworked";
 import ToDo from "./pages/ToDo/ToDo";
-import Join from "./Chat/components/Join/Join";
+import Join from "./pages/Chat/components/Join/Join";
 import CookBook from "./pages/CookBook/CookBook";
 import TorrentExplorer from "./pages/TorrentTracker/TorrentTracker";
 import Quiz from "./pages/Quiz/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
-import Chat from "./Chat/Chat/Chat";
+import Chat from "./pages/Chat/Chat/Chat";
 import FourOFour from "./pages/PageNotFound/404";
 
 

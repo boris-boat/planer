@@ -9,8 +9,8 @@ const Item = (props) => {
   }, [props.item]);
 
   return (
-    <div className="d-flex flex-row justify-content-between align-items-cente" >
-      <div style={{border : "black"}}>
+    <div className="d-flex flex-row justify-content-between align-items-cente">
+      <div>
         <h5
           style={{
             textDecorationLine: props.item.completed ? "line-through" : "",
@@ -23,7 +23,9 @@ const Item = (props) => {
           {todo.text}
         </h5>
       </div>
+     
       <div className="d-flex align-items-end">
+      
         <button
           className="btn-danger btn-sm d-flex "
           onClick={() => {
@@ -32,6 +34,8 @@ const Item = (props) => {
         >
           REMOVE
         </button>
+
+        
       </div>
     </div>
   );

@@ -46,13 +46,13 @@ const Quiz = () => {
     } else {
       e.currentTarget.style.backgroundColor = "red";
     }
-  
 
     setTimeout(() => {
       setTotalQuestions((prev) => prev - 1);
       setLoadNext(e.target.textContent);
     }, 1000);
   };
+
   useEffect(() => {
     const getQuestions = async () => {
       fetch("https://the-trivia-api.com/api/questions?limit=1")
@@ -61,6 +61,7 @@ const Quiz = () => {
     };
 
     getQuestions();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadNext]);
   useEffect(() => {
@@ -81,10 +82,14 @@ const Quiz = () => {
           <Container
             className="questionCointainer d-flex  justify-content-center align-items-center flex-column "
             style={{ width: "30%", height: "70%" }}
-          >{totalQuestions > 1  ? (<h2>{totalQuestions} rounds left</h2>) : (<h2>Last round</h2>)} 
+          >
+            {totalQuestions > 1 ? (
+              <h2>{totalQuestions} rounds left</h2>
+            ) : (
+              <h2>Last round</h2>
+            )}
             {question.length !== 0 ? (
               <Card style={{ backgroundColor: "black", color: "white" }}>
-                
                 {question[0].question}
               </Card>
             ) : (
@@ -122,7 +127,6 @@ const Quiz = () => {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-
               setTotalQuestions(input);
               setQuestionCount(input);
             }}

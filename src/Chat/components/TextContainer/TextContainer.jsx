@@ -9,7 +9,7 @@ const TextContainer = ({ users }) => (
     <div>
       <h1>We value your privacy!</h1>
       <h2>What happens on imaSve, stays on imaSve</h2>
-      
+      <h3>Please allow some time for server to start.Thank you.</h3>
     </div>
     {
       users

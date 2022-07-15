@@ -14,15 +14,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailModal from "../../components/EmailModal";
 
-
 const Tracker = () => {
-  const {
-    setSearchBar,
-    notify,
-    userEmail,
-    showUserMailModal,
-    setShowUserMailModal,
-  } = useStateContext();
+  const { notify, userEmail, showUserMailModal, setShowUserMailModal } =
+    useStateContext();
 
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user")?.split(" ")[0];
@@ -31,12 +25,6 @@ const Tracker = () => {
   const [value, setValue] = useState(0);
   const [initialState, setInitialState] = useState(0);
   const [total, setTotal] = useState(0);
-  const [billsTotal, setBillsTotal] = useState(0);
-  const [foodTotal, setFoodTotal] = useState(0);
-  const [entertainmentTotal, setEntertainmentTotal] = useState(0);
-  const [healthTotal, setHealthTotal] = useState(0);
-  const [transitTotal, setTransitTotal] = useState(0);
-  const [otherTotal, setOtherTotal] = useState(0);
   const [otherNote, setOtherNote] = useState("");
   const [showNoteModal, setshowNoteModal] = useState(false);
 
@@ -53,72 +41,116 @@ const Tracker = () => {
       .catch((e) => console.log("Database error  : " + e));
   };
 
-  const handleClick = async (expense) => {
+  const handleClick =  (expense) => {
     operand === "+"
-      ? addTotal((prevState) => prevState + parseInt(value))
-      : addTotal((prevState) => prevState - parseInt(value));
+      ? setTotal((prevState) => prevState + parseInt(value))
+      : setTotal((prevState) => prevState - parseInt(value));
     switch (expense) {
       case "Bills":
         if (operand === "+") {
-          setBillsTotal(billsTotal + parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            bills: initialState.bills + parseInt(value),
+          }));
           resetValue("Added");
         }
         if (operand === "-") {
-          setBillsTotal(billsTotal - parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            bills: initialState.bills - parseInt(value),
+          }));
           resetValue("Subtracted");
         }
 
         break;
       case "Food":
         if (operand === "+") {
-          setFoodTotal(foodTotal + parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            food: initialState.food + parseInt(value),
+          }));
+
           resetValue("Added");
         }
         if (operand === "-") {
-          setFoodTotal(foodTotal - parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            food: initialState.food - parseInt(value),
+          }));
+
           resetValue("Subtracted");
         }
         resetValue();
         break;
       case "Entertainment":
         if (operand === "+") {
-          setEntertainmentTotal(entertainmentTotal + parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            entertainment: initialState.entertainment + parseInt(value),
+          }));
+
           resetValue("Added");
         }
         if (operand === "-") {
-          setEntertainmentTotal(entertainmentTotal - parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            entertainment: initialState.entertainment - parseInt(value),
+          }));
+
           resetValue("Subtracted");
         }
         break;
       case "Health":
         if (operand === "+") {
-          setHealthTotal(healthTotal + parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            health: initialState.health + parseInt(value),
+          }));
+
           resetValue("Added");
         }
         if (operand === "-") {
-          setHealthTotal(healthTotal - parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            health: initialState.health - parseInt(value),
+          }));
+
           resetValue("Subtracted");
         }
 
         break;
       case "Transportation":
         if (operand === "+") {
-          setTransitTotal(transitTotal + parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            transit: initialState.transit + parseInt(value),
+          }));
+
           resetValue("Added");
         }
         if (operand === "-") {
-          setTransitTotal(transitTotal - parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            transit: initialState.transit - parseInt(value),
+          }));
           resetValue("Subtracted");
         }
 
         break;
       case "Other":
         if (operand === "+") {
-          setOtherTotal(otherTotal + parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            other: initialState.other + parseInt(value),
+          }));
           resetValue("Added");
         }
         if (operand === "-") {
-          setOtherTotal(otherTotal - parseInt(value));
+          setInitialState((prev) => ({
+            ...prev,
+            other: initialState.other - parseInt(value),
+          }));
+
           resetValue("Subtracted");
         }
 
@@ -127,23 +159,6 @@ const Tracker = () => {
       default:
         break;
     }
-  };
-  const setValues = () => {
-    setFoodTotal(initialState.food);
-    setBillsTotal(initialState.bills);
-    setEntertainmentTotal(initialState.entertainment);
-    setHealthTotal(initialState.health);
-    setTransitTotal(initialState.transit);
-    setOtherTotal(initialState.other);
-    setOtherNote(initialState.otherNote)
-    setTotal(
-      initialState.bills +
-        initialState.food +
-        initialState.entertainment +
-        initialState.health +
-        initialState.transit +
-        initialState.other
-    );
   };
 
   const expenses = [
@@ -154,27 +169,23 @@ const Tracker = () => {
     { type: "Transportation", value: "Transportation" },
     { type: "Other", value: "Other" },
   ];
-  const setTrackerData = (result) => {
-    setInitialState(result);
-  };
 
   useEffect(() => {
-    setSearchBar(false);
+    //on load getting prev values from db
     try {
       getTrackerInfo();
     } catch (error) {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    try {
-      setValues();
-    } catch (error) {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //adding total expenses
+    let totalExpenses = 0;
+    for (let i = 2; i < 8; i++) {
+      totalExpenses = totalExpenses + parseInt(Object.values(initialState)[i]);
+    }
+    setTotal(totalExpenses);
+    setOtherNote(initialState.otherNote)
   }, [initialState]);
-
-  const addTotal = (num) => {
-    setTotal(num);
-  };
 
   const d = new Date();
   const month = [
@@ -194,12 +205,12 @@ const Tracker = () => {
 
   const templateParams = {
     subject: "Expenses for the month of " + month[d.getMonth()] + " so far",
-    bills: "Bills total : " + billsTotal,
-    food: "Food total : " + foodTotal,
-    entertainment: "Entertainment total : " + entertainmentTotal,
-    health: "Health total : " + healthTotal,
-    transit: "Transportation total : " + transitTotal,
-    other: "Other total : " + otherTotal,
+    bills: "Bills total : " + initialState.bills,
+    food: "Food total : " + initialState.food,
+    entertainment: "Entertainment total : " + initialState.entertainment,
+    health: "Health total : " + initialState.health,
+    transit: "Transportation total : " + initialState.transit,
+    other: "Other total : " + initialState.other,
     total: "Total : " + total,
     email: userEmail,
   };
@@ -223,15 +234,6 @@ const Tracker = () => {
       );
   };
 
-  const resetAll = () => {
-    setBillsTotal(0);
-    setFoodTotal(0);
-    setEntertainmentTotal(0);
-    setHealthTotal(0);
-    setTransitTotal(0);
-    setOtherTotal(0);
-    notify("Data has been reset!");
-  };
   //stavi save data posle svakog klika
   const saveData = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/saveData", {
@@ -241,18 +243,19 @@ const Tracker = () => {
       },
       body: JSON.stringify({
         createdBy: user,
-        bills: billsTotal,
-        entertainment: entertainmentTotal,
-        food: foodTotal,
-        health: healthTotal,
-        other: otherTotal,
-        transit: transitTotal,
+        bills: initialState.bills,
+        entertainment: initialState.entertainment,
+        food: initialState.food,
+        health: initialState.health,
+        other: initialState.other,
+        transit: initialState.transit,
         otherNote: otherNote,
       }),
     })
       .then((res) => res.json())
-      .then((result) => setTrackerData(result))
+      .then((result) => setInitialState(result)).then(setOtherNote(initialState.otherNote))
       .catch((e) => console.log(e));
+     
   };
 
   const resetData = async () => {
@@ -266,11 +269,10 @@ const Tracker = () => {
       }),
     })
       .then((res) => res.json())
-      .then((result) => setTrackerData(result))
+      .then((result) => setInitialState(result))
       .catch((e) => console.log(e));
-    resetAll();
   };
-  console.log(otherNote);
+
   return (
     <div style={{ paddingTop: "60px" }}>
       <ToastContainer position="top-center" />
@@ -345,13 +347,13 @@ const Tracker = () => {
 
               <Container className="totals" style={{ marginTop: "10px" }}>
                 {<h1 className="month">{month[d.getMonth()]} expenses : </h1>}
-                <h2>Bills : {billsTotal}</h2>
-                <h2>Food : {foodTotal}</h2>
-                <h2>Entertainment : {entertainmentTotal}</h2>
-                <h2>Health : {healthTotal}</h2>
-                <h2>Transportation : {transitTotal}</h2>
+                <h2>Bills : {initialState.bills}</h2>
+                <h2>Food : {initialState.food}</h2>
+                <h2>Entertainment : {initialState.entertainment}</h2>
+                <h2>Health : {initialState.health}</h2>
+                <h2>Transportation : {initialState.transit}</h2>
                 <h2 className="d-flex flex-row justify-content-between">
-                  Other : {otherTotal}{" "}
+                  Other : {initialState.other}{" "}
                   <h2
                     className="otherNote"
                     onClick={() => setshowNoteModal(true)}
@@ -405,14 +407,17 @@ const Tracker = () => {
               </Container>
             </Col>
           </Row>
-        
+
           <Modal
-          onHide={() => {setshowNoteModal(false)}}
-            show={showNoteModal} 
+            onHide={() => {
+              setshowNoteModal(false);
+            }}
+            show={showNoteModal}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-          ><Modal.Header closeButton>NOTES</Modal.Header>
+          >
+            <Modal.Header closeButton>NOTES</Modal.Header>
             <Modal.Body>
               <textarea
                 style={{ width: "100%", height: "300px" }}

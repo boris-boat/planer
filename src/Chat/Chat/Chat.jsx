@@ -13,7 +13,7 @@ let socket;
 const Chat = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  // const [name, setName] = useState("");
+
   const [room, setRoom] = useState("");
   const [users, setUsers] = useState("");
   const [messages, setMessages] = useState([]);

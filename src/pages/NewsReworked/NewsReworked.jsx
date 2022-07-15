@@ -8,7 +8,7 @@ const NewsReworked = () => {
   const { REACT_APP_API_URL } = process.env;
   const [news, setNews] = useState([]);
   const getNews = async () => {
-    fetch(REACT_APP_API_URL + "/getnews")
+    fetch(REACT_APP_API_URL + "/news/getnews")
       .then((res) => res.json())
       .then((result) => setNews(result));
   };

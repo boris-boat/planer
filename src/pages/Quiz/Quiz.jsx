@@ -30,9 +30,11 @@ const Quiz = () => {
   };
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
+    //generates random number to sort correct and incorrect answers
   let randomGenerator = () => {
     return Math.floor(Math.random() * 4);
   };
+  
   const handleAnswer = (e) => {
     for (let child of div.current.children) {
       if (child.textContent === question[0].correctAnswer) {
@@ -65,6 +67,7 @@ const Quiz = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadNext]);
   useEffect(() => {
+    //randomizes answers
     if (question[0]?.incorrectAnswers.length) {
       const answers = [...question[0].incorrectAnswers];
       answers.splice(randomGenerator(), 0, question[0].correctAnswer);
@@ -162,7 +165,7 @@ const Quiz = () => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style} className={`${center} modalContainer`}>
-              <Typography
+              <div
                 id="modal-modal-title"
                 variant="h6"
                 component="h2"
@@ -185,7 +188,7 @@ const Quiz = () => {
                     </h5>
                   </>
                 )}
-              </Typography>
+              </div>
               <Button
                 style={{ marginLeft: "10px" }}
                 variant="contained"

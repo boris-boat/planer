@@ -107,10 +107,7 @@ function ToDo() {
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
           <Quote />
           <Container style={{ height: "auto", padding: "0" }}>
-            <h1 className="mt-3" style={{ color: "white" }}>
-              Welcome {user} !
-            </h1>
-
+          
             <Row className="d-inline-flex mt-3">
               <Form
                 onSubmit={(e) => {

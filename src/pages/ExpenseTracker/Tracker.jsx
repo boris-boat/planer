@@ -28,26 +28,25 @@ const Tracker = () => {
   const [otherNote, setOtherNote] = useState("");
   const [showNoteModal, setshowNoteModal] = useState(false);
 
-
-//gets initial values
+  //gets initial values
   const getTrackerInfo = async () => {
     fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
       .catch((e) => console.log("Database error  : " + e));
   };
- //resets the values to zero in db and sets initial values 
+  //resets the values to zero in db and sets initial values
 
   const resetValue = (msg) => {
     setValue(0);
     notify(msg);
   };
-  //declares constant operand and uses it in calculations 
+  //declares constant operand and uses it in calculations
   let operand;
   const calculate = (initial, value) => {
     if (operand === "+") {
       resetValue("Added");
-      
+
       return initial + value;
     }
     if (operand === "-") {
@@ -60,6 +59,7 @@ const Tracker = () => {
     operand === "+"
       ? setTotal((prevState) => prevState + parseInt(value))
       : setTotal((prevState) => prevState - parseInt(value));
+      //calculate new value depending on expense variable
     switch (expense) {
       case "Bills":
         setInitialState((prev) => ({
@@ -121,6 +121,7 @@ const Tracker = () => {
     //on load getting prev values from db
     try {
       getTrackerInfo();
+      setOtherNote(initialState.otherNote);
     } catch (error) {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -131,8 +132,11 @@ const Tracker = () => {
       totalExpenses = totalExpenses + parseInt(Object.values(initialState)[i]);
     }
     setTotal(totalExpenses);
-    setOtherNote(initialState.otherNote);
+    
   }, [initialState]);
+useEffect(() => {
+  setOtherNote(initialState.otherNote)
+}, [initialState.otherNote])
 
   const d = new Date();
   const month = [
@@ -149,7 +153,7 @@ const Tracker = () => {
     "November",
     "December",
   ];
-//template for sending emails
+  //template for sending emails
   const templateParams = {
     subject: "Expenses for the month of " + month[d.getMonth()] + " so far",
     bills: "Bills total : " + initialState.bills,
@@ -180,8 +184,7 @@ const Tracker = () => {
         }
       );
   };
-
-
+ 
   const saveData = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/saveData", {
       method: "POST",
@@ -201,7 +204,7 @@ const Tracker = () => {
     })
       .then((res) => res.json())
       .then((result) => setInitialState(result))
-      .then(setOtherNote(initialState.otherNote))
+
       .catch((e) => console.log(e));
   };
 
@@ -301,12 +304,12 @@ const Tracker = () => {
                 <h2>Transportation : {initialState.transit}</h2>
                 <h2 className="d-flex flex-row justify-content-between">
                   Other : {initialState.other}{" "}
-                  <h2
+                  <p
                     className="otherNote"
                     onClick={() => setshowNoteModal(true)}
                   >
                     Note
-                  </h2>
+                  </p>
                 </h2>
                 <h1 className="total">Total {total}</h1>
               </Container>

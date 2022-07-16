@@ -21,6 +21,7 @@ const Chat = () => {
   const ENDPOINT = "https://boris-chatapp.herokuapp.com/";
 
   let name = localStorage.getItem("user")?.split(" ")[0];
+  //joins the room on first render
   useEffect(() => {
     const { room } = queryString.parse(location.search);
     setRoom(room);
@@ -38,7 +39,7 @@ const Chat = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  //hook to keep track fo messages and users
   useEffect(() => {
     socket.on("message", (message) => {
       setMessages((messages) => [...messages, message]);
@@ -47,7 +48,7 @@ const Chat = () => {
       setUsers(users);
     });
   }, []);
-
+  //message sending function
   const sendMessage = (event) => {
     event.preventDefault();
     if (message) {

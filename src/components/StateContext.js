@@ -8,8 +8,6 @@ export const StateContext = ({ children }) => {
   const [category, setCategory] = useState("Everything");
   const [VremeShow, setVremeShow] = useState(false);
   const [torrentCategory, setTorrentCategory] = useState("All");
-  const [searchBar, setSearchBar] = useState(true);
-  const [search, setSearch] = useState("");
   const [newTodo, setnewTodo] = useState("");
   const [creator, setCreator] = useState("");
   const [testToken, setTestToken] = useState("");
@@ -20,7 +18,6 @@ export const StateContext = ({ children }) => {
       autoClose: 500,
       hideProgressBar: true,
     });
- 
 
   return (
     <Context.Provider
@@ -35,16 +32,14 @@ export const StateContext = ({ children }) => {
         setTorrentCategory,
         validated,
         setValidated,
-        searchBar,
-        setSearchBar,
+
         category,
         setCategory,
         VremeShow,
         setVremeShow,
         setTestToken,
         testToken,
-        search,
-        setSearch,
+
         newTodo,
         setnewTodo,
         creator,

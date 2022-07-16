@@ -7,7 +7,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 
 const CookBook = () => {
   const { REACT_APP_COOKBOOK_API } = process.env;
-
+//base querry where rest of info is added
   let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
   let query = [];
   const [multiSelections, setMultiSelections] = useState([]);

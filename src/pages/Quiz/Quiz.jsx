@@ -143,11 +143,13 @@ const Quiz = () => {
 
             <InputGroup className={`${center} flex-column`}>
               <input
+                required
                 min={"1"}
                 className="input-field mb-2"
                 type="number"
                 onChange={(e) => {
                   setInput(e.target.value);
+                
                 }}
               />
               <Button type="submit" variant="contained" id="button-addon2">

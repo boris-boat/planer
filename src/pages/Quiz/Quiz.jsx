@@ -1,7 +1,7 @@
-import { Box, Button, Modal, Typography } from "@mui/material";
+import { Box, Button, Modal } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Container, Form, InputGroup, Spinner } from "react-bootstrap";
-
+import "./Quiz.styles.css"
 const Quiz = () => {
   const div = useRef(null);
   const [question, setQuestion] = useState([]);
@@ -30,11 +30,11 @@ const Quiz = () => {
   };
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
-    //generates random number to sort correct and incorrect answers
+  //generates random number to sort correct and incorrect answers
   let randomGenerator = () => {
     return Math.floor(Math.random() * 4);
   };
-  
+
   const handleAnswer = (e) => {
     for (let child of div.current.children) {
       if (child.textContent === question[0].correctAnswer) {
@@ -76,7 +76,7 @@ const Quiz = () => {
   }, [question]);
 
   return (
-    <Container className={center} style={{ height: "100vh" }}>
+    <Container className={center} style={{ height: "100vh",paddingTop : "150px" }}>
       {totalQuestions > 0 ? (
         <Container
           className={`d-flex align-content-center quizCointainer text-center`}
@@ -149,7 +149,6 @@ const Quiz = () => {
                 type="number"
                 onChange={(e) => {
                   setInput(e.target.value);
-                
                 }}
               />
               <Button type="submit" variant="contained" id="button-addon2">

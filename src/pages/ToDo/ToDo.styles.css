@@ -26,19 +26,20 @@
   max-width: 100%;
 }
 .listGrupaToDo {
-max-width: 50% !important;
+  max-width: 50% !important;
 }
 @media (min-width: 220px) and (max-width: 680px) {
   .cela-grupa {
     width: 90% !important;
   }
   .shareContainer {
-    width : 80% !important
+    width: 80% !important;
   }
   .list-group-item {
     max-width: 100% !important;
   }
   .listGrupaToDo {
     max-width: 100% !important;
-    }
+  }
+
 }

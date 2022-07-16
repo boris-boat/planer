@@ -1,0 +1,11 @@
+@media (min-width: 220px) and (max-width: 680px) {
+  .quizCointainer {
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+  }
+  .questionCointainer {
+    width: 100% !important;
+    height: 30%;
+  }
+}

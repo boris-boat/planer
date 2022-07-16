@@ -1,0 +1,9 @@
+@media (min-width: 220px) and (max-width: 680px) {
+  .lginPage {
+    margin: 0;
+    padding: 0;
+  }
+  .loginImg {
+    display: none !important;
+  }
+}

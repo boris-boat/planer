@@ -25,34 +25,37 @@
   left: 0;
   margin-top: 130px;
   z-index: -1;
-  display: none;
+  opacity: 0;
 }
 .torrentImg {
   position: absolute;
   left: 20px;
   top: 100px;
-  display: none;
+  opacity: 0;
+
   z-index: -1;
 }
 .expenseImg {
   position: absolute;
   left: 20px;
   top: 150px;
-  display: none;
+  opacity: 0;
+
   z-index: -1;
 }
 .quizImg {
   position: absolute;
   left: 0;
   top: 120px;
-  display: none;
+  opacity: 0;
+
   z-index: -1;
 }
 .chatImg {
   position: absolute;
   right: 20px;
   top: 50px;
-  display: none;
+  opacity: 0;
 
   z-index: -1;
 }
@@ -60,14 +63,15 @@
   position: absolute;
   right: 0;
   top: 150px;
-  display: none;
+  opacity: 0;
+
   z-index: -1;
 }
 .cookImg {
   position: absolute;
   right: 50px;
   top: 60px;
-  display: none;
+  opacity: 0;
   z-index: -1;
 }
 .logo {
@@ -78,26 +82,15 @@
   width: 60% !important;
 }
 @media (min-width: 680px) {
-  .torrent:hover + .torrentImg {
-    display: block;
-  }
-  .news:hover + .newsImg {
-    display: block;
-  }
-  .quiz:hover + .quizImg {
-    display: block;
-  }
-  .expense:hover + .expenseImg {
-    display: block;
-  }
-  .cook:hover + .cookImg {
-    display: block;
-  }
-  .chat:hover + .chatImg {
-    display: block;
-  }
+  .torrent:hover + .torrentImg,
+  .news:hover + .newsImg,
+  .quiz:hover + .quizImg,
+  .expense:hover + .expenseImg,
+  .cook:hover + .cookImg,
+  .chat:hover + .chatImg,
   .toDo:hover + .toDoListImg {
-    display: block;
+    transition: all 0.5s;
+    opacity: 1;
   }
 }
 

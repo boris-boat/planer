@@ -35,8 +35,7 @@ const Tracker = () => {
       .then((result) => setInitialState(result[0]))
       .catch((e) => console.log("Database error  : " + e));
   };
-  //resets the values to zero in db and sets initial values
-
+//resets inputs and notifies of done change
   const resetValue = (msg) => {
     setValue(0);
     notify(msg);
@@ -54,6 +53,7 @@ const Tracker = () => {
       return initial - value;
     }
   };
+  //handles expenses input
   const handleClick = (expense) => {
     //total calculated regardles of expense
     operand === "+"
@@ -207,6 +207,7 @@ useEffect(() => {
 
       .catch((e) => console.log(e));
   };
+  //resets the values to zero in db and sets initial values
 
   const resetData = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/resetData", {

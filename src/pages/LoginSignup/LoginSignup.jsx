@@ -48,6 +48,8 @@ const Login = () => {
   const loginUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/login", {
+      
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +61,9 @@ const Login = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          localStorage.setItem("token", data.token);
+          //kreiraj ovde da mozemo uzeti email isto kad se registruje
+          //data daje user sa servera 
+         // console.log(data)
           if (data) {
             localStorage.setItem("user", username + " " + data.token);
             navigate("/home");

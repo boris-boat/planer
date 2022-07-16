@@ -3,7 +3,6 @@
   border-radius: 10px;
   display: flex;
   height: auto;
-  justify-content: center;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
@@ -32,7 +31,6 @@
   left: 20px;
   top: 100px;
   opacity: 0;
-
   z-index: -1;
 }
 .expenseImg {
@@ -40,7 +38,6 @@
   left: 20px;
   top: 150px;
   opacity: 0;
-
   z-index: -1;
 }
 .quizImg {
@@ -48,7 +45,6 @@
   left: 0;
   top: 120px;
   opacity: 0;
-
   z-index: -1;
 }
 .chatImg {
@@ -56,7 +52,6 @@
   right: 20px;
   top: 50px;
   opacity: 0;
-
   z-index: -1;
 }
 .newsImg {
@@ -64,7 +59,6 @@
   right: 0;
   top: 150px;
   opacity: 0;
-
   z-index: -1;
 }
 .cookImg {
@@ -97,5 +91,14 @@
 @media (min-width: 220px) and (max-width: 680px) {
   .homeContainer {
     width: 100% !important;
+  }
+  .toDoListImg,
+  .torrentImg,
+  .expenseImg,
+  .quizImg,
+  .chatImg,
+  .newsImg,
+  .cookImg {
+    display: none;
   }
 }

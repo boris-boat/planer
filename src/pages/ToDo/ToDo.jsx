@@ -6,7 +6,6 @@ import {
   Form,
   InputGroup,
   ListGroup,
-  NavLink,
   Row,
 } from "react-bootstrap";
 import "./ToDo.styles.css";
@@ -103,11 +102,13 @@ function ToDo() {
   return (
     <div className="todoContainer">
       <>
-        <Row className="todoListContainer" style={{ margin: "0",width : "100%" }}>
+        <Row
+          className="todoListContainer"
+          style={{ margin: "0", width: "100%" }}
+        >
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
           <Quote />
           <Container style={{ height: "auto", padding: "0" }}>
-          
             <Row className="d-inline-flex mt-3">
               <Form
                 onSubmit={(e) => {
@@ -138,24 +139,27 @@ function ToDo() {
             <Row style={{ width: "100vw", margin: "0" }} className={center}>
               <CategorySelector style={{ width: "100%" }} />
             </Row>
-            <div className="d-flex flex-row wrap-nowrap justify-content-between shareContainer" style={{width : "20%"}}>
+            <div
+              className="d-flex flex-row wrap-nowrap justify-content-between shareContainer"
+              style={{ width: "20%" }}
+            >
               {" "}
               <div className="mb-3" style={{ color: "white" }}>
                 Category : {category}
               </div>
-              <NavLink
-                style={{ marginLeft: "10px",padding : "0"  }}
+              <a
+                style={{ marginLeft: "10px", padding: "0" }}
                 onClick={() => {
                   handleShare();
                 }}
                 href={`viber://forward?text=${list}`}
               >
                 <img
-                  style={{ width: "100px"}}
+                  style={{ width: "100px" }}
                   src={require("../../components/media/Icons/shareviber.png")}
                   alt=""
                 ></img>
-              </NavLink>
+              </a>
             </div>
 
             <ListGroup

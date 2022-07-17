@@ -57,7 +57,7 @@ const TorrentExplorer = () => {
           <Col>Search through different online trackers on one location!</Col>
         </Container>
         <Form
-          style={{ width: "90%", paddingLeft: "30px" }}
+          style={{ width: "90%", paddingLeft: "10px" }}
           className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
             setSearching(true);

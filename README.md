@@ -41,7 +41,7 @@ An app that extracts RSS feeds from 4 sites via backend and parseRss library the
 
 ## Expense Tracker
 
-- Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB, VictoryPie for pie chart, react-toastify, emailJs
+- Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB, react-toastify, emailJs
 
 Expense tracker stylized using bootstrap, CRUD operation using front and backend. A whole month data is displayed via pie chart and the option of sending emails with current values. Used toastify for notifications about sending emails and changing values.
 

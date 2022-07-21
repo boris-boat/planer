@@ -75,7 +75,7 @@ const CookBook = () => {
             
           >
             {foundRecipes ? (
-              <Recept recipes={foundRecipes} />
+              <Recept recipes={foundRecipes}/>
             ) : (
               <div>
                 <h1 style={{color : "white"}}>Please select ingredients and press search!</h1>

@@ -19,7 +19,8 @@ const Tracker = () => {
     useStateContext();
 
   const { REACT_APP_API_URL } = process.env;
-  let user = localStorage.getItem("user")?.split(" ")[0];
+  let user = localStorage.getItem("user")
+
 
   const [expense, setExpense] = useState("");
   const [value, setValue] = useState(0);
@@ -35,7 +36,7 @@ const Tracker = () => {
       .then((result) => setInitialState(result[0]))
       .catch((e) => console.log("Database error  : " + e));
   };
-//resets inputs and notifies of done change
+  //resets inputs and notifies of done change
   const resetValue = (msg) => {
     setValue(0);
     notify(msg);
@@ -54,12 +55,12 @@ const Tracker = () => {
     }
   };
   //handles expenses input
-  const handleClick = (expense) => {
+  const handleClick = async (expense) => {
     //total calculated regardles of expense
     operand === "+"
       ? setTotal((prevState) => prevState + parseInt(value))
       : setTotal((prevState) => prevState - parseInt(value));
-      //calculate new value depending on expense variable
+    //calculate new value depending on expense variable
     switch (expense) {
       case "Bills":
         setInitialState((prev) => ({
@@ -125,18 +126,19 @@ const Tracker = () => {
     } catch (error) {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  //adding total expenses
   useEffect(() => {
-    //adding total expenses
+    liveSave();
     let totalExpenses = 0;
     for (let i = 2; i < 8; i++) {
       totalExpenses = totalExpenses + parseInt(Object.values(initialState)[i]);
     }
     setTotal(totalExpenses);
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState]);
-useEffect(() => {
-  setOtherNote(initialState.otherNote)
-}, [initialState.otherNote])
+  useEffect(() => {
+    setOtherNote(initialState.otherNote);
+  }, [initialState.otherNote]);
 
   const d = new Date();
   const month = [
@@ -177,15 +179,15 @@ useEffect(() => {
       .then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
-          notify("Email sent !");
+          notify(`Email sent to ${userEmail} !`);
         },
         function (error) {
           console.log("FAILED...", error);
         }
       );
   };
- 
-  const saveData = async () => {
+  //saves data after each input
+  const liveSave = async () => {
     await fetch(REACT_APP_API_URL + "/tracker/saveData", {
       method: "POST",
       headers: {
@@ -201,12 +203,9 @@ useEffect(() => {
         transit: initialState.transit,
         otherNote: otherNote,
       }),
-    })
-      .then((res) => res.json())
-      .then((result) => setInitialState(result))
-
-      .catch((e) => console.log(e));
+    });
   };
+
   //resets the values to zero in db and sets initial values
 
   const resetData = async () => {
@@ -303,16 +302,16 @@ useEffect(() => {
                 <h2>Entertainment : {initialState.entertainment}</h2>
                 <h2>Health : {initialState.health}</h2>
                 <h2>Transportation : {initialState.transit}</h2>
-                <h2 className="d-flex flex-row justify-content-between">
-                  Other : {initialState.other}{" "}
-                  <p
+                <h2>Other : {initialState.other} </h2>
+                <h1 className="d-flex flex-row justify-content-between total">
+                  Total {total}{" "}
+                  <Button
                     className="otherNote"
                     onClick={() => setshowNoteModal(true)}
                   >
-                    Note
-                  </p>
-                </h2>
-                <h1 className="total">Total {total}</h1>
+                    Notes
+                  </Button>
+                </h1>
               </Container>
 
               <Container
@@ -320,19 +319,9 @@ useEffect(() => {
                 style={{
                   marginTop: "20px",
                   display: "flex",
-                  justifyContent: "space-between",
+                  justifyContent: "space-around",
                 }}
               >
-                <Row style={{ width: "30%" }}>
-                  <Button
-                    onClick={() => {
-                      saveData();
-                      notify("Data saved !");
-                    }}
-                  >
-                    Save changes{" "}
-                  </Button>
-                </Row>
                 <Row style={{ width: "30%" }}>
                   <Button
                     onClick={() => {
@@ -349,7 +338,11 @@ useEffect(() => {
                 <Row style={{ width: "40%" }}>
                   <Button
                     onClick={() => {
-                      setShowUserMailModal(true);
+                      if (!userEmail) {
+                        setShowUserMailModal(true);
+                      } else if (userEmail) {
+                        handleEmailSendClick();
+                      }
                     }}
                   >
                     Send expense data to email.{" "}

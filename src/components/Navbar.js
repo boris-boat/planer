@@ -4,51 +4,63 @@ import { useNavigate } from "react-router-dom";
 import { useStateContext } from "./StateContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../App.css";
-import Vreme from "./vreme";
-
+import Vreme from "./WeatherModal";
+import AccountInfoModal from "./AccountInfoModal";
 
 const Topnavbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [showAccountInfoModal, setShowAccountInfoModal] = useState(false);
+
   const { setVremeShow, VremeShow } = useStateContext();
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     navigate("/");
   };
-  let user = localStorage.getItem("user")?.split(" ")[0];
+  let user = localStorage.getItem("user")
+
   const handleClose = () => setShow(false);
 
   return (
     <>
       {user ? (
-        <Navbar bg="primary" variant="dark" fixed="top" style={{margin : "auto"}}>
+        <Navbar
+          bg="primary"
+          variant="dark"
+          fixed="top"
+          style={{ margin: "auto" }}
+        >
           <Container>
             <Nav.Item>
               <MenuIcon
-                style={{ color: "white",cursor: "pointer" }} 
+                style={{ color: "white", cursor: "pointer" }}
                 onClick={() => setShow(true)}
               />
             </Nav.Item>
             <Navbar.Brand
               role="button"
-             
               onClick={() => navigate("/home")}
               className="siteName"
             >
-              <h3 style={{ margin: "0" }} >imaSve</h3>
+              <h3 style={{ margin: "0" }}>imaSve</h3>
             </Navbar.Brand>
             <Dropdown>
-      <Dropdown.Toggle  id="dropdown-basic" variant="primary" >
-        <img src={require("./media/Icons/account2.png")} alt="" className="accImg"></img>
-      </Dropdown.Toggle>
+              <Dropdown.Toggle id="dropdown-basic" variant="primary">
+                <img
+                  src={require("./media/Icons/account2.png")}
+                  alt=""
+                  className="accImg"
+                ></img>
+              </Dropdown.Toggle>
 
-      <Dropdown.Menu align={{ sm: 'start' }}>
-        <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
-       
-      </Dropdown.Menu>
-    </Dropdown>
-            
+              <Dropdown.Menu align={{ sm: "start" }}>
+                <Dropdown.Item onClick={() => setShowAccountInfoModal(true)}>
+                  Account info
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Container>
 
           <Offcanvas show={show} onHide={handleClose}>
@@ -56,7 +68,7 @@ const Topnavbar = () => {
               <Offcanvas.Title>Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-            <Nav.Item>
+              <Nav.Item>
                 <Nav.Link
                   onClick={() => {
                     navigate("/todo");
@@ -78,15 +90,15 @@ const Topnavbar = () => {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
-                 onClick={() => {
-                  setVremeShow(true)
-                  setShow(false)}
-                }
+                  onClick={() => {
+                    setVremeShow(true);
+                    setShow(false);
+                  }}
                 >
                   Weather
                 </Nav.Link>
               </Nav.Item>
-              
+
               <Nav.Item>
                 <Nav.Link
                   onClick={() => {
@@ -140,6 +152,9 @@ const Topnavbar = () => {
             </Offcanvas.Body>
           </Offcanvas>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
+          <AccountInfoModal show={showAccountInfoModal} onHide={() => {
+              setShowAccountInfoModal(false);
+            }}/>
         </Navbar>
       ) : null}
     </>

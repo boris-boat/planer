@@ -10,14 +10,14 @@ import { ReactComponent as CookingImg } from "../../components/media/ilustration
 import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
 import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
 
-
 import { useEffect } from "react";
 
 
 const Home = () => {
+
   const navigate = useNavigate();
 
-  let user = localStorage?.getItem("user")?.split(" ")[0];
+  let user = localStorage.getItem("user");
 
   // let token = localStorage.getItem("token");
 
@@ -30,10 +30,12 @@ const Home = () => {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
       // validate()
+      
     });
+  
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+ 
   return (
     <>
       <Container className={center} style={{ height: "100vh" }}>
@@ -60,7 +62,7 @@ const Home = () => {
                 <div className="home chat" onClick={() => navigate("/join")}>
                   <h4 style={textStyle}>Chat</h4>{" "}
                   <img
-                    style={{borderRadius : "10px"}}
+                    style={{ borderRadius: "10px" }}
                     className="logo"
                     src={require("../../components/media/Icons/chat.png")}
                     alt=""

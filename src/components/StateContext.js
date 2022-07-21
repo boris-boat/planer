@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Context = createContext();
 export const StateContext = ({ children }) => {
   const [showUserMailModal, setShowUserMailModal] = useState(false);
-  const [userEmail, setUserEmail] = useState(null);
+  const [fullUserInfo, setFullUserInfo] = useState(null);
   const [category, setCategory] = useState("Everything");
   const [VremeShow, setVremeShow] = useState(false);
   const [torrentCategory, setTorrentCategory] = useState("All");
@@ -13,17 +13,32 @@ export const StateContext = ({ children }) => {
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);
   const [numberOfResults, setNumberOfResults] = useState(10);
+  let user = localStorage.getItem("user")
+
+  const { REACT_APP_API_URL } = process.env;
+
   const notify = (msg) =>
     toast(msg, {
       autoClose: 500,
       hideProgressBar: true,
     });
+  let fetchFullUserInfo = () => {
+    fetch(REACT_APP_API_URL + "/user/getuser/" + user)
+      .then((res) => res.json())
+      .then((result) => setFullUserInfo(result));
+  };
+  useEffect(() => {
+    
+    fetchFullUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Context.Provider
       value={{
-        userEmail,
-        setUserEmail,
+        fetchFullUserInfo,
+        setFullUserInfo,
+        fullUserInfo,
         showUserMailModal,
         setShowUserMailModal,
         numberOfResults,

@@ -16,7 +16,8 @@ const Quiz = () => {
     setTotalQuestions(-1);
     setOpenModal(false);
   };
-  let user = localStorage.getItem("user")?.split(" ")[0];
+  let user = localStorage.getItem("user")
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -76,7 +77,7 @@ const Quiz = () => {
   }, [question]);
 
   return (
-    <Container className={center} style={{ height: "100vh",paddingTop : "150px" }}>
+    <Container className={center} style={{ height: "100vh",paddingTop : "100px" }}>
       {totalQuestions > 0 ? (
         <Container
           className={`d-flex align-content-center quizCointainer text-center`}

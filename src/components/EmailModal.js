@@ -2,9 +2,37 @@ import React, { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 import { useStateContext } from "./StateContext";
 
+const { REACT_APP_API_URL } = process.env;
+
 const EmailModal = (props) => {
-  const [email, setEmail] = useState("");
-  const { setUserEmail, setShowUserMailModal } = useStateContext();
+  const [emailModal, setEmailModal] = useState("");
+  const { setShowUserMailModal, notify, setFullUserInfo } = useStateContext();
+  let user = localStorage.getItem("user");
+
+  const editUserEmailDB = async () => {
+    try {
+      // await fetch(REACT_APP_API_URL + "user/createUser", {
+      await fetch(REACT_APP_API_URL + "/user/updateUserEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: user,
+          email: emailModal,
+        }),
+      }).then((response) => {
+        if (response) {
+          notify("Email updated");
+          setFullUserInfo((prev) => ({ ...prev, email: emailModal }));
+        } else {
+          notify("Database error , try again later");
+        }
+      });
+    } catch (e) {
+      console.log("error");
+    }
+  };
   //modal that asks user for their email to be sent with expenses
   return (
     <Modal
@@ -22,9 +50,9 @@ const EmailModal = (props) => {
         <Form
           onSubmit={(e) => {
             e.preventDefault();
-            setUserEmail(email);
-           
-            setEmail("")
+            editUserEmailDB();
+
+            setEmailModal("");
             setShowUserMailModal(false);
           }}
         >
@@ -32,13 +60,12 @@ const EmailModal = (props) => {
             <input
               placeholder="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input><Button type="submit">Send mail</Button>
+              value={emailModal}
+              onChange={(e) => setEmailModal(e.target.value)}
+            ></input>
+            <Button type="submit">Send mail</Button>
           </InputGroup>
-          
         </Form>
-        
       </Modal.Body>
     </Modal>
   );

@@ -11,7 +11,8 @@ import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  let user = localStorage.getItem("user")?.split(" ")[0];
+  let user = localStorage.getItem("user");
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -20,11 +21,11 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { notify } = useStateContext();
+  const { notify, setFullUserInfo } = useStateContext();
   //creates user in the database
   const addUser = async () => {
     try {
-      await fetch(REACT_APP_API_URL + "/createUser", {
+      await fetch(REACT_APP_API_URL + "user/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,8 +49,6 @@ const Login = () => {
   const loginUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/login", {
-      
-
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,10 +61,12 @@ const Login = () => {
         .then((response) => response.json())
         .then((data) => {
           //kreiraj ovde da mozemo uzeti email isto kad se registruje
-          //data daje user sa servera 
-         // console.log(data)
+          //data daje user sa servera
+
           if (data) {
-            localStorage.setItem("user", username + " " + data.token);
+            setFullUserInfo(data)
+            localStorage.setItem("user", data.username);
+
             navigate("/home");
           }
         });

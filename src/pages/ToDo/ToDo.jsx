@@ -10,13 +10,14 @@ import {
 } from "react-bootstrap";
 import "./ToDo.styles.css";
 import Quote from "../../components/Quote";
-import Vreme from "../../components/vreme";
+
 import { useStateContext } from "../../components/StateContext";
 import Item from "../../components/Item";
 import CategorySelector from "../../components/CategorySelector";
 
 function ToDo() {
-  let user = localStorage?.getItem("user")?.split(" ")[0];
+  let user = localStorage.getItem("user");
+
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -92,9 +93,8 @@ function ToDo() {
       } else if (todo.category === category) tempList.push(todo.text);
     });
     setList(tempList);
-    console.log(tempList);
   };
-  const { category, VremeShow, setVremeShow, newTodo, setnewTodo } =
+  const { category,newTodo, setnewTodo } =
     useStateContext();
 
   const center = "d-flex justify-content-center align-items-center";
@@ -106,7 +106,6 @@ function ToDo() {
           className="todoListContainer"
           style={{ margin: "0", width: "100%" }}
         >
-          <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
           <Quote />
           <Container style={{ height: "auto", padding: "0" }}>
             <Row className="d-inline-flex mt-3">

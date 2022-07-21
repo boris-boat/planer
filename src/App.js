@@ -17,15 +17,14 @@ import NoUser from "./pages/NoUser/NoUser";
 import Chat from "./pages/Chat/Chat/Chat";
 import FourOFour from "./pages/PageNotFound/404";
 
-
 function App() {
-  let user = localStorage.getItem("user")?.split(" ")[0];
-  
+  let user = localStorage.getItem("user")
+
   return (
     <div>
       <Topnavbar />
       <Routes>
-        <Route exact path="/nouser" element={<NoUser/>} />
+        <Route exact path="/nouser" element={<NoUser />} />
         <Route
           exact
           path="/cookbook"
@@ -61,8 +60,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-           <Route
-           exact
+        <Route
+          exact
           path="/join"
           element={
             <ProtectedRoute user={user}>
@@ -91,7 +90,7 @@ function App() {
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
-        <Route exact path="*" element={<FourOFour/>} />
+        <Route exact path="*" element={<FourOFour />} />
 
         <Route
           exact

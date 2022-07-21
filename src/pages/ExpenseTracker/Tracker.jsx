@@ -15,19 +15,16 @@ import "react-toastify/dist/ReactToastify.css";
 import EmailModal from "../../components/EmailModal";
 
 const Tracker = () => {
-  const { notify, userEmail, showUserMailModal, setShowUserMailModal } =
+  const { notify, fullUserInfo, showUserMailModal, setShowUserMailModal } =
     useStateContext();
-
-  const { REACT_APP_API_URL } = process.env;
-  let user = localStorage.getItem("user")
-
-
   const [expense, setExpense] = useState("");
   const [value, setValue] = useState(0);
   const [initialState, setInitialState] = useState(0);
   const [total, setTotal] = useState(0);
   const [otherNote, setOtherNote] = useState("");
   const [showNoteModal, setshowNoteModal] = useState(false);
+  let user = localStorage.getItem("user");
+  const { REACT_APP_API_URL } = process.env;
 
   //gets initial values
   const getTrackerInfo = async () => {
@@ -165,7 +162,7 @@ const Tracker = () => {
     transit: "Transportation total : " + initialState.transit,
     other: "Other total : " + initialState.other,
     total: "Total : " + total,
-    email: userEmail,
+    email: fullUserInfo.email,
   };
 
   const handleEmailSendClick = async () => {
@@ -179,7 +176,7 @@ const Tracker = () => {
       .then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
-          notify(`Email sent to ${userEmail} !`);
+          notify(`Email sent to ${fullUserInfo.email} !`);
         },
         function (error) {
           console.log("FAILED...", error);
@@ -338,9 +335,9 @@ const Tracker = () => {
                 <Row style={{ width: "40%" }}>
                   <Button
                     onClick={() => {
-                      if (!userEmail) {
+                      if (!fullUserInfo.email) {
                         setShowUserMailModal(true);
-                      } else if (userEmail) {
+                      } else if (fullUserInfo.email) {
                         handleEmailSendClick();
                       }
                     }}
@@ -372,7 +369,7 @@ const Tracker = () => {
           </Modal>
           <EmailModal
             onExited={() => {
-              if (userEmail) handleEmailSendClick();
+              if (fullUserInfo.email) handleEmailSendClick();
             }}
             onHide={() => {
               setShowUserMailModal(false);

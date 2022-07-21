@@ -12,12 +12,12 @@ import Torrent from "../../components/torrent";
 import TorrentCategorySelector from "../../components/TorrentCategorySelector";
 import "../../App.css";
 const TorrentExplorer = () => {
-  const { REACT_APP_API_URL } = process.env;
   const { torrentCategory, numberOfResults } = useStateContext();
-
   const [query, setQuery] = useState("");
   const [foundTorrents, setFoundTorrents] = useState([]);
   const [searching, setSearching] = useState(false);
+  const { REACT_APP_API_URL } = process.env;
+  //handles torrent search
   const handleSubmit = async () => {
     if (query) {
       fetch(
@@ -61,10 +61,8 @@ const TorrentExplorer = () => {
           className="d-flex  justify-content-center align-items-center flex-wrap"
           onSubmit={(e) => {
             setSearching(true);
-
             setFoundTorrents([]);
             e.preventDefault();
-
             handleSubmit();
           }}
         >

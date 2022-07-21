@@ -12,11 +12,12 @@ const Quiz = () => {
   const [questionCount, setQuestionCount] = useState(0);
   const [openModal, setOpenModal] = useState(true);
   const [input, setInput] = useState(0);
+  let user = localStorage.getItem("user")
+
   const handleClose = () => {
     setTotalQuestions(-1);
     setOpenModal(false);
   };
-  let user = localStorage.getItem("user")
 
   const style = {
     position: "absolute",

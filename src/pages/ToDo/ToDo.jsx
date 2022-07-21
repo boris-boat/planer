@@ -10,19 +10,17 @@ import {
 } from "react-bootstrap";
 import "./ToDo.styles.css";
 import Quote from "../../components/Quote";
-
 import { useStateContext } from "../../components/StateContext";
 import Item from "../../components/Item";
 import CategorySelector from "../../components/CategorySelector";
 
 function ToDo() {
-  let user = localStorage.getItem("user");
-
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState();
   const { REACT_APP_API_URL } = process.env;
+  let user = localStorage.getItem("user");
 
   const addToDo = async () => {
     let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
@@ -94,8 +92,7 @@ function ToDo() {
     });
     setList(tempList);
   };
-  const { category,newTodo, setnewTodo } =
-    useStateContext();
+  const { category, newTodo, setnewTodo } = useStateContext();
 
   const center = "d-flex justify-content-center align-items-center";
 

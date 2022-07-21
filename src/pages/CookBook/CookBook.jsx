@@ -6,15 +6,17 @@ import ingredients from "../../components/ingredients";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 
 const CookBook = () => {
+  const ref = useRef();
   const { REACT_APP_COOKBOOK_API } = process.env;
-//base querry where rest of info is added
-  let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
-  let query = [];
   const [multiSelections, setMultiSelections] = useState([]);
   const [foundRecipes, setFoundRecipes] = useState("");
-  const ref = useRef();
-   //creates a querry to be used for search 
-   const createQuery = () => {
+  //base querry where rest of info is added
+  let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
+  let query = [];
+
+ 
+  //creates a querry to be used for search
+  const createQuery = () => {
     multiSelections.forEach((ajtem) => {
       base += `&includeIngredients=${ajtem.label}`;
     });
@@ -27,8 +29,8 @@ const CookBook = () => {
     setFoundRecipes(data);
   };
 
- 
-  const center = "d-flex justify-content-center align-items-center align-content-center"
+  const center =
+    "d-flex justify-content-center align-items-center align-content-center";
   return (
     <Container>
       <Container
@@ -39,8 +41,19 @@ const CookBook = () => {
           className="justify-content-center align-items-center d-flex flex-column"
           style={{ width: "80%", textAlign: "center" }}
         >
-          <Container style={{fontFamily : "Noto Serif",fontSize:"30px",color : "white"}}>Welcome to the ultimate cooking experience!</Container>
-          <Container className="d-flex justify-content-center mt-3" style={{color : "white"}}>
+          <Container
+            style={{
+              fontFamily: "Noto Serif",
+              fontSize: "30px",
+              color: "white",
+            }}
+          >
+            Welcome to the ultimate cooking experience!
+          </Container>
+          <Container
+            className="d-flex justify-content-center mt-3"
+            style={{ color: "white" }}
+          >
             Please select as many ingredients as you like and the algorithm will
             provide a recipe with those ingredients included !
           </Container>
@@ -70,15 +83,14 @@ const CookBook = () => {
               </Button>
             </Container>
           </Col>
-          <Col
-            style={{ width: "100%",paddingTop : "10px" }}
-            
-          >
+          <Col style={{ width: "100%", paddingTop: "10px" }}>
             {foundRecipes ? (
-              <Recept recipes={foundRecipes}/>
+              <Recept recipes={foundRecipes} />
             ) : (
               <div>
-                <h1 style={{color : "white"}}>Please select ingredients and press search!</h1>
+                <h1 style={{ color: "white" }}>
+                  Please select ingredients and press search!
+                </h1>
               </div>
             )}
           </Col>

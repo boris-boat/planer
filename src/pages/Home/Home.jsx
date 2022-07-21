@@ -12,15 +12,10 @@ import { ReactComponent as ChatImg } from "../../components/media/ilustrations/c
 
 import { useEffect } from "react";
 
-
 const Home = () => {
-
   const navigate = useNavigate();
 
   let user = localStorage.getItem("user");
-
-  // let token = localStorage.getItem("token");
-
   const textStyle = { verticalAlign: "middle", marginBottom: "0" };
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
@@ -29,13 +24,12 @@ const Home = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
-      // validate()
-      
+   
     });
-  
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
- 
+
   return (
     <>
       <Container className={center} style={{ height: "100vh" }}>

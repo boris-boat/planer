@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalBody } from "react-bootstrap";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { useStateContext } from "./StateContext";
-import { AiOutlineClose } from "react-icons/ai";
+import "../App.css";
+import { AiOutlineClose, AiOutlineQuestionCircle } from "react-icons/ai";
 const AccountInfoModal = (props) => {
   const [showEditMailInput, setShowEditMailInput] = useState(false);
   const [updatedEmail, setUpdatedEmail] = useState("");
   const { REACT_APP_API_URL } = process.env;
-
   const { fullUserInfo, setFullUserInfo, notify } = useStateContext();
   const editUserEmailDB = async () => {
     try {
-      
       await fetch(REACT_APP_API_URL + "/user/updateUserEmail", {
         method: "POST",
         headers: {
@@ -34,7 +39,24 @@ const AccountInfoModal = (props) => {
     }
   };
   let user = localStorage.getItem("user");
-
+  let Info = () => {
+    const renderTooltip = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+        Email is used in Expense Tracker part of the website!
+      </Tooltip>
+    );
+    return (
+      <OverlayTrigger
+        placement="bottom"
+        delay={{ show: 250, hide: 400 }}
+        overlay={renderTooltip}
+      >
+        <p style={{marginLeft : "10px"}} className="questionMark">
+          <AiOutlineQuestionCircle />
+        </p>
+      </OverlayTrigger>
+    );
+  };
   return (
     <Modal
       {...props}
@@ -44,19 +66,27 @@ const AccountInfoModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <ModalBody>
+        <ModalBody className="accInfoModal">
           <div>
             <h4>Account info :</h4>
           </div>
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: "5px",marginTop : "20px" }}>
             <h5>Username : {user}</h5>
           </div>
-          <div>
-            <h5 style={{ display: "flex", justifyContent: "space-between",alignItems : "center" }}>
-              Email : {fullUserInfo?.email}{" "}
-              <Button onClick={() => setShowEditMailInput(true)}>
-                Edit Email
-              </Button>
+          <div className="email">
+            <h5
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+               
+              }}
+            >
+              <h5 style={{display : "flex"}}>
+                Email : {fullUserInfo?.email}
+                <Info/>
+              </h5>
+              <Button onClick={() => setShowEditMailInput(true)}>Edit</Button>
             </h5>
             {showEditMailInput && (
               <div>
@@ -75,7 +105,7 @@ const AccountInfoModal = (props) => {
                   Enter
                 </button>
                 <AiOutlineClose
-                  style={{ marginLeft: "10px",cursor : "pointer" }}
+                  style={{ marginLeft: "10px", cursor: "pointer" }}
                   onClick={() => setShowEditMailInput(false)}
                 />
               </div>

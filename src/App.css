@@ -42,7 +42,14 @@ code {
   .listGrupaToDo {
     width: 100% !important;
   }
-
+  .accInfoModal {
+    padding: 0 !important;
+  }
+  .questionMark{
+   margin: 0 !important;
+   padding-top: 10px;
+   padding-right: 20px;
+  }
   .modalContainer {
     width: 90% !important;
   }

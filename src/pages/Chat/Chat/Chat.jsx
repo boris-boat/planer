@@ -20,7 +20,7 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const ENDPOINT = "https://boris-chatapp.herokuapp.com/";
 
-  let name = localStorage.getItem("user")?.split(" ")[0];
+  let name = localStorage.getItem("user")
   //joins the room on first render
   useEffect(() => {
     const { room } = queryString.parse(location.search);

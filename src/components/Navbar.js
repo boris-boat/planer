@@ -18,7 +18,7 @@ const Topnavbar = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
-  let user = localStorage.getItem("user")
+  let user = localStorage.getItem("user");
 
   const handleClose = () => setShow(false);
 
@@ -152,9 +152,12 @@ const Topnavbar = () => {
             </Offcanvas.Body>
           </Offcanvas>
           <Vreme show={VremeShow} onHide={() => setVremeShow(false)} />
-          <AccountInfoModal show={showAccountInfoModal} onHide={() => {
+          <AccountInfoModal
+            show={showAccountInfoModal}
+            onHide={() => {
               setShowAccountInfoModal(false);
-            }}/>
+            }}
+          />
         </Navbar>
       ) : null}
     </>

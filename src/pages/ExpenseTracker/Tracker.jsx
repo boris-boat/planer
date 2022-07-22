@@ -31,6 +31,7 @@ const Tracker = () => {
     fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
+      .then(() => setOtherNote(initialState.otherNote))
       .catch((e) => console.log("Database error  : " + e));
   };
   //resets inputs and notifies of done change
@@ -132,7 +133,7 @@ const Tracker = () => {
     }
     setTotal(totalExpenses);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialState]);
+  }, [initialState,otherNote]);
   useEffect(() => {
     setOtherNote(initialState.otherNote);
   }, [initialState.otherNote]);

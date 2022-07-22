@@ -78,15 +78,16 @@ const AccountInfoModal = (props) => {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "baseline",
+                alignItems: "center",
                
               }}
             >
-              <h5 style={{display : "flex"}}>
+              <h5 style={{display : "flex",margin : "0",alignItems : "center"}}>
                 Email : {fullUserInfo?.email}
                 <Info/>
               </h5>
               <Button onClick={() => setShowEditMailInput(true)}>Edit</Button>
+             
             </h5>
             {showEditMailInput && (
               <div>

@@ -14,7 +14,6 @@ const CookBook = () => {
   let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
   let query = [];
 
- 
   //creates a querry to be used for search
   const createQuery = () => {
     multiSelections.forEach((ajtem) => {

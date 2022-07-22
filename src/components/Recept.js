@@ -4,7 +4,7 @@ import { Card, Col, Row } from "react-bootstrap";
 const Recept = ({ recipes }) => {
   //single recipe result for cookbook app
   return (
-    <div
+    <div  
       style={{ width: "100%" }}
       className="d-flex flex-row flex-wrap justify-content-center align-items-center align-content-center "
     >
@@ -12,16 +12,16 @@ const Recept = ({ recipes }) => {
         recipes.results.map((item) => {
           item.dishTypes.length = 3;
           return (
-            <Card style={{ minHeight: "150px", minWidth: "300px",maxWidth : "300px" }} fluid >
+            <Card style={{ minHeight: "150px", minWidth: "300px",maxWidth : "300px" }} key={item.title}>
               <Row style={{ width: "300px", marginLeft: "5px" }}>
                 <Card.Img
                   variant="top"
                   src={item.image}
-                  style={{ height: "100px", width: "130px", padding: "0" }}
+                  style={{ height: "100px", width: "130px", padding: "0" ,marginTop : "5px"}}
                 />
-                <Col>
+                <Col style={{marginTop : "5px"}}>
                   {item.dishTypes.map((dishType) => (
-                    <h5>{dishType}</h5>
+                    <h5 key={dishType}>{dishType}</h5>
                   ))}
                 </Col>
               </Row>

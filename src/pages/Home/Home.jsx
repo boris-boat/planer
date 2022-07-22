@@ -1,4 +1,5 @@
 import { Col, Container } from "react-bootstrap";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../App.css";
 import "./Home.styles.css";
@@ -10,7 +11,6 @@ import { ReactComponent as CookingImg } from "../../components/media/ilustration
 import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
 import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
 
-import { useEffect } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ const Home = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
-   
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

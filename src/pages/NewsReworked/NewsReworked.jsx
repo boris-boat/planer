@@ -1,24 +1,13 @@
 import React from "react";
-
+import useFetch from "../../customHooks/useFetch";
 import "../../App.css";
 import { Container, ListGroup, Col, Row, Card } from "react-bootstrap";
-import { useEffect, useState } from "react";
 import LinearProgress from "@mui/material/LinearProgress";
 const NewsReworked = () => {
   const { REACT_APP_API_URL } = process.env;
-  const [news, setNews] = useState([]);
+
   //sends fetch to node server which returns sorted news
-  const getNews = async () => {
-    fetch(REACT_APP_API_URL + "/news/getnews")
-      .then((res) => res.json())
-      .then((result) => setNews(result));
-  };
-
-  useEffect(() => {
-    getNews();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data } = useFetch(REACT_APP_API_URL + "/news/getnews");
 
   return (
     <Container fluid>
@@ -27,8 +16,8 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>N1</h2>
             <Card>
-              {news.length > 1 ? (
-                news
+              {data?.length > 1 ? (
+                data
                   .filter((item) => {
                     if (item.guid.includes("n1")) {
                       return item;
@@ -59,8 +48,8 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>Blic</h2>
             <Card>
-              {news.length > 1 ? (
-                news
+              {data?.length > 1 ? (
+                data
                   .filter((item) => {
                     if (item.guid.includes("blic")) {
                       return item;
@@ -90,8 +79,8 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>Danas</h2>
             <Card>
-              {news.length > 1 ? (
-                news
+              {data?.length > 1 ? (
+                data
                   .filter((item) => {
                     if (item.guid.includes("danas")) {
                       return item;
@@ -121,8 +110,8 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>Mozzart</h2>
             <Card>
-              {news.length > 1 ? (
-                news
+              {data?.length > 1 ? (
+                data
                   .filter((item) => {
                     if (item.guid.includes("mozzart")) {
                       return item;

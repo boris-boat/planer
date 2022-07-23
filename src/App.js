@@ -1,4 +1,3 @@
-import "./App.css";
 import Topnavbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 
@@ -18,7 +17,7 @@ import Chat from "./pages/Chat/Chat/Chat";
 import FourOFour from "./pages/PageNotFound/404";
 
 function App() {
-  let user = localStorage.getItem("user")
+  let user = localStorage.getItem("user");
 
   return (
     <div>

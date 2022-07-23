@@ -50,8 +50,10 @@ code {
   }
   .questionMark{
    margin: 0 !important;
-   padding-top: 10px;
+   
    padding-right: 20px;
+   margin-left: 10px !important;
+   padding-bottom: 20px !important;
   }
   .modalContainer {
     width: 90% !important;

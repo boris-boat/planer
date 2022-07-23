@@ -12,7 +12,7 @@ const Recept = ({ recipes }) => {
         recipes.results.map((item) => {
           item.dishTypes.length = 3;
           return (
-            <Card style={{ minHeight: "150px", minWidth: "300px",maxWidth : "300px" }} key={item.title}>
+            <Card style={{ minHeight: "165px", minWidth: "300px",maxWidth : "300px" }} key={item.title}>
               <Row style={{ width: "300px", marginLeft: "5px" }}>
                 <Card.Img
                   variant="top"
@@ -26,8 +26,8 @@ const Recept = ({ recipes }) => {
                 </Col>
               </Row>
 
-              <Card.Text>
-                <a style={{wordWrap : "break-word"}}
+              <Card.Text style={{marginTop : "10px"}}>
+                <a style={{wordWrap : "break-word",marginTop : "10px"}}
                   rel="noreferrer noopener"
                   target="_blank"
                   href={item.sourceUrl}

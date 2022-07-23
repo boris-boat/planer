@@ -11,7 +11,6 @@ import { ReactComponent as CookingImg } from "../../components/media/ilustration
 import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
 import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
 
-
 const Home = () => {
   const navigate = useNavigate();
 

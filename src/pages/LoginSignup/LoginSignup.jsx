@@ -93,7 +93,7 @@ const Login = () => {
               </Col>
               {newUser === false ? (
                 <>
-                  <h1 className="mt-3 px-4">LOGIN</h1>
+                  <h1 className="mt-2 px-4">LOGIN</h1>
 
                   <Form className="px-4 ">
                     <Form.Group

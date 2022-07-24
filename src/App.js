@@ -15,12 +15,15 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
 import Chat from "./pages/Chat/Chat/Chat";
 import FourOFour from "./pages/PageNotFound/404";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   let user = localStorage.getItem("user");
 
   return (
     <div>
+      <ToastContainer position="top-center" />
+
       <Topnavbar />
       <Routes>
         <Route exact path="/nouser" element={<NoUser />} />

@@ -3,7 +3,7 @@ import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../../components/StateContext";
-import { ToastContainer } from "react-toastify";
+
 import Home from "../Home/Home";
 import "../../App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -224,8 +224,6 @@ const Login = () => {
       ) : (
         <Home />
       )}
-
-      <ToastContainer position="bottom-left" />
     </Container>
   );
 };

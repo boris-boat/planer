@@ -10,7 +10,7 @@ import { Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useStateContext } from "../../components/StateContext";
 import "./tracker.css";
 import emailjs from "@emailjs/browser";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import EmailModal from "../../components/EmailModal";
 
@@ -223,7 +223,6 @@ const Tracker = () => {
 
   return (
     <div style={{ paddingTop: "60px" }}>
-      <ToastContainer position="top-center" />
       <div style={{ paddingTop: "50px" }} className="trackerBigContainer">
         <Container
           style={{ width: "100%" }}

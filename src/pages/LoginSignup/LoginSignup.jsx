@@ -6,7 +6,6 @@ import { useStateContext } from "../../components/StateContext";
 
 import Home from "../Home/Home";
 import "../../App.css";
-import "react-toastify/dist/ReactToastify.css";
 import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
 

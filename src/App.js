@@ -1,9 +1,7 @@
 import Topnavbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-
 import Home from "./pages/Home/Home";
 import Login from "./pages/LoginSignup/LoginSignup";
-
 import NewsReworked from "./pages/NewsReworked/NewsReworked";
 import ToDo from "./pages/ToDo/ToDo";
 import Join from "./pages/Chat/components/Join/Join";
@@ -16,6 +14,7 @@ import NoUser from "./pages/NoUser/NoUser";
 import Chat from "./pages/Chat/Chat/Chat";
 import FourOFour from "./pages/PageNotFound/404";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   let user = localStorage.getItem("user");

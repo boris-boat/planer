@@ -8,6 +8,10 @@ const NewsReworked = () => {
 
   //sends fetch to node server which returns sorted news
   const { data } = useFetch(REACT_APP_API_URL + "/news/getnews");
+  const filterNews = (news, filter) => {
+    let data = news?.filter((item) => item.guid.includes(filter));
+    return data;
+  };
 
   return (
     <Container fluid>
@@ -17,28 +21,20 @@ const NewsReworked = () => {
             <h2>N1</h2>
             <Card>
               {data?.length > 1 ? (
-                data
-                  .filter((item) => {
-                    if (item.guid.includes("n1")) {
-                      return item;
-                    }
-                    return null;
-                  })
-
-                  .map((item) => {
-                    return (
-                      <ListGroup.Item key={item.link}>
-                        {item.title} <br></br>
-                        <a
-                          rel="noreferrer noopener"
-                          target="_blank"
-                          href={`${item.link}`}
-                        >
-                          Link
-                        </a>
-                      </ListGroup.Item>
-                    );
-                  })
+                filterNews(data, "n1").map((item) => {
+                  return (
+                    <ListGroup.Item key={item.link}>
+                      {item.title} <br></br>
+                      <a
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        href={`${item.link}`}
+                      >
+                        Link
+                      </a>
+                    </ListGroup.Item>
+                  );
+                })
               ) : (
                 <LinearProgress />
               )}
@@ -49,28 +45,20 @@ const NewsReworked = () => {
             <h2>Blic</h2>
             <Card>
               {data?.length > 1 ? (
-                data
-                  .filter((item) => {
-                    if (item.guid.includes("blic")) {
-                      return item;
-                    }
-                    return null;
-                  })
-
-                  .map((item) => {
-                    return (
-                      <ListGroup.Item key={item.link}>
-                        {item.title} <br></br>
-                        <a
-                          rel="noreferrer noopener"
-                          target="_blank"
-                          href={`${item.link}`}
-                        >
-                          Link
-                        </a>
-                      </ListGroup.Item>
-                    );
-                  })
+                filterNews(data, "blic").map((item) => {
+                  return (
+                    <ListGroup.Item key={item.link} >
+                      {item.title} <br></br>
+                      <a
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        href={`${item.link}`}
+                      >
+                        Link
+                      </a>
+                    </ListGroup.Item>
+                  );
+                })
               ) : (
                 <LinearProgress />
               )}
@@ -80,28 +68,20 @@ const NewsReworked = () => {
             <h2>Danas</h2>
             <Card>
               {data?.length > 1 ? (
-                data
-                  .filter((item) => {
-                    if (item.guid.includes("danas")) {
-                      return item;
-                    }
-                    return null;
-                  })
-
-                  .map((item) => {
-                    return (
-                      <ListGroup.Item key={item.link}>
-                        {item.title} <br></br>
-                        <a
-                          rel="noreferrer noopener"
-                          target="_blank"
-                          href={`${item.link}`}
-                        >
-                          Link
-                        </a>
-                      </ListGroup.Item>
-                    );
-                  })
+                filterNews(data, "danas").map((item) => {
+                  return (
+                    <ListGroup.Item key={item.link}>
+                      {item.title} <br></br>
+                      <a
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        href={`${item.link}`}
+                      >
+                        Link
+                      </a>
+                    </ListGroup.Item>
+                  );
+                })
               ) : (
                 <LinearProgress />
               )}
@@ -111,28 +91,20 @@ const NewsReworked = () => {
             <h2>Mozzart</h2>
             <Card>
               {data?.length > 1 ? (
-                data
-                  .filter((item) => {
-                    if (item.guid.includes("mozzart")) {
-                      return item;
-                    }
-                    return null;
-                  })
-
-                  .map((item) => {
-                    return (
-                      <ListGroup.Item key={item.link}>
-                        {item.title} <br></br>
-                        <a
-                          rel="noreferrer noopener"
-                          target="_blank"
-                          href={`${item.link}`}
-                        >
-                          Link
-                        </a>
-                      </ListGroup.Item>
-                    );
-                  })
+                filterNews(data, "mozzart").map((item) => {
+                  return (
+                    <ListGroup.Item key={item.link} style={{marginBottom : "10px"}}>
+                      {item.title} <br></br>
+                      <a
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        href={`${item.link}`}
+                      >
+                        Link
+                      </a>
+                    </ListGroup.Item>
+                  );
+                })
               ) : (
                 <LinearProgress />
               )}

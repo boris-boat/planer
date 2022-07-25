@@ -89,11 +89,11 @@ const NewsReworked = () => {
           </Col>
           <Col style={{ minWidth: "300px" }}>
             <h2>Mozzart</h2>
-            <Card>
+            <Card  style={{marginBottom : "10px"}}>
               {data?.length > 1 ? (
                 filterNews(data, "mozzart").map((item) => {
                   return (
-                    <ListGroup.Item key={item.link} style={{marginBottom : "10px"}}>
+                    <ListGroup.Item key={item.link}>
                       {item.title} <br></br>
                       <a
                         rel="noreferrer noopener"

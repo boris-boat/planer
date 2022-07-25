@@ -5,7 +5,7 @@ const Recept = ({ recipes }) => {
   //single recipe result for cookbook app
   return (
     <div  
-      style={{ width: "100%" }}
+      style={{ width: "100%",marginBottom : "10px" }}
       className="d-flex flex-row flex-wrap justify-content-center align-items-center align-content-center "
     >
       {recipes.results.length !== 0 ? (

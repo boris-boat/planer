@@ -53,7 +53,7 @@ const TorrentExplorer = () => {
           }}
           className="d-flex flex-column align-items-center"
         >
-          <Col>TORRENT TRACKER</Col>
+          <Col>TORRENT EXPLORER</Col>
           <Col>Search through different online trackers on one location!</Col>
         </Container>
         <Form

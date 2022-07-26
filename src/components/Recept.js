@@ -17,7 +17,7 @@ const Recept = ({ recipes }) => {
                 <Card.Img
                   variant="top"
                   src={item.image}
-                  style={{ height: "100px", width: "130px", padding: "0" ,marginTop : "5px"}}
+                  style={{ height: "100px", width: "130px", padding: "0" ,marginTop : "5px",borderRadius : "10px"}}
                 />
                 <Col style={{marginTop : "5px"}}>
                   {item.dishTypes.map((dishType) => (

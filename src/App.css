@@ -47,6 +47,9 @@ code {
     flex-direction: column;
     
   }
+  .editToDoButton {
+    margin-top : 10px !important
+  }
   .editemailBtn {
     margin-top: 10px !important;
   }

@@ -8,18 +8,18 @@ const Item = (props) => {
   const [todo, setTodo] = useState("");
   const [updatedTodo, setUpdatedTodo] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const { REACT_APP_API_URL } = process.env;
 
   useEffect(() => {
     setTodo(props.item);
   }, [props.item]);
 
   return (
-    <div className="d-flex flex-row justify-content-between align-items-cente">
+    <div className="d-flex flex-row justify-content-between align-items-center">
       <div>
         <h5
           style={{
             textDecorationLine: props.item.completed ? "line-through" : "",
+            wordWrap: "break-word",
           }}
           className="mt-1"
           onClick={() => {
@@ -72,16 +72,19 @@ const Item = (props) => {
           <Modal.Title id="contained-modal-title-vcenter">
             Enter new text :
           </Modal.Title>
-          <input style={{margin: "0 10px",marginBottom : "-2px"}}
+          <input
+            style={{ margin: "0 10px", marginBottom: "-2px", width: "300px" }}
             defaultValue={todo.text}
             onChange={(e) => setUpdatedTodo(e.target.value)}
           ></input>
-          <Button size="sm"
+          <Button
+            size="sm"
+            className="editToDoButton"
             onClick={(e) => {
               e.preventDefault();
               props.editTodo(todo._id, updatedTodo);
-              setTodo((prev) => ({...prev,text : updatedTodo}))
-              setShowModal(false)
+              setTodo((prev) => ({ ...prev, text: updatedTodo }));
+              setShowModal(false);
             }}
           >
             Save

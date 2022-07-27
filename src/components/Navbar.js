@@ -29,7 +29,7 @@ const Topnavbar = () => {
           bg="primary"
           variant="dark"
           fixed="top"
-          style={{ margin: "auto" }}
+          style={{ margin: "auto",width :"100%" }}
         >
           <Container>
             <Nav.Item>

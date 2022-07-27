@@ -2,12 +2,9 @@
   padding: 0.375rem 0.75rem !important;
 }
 
-#root {
-  height: auto !important;
-  min-height: 100vh;
-}
 body {
-  padding-top: 60px;
+  min-height: 100vh !important;
+  max-width: 100%;
   background: linear-gradient(
     56deg,
     rgba(151, 156, 236, 1) 24%,
@@ -21,7 +18,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root {
+  height: auto !important;
+  height: auto;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -42,17 +42,22 @@ code {
   .listGrupaToDo {
     width: 100% !important;
   }
+  .editTodoModal {
+    display: flex;
+    flex-direction: column;
+    
+  }
   .editemailBtn {
     margin-top: 10px !important;
   }
   .accInfoModal {
     padding: 0 !important;
   }
-  .questionMark{
-   margin: 0 !important;
-   padding-right: 20px;
-   margin-left: 10px !important;
-   padding-bottom: 20px !important;
+  .questionMark {
+    margin: 0 !important;
+    padding-right: 20px;
+    margin-left: 10px !important;
+    padding-bottom: 20px !important;
   }
   .modalContainer {
     width: 90% !important;

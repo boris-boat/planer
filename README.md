@@ -22,7 +22,7 @@ imaSve is my biggest project made from scratch and is constantly being updated. 
 - ToDo application with filters, additions and deletions. Also the saying of the day
 - News application with news from 4 different sites
 - Tracker application with the ability to track expenses and send reports by mail
-- Weather today as a modal that gets activated from the navbara
+- Weather today as a modal that gets activated from the sidebar
 - Chat application with the possibility of making rooms
 - Cookbook application with the ability to select certain ingredients and search for dishes by these parameters.
 - Quiz app where you can choose how many rounds you wish to play and then get the score after the game with live validation of answers with css

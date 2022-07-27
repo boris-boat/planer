@@ -19,9 +19,42 @@ function ToDo() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState();
+
   const { REACT_APP_API_URL } = process.env;
   let user = localStorage.getItem("user");
+  const { category, newTodo, setnewTodo } = useStateContext();
+  const center = "d-flex justify-content-center align-items-center";
 
+  useEffect(() => {
+    //first population of todos
+    const getTodos = async () => {
+      fetch(REACT_APP_API_URL + "/todos/" + user)
+        .then((res) => res.json())
+        .then((result) => setTodos(result))
+        .catch((e) => console.log("Database error  : " + e));
+      setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+    };
+
+    getTodos();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const handleUpdate = async (id, text) => {
+    console.log(id, text);
+    await fetch(REACT_APP_API_URL + "/todos/editTodo/" + id, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+  };
   const addToDo = async () => {
     let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
       method: "POST",
@@ -66,22 +99,6 @@ function ToDo() {
     );
   };
 
-  useEffect(() => {
-    //first population of todos
-    const getTodos = async () => {
-      fetch(REACT_APP_API_URL + "/todos/" + user)
-        .then((res) => res.json())
-        .then((result) => setTodos(result))
-        .catch((e) => console.log("Database error  : " + e));
-      setTimeout(() => {
-        setLoading(false);
-      }, 1500);
-    };
-
-    getTodos();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   //handles sharing with viber
   const handleShare = () => {
     let tempList = [];
@@ -92,9 +109,6 @@ function ToDo() {
     });
     setList(tempList);
   };
-  const { category, newTodo, setnewTodo } = useStateContext();
-
-  const center = "d-flex justify-content-center align-items-center";
 
   return (
     <div className="todoContainer">
@@ -203,6 +217,7 @@ function ToDo() {
                         return (
                           <ListGroup.Item key={todo._id}>
                             <Item
+                              editTodo={handleUpdate}
                               item={todo}
                               completeTodo={completeTodo}
                               deleteToDo={deleteToDo}
@@ -213,6 +228,7 @@ function ToDo() {
                         return (
                           <ListGroup.Item key={todo._id}>
                             <Item
+                              editTodo={handleUpdate}
                               item={todo}
                               completeTodo={completeTodo}
                               deleteToDo={deleteToDo}

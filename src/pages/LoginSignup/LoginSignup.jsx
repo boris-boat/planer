@@ -1,10 +1,8 @@
 import React from "react";
 import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../components/StateContext";
-
-import Home from "../Home/Home";
 import "../../App.css";
 import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
@@ -221,7 +219,7 @@ const Login = () => {
           </Col>
         </Row>
       ) : (
-        <Home />
+        <Navigate to="/home" />
       )}
     </Container>
   );

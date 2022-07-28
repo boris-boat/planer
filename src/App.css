@@ -43,6 +43,7 @@ code {
     width: 100% !important;
   }
   .editTodoModal {
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
     

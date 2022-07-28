@@ -68,7 +68,7 @@ const Item = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton className="editTodoModal">
+        <Modal.Header closeButton className="editTodoModal" style={{paddingLeft : "100px"}}>
           <Modal.Title id="contained-modal-title-vcenter">
             Enter new text :
           </Modal.Title>

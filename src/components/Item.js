@@ -14,8 +14,8 @@ const Item = (props) => {
   }, [props.item]);
 
   return (
-    <div className="d-flex flex-row justify-content-between align-items-center">
-      <div>
+    <div className="d-flex flex-row justify-content-between align-items-center" style={{maxHeight : "45px"}}>
+      <div style={{maxWidth : "60%"}}>
         <h5
           style={{
             textDecorationLine: props.item.completed ? "line-through" : "",
@@ -30,7 +30,7 @@ const Item = (props) => {
         </h5>
       </div>
 
-      <div className="d-flex align-items-end">
+      <div className="d-flex align-items-end" style={{marginRight : "-10px"}}>
         <Button
           style={{
             marginRight: "5px",

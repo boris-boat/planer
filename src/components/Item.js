@@ -14,14 +14,14 @@ const Item = (props) => {
   }, [props.item]);
 
   return (
-    <div className="d-flex flex-row justify-content-between align-items-center" style={{maxHeight : "45px"}}>
-      <div style={{maxWidth : "60%"}}>
+    <div className="d-flex flex-row justify-content-between align-items-center" style={{maxHeight : "45px",}}>
+      <div style={{maxWidth : "70%"}}>
         <h5
           style={{
             textDecorationLine: props.item.completed ? "line-through" : "",
             wordWrap: "break-word",
           }}
-          className="mt-1"
+          className="mt-1 mb-1"
           onClick={() => {
             props.completeTodo(todo._id);
           }}

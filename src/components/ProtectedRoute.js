@@ -9,7 +9,7 @@ const ProtectedRoute = ({children }) => {
 
 
     if (!fullUserInfo) {
-      return <Navigate to="/nouser" replace />;
+      return <Navigate to="/login" replace />;
     }
     
     return children;

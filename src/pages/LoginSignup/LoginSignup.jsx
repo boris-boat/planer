@@ -8,7 +8,8 @@ import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const { notify, setFullUserInfo,fullUserInfo } = useStateContext();
+  const { notify, setFullUserInfo, isLoggedIn, setIsLoggedIn } =
+    useStateContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -16,7 +17,6 @@ const Login = () => {
   const [newUser, setNewUser] = useState(false);
 
   const navigate = useNavigate();
- 
 
   //creates user in the database
   const addUser = async () => {
@@ -45,7 +45,6 @@ const Login = () => {
   const loginUser = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/auth/login", {
-      
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +61,7 @@ const Login = () => {
 
           if (data) {
             localStorage.setItem("token", data.token);
-
+            setIsLoggedIn(true);
             setFullUserInfo(data.user);
 
             navigate("/home");
@@ -76,7 +75,7 @@ const Login = () => {
 
   return (
     <Container fluid className="m-0">
-      {!fullUserInfo ? (
+      {!isLoggedIn ? (
         <Row style={{ margin: "0", padding: "0" }} className="lginPage">
           <Col sm={4} style={{ margin: "0", padding: "0" }}>
             <Col>

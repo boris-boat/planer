@@ -13,8 +13,7 @@ export const StateContext = ({ children }) => {
   const [testToken, setTestToken] = useState("");
   const [validated, setValidated] = useState(false);
   const [numberOfResults, setNumberOfResults] = useState(10);
-
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const notify = (msg) =>
     toast(msg, {
@@ -25,6 +24,8 @@ export const StateContext = ({ children }) => {
   return (
     <Context.Provider
       value={{
+        setIsLoggedIn,
+        isLoggedIn,
         setFullUserInfo,
         fullUserInfo,
         showUserMailModal,

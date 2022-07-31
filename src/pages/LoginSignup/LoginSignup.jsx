@@ -8,7 +8,7 @@ import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const { notify, setFullUserInfo } = useStateContext();
+  const { notify, setFullUserInfo,fullUserInfo } = useStateContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -16,7 +16,7 @@ const Login = () => {
   const [newUser, setNewUser] = useState(false);
 
   const navigate = useNavigate();
-  let user = localStorage.getItem("user");
+ 
 
   //creates user in the database
   const addUser = async () => {
@@ -76,7 +76,7 @@ const Login = () => {
 
   return (
     <Container fluid className="m-0">
-      {!user ? (
+      {!fullUserInfo ? (
         <Row style={{ margin: "0", padding: "0" }} className="lginPage">
           <Col sm={4} style={{ margin: "0", padding: "0" }}>
             <Col>

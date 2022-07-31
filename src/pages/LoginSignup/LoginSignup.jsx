@@ -44,7 +44,8 @@ const Login = () => {
   };
   const loginUser = async () => {
     try {
-      await fetch(REACT_APP_API_URL + "/login", {
+      await fetch(REACT_APP_API_URL + "/auth/login", {
+      
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,8 +61,9 @@ const Login = () => {
           //data daje user sa servera
 
           if (data) {
-            setFullUserInfo(data);
-            localStorage.setItem("user", data.username);
+            localStorage.setItem("token", data.token);
+
+            setFullUserInfo(data.user);
 
             navigate("/home");
           }

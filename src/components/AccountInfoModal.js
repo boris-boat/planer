@@ -14,6 +14,8 @@ const AccountInfoModal = (props) => {
   const [updatedEmail, setUpdatedEmail] = useState("");
   const { REACT_APP_API_URL } = process.env;
   const { fullUserInfo, setFullUserInfo, notify } = useStateContext();
+  let user = fullUserInfo?.data?.username;
+
   const editUserEmailDB = async () => {
     try {
       await fetch(REACT_APP_API_URL + "/user/updateUserEmail", {
@@ -38,7 +40,6 @@ const AccountInfoModal = (props) => {
       console.log("error");
     }
   };
-  let user = localStorage.getItem("user");
   let Info = () => {
     const renderTooltip = (props) => (
       <Tooltip id="button-tooltip" {...props}>
@@ -74,7 +75,7 @@ const AccountInfoModal = (props) => {
             <h5>Username : {user}</h5>
           </div>
           <div className="email">
-            <h5
+            <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -83,12 +84,12 @@ const AccountInfoModal = (props) => {
               }}
             >
               <h5 style={{display : "flex",margin : "0",alignItems : "center"}}>
-                Email : {fullUserInfo?.email}
+                Email : {fullUserInfo?.data?.email}
                 <Info/>
               </h5>
               <Button onClick={() => setShowEditMailInput(true)}>Edit</Button>
              
-            </h5>
+            </div>
             {showEditMailInput && (
               <div>
                 <p>Enter new email address : </p>

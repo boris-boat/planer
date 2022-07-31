@@ -10,14 +10,29 @@ import { ReactComponent as ExpenseImg } from "../../components/media/ilustration
 import { ReactComponent as CookingImg } from "../../components/media/ilustrations/cook.svg";
 import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
 import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
+import { useStateContext } from "../../components/StateContext";
 
 const Home = () => {
   const navigate = useNavigate();
-
-  let user = localStorage.getItem("user");
-  const textStyle = { verticalAlign: "middle", marginBottom: "0" };
+  const { fullUserInfo, setFullUserInfo } = useStateContext();
+  const { REACT_APP_API_URL } = process.env;
+const textStyle = { verticalAlign: "middle", marginBottom: "0" };
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
+  let fetchFullUserInfo = () => {
+    fetch(REACT_APP_API_URL + "/user/getuser", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => setFullUserInfo(result));
+  };
+  useEffect(() => {
+    fetchFullUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     //gets current location for weather info
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -34,7 +49,9 @@ const Home = () => {
         <>
           <Col style={{ paddingTop: "100px", height: "100vh" }}>
             <Col className={`mb-5 ${center} text-center`}>
-              <h1 style={{ color: "white" }}>Greetings {user}</h1>
+              <h1 style={{ color: "white" }}>
+                Greetings {fullUserInfo?.data?.username}
+              </h1>
             </Col>
 
             <Col className={`${center}`}>

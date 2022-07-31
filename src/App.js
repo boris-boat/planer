@@ -16,9 +16,11 @@ import FourOFour from "./pages/PageNotFound/404";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import { useStateContext } from "./components/StateContext";
 
 function App() {
-  let user = localStorage.getItem("user");
+  const { fullUserInfo} = useStateContext();
+
 
   return (
     <div>
@@ -31,7 +33,7 @@ function App() {
           exact
           path="/cookbook"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <CookBook />
             </ProtectedRoute>
           }
@@ -40,7 +42,7 @@ function App() {
           exact
           path="/quiz"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <Quiz />
             </ProtectedRoute>
           }
@@ -49,7 +51,7 @@ function App() {
           exact
           path="/torrent"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <TorrentExplorer />
             </ProtectedRoute>
           }
@@ -57,7 +59,7 @@ function App() {
         <Route
           path="/chat"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <Chat />
             </ProtectedRoute>
           }
@@ -66,7 +68,7 @@ function App() {
           exact
           path="/join"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <Join />
             </ProtectedRoute>
           }
@@ -76,7 +78,7 @@ function App() {
           exact
           path="/home"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <Home />
             </ProtectedRoute>
           }
@@ -86,7 +88,7 @@ function App() {
           exact
           path="/tracker"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <Tracker />
             </ProtectedRoute>
           }
@@ -98,7 +100,7 @@ function App() {
           exact
           path="/toDo"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute fullUserInfo={fullUserInfo}>
               <ToDo />
             </ProtectedRoute>
           }

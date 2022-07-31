@@ -1,8 +1,10 @@
 import { Box, Button, Modal } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Container, Form, InputGroup, Spinner } from "react-bootstrap";
+import { useStateContext } from "../../components/StateContext";
 import "./Quiz.styles.css";
 const Quiz = () => {
+  const { fullUserInfo } = useStateContext();
   const div = useRef(null);
   const [question, setQuestion] = useState([]);
   const [options, setOptions] = useState([]);
@@ -12,7 +14,7 @@ const Quiz = () => {
   const [questionCount, setQuestionCount] = useState(0);
   const [openModal, setOpenModal] = useState(true);
   const [input, setInput] = useState(0);
-  let user = localStorage.getItem("user");
+  let user = fullUserInfo.data.username;
 
   const handleClose = () => {
     setTotalQuestions(-1);

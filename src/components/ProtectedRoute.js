@@ -1,11 +1,14 @@
 import {Navigate } from 'react-router-dom';
+import { useStateContext } from './StateContext';
 
 
 const ProtectedRoute = ({children }) => {
-  //component that checks for user object
-  let user = localStorage.getItem("user")
+  const { fullUserInfo} = useStateContext();
 
-    if (!user) {
+  //component that checks for user object
+
+
+    if (!fullUserInfo) {
       return <Navigate to="/nouser" replace />;
     }
     

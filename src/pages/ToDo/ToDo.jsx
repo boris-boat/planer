@@ -15,14 +15,15 @@ import Item from "../../components/Item";
 import CategorySelector from "../../components/CategorySelector";
 
 function ToDo() {
+  const { category, newTodo, setnewTodo,fullUserInfo } = useStateContext();
+
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState();
 
   const { REACT_APP_API_URL } = process.env;
-  let user = localStorage.getItem("user");
-  const { category, newTodo, setnewTodo } = useStateContext();
+  let user = fullUserInfo.data.username
   const center = "d-flex justify-content-center align-items-center";
 
   useEffect(() => {

@@ -23,12 +23,13 @@ const Tracker = () => {
   const [total, setTotal] = useState(0);
   const [otherNote, setOtherNote] = useState("");
   const [showNoteModal, setshowNoteModal] = useState(false);
-  let user = localStorage.getItem("user");
+  let user = fullUserInfo?.data.username;
   const { REACT_APP_API_URL } = process.env;
 
   //gets initial values
   const getTrackerInfo = async () => {
-    fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
+ 
+   fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
       .then(() => setOtherNote(initialState.otherNote))
@@ -133,7 +134,7 @@ const Tracker = () => {
     }
     setTotal(totalExpenses);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialState,otherNote]);
+  }, [initialState, otherNote]);
   useEffect(() => {
     setOtherNote(initialState.otherNote);
   }, [initialState.otherNote]);
@@ -163,7 +164,7 @@ const Tracker = () => {
     transit: "Transportation total : " + initialState.transit,
     other: "Other total : " + initialState.other,
     total: "Total : " + total,
-    email: fullUserInfo.email,
+    email: fullUserInfo?.data.email,
   };
 
   const handleEmailSendClick = async () => {

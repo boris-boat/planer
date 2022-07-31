@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import "./Chat.css";
 import io from "socket.io-client";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TextContainer from "../components/TextContainer/TextContainer";
 import Messages from "../components/Messages/Messages";
 import InfoBar from "../components/InfoBar/InfoBar";
 import Input from "../components/Input/Input";
 import { Button } from "react-bootstrap";
+import { useStateContext } from "../../../components/StateContext";
 let socket;
 
 const Chat = () => {
+  const { fullUserInfo } = useStateContext();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,7 +23,7 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const ENDPOINT = "https://boris-chatapp.herokuapp.com/";
 
-  let name = localStorage.getItem("user")
+  let name = fullUserInfo.data.username;
   //joins the room on first render
   useEffect(() => {
     const { room } = queryString.parse(location.search);
@@ -34,7 +37,6 @@ const Chat = () => {
     });
 
     return () => {
-      
       socket.off();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,13 +75,14 @@ const Chat = () => {
           </div>
           <TextContainer users={users} />
         </div>
-          
-      ) : ( <div className="App">
-      <h1 className="mt-5">Please create an account or login !</h1>
-      <Button variant="primary" onClick={() => navigate("/")}>
-        Back
-      </Button>
-    </div>)}
+      ) : (
+        <div className="App">
+          <h1 className="mt-5">Please create an account or login !</h1>
+          <Button variant="primary" onClick={() => navigate("/")}>
+            Back
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

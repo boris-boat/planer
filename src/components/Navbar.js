@@ -11,14 +11,12 @@ const Topnavbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAccountInfoModal, setShowAccountInfoModal] = useState(false);
-
-  const { setVremeShow, VremeShow } = useStateContext();
+  const { setVremeShow, VremeShow, fullUserInfo,setFullUserInfo } = useStateContext();
   const logout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    setFullUserInfo({})
     navigate("/");
   };
-  let user = localStorage.getItem("user");
+  let user = fullUserInfo?.data?.username;
 
   const handleClose = () => setShow(false);
 
@@ -29,7 +27,7 @@ const Topnavbar = () => {
           bg="primary"
           variant="dark"
           fixed="top"
-          style={{ margin: "auto",width :"100%" }}
+          style={{ margin: "auto", width: "100%" }}
         >
           <Container>
             <Nav.Item>

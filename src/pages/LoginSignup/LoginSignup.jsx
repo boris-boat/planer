@@ -21,7 +21,7 @@ const Login = () => {
   //creates user in the database
   const addUser = async () => {
     try {
-      await fetch(REACT_APP_API_URL + "user/createUser", {
+      await fetch(REACT_APP_API_URL + "/user/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Login = () => {
         }
       });
     } catch (e) {
-      console.log("error");
+      console.log(e);
     }
   };
   const loginUser = async () => {

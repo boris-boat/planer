@@ -12,16 +12,11 @@ import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
 import Chat from "./pages/Chat/Chat/Chat";
-
+import Loyalty from "./pages/LoyaltyCollector/Loyalty";
 import { ToastContainer } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
-import { useStateContext } from "./components/StateContext";
 
 function App() {
-  const { fullUserInfo} = useStateContext();
-
-
   return (
     <div>
       <ToastContainer position="top-center" />
@@ -33,7 +28,7 @@ function App() {
           exact
           path="/cookbook"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <CookBook />
             </ProtectedRoute>
           }
@@ -42,7 +37,7 @@ function App() {
           exact
           path="/quiz"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <Quiz />
             </ProtectedRoute>
           }
@@ -51,15 +46,16 @@ function App() {
           exact
           path="/torrent"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <TorrentExplorer />
             </ProtectedRoute>
           }
         />
+        <Route exact path="/loyalty" element={<Loyalty />} />
         <Route
           path="/chat"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <Chat />
             </ProtectedRoute>
           }
@@ -68,7 +64,7 @@ function App() {
           exact
           path="/join"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <Join />
             </ProtectedRoute>
           }
@@ -78,29 +74,30 @@ function App() {
           exact
           path="/home"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <Home />
             </ProtectedRoute>
           }
         />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/" element={<Login />} />
+        
         <Route
           exact
           path="/tracker"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <Tracker />
             </ProtectedRoute>
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
-        <Route exact path="*" element={<Login />} />
 
         <Route
           exact
           path="/toDo"
           element={
-            <ProtectedRoute fullUserInfo={fullUserInfo}>
+            <ProtectedRoute>
               <ToDo />
             </ProtectedRoute>
           }

@@ -17,6 +17,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "primeicons": "^5.0.0",
     "primereact": "^8.1.1",
+    "quagga": "^0.12.1",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.0",

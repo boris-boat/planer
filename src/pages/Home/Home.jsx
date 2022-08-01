@@ -16,7 +16,7 @@ const Home = () => {
   const navigate = useNavigate();
   const { fullUserInfo, setFullUserInfo } = useStateContext();
   const { REACT_APP_API_URL } = process.env;
-const textStyle = { verticalAlign: "middle", marginBottom: "0" };
+  const textStyle = { verticalAlign: "middle", marginBottom: "0" };
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
   let fetchFullUserInfo = () => {
@@ -31,17 +31,13 @@ const textStyle = { verticalAlign: "middle", marginBottom: "0" };
   };
   useEffect(() => {
     fetchFullUserInfo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    //gets current location for weather info
     navigator.geolocation.getCurrentPosition(function (position) {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
     });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   return (
     <>
@@ -65,6 +61,7 @@ const textStyle = { verticalAlign: "middle", marginBottom: "0" };
                     alt=""
                   ></img>
                 </div>
+                
                 <div className="align-self-center toDoListImg">
                   <ToDoImg />
                 </div>

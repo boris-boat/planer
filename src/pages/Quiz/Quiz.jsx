@@ -14,7 +14,7 @@ const Quiz = () => {
   const [questionCount, setQuestionCount] = useState(0);
   const [openModal, setOpenModal] = useState(true);
   const [input, setInput] = useState(0);
-  let user = fullUserInfo.data.username;
+  let user = fullUserInfo?.data.username;
 
   const handleClose = () => {
     setTotalQuestions(-1);

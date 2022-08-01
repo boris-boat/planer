@@ -10,7 +10,7 @@
   },
   "locator": {
     "patchSize": "large",
-    "halfSample": true
+    "halfSample": false
   },
   "numOfWorkers": 8,
   "frequency": 10,

@@ -5,7 +5,7 @@ import "./Loyalty.styles.css";
 
 const Loyalty = () => {
   const [camera, setCamera] = useState(false);
-  const [result, setResult] = useState("nothing so far");
+  const [result, setResult] = useState("");
   const onDetected = (result) => {
     setResult(result);
   };

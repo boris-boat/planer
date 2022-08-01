@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import config from "./config.json";
-import Quagga from "quagga";
+import Quagga from "@ericblade/quagga2";
 
 const Scanner = (props) => {
   const { onDetected } = props;

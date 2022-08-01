@@ -9,14 +9,13 @@
     }
   },
   "locator": {
-    "patchSize": "medium",
+    "patchSize": "large",
     "halfSample": true
   },
-  "numOfWorkers": 2,
+  "numOfWorkers": 8,
   "frequency": 10,
   "decoder": {
     "readers": ["code_128_reader"]
   },
-  "locate": true,
-  "multiple": false
+  "locate": true
 }

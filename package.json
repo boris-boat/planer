@@ -20,6 +20,7 @@
     "quagga": "^0.12.1",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
+    "react-barcode": "^1.4.2",
     "react-bootstrap": "^2.1.0",
     "react-bootstrap-typeahead": "^6.0.0-rc.1",
     "react-datepicker": "^4.7.0",

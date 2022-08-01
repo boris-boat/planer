@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Scanner from "../../components/Scanner/Scanner.js";
-import { useStateContext } from "../../components/StateContext";
+import Barcode from "react-barcode"
 import "./Loyalty.styles.css";
 
 const Loyalty = () => {
@@ -15,10 +15,10 @@ const Loyalty = () => {
       <button onClick={() => setCamera(!camera)}>
         {camera ? "Stop" : "Start"}
       </button>
-      <div className="container">
+      <div className="container d-flex align-content-center justify-content-center align-items-center" style={{width :"100%"}}>
         {camera && <Scanner onDetected={onDetected} />}
       </div>
-      {result}
+      <div><Barcode value={result}/></div>
     </div>
   );
 };

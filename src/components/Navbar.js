@@ -11,7 +11,7 @@ const Topnavbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAccountInfoModal, setShowAccountInfoModal] = useState(false);
-  const { setVremeShow, VremeShow, isLoggedIn, setIsLoggedIn } =
+  const { setVremeShow, VremeShow, isLoggedIn, setIsLoggedIn,fullUserInfo } =
     useStateContext();
   const logout = () => {
     setIsLoggedIn(false);
@@ -22,7 +22,7 @@ const Topnavbar = () => {
 
   return (
     <>
-      {isLoggedIn ? (
+      {isLoggedIn && fullUserInfo?.data?.username ? (
         <Navbar
           bg="primary"
           variant="dark"

@@ -7,7 +7,6 @@ import LoyaltyModal from "../../components/LoyaltyModal";
 import { Button } from "react-bootstrap";
 const Loyalty = () => {
   const { fullUserInfo } = useStateContext();
-
   const { REACT_APP_API_URL } = process.env;
   const [desc, setDesc] = useState("");
   const [modalNumber, setModalNumber] = useState("");
@@ -15,12 +14,13 @@ const Loyalty = () => {
   const [barcodeNumbers, setBarcodeNumbers] = useState("");
   const [modalShow, setModalShow] = useState(false);
 
-  const fetchNumbers = () => {
+  const fetchNumbers = async () => {
     fetch(
       REACT_APP_API_URL + "/loyalty/getNumbers/" + fullUserInfo.data.username
     )
       .then((res) => res.json())
-      .then((result) => setBarcodeNumbers(result.loyaltyCards));
+      .then((result) => setBarcodeNumbers(result.loyaltyCards))
+      .then(() => console.log(barcodeNumbers));
   };
 
   const addNumber = async () => {
@@ -32,13 +32,13 @@ const Loyalty = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username: "noske",
+            username: fullUserInfo.data.username,
             desc: desc,
             number: number,
           }),
         })
           .then((res) => res.json())
-          .then((result) => setBarcodeNumbers(result.loyaltyCards))
+          .then(() => fetchNumbers())
           .catch((e) => console.log(e));
       }
     } catch (error) {
@@ -62,11 +62,16 @@ const Loyalty = () => {
       .then((res) => res.json())
       .catch((e) => console.log(e));
   };
+
   useEffect(() => {
     fetchNumbers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fullUserInfo]);
+  useEffect(() => {
+    fetchNumbers();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="pageWrapper">
       <div className="appWrapper">
@@ -116,7 +121,7 @@ const Loyalty = () => {
         {barcodeNumbers
           ? barcodeNumbers.map((item) => {
               return (
-                <div className="singleItem" key={item.desc}>
+                <div className="singleItem" key={Math.random()}>
                   <div
                     className="left"
                     onClick={() => {

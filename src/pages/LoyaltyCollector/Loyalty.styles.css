@@ -7,7 +7,6 @@
 }
 .appWrapper {
   width: 500px;
- 
 }
 .singleItem {
   border: 1px solid black;
@@ -38,10 +37,7 @@
   margin-bottom: 10px;
   height: 100px;
 }
-.modal-backdrop {
-  
-  opacity:1 !important;
-}
+
 .inputItemsContainer {
   display: flex;
   width: 100%;

@@ -38,7 +38,6 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   return (
     <>
       <Container className={center} style={{ height: "100vh" }}>
@@ -61,7 +60,6 @@ const Home = () => {
                     alt=""
                   ></img>
                 </div>
-                
                 <div className="align-self-center toDoListImg">
                   <ToDoImg />
                 </div>

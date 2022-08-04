@@ -15,7 +15,7 @@ import Item from "../../components/Item";
 import CategorySelector from "../../components/CategorySelector";
 
 function ToDo() {
-  const { category, newTodo, setnewTodo,fullUserInfo } = useStateContext();
+  const { category, newTodo, setnewTodo, fullUserInfo } = useStateContext();
 
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState([]);
@@ -23,7 +23,7 @@ function ToDo() {
   const [list, setList] = useState();
 
   const { REACT_APP_API_URL } = process.env;
-  let user = fullUserInfo.data.username
+  let user = fullUserInfo.data.username;
   const center = "d-flex justify-content-center align-items-center";
 
   useEffect(() => {
@@ -43,7 +43,6 @@ function ToDo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleUpdate = async (id, text) => {
-    console.log(id, text);
     await fetch(REACT_APP_API_URL + "/todos/editTodo/" + id, {
       method: "POST",
       headers: {

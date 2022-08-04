@@ -1,7 +1,36 @@
-.wholePage{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 200px;
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+}
+.appWrapper {
+  border: 1px solid black;
+  width: 500px;
+}
+.singleItem {
+  display: flex;  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  height: 150px;
+  border: 1px red solid;
+}
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  height: 100px;
+  border: 1px white solid;
+}
+.inputItemsContainer {
+  display: flex;
+  width: 80%;
+  height: 60%;
+  justify-content: space-around;
 }

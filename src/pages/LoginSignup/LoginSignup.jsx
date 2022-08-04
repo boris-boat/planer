@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -56,7 +56,6 @@ const Login = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          //kreiraj ovde da mozemo uzeti email isto kad se registruje
           //data daje user sa servera
 
           if (data) {
@@ -72,6 +71,24 @@ const Login = () => {
       console.log(e);
     }
   };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      fetch(REACT_APP_API_URL + "/user/getuser", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.data.username) {
+            setFullUserInfo(result.data);
+            setIsLoggedIn(true);
+          }
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Container fluid className="m-0">

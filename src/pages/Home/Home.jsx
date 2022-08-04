@@ -60,6 +60,14 @@ const Home = () => {
                     alt=""
                   ></img>
                 </div>
+                <div className="home toDo" onClick={() => navigate("/loyalty")}>
+                  <h4 style={textStyle}>Loyalty</h4>{" "}
+                  <img
+                    className="logo"
+                    src={require("../../components/media/Icons/todo.jpg")}
+                    alt=""
+                  ></img>
+                </div>
                 <div className="align-self-center toDoListImg">
                   <ToDoImg />
                 </div>

@@ -51,7 +51,15 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route exact path="/loyalty" element={<Loyalty />} />
+        <Route
+          exact
+          path="/loyalty"
+          element={
+            <ProtectedRoute>
+              <Loyalty />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/chat"
           element={
@@ -81,7 +89,7 @@ function App() {
         />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/" element={<Login />} />
-        
+
         <Route
           exact
           path="/tracker"

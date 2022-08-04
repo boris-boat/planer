@@ -27,14 +27,20 @@
   width: 100% !important;
 }
 .inputWrapper {
-  
+  border: 1px solid white;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 90%;
   margin: auto;
+  margin-bottom: 10px;
   height: 100px;
+}
+.modal-backdrop {
+  
+  opacity:1 !important;
 }
 .inputItemsContainer {
   display: flex;

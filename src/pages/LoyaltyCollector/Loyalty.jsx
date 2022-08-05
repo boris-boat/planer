@@ -74,10 +74,13 @@ const Loyalty = () => {
   return (
     <div className="pageWrapper">
       <div className="titleWrapper">
-        <h2>Keep your wallet thin by not carrying all those loyalty cards arround.</h2>
+        <h2>
+          Keep your wallet thin by not carrying all those loyalty cards arround.
+        </h2>
       </div>
       <div className="appWrapper">
         <LoyaltyModal
+          backdropClassName={"loyaltyModal"}
           show={modalShow}
           onHide={() => setModalShow(false)}
           number={modalNumber}
@@ -131,7 +134,7 @@ const Loyalty = () => {
                       setModalShow(true);
                     }}
                   >
-                    <h3 style={{color : 'white'}}>{item.desc}</h3>
+                    <h3 style={{ color: "white" }}>{item.desc}</h3>
                     <Barcode value={item.number} />
                   </div>
 

@@ -60,6 +60,9 @@
   text-align: center;
   color: white;
 }
+.loyaltyModal {
+  opacity: 1 !important;
+}
 @media (min-width: 220px) and (max-width: 680px) {
   .appWrapper {
     width: 95%;

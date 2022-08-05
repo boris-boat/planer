@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css"; //icons
@@ -28,8 +27,7 @@ const Tracker = () => {
 
   //gets initial values
   const getTrackerInfo = async () => {
- 
-   fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
+    fetch(REACT_APP_API_URL + "/tracker/trackerData" + user)
       .then((res) => res.json())
       .then((result) => setInitialState(result[0]))
       .then(() => setOtherNote(initialState.otherNote))

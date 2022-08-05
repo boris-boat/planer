@@ -60,16 +60,16 @@ const Home = () => {
                     alt=""
                   ></img>
                 </div>
-                <div className="home toDo" onClick={() => navigate("/loyalty")}>
-                  <h4 style={textStyle}>Loyalty</h4>{" "}
-                  <img
-                    className="logo"
-                    src={require("../../components/media/Icons/todo.jpg")}
-                    alt=""
-                  ></img>
-                </div>
                 <div className="align-self-center toDoListImg">
                   <ToDoImg />
+                </div>
+                <div className="home toDo" onClick={() => navigate("/loyalty")}>
+                  <h4 style={textStyle}>Loyalty cards organizer</h4>{" "}
+                  <img
+                    className="logo"
+                    src={require("../../components/media/Icons/barcode.png")}
+                    alt=""
+                  ></img>
                 </div>
                 <div className="home chat" onClick={() => navigate("/join")}>
                   <h4 style={textStyle}>Chat</h4>{" "}

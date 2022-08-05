@@ -14,11 +14,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   width: 100%;
   margin: auto;
   padding: 10px;
-  height: 170px;
+  height: 200px;
   margin-bottom: 5px;
   justify-content: space-around;
 }
@@ -49,11 +48,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 50%;
+  text-align: center;
+  color: white;
+}
 @media (min-width: 220px) and (max-width: 680px) {
   .appWrapper {
     width: 95%;
+  }
+  .left {
+    flex-direction: column;
   }
 }

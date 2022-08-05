@@ -81,6 +81,16 @@ const Topnavbar = () => {
               <Nav.Item>
                 <Nav.Link
                   onClick={() => {
+                    navigate("/loyalty");
+                    setShow(false);
+                  }}
+                >
+                  Loyalty card organizer
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  onClick={() => {
                     navigate("/join");
                     setShow(false);
                   }}
@@ -98,7 +108,6 @@ const Topnavbar = () => {
                   Weather
                 </Nav.Link>
               </Nav.Item>
-
               <Nav.Item>
                 <Nav.Link
                   onClick={() => {

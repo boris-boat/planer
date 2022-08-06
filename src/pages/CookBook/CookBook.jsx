@@ -12,7 +12,7 @@ const CookBook = () => {
   const [foundRecipes, setFoundRecipes] = useState("");
   //base querry where rest of info is added
   let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
-  let query = [];
+ 
 
   //creates a querry to be used for search
   const createQuery = () => {
@@ -21,7 +21,7 @@ const CookBook = () => {
     });
   };
   const handleSearch = async () => {
-    multiSelections.map((selection) => query.push(selection.label));
+  
     createQuery();
     const response = await fetch(base);
     const { ...data } = await response.json();

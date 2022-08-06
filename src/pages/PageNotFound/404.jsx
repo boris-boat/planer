@@ -1,6 +1,6 @@
-import { Button } from "@mui/material";
+import { Button } from "react-bootstrap";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./404.styles.css";
 const FourOFour = () => {
   //page showing 404 no page found
@@ -14,15 +14,9 @@ const FourOFour = () => {
         alt=""
         className="imidz"
       ></img>
-      <Button
-        variant="contained"
-        onClick={(e) => {
-          e.preventDefault();
-          <Navigate to="/login" />;
-        }}
-      >
-        Back
-      </Button>{" "}
+      <Link to="/home" replace={true}>
+      <Button>Back</Button>
+      </Link>
     </div>
   );
 };

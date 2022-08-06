@@ -15,6 +15,7 @@ import Chat from "./pages/Chat/Chat/Chat";
 import Loyalty from "./pages/LoyaltyCollector/Loyalty";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NoPage from "./pages/PageNotFound/404"
 
 function App() {
   return (
@@ -100,6 +101,8 @@ function App() {
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
+        <Route exact path="/*" element={<NoPage/>} />
+
 
         <Route
           exact

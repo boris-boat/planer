@@ -13,7 +13,7 @@ const Loyalty = () => {
   const [number, setNumber] = useState("");
   const [barcodeNumbers, setBarcodeNumbers] = useState("");
   const [modalShow, setModalShow] = useState(false);
-
+ //fetching data from backend
   const fetchNumbers = async () => {
     fetch(
       REACT_APP_API_URL + "/loyalty/getNumbers/" + fullUserInfo.data.username
@@ -61,11 +61,6 @@ const Loyalty = () => {
       .then((res) => res.json())
       .catch((e) => console.log(e));
   };
-
-  // useEffect(() => {
-  //   fetchNumbers();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [fullUserInfo]);
   useEffect(() => {
     fetchNumbers();
 

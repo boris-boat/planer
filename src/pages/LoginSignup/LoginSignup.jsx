@@ -15,6 +15,7 @@ const Login = () => {
   const [signUpUsername, setsignUpUsername] = useState("");
   const [signUpPassword, setsignUpPassword] = useState("");
   const [newUser, setNewUser] = useState(false);
+  const [showVideo, setShowVideo] = useState(true);
 
   const navigate = useNavigate();
 
@@ -86,6 +87,13 @@ const Login = () => {
             setIsLoggedIn(true);
           }
         });
+    }
+    //!!!!! updejtuj ako se resajza
+    if (window.matchMedia("(max-width: 700px)").matches) {
+      setShowVideo(false);
+      // alert("matches");
+    }else {
+      setShowVideo(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -218,23 +226,28 @@ const Login = () => {
               <br />
             </Col>
           </Col>
-          <Col className="m-0 p-0 d-flex align-content-center justify-content-center video loginVideo">
-            <div>
-              {" "}
-              <video
-                loop
-                autoPlay
-                mute="true"
-                className="loginImg m-0 "
-                style={{ height: "890px", width: "900px", borderRadius: "5px" }}
-              >
-                <source
-                  src={require("../../components/media/Final-Shot.mp4")}
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-          </Col>
+          {showVideo && (
+            <Col className="m-0 p-0 d-flex align-content-center justify-content-center video loginVideo">
+              <div>
+                <video
+                  loop
+                  autoPlay
+                  mute="true"
+                  className="loginImg m-0 "
+                  style={{
+                    height: "890px",
+                    width: "900px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <source
+                    src={require("../../components/media/Final-Shot.mp4")}
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+            </Col>
+          )}
         </Row>
       ) : (
         <Navigate to="/home" />

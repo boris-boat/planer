@@ -14,6 +14,7 @@ export const StateContext = ({ children }) => {
   const [validated, setValidated] = useState(false);
   const [numberOfResults, setNumberOfResults] = useState(10);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [spinnerIsLoading, setSpinnerIsLoading] = useState(false);
 
   const notify = (msg) =>
     toast(msg, {
@@ -24,6 +25,8 @@ export const StateContext = ({ children }) => {
   return (
     <Context.Provider
       value={{
+        spinnerIsLoading,
+        setSpinnerIsLoading,
         setIsLoggedIn,
         isLoggedIn,
         setFullUserInfo,

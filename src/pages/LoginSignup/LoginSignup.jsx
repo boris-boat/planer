@@ -8,8 +8,14 @@ import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const { notify, setFullUserInfo, isLoggedIn, setIsLoggedIn } =
-    useStateContext();
+  const {
+    notify,
+    setFullUserInfo,
+    isLoggedIn,
+    setIsLoggedIn,
+    spinnerIsLoading,
+    setSpinnerIsLoading,
+  } = useStateContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -74,6 +80,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      setSpinnerIsLoading(true);
       fetch(REACT_APP_API_URL + "/user/getuser", {
         method: "POST",
         headers: {
@@ -85,6 +92,7 @@ const Login = () => {
           if (result.data.username) {
             setFullUserInfo(result.data);
             setIsLoggedIn(true);
+            setSpinnerIsLoading(false);
           }
         });
     }
@@ -92,7 +100,7 @@ const Login = () => {
     if (window.matchMedia("(max-width: 700px)").matches) {
       setShowVideo(false);
       // alert("matches");
-    }else {
+    } else {
       setShowVideo(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

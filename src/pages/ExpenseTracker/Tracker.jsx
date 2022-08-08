@@ -9,8 +9,6 @@ import { Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useStateContext } from "../../components/StateContext";
 import "./tracker.css";
 import emailjs from "@emailjs/browser";
-
-import "react-toastify/dist/ReactToastify.css";
 import EmailModal from "../../components/EmailModal";
 
 const Tracker = () => {

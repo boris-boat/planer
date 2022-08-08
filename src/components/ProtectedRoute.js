@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
 
   //component that checks for user object
 
-  if (!fullUserInfo) {
+  if (!fullUserInfo || fullUserInfo?.message === "Auth failed") {
     return <Navigate to="/login" replace />;
   }
 

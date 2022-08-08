@@ -11,9 +11,10 @@ const Topnavbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAccountInfoModal, setShowAccountInfoModal] = useState(false);
-  const { setVremeShow, VremeShow, isLoggedIn, setIsLoggedIn, fullUserInfo } =
+  const { setVremeShow, VremeShow, isLoggedIn, setIsLoggedIn, fullUserInfo,setFullUserInfo } =
     useStateContext();
   const logout = () => {
+    setFullUserInfo("")
     localStorage.removeItem("token");
     setIsLoggedIn(false);
 

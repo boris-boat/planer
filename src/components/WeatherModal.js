@@ -23,6 +23,7 @@ export default function Vreme(props) {
       )
         .then((res) => res.json())
         .then((result) => {
+        
           settrenutnoVreme(result.main);
           setGrad(result.name);
           setOpis(result.weather[0].description);

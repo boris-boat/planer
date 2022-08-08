@@ -13,7 +13,6 @@ const Login = () => {
     setFullUserInfo,
     isLoggedIn,
     setIsLoggedIn,
-    spinnerIsLoading,
     setSpinnerIsLoading,
   } = useStateContext();
   const [username, setUsername] = useState("");
@@ -96,10 +95,10 @@ const Login = () => {
           }
         });
     }
-    //!!!!! updejtuj ako se resajza
+   
     if (window.matchMedia("(max-width: 700px)").matches) {
       setShowVideo(false);
-      // alert("matches");
+     
     } else {
       setShowVideo(true);
     }

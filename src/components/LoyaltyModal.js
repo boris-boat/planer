@@ -14,11 +14,6 @@ const LoyaltyModal = (props) => {
       <Modal.Body className="barkod" >
         <Barcode value={props.number}  width="5" height="220"/>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}  >
-          Close
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 };

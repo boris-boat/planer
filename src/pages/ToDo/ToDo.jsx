@@ -134,7 +134,7 @@ function ToDo() {
                     value={newTodo}
                     onChange={(e) => setnewTodo(e.target.value)}
                   />
-                  <Button type="submit" variant="info" id="button-addon2">
+                  <Button type="submit" variant="primary" id="button-addon2">
                     Add
                   </Button>
                 </InputGroup>

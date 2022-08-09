@@ -77,7 +77,7 @@ const TorrentExplorer = () => {
                 onChange={(e) => setQuery(e.target.value)}
               />
               <TorrentCategorySelector />
-              <Button type="submit" variant="info" id="button-addon2">
+              <Button type="submit" variant="primary" id="button-addon2">
                 Search
               </Button>
             </InputGroup>

@@ -27,7 +27,10 @@ function App() {
       <Topnavbar />
       {spinnerIsLoading && (
         <div className="spinnerWrapper">
-          <Spinner animation="border" style={{ width: "4rem", height: "4rem" }} />
+          <Spinner
+            animation="border"
+            style={{ width: "4rem", height: "4rem" }}
+          />
         </div>
       )}
       <Routes>

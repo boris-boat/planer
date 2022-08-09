@@ -132,7 +132,7 @@ const Tracker = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState, otherNote]);
   useEffect(() => {
-    setOtherNote(initialState.otherNote);
+      setOtherNote(initialState.otherNote);
   }, [initialState.otherNote]);
 
   const d = new Date();

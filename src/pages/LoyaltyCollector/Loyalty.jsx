@@ -6,14 +6,14 @@ import { RiAddCircleFill, RiDeleteBin6Line } from "react-icons/ri";
 import LoyaltyModal from "../../components/LoyaltyModal";
 import { Button } from "react-bootstrap";
 const Loyalty = () => {
-  const { fullUserInfo } = useStateContext();
+  const { fullUserInfo, notify } = useStateContext();
   const { REACT_APP_API_URL } = process.env;
   const [desc, setDesc] = useState("");
   const [modalNumber, setModalNumber] = useState("");
   const [number, setNumber] = useState("");
   const [barcodeNumbers, setBarcodeNumbers] = useState("");
   const [modalShow, setModalShow] = useState(false);
- //fetching data from backend
+  //fetching data from backend
   const fetchNumbers = async () => {
     fetch(
       REACT_APP_API_URL + "/loyalty/getNumbers/" + fullUserInfo.data.username
@@ -39,6 +39,8 @@ const Loyalty = () => {
           .then((res) => res.json())
           .then(() => fetchNumbers())
           .catch((e) => console.log(e));
+      } else {
+        notify("Please enter more than 3 characters");
       }
     } catch (error) {
       console.log(error);

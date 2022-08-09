@@ -11,8 +11,8 @@ const LoyaltyModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Body className="barkod">
-        <Barcode value={props.number} />
+      <Modal.Body className="barkod" >
+        <Barcode value={props.number}  width="5" height="220"/>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}  >

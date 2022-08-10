@@ -14,7 +14,7 @@ import "../../App.css";
 const TorrentExplorer = () => {
   const { torrentCategory, numberOfResults } = useStateContext();
   const [query, setQuery] = useState("");
-  const [foundTorrents, setFoundTorrents] = useState([]);
+  const [foundTorrents, setFoundTorrents] = useState(null);
   const [searching, setSearching] = useState(false);
   const { REACT_APP_API_URL } = process.env;
   //handles torrent search
@@ -85,8 +85,12 @@ const TorrentExplorer = () => {
         </Form>
         <Container className="d-flex flex-column justify-content-center align-items-center">
           {" "}
-          {foundTorrents.length > 0 ? (
+          {foundTorrents?.length > 0 ? (
             <Torrent foundTorrents={foundTorrents} />
+          ) : foundTorrents?.length === 0 && !searching ? (
+            <h2 style={{ color: "white", marginTop: "20px" }}>
+              No torrents found
+            </h2>
           ) : null}
           {searching ? (
             <Spinner

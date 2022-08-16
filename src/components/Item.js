@@ -8,7 +8,7 @@ const Item = (props) => {
   const [todo, setTodo] = useState("");
   const [updatedTodo, setUpdatedTodo] = useState("");
   const [showModal, setShowModal] = useState(false);
-  console.log(todo);
+
   useEffect(() => {
     setTodo(props.item);
   }, [props.item]);

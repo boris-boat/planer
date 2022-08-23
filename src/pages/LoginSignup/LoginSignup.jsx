@@ -63,9 +63,10 @@ const Login = () => {
         .then((response) => response.json())
         .then((data) => {
           //data daje user sa servera
+          console.log(data);
 
           if (data) {
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("imasvetoken", data.token);
             setIsLoggedIn(true);
             setFullUserInfo(data.user);
 
@@ -78,27 +79,26 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setSpinnerIsLoading(true);
+    if (localStorage.getItem("imasvetoken")) {
+      //setSpinnerIsLoading(true);
       fetch(REACT_APP_API_URL + "/user/getuser", {
         method: "POST",
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("imasvetoken"),
         },
       })
         .then((res) => res.json())
         .then((result) => {
           if (result.data.username) {
-            setFullUserInfo(result.data);
-            setIsLoggedIn(true);
-            setSpinnerIsLoading(false);
+            // setFullUserInfo(result.data);
+            // setIsLoggedIn(true);
+            // setSpinnerIsLoading(false);
           }
         });
     }
-   
+
     if (window.matchMedia("(max-width: 700px)").matches) {
       setShowVideo(false);
-     
     } else {
       setShowVideo(true);
     }

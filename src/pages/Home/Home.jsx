@@ -23,11 +23,16 @@ const Home = () => {
     fetch(REACT_APP_API_URL + "/user/getuser", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("imasvetoken"),
       },
     })
       .then((res) => res.json())
-      .then((result) => setFullUserInfo(result));
+      .then((result) => {
+        if (result.message === "Auth failed") {
+          localStorage.removeItem("imasvetoken");
+        }
+        setFullUserInfo(result);
+      });
   };
   useEffect(() => {
     fetchFullUserInfo();

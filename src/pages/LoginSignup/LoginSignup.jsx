@@ -80,7 +80,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (localStorage.getItem("imasvetoken")) {
-      //setSpinnerIsLoading(true);
+      setSpinnerIsLoading(true);
       fetch(REACT_APP_API_URL + "/user/getuser", {
         method: "POST",
         headers: {
@@ -90,9 +90,9 @@ const Login = () => {
         .then((res) => res.json())
         .then((result) => {
           if (result.data.username) {
-            // setFullUserInfo(result.data);
-            // setIsLoggedIn(true);
-            // setSpinnerIsLoading(false);
+            setFullUserInfo(result.data);
+            setIsLoggedIn(true);
+            setSpinnerIsLoading(false);
           }
         });
     }

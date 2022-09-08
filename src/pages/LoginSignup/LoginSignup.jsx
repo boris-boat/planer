@@ -93,6 +93,9 @@ const Login = () => {
             setFullUserInfo(result.data);
             setIsLoggedIn(true);
             setSpinnerIsLoading(false);
+          } else {
+            localStorage.removeItem("imasvetoken");
+            setSpinnerIsLoading(false);
           }
         });
     }

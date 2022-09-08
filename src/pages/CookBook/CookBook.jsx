@@ -24,6 +24,7 @@ const CookBook = () => {
     const response = await fetch(base);
     const { ...data } = await response.json();
     setFoundRecipes(data);
+    console.log(data);
   };
 
   const center =

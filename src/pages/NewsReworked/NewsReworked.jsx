@@ -7,7 +7,8 @@ const NewsReworked = () => {
   const { REACT_APP_API_URL } = process.env;
 
   //sends fetch to node server which returns sorted news
-  const { data } = useFetch(REACT_APP_API_URL + "/news/getnews");
+  //const { data } = useFetch(REACT_APP_API_URL + "/news/getnews");
+  const { data } = useFetch("http://localhost:3001/news/getnews");
   const filterNews = (news, filter) => {
     let data = news?.filter((item) => item.guid.includes(filter));
     return data;
@@ -20,8 +21,8 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>N1</h2>
             <Card>
-              {data?.length > 1 ? (
-                filterNews(data, "n1").map((item) => {
+              {data?.rssFeed.length > 1 ? (
+                filterNews(data.rssFeed, "n1").map((item) => {
                   return (
                     <ListGroup.Item key={item.link}>
                       {item.title} <br></br>
@@ -44,10 +45,10 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>Blic</h2>
             <Card>
-              {data?.length > 1 ? (
-                filterNews(data, "blic").map((item) => {
+              {data?.rssFeed.length > 1 ? (
+                filterNews(data.rssFeed, "blic").map((item) => {
                   return (
-                    <ListGroup.Item key={item.link} >
+                    <ListGroup.Item key={item.link}>
                       {item.title} <br></br>
                       <a
                         rel="noreferrer noopener"
@@ -67,8 +68,8 @@ const NewsReworked = () => {
           <Col style={{ minWidth: "300px" }}>
             <h2>Danas</h2>
             <Card>
-              {data?.length > 1 ? (
-                filterNews(data, "danas").map((item) => {
+              {data?.rssFeed.length > 1 ? (
+                filterNews(data.rssFeed, "danas").map((item) => {
                   return (
                     <ListGroup.Item key={item.link}>
                       {item.title} <br></br>
@@ -89,9 +90,9 @@ const NewsReworked = () => {
           </Col>
           <Col style={{ minWidth: "300px" }}>
             <h2>Mozzart</h2>
-            <Card  style={{marginBottom : "10px"}}>
-              {data?.length > 1 ? (
-                filterNews(data, "mozzart").map((item) => {
+            <Card style={{ marginBottom: "10px" }}>
+              {data?.rssFeed.length > 1 ? (
+                filterNews(data.rssFeed, "mozzart").map((item) => {
                   return (
                     <ListGroup.Item key={item.link}>
                       {item.title} <br></br>

@@ -63,13 +63,11 @@ const Login = () => {
         .then((response) => response.json())
         .then((data) => {
           //data daje user sa servera
-          console.log(data);
 
           if (data) {
             localStorage.setItem("imasvetoken", data.token);
             setIsLoggedIn(true);
             setFullUserInfo(data.user);
-
             navigate("/home");
           }
         });
@@ -89,7 +87,8 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          if (result.data.username) {
+          console.log(result);
+          if (result?.data?.username) {
             setFullUserInfo(result.data);
             setIsLoggedIn(true);
             setSpinnerIsLoading(false);

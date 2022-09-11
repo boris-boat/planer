@@ -87,7 +87,6 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
           if (result?.data?.username) {
             setFullUserInfo(result.data);
             setIsLoggedIn(true);

@@ -17,7 +17,7 @@ const NewsReworked = () => {
   return (
     <Container fluid>
       <Container fluid style={{ paddingTop: "60px" }}>
-        <div style={{ width: "375px", margin: "0 auto" }}>
+        <div style={{ width: "350px", margin: "0 auto" }}>
           {data ? (
             <>
               <Card style={{ width: "100%" }}>

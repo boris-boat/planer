@@ -95,7 +95,7 @@ const Topnavbar = () => {
                   Loyalty card organizer
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Nav.Link
                   onClick={() => {
                     navigate("/join");
@@ -104,7 +104,7 @@ const Topnavbar = () => {
                 >
                   Chat
                 </Nav.Link>
-              </Nav.Item>
+              </Nav.Item> */}
               <Nav.Item>
                 <Nav.Link
                   onClick={() => {

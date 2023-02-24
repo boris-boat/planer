@@ -36,14 +36,12 @@ export const StateContext = ({ children }) => {
         setTorrentCategory,
         validated,
         setValidated,
-
         category,
         setCategory,
         VremeShow,
         setVremeShow,
         setTestToken,
         testToken,
-
         newTodo,
         setnewTodo,
         creator,

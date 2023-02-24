@@ -69,7 +69,6 @@ const Login = () => {
         });
     } catch (e) {
       notify("Invalid username/password combination");
-      console.log(e);
     }
   };
   useEffect(() => {
@@ -92,7 +91,7 @@ const Login = () => {
     if (window.matchMedia("(max-width: 700px)").matches) {
       setShowVideo(false);
       // alert("matches");
-    }else {
+    } else {
       setShowVideo(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

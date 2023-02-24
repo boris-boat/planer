@@ -99,10 +99,7 @@ const Login = () => {
 
     if (window.matchMedia("(max-width: 700px)").matches) {
       setShowVideo(false);
-<<<<<<< HEAD
       // alert("matches");
-=======
->>>>>>> 1e6ff184ea4a2cd62e3c3e3c7546c8fd6b0c9ed8
     } else {
       setShowVideo(true);
     }

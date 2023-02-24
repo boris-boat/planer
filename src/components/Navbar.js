@@ -11,10 +11,17 @@ const Topnavbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAccountInfoModal, setShowAccountInfoModal] = useState(false);
-  const { setVremeShow, VremeShow, isLoggedIn, setIsLoggedIn, fullUserInfo } =
-    useStateContext();
+  const {
+    setVremeShow,
+    VremeShow,
+    isLoggedIn,
+    setIsLoggedIn,
+    fullUserInfo,
+    setFullUserInfo,
+  } = useStateContext();
   const logout = () => {
-    localStorage.removeItem("token");
+    setFullUserInfo("");
+    localStorage.removeItem("imasvetoken");
     setIsLoggedIn(false);
 
     navigate("/login");
@@ -88,7 +95,7 @@ const Topnavbar = () => {
                   Loyalty card organizer
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Nav.Link
                   onClick={() => {
                     navigate("/join");
@@ -97,7 +104,7 @@ const Topnavbar = () => {
                 >
                   Chat
                 </Nav.Link>
-              </Nav.Item>
+              </Nav.Item> */}
               <Nav.Item>
                 <Nav.Link
                   onClick={() => {

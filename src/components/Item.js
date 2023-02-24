@@ -14,11 +14,14 @@ const Item = (props) => {
   }, [props.item]);
 
   return (
-    <div className="d-flex flex-row justify-content-between align-items-center" style={{maxHeight : "45px",}}>
-      <div style={{maxWidth : "70%"}}>
+    <div
+      className="d-flex flex-row justify-content-between align-items-center"
+      style={{ maxHeight: "45px" }}
+    >
+      <div style={{ maxWidth: "70%" }}>
         <h5
           style={{
-            textDecorationLine: props.item.completed ? "line-through" : "",
+            textDecorationLine: todo.completed ? "line-through" : "",
             wordWrap: "break-word",
           }}
           className="mt-1 mb-1"
@@ -30,7 +33,7 @@ const Item = (props) => {
         </h5>
       </div>
 
-      <div className="d-flex align-items-end" style={{marginRight : "-10px"}}>
+      <div className="d-flex align-items-end" style={{ marginRight: "-10px" }}>
         <Button
           style={{
             marginRight: "5px",
@@ -68,7 +71,11 @@ const Item = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton className="editTodoModal" style={{paddingLeft : "100px"}}>
+        <Modal.Header
+          closeButton
+          className="editTodoModal"
+          style={{ paddingLeft: "100px" }}
+        >
           <Modal.Title id="contained-modal-title-vcenter">
             Enter new text :
           </Modal.Title>

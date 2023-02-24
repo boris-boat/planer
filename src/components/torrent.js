@@ -19,7 +19,7 @@ const Torrent = ({ foundTorrents }) => {
           
             {foundTorrents.length !== 0 ? (
               foundTorrents.map((torrent) => (
-                <tr>
+                <tr key={Math.random()}>
                   <td >
                     <a
                       rel="noreferrer noopener"

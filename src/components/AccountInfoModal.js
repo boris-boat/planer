@@ -13,8 +13,16 @@ const AccountInfoModal = (props) => {
   const [showEditMailInput, setShowEditMailInput] = useState(false);
   const [updatedEmail, setUpdatedEmail] = useState("");
   const { REACT_APP_API_URL } = process.env;
-  const { fullUserInfo, setFullUserInfo, notify } = useStateContext();
+  const { fullUserInfo, notify } = useStateContext();
   let user = fullUserInfo?.data?.username;
+
+  const [currentEmail, setCurrentEmail] = useState(() => {
+    if (user) {
+      return fullUserInfo?.data?.email;
+    } else {
+      return "Not set";
+    }
+  });
 
   const editUserEmailDB = async () => {
     try {
@@ -30,7 +38,6 @@ const AccountInfoModal = (props) => {
       }).then((response) => {
         if (response) {
           notify("Email updated");
-          setFullUserInfo((prev) => ({ ...prev, email: updatedEmail }));
         } else {
           notify("Database error , try again later");
         }
@@ -52,12 +59,13 @@ const AccountInfoModal = (props) => {
         delay={{ show: 250, hide: 400 }}
         overlay={renderTooltip}
       >
-        <p style={{marginLeft : "10px"}} className="questionMark">
+        <p style={{ marginLeft: "10px" }} className="questionMark">
           <AiOutlineQuestionCircle />
         </p>
       </OverlayTrigger>
     );
   };
+
   return (
     <Modal
       {...props}
@@ -71,7 +79,7 @@ const AccountInfoModal = (props) => {
           <div>
             <h4>Account info :</h4>
           </div>
-          <div style={{ marginBottom: "5px",marginTop : "20px" }}>
+          <div style={{ marginBottom: "5px", marginTop: "20px" }}>
             <h5>Username : {user}</h5>
           </div>
           <div className="email">
@@ -80,15 +88,15 @@ const AccountInfoModal = (props) => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-               
               }}
             >
-              <h5 style={{display : "flex",margin : "0",alignItems : "center"}}>
-                Email : {fullUserInfo?.data?.email}
-                <Info/>
+              <h5
+                style={{ display: "flex", margin: "0", alignItems: "center" }}
+              >
+                Email : {currentEmail}
+                <Info />
               </h5>
               <Button onClick={() => setShowEditMailInput(true)}>Edit</Button>
-             
             </div>
             {showEditMailInput && (
               <div>
@@ -101,6 +109,7 @@ const AccountInfoModal = (props) => {
                 <button
                   onClick={() => {
                     editUserEmailDB();
+                    setCurrentEmail(updatedEmail);
                     setShowEditMailInput(false);
                   }}
                 >

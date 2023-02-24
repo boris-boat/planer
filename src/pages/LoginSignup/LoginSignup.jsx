@@ -8,8 +8,13 @@ import "./LoginSignup.styles.css";
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
-  const { notify, setFullUserInfo, isLoggedIn, setIsLoggedIn } =
-    useStateContext();
+  const {
+    notify,
+    setFullUserInfo,
+    isLoggedIn,
+    setIsLoggedIn,
+    setSpinnerIsLoading,
+  } = useStateContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signUpUsername, setsignUpUsername] = useState("");
@@ -60,10 +65,9 @@ const Login = () => {
           //data daje user sa servera
 
           if (data) {
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("imasvetoken", data.token);
             setIsLoggedIn(true);
             setFullUserInfo(data.user);
-
             navigate("/home");
           }
         });
@@ -72,25 +76,33 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("imasvetoken")) {
+      setSpinnerIsLoading(true);
       fetch(REACT_APP_API_URL + "/user/getuser", {
         method: "POST",
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("imasvetoken"),
         },
       })
         .then((res) => res.json())
         .then((result) => {
-          if (result.data.username) {
+          if (result?.data?.username) {
             setFullUserInfo(result.data);
             setIsLoggedIn(true);
+            setSpinnerIsLoading(false);
+          } else {
+            localStorage.removeItem("imasvetoken");
+            setSpinnerIsLoading(false);
           }
         });
     }
-    //!!!!! updejtuj ako se resajza
+
     if (window.matchMedia("(max-width: 700px)").matches) {
       setShowVideo(false);
+<<<<<<< HEAD
       // alert("matches");
+=======
+>>>>>>> 1e6ff184ea4a2cd62e3c3e3c7546c8fd6b0c9ed8
     } else {
       setShowVideo(true);
     }

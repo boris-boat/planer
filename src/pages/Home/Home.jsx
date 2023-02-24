@@ -23,11 +23,16 @@ const Home = () => {
     fetch(REACT_APP_API_URL + "/user/getuser", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("imasvetoken"),
       },
     })
       .then((res) => res.json())
-      .then((result) => setFullUserInfo(result));
+      .then((result) => {
+        if (result.message === "Auth failed") {
+          localStorage.removeItem("imasvetoken");
+        }
+        setFullUserInfo(result);
+      });
   };
   useEffect(() => {
     fetchFullUserInfo();
@@ -71,7 +76,7 @@ const Home = () => {
                     alt=""
                   ></img>
                 </div>
-                <div className="home chat" onClick={() => navigate("/join")}>
+                {/* <div className="home chat" onClick={() => navigate("/join")}>
                   <h4 style={textStyle}>Chat</h4>{" "}
                   <img
                     style={{ borderRadius: "10px" }}
@@ -82,7 +87,7 @@ const Home = () => {
                 </div>
                 <div className="align-self-center chatImg">
                   <ChatImg />
-                </div>
+                </div> */}
                 <div
                   className="home torrent"
                   onClick={() => navigate("/torrent")}

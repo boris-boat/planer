@@ -15,14 +15,24 @@ import Chat from "./pages/Chat/Chat/Chat";
 import Loyalty from "./pages/LoyaltyCollector/Loyalty";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NoPage from "./pages/PageNotFound/404"
+import NoPage from "./pages/PageNotFound/404";
+import { Spinner } from "react-bootstrap";
+import { useStateContext } from "./components/StateContext";
 
 function App() {
+  const { spinnerIsLoading } = useStateContext();
   return (
     <div>
       <ToastContainer position="top-center" />
-
       <Topnavbar />
+      {spinnerIsLoading && (
+        <div className="spinnerWrapper">
+          <Spinner
+            animation="border"
+            style={{ width: "4rem", height: "4rem" }}
+          />
+        </div>
+      )}
       <Routes>
         <Route exact path="/nouser" element={<NoUser />} />
         <Route
@@ -101,8 +111,7 @@ function App() {
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
-        <Route exact path="/*" element={<NoPage/>} />
-
+        <Route exact path="/*" element={<NoPage />} />
 
         <Route
           exact

@@ -12,7 +12,6 @@ const CookBook = () => {
   const [foundRecipes, setFoundRecipes] = useState("");
   //base querry where rest of info is added
   let base = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_COOKBOOK_API}&addRecipeInformation=true&number=5&sort=random`;
- 
 
   //creates a querry to be used for search
   const createQuery = () => {
@@ -21,11 +20,11 @@ const CookBook = () => {
     });
   };
   const handleSearch = async () => {
-  
     createQuery();
     const response = await fetch(base);
     const { ...data } = await response.json();
     setFoundRecipes(data);
+    console.log(data);
   };
 
   const center =

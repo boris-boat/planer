@@ -9,8 +9,6 @@ import { Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useStateContext } from "../../components/StateContext";
 import "./tracker.css";
 import emailjs from "@emailjs/browser";
-
-import "react-toastify/dist/ReactToastify.css";
 import EmailModal from "../../components/EmailModal";
 
 const Tracker = () => {
@@ -134,7 +132,7 @@ const Tracker = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState, otherNote]);
   useEffect(() => {
-    setOtherNote(initialState.otherNote);
+      setOtherNote(initialState.otherNote);
   }, [initialState.otherNote]);
 
   const d = new Date();
@@ -176,7 +174,7 @@ const Tracker = () => {
       .then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
-          notify(`Email sent to ${fullUserInfo.email} !`);
+          notify(`Email sent to ${fullUserInfo.data.email} !`);
         },
         function (error) {
           console.log("FAILED...", error);
@@ -334,9 +332,9 @@ const Tracker = () => {
                 <Row style={{ width: "40%" }}>
                   <Button
                     onClick={() => {
-                      if (!fullUserInfo.email) {
+                      if (!fullUserInfo.data.email) {
                         setShowUserMailModal(true);
-                      } else if (fullUserInfo.email) {
+                      } else if (fullUserInfo.data.email) {
                         handleEmailSendClick();
                       }
                     }}
@@ -368,7 +366,7 @@ const Tracker = () => {
           </Modal>
           <EmailModal
             onExited={() => {
-              if (fullUserInfo.email) handleEmailSendClick();
+              if (fullUserInfo.data.email) handleEmailSendClick();
             }}
             onHide={() => {
               setShowUserMailModal(false);

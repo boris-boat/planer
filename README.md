@@ -1,19 +1,17 @@
-
-
 # ImaSve
 
-## Live website 
+## Live website
 
 https://imasve.netlify.app
 
-## Instalation instructions 
+## Instalation instructions
 
 npm install
 npm start
 
 ## Note
 
-App ,being hosted on Heroku, takes arround 15 sec to start up the backend so it may take some time to login or get info sometimes. 
+App ,being hosted on Heroku, takes arround 15 sec to start up the backend so it may take some time to login or get info sometimes.
 
 ## Description
 
@@ -32,6 +30,12 @@ imaSve is my biggest project made from scratch and is constantly being updated. 
 - Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB
 
 A simple app that sends a fetch to mongoDb via input and useState hook and then writes / reads / deletes data. Quote works with quotable api.
+
+## Loyalty cards organizer
+
+- Technologies used: React, React-bootstrap, NodeJs, Express, MongoDB,react-barcode,react-icons
+
+App that when inputed with barcode number generates a barcode with standard most used with loyalty cards.Tested with Idea and Lilly loyalty cards.
 
 ## News
 
@@ -52,6 +56,7 @@ Expense tracker stylized using bootstrap, CRUD operation using front and backend
 Modal that uses the openweather API and the current location extracted from the browser and shows the current values because the forecast requires more than a free account: D
 
 ## Chat
+
 - Technologies used: React, React-bootstrap, socket-io
 
 Real time chat application made using socket.io on the server as well as on the client side. Possibility of creating chat rooms. For now, there is no option to save messages, but it is planned to be implemented.

@@ -18,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 #root {
   height: auto !important;
   height: auto;
@@ -33,12 +34,23 @@ code {
 .accImg {
   width: 25px;
 }
-
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.753);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
 @media (min-width: 220px) and (max-width: 680px) {
   .homeContainer,
   .torrent,
   .answersCointainer,
-  .cattegorySelector,
+  .categorySelector,
   .listGrupaToDo {
     width: 100% !important;
   }
@@ -46,10 +58,9 @@ code {
     padding: 0 !important;
     display: flex;
     flex-direction: column;
-    
   }
   .editToDoButton {
-    margin-top : 10px !important
+    margin-top: 10px !important;
   }
   .editemailBtn {
     margin-top: 10px !important;

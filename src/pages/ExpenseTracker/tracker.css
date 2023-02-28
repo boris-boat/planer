@@ -14,6 +14,7 @@
 }
 .leftInputContainer {
   width: 60%;
+  gap: 20px;
 }
 .inputContainer {
   display: flex;
@@ -40,15 +41,16 @@
 }
 @media (min-width: 220px) and (max-width: 680px) {
   .inputButtonContainer {
-    width: auto !important;
-    padding: 0 !important;
+    margin: 0 !important;
   }
   .p-inputtext {
     width: 80px !important;
   }
   .inputContainer {
     display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: 20px;
   }
 
   .trackerBigConitainer {
@@ -76,5 +78,7 @@
   .subtract {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .bottom-form {
   }
 }

@@ -135,7 +135,7 @@ const Topnavbar = () => {
                   Daily news
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Nav.Link
                   onClick={() => {
                     navigate("/tracker");
@@ -154,7 +154,7 @@ const Topnavbar = () => {
                 >
                   Kitchen Assistant
                 </Nav.Link>
-              </Nav.Item>
+              </Nav.Item> */}
               <Nav.Item>
                 <Nav.Link
                   onClick={() => {

@@ -114,7 +114,7 @@ const Home = () => {
                 <div className="align-self-center newsImg">
                   <NewsImg />
                 </div>
-                <div
+                {/* <div
                   className="home expense"
                   onClick={() => navigate("/tracker")}
                 >
@@ -124,7 +124,7 @@ const Home = () => {
                     src={require("../../components/media/Icons/money.png")}
                     alt=""
                   ></img>{" "}
-                </div>
+                </div> */}
                 <div className="align-self-center expenseImg">
                   <ExpenseImg />
                 </div>

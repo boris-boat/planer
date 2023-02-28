@@ -132,7 +132,7 @@ const Tracker = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState, otherNote]);
   useEffect(() => {
-      setOtherNote(initialState.otherNote);
+    setOtherNote(initialState.otherNote);
   }, [initialState.otherNote]);
 
   const d = new Date();
@@ -220,129 +220,123 @@ const Tracker = () => {
 
   return (
     <div style={{ paddingTop: "60px" }}>
-      <div style={{ paddingTop: "50px" }} className="trackerBigContainer">
+      <div className="trackerBigContainer">
         <Container
-          style={{ width: "100%" }}
+          fluid
           className="d-flex flex-wrap-no-wrap justify-content-center trackerContainer"
         >
+          <Row className="w-100 p-3">
+            <Container className="totals" style={{ marginTop: "10px" }}>
+              {<h1 className="month">{month[d.getMonth()]} expenses : </h1>}
+              <h2>Bills : {initialState.bills}</h2>
+              <h2>Food : {initialState.food}</h2>
+              <h2>Entertainment : {initialState.entertainment}</h2>
+              <h2>Health : {initialState.health}</h2>
+              <h2>Transportation : {initialState.transit}</h2>
+              <h2>Other : {initialState.other} </h2>
+              <h1 className="d-flex flex-row justify-content-between total">
+                Total {total}{" "}
+                <Button
+                  className="otherNote"
+                  onClick={() => setshowNoteModal(true)}
+                >
+                  Notes
+                </Button>
+              </h1>
+            </Container>
+          </Row>
+
           <Row
             className="d-flex justify-content-center"
             md={2}
             sm={1}
             style={{ width: "100%" }}
           >
-            <Col>
-              <Container className="inputContainer">
-                <div className="leftInputContainer">
-                  {" "}
-                  <Dropdown
-                    style={{ width: "50%" }}
-                    value={expense}
-                    optionLabel="type"
-                    placeholder="Select expense"
-                    options={expenses}
-                    onChange={(e) => setExpense(e.value)}
-                  ></Dropdown>
-                  <AutoComplete
-                    style={{ width: "25%" }}
-                    value={value}
-                    className="expenseInput"
-                    placeholder="Value"
-                    type="number"
-                    onChange={(e) => setValue(e.value)}
-                  ></AutoComplete>
-                </div>
-
-                <Container className="inputButtonContainer">
-                  <ButtonPrime
-                    onClick={() => {
-                      if (expense && value > 0) {
-                        operand = "+";
-                        handleClick(expense);
-                      }
-                      if (value < 1) {
-                        notify("Expense value must be greater than 0");
-                      } else if (!expense) {
-                        notify("Please select expense!");
-                      }
-                    }}
-                    className="add"
-                  >
-                    Add
-                  </ButtonPrime>
-                  <ButtonPrime
-                    className="subtract"
-                    onClick={() => {
-                      if (expense && value > 0) {
-                        operand = "-";
-                        handleClick(expense);
-                      }
-                      if (value < 1) {
-                        notify("Expense value must be greater than 0");
-                      } else if (!expense) {
-                        notify("Please select expense!");
-                      }
-                    }}
-                  >
-                    Subtract
-                  </ButtonPrime>
+            <Col className="p-4">
+              <Row>
+                <Container className="inputContainer">
+                  <Row>
+                    <Col className="d-flex align-items-center  justify-content-around gap-3">
+                      <Dropdown
+                        className="w-50"
+                        value={expense}
+                        optionLabel="type"
+                        placeholder="Select expense"
+                        options={expenses}
+                        onChange={(e) => setExpense(e.value)}
+                      ></Dropdown>
+                      <AutoComplete
+                        value={value}
+                        className="expenseInput"
+                        placeholder="Value"
+                        type="number"
+                        onChange={(e) => setValue(e.value)}
+                      ></AutoComplete>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="d-flex justify-content-around">
+                      <ButtonPrime
+                        onClick={() => {
+                          if (expense && value > 0) {
+                            operand = "+";
+                            handleClick(expense);
+                          }
+                          if (value < 1) {
+                            notify("Expense value must be greater than 0");
+                          } else if (!expense) {
+                            notify("Please select expense!");
+                          }
+                        }}
+                        className="add"
+                      >
+                        Add
+                      </ButtonPrime>
+                      <ButtonPrime
+                        className="subtract"
+                        onClick={() => {
+                          if (expense && value > 0) {
+                            operand = "-";
+                            handleClick(expense);
+                          }
+                          if (value < 1) {
+                            notify("Expense value must be greater than 0");
+                          } else if (!expense) {
+                            notify("Please select expense!");
+                          }
+                        }}
+                      >
+                        Subtract
+                      </ButtonPrime>
+                    </Col>
+                  </Row>
                 </Container>
-              </Container>
+              </Row>
+              <Row className="bottom-form mt-3 g-3">
+                <Button
+                  onClick={() => {
+                    window.confirm(
+                      "Are you sure you wish to reset all data? This cannot be undone!!!"
+                    )
+                      ? resetData()
+                      : window.CloseEvent();
+                  }}
+                >
+                  Reset Data{" "}
+                </Button>
 
-              <Container className="totals" style={{ marginTop: "10px" }}>
-                {<h1 className="month">{month[d.getMonth()]} expenses : </h1>}
-                <h2>Bills : {initialState.bills}</h2>
-                <h2>Food : {initialState.food}</h2>
-                <h2>Entertainment : {initialState.entertainment}</h2>
-                <h2>Health : {initialState.health}</h2>
-                <h2>Transportation : {initialState.transit}</h2>
-                <h2>Other : {initialState.other} </h2>
-                <h1 className="d-flex flex-row justify-content-between total">
-                  Total {total}{" "}
-                  <Button
-                    className="otherNote"
-                    onClick={() => setshowNoteModal(true)}
-                  >
-                    Notes
-                  </Button>
-                </h1>
-              </Container>
-
-              <Container
-                className="buttonContainer"
-                style={{
-                  marginTop: "20px",
-                  display: "flex",
-                  justifyContent: "space-around",
-                }}
-              >
-                <Row style={{ width: "30%" }}>
-                  <Button
-                    onClick={() => {
-                      window.confirm(
-                        "Are you sure you wish to reset all data? This cannot be undone!!!"
-                      )
-                        ? resetData()
-                        : window.CloseEvent();
-                    }}
-                  >
-                    Reset Data{" "}
-                  </Button>
-                </Row>
-                <Row style={{ width: "40%" }}>
-                  <Button
-                    onClick={() => {
-                      if (!fullUserInfo.data.email) {
-                        setShowUserMailModal(true);
-                      } else if (fullUserInfo.data.email) {
-                        handleEmailSendClick();
-                      }
-                    }}
-                  >
-                    Send expense data to email.{" "}
-                  </Button>
-                </Row>
-              </Container>
+                <Button
+                  onClick={() => {
+                    if (!fullUserInfo.data.email) {
+                      setShowUserMailModal(true);
+                    } else if (fullUserInfo.data.email) {
+                      handleEmailSendClick();
+                    }
+                  }}
+                >
+                  Send expense data to email.{" "}
+                </Button>
+              </Row>
             </Col>
           </Row>
 

@@ -9,7 +9,7 @@ import { ReactComponent as NewsImg } from "../../components/media/ilustrations/n
 import { ReactComponent as ExpenseImg } from "../../components/media/ilustrations/reciept.svg";
 import { ReactComponent as CookingImg } from "../../components/media/ilustrations/cook.svg";
 import { ReactComponent as QuizImg } from "../../components/media/ilustrations/quiz.svg";
-import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
+// import { ReactComponent as ChatImg } from "../../components/media/ilustrations/chat.svg";
 import { useStateContext } from "../../components/StateContext";
 
 const Home = () => {

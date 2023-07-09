@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { Box, Button, Modal } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Container, Form, InputGroup, Spinner } from "react-bootstrap";
@@ -68,7 +69,6 @@ const Quiz = () => {
 
     getQuestions();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadNext]);
   useEffect(() => {
     //randomizes answers

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from "react";
 import useFetch from "../../customHooks/useFetch";
 import "../../App.css";
@@ -13,14 +14,13 @@ const NewsReworked = () => {
     let data = news?.filter((item) => item.guid.includes(filter));
     return data;
   };
-  console.log(data);
   return (
     <Container fluid>
       <Container fluid style={{ paddingTop: "60px" }}>
-        <div style={{ width: "350px", margin: "0 auto" }}>
+        <div style={{ width: "350px", margin: "0 auto",paddingTop:"15px" }}>
           {data ? (
             <>
-              <Card style={{ width: "100%" }}>
+              <Card style={{ width: "100%",padding:"10px"}}>
                 <label htmlFor="searchNews" style={{ textAlign: "center" }}>
                   Search news
                 </label>

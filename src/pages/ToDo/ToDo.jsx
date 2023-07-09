@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 import { React, useEffect, useState } from "react";
-
+import axios from "axios"
 import {
   Button,
   Container,
@@ -22,6 +23,7 @@ function ToDo() {
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState();
 
+  // eslint-disable-next-line no-undef
   const { REACT_APP_API_URL } = process.env;
   let user = fullUserInfo.data.username;
   const center = "d-flex justify-content-center align-items-center";
@@ -29,10 +31,9 @@ function ToDo() {
   useEffect(() => {
     //first population of todos
     const getTodos = async () => {
-      fetch(REACT_APP_API_URL + "/todos/" + user)
-        .then((res) => res.json())
-        .then((result) => setTodos(result))
-        .catch((e) => console.log("Database error  : " + e));
+      axios.get(REACT_APP_API_URL + "/todos/" + user)
+      .then((res) => setTodos(res.data))
+      .catch((e) => console.log("Database error  : " + e));
       setTimeout(() => {
         setLoading(false);
       }, 1500);
@@ -40,35 +41,23 @@ function ToDo() {
 
     getTodos();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleUpdate = async (id, text) => {
-    await fetch(REACT_APP_API_URL + "/todos/editTodo/" + id, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: text,
-      }),
-    })
-      .then((res) => res.json())
-      .catch((e) => console.log(e));
+    axios.post(REACT_APP_API_URL + "/todos/editTodo/" + id,
+    {text: text}
+    ).catch((e) => console.log(e));
   };
+ 
   const addToDo = async () => {
-    let newestTodo = await fetch(REACT_APP_API_URL + "/todos/createTodo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    let newestTodo = axios.post(REACT_APP_API_URL + "/todos/createTodo", {
+   
+   
         text: newTodo,
         creator: user,
         category: category === "Everything" ? "General" : category,
         completed: false,
-      }),
+    
     })
-      .then((res) => res.json())
       .catch((e) => console.log(e));
     setTodos([...todos, newestTodo]);
   };

@@ -21,6 +21,7 @@ const Tracker = () => {
   const [otherNote, setOtherNote] = useState("");
   const [showNoteModal, setshowNoteModal] = useState(false);
   let user = fullUserInfo?.data.username;
+  // eslint-disable-next-line no-undef
   const { REACT_APP_API_URL } = process.env;
 
   //gets initial values
@@ -118,8 +119,9 @@ const Tracker = () => {
     try {
       getTrackerInfo();
       setOtherNote(initialState.otherNote);
-    } catch (error) {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    } catch (error) {
+      console.log(error)
+    }
   }, []);
   //adding total expenses
   useEffect(() => {
@@ -129,7 +131,6 @@ const Tracker = () => {
       totalExpenses = totalExpenses + parseInt(Object.values(initialState)[i]);
     }
     setTotal(totalExpenses);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState, otherNote]);
   useEffect(() => {
     setOtherNote(initialState.otherNote);

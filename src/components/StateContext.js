@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 const Context = createContext();
@@ -16,11 +16,11 @@ export const StateContext = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [spinnerIsLoading, setSpinnerIsLoading] = useState(false);
 
-  const notify = (msg) =>
-    toast(msg, {
-      autoClose: 500,
-      hideProgressBar: true,
-    });
+  const notify = useCallback((msg) =>
+  toast(msg, {
+    autoClose: 500,
+    hideProgressBar: true,
+  }), []);
 
   return (
     <Context.Provider

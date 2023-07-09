@@ -7,6 +7,7 @@ import LoyaltyModal from "../../components/LoyaltyModal";
 import { Button } from "react-bootstrap";
 const Loyalty = () => {
   const { fullUserInfo, notify } = useStateContext();
+  // eslint-disable-next-line no-undef
   const { REACT_APP_API_URL } = process.env;
   const [desc, setDesc] = useState("");
   const [modalNumber, setModalNumber] = useState("");
@@ -65,8 +66,6 @@ const Loyalty = () => {
   };
   useEffect(() => {
     fetchNumbers();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="pageWrapper">

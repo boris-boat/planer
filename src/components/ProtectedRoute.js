@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useStateContext } from "./StateContext";
+import React from "react"
 
 const ProtectedRoute = ({ children }) => {
   const { fullUserInfo } = useStateContext();

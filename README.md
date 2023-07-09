@@ -55,12 +55,6 @@ Expense tracker stylized using bootstrap, CRUD operation using front and backend
 
 Modal that uses the openweather API and the current location extracted from the browser and shows the current values because the forecast requires more than a free account: D
 
-## Chat
-
-- Technologies used: React, React-bootstrap, socket-io
-
-Real time chat application made using socket.io on the server as well as on the client side. Possibility of creating chat rooms. For now, there is no option to save messages, but it is planned to be implemented.
-
 ## CookBook
 
 - Technologies used: React, React-bootstrap,

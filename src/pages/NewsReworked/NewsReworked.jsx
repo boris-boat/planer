@@ -11,16 +11,20 @@ const NewsReworked = () => {
   const { data } = useFetch(REACT_APP_API_URL + "/news/getnews");
 
   const filterNews = (news, filter) => {
-    let data = news?.filter((item) => item.guid.includes(filter));
-    return data;
+    try {
+      let filteredData = news?.filter((item) => item.guid.includes(filter));
+      return filteredData;
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Container fluid>
       <Container fluid style={{ paddingTop: "60px" }}>
-        <div style={{ width: "350px", margin: "0 auto",paddingTop:"15px" }}>
+        <div style={{ width: "350px", margin: "0 auto", paddingTop: "15px" }}>
           {data ? (
             <>
-              <Card style={{ width: "100%",padding:"10px"}}>
+              <Card style={{ width: "100%", padding: "10px" }}>
                 <label htmlFor="searchNews" style={{ textAlign: "center" }}>
                   Search news
                 </label>

@@ -1,4 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable no-undef */
 import { Col, Container } from "react-bootstrap";
+import React from "react"
+
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../App.css";
@@ -40,7 +44,6 @@ const Home = () => {
       localStorage.setItem("long", position.coords.longitude);
       localStorage.setItem("lat", position.coords.latitude);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

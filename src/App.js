@@ -1,17 +1,16 @@
 import Topnavbar from "./components/Navbar";
+import React from "react"
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/LoginSignup/LoginSignup";
 import NewsReworked from "./pages/NewsReworked/NewsReworked";
 import ToDo from "./pages/ToDo/ToDo";
-import Join from "./pages/Chat/components/Join/Join";
 import CookBook from "./pages/CookBook/CookBook";
 import TorrentExplorer from "./pages/TorrentTracker/TorrentTracker";
 import Quiz from "./pages/Quiz/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NoUser from "./pages/NoUser/NoUser";
-import Chat from "./pages/Chat/Chat/Chat";
 import Loyalty from "./pages/LoyaltyCollector/Loyalty";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -71,24 +70,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/chat"
-          element={
-            <ProtectedRoute>
-              <Chat />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          exact
-          path="/join"
-          element={
-            <ProtectedRoute>
-              <Join />
-            </ProtectedRoute>
-          }
-        />
-
         <Route
           exact
           path="/home"

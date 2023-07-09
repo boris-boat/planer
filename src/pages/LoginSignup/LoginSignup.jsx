@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../components/StateContext";
 import "../../App.css";
 import "./LoginSignup.styles.css";
+// eslint-disable-next-line no-undef
 const { REACT_APP_API_URL } = process.env;
 
 const Login = () => {
@@ -103,7 +104,6 @@ const Login = () => {
     } else {
       setShowVideo(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -117,6 +117,7 @@ const Login = () => {
                   <Row className="m-0 p-0 ">
                     <Image
                       className="m-0 p-0"
+                      // eslint-disable-next-line no-undef
                       src={require("../../components/media/logosiroki-removebg-preview.png")}
                     ></Image>
                   </Row>
@@ -240,7 +241,6 @@ const Login = () => {
                 <video
                   loop
                   autoPlay
-                  mute="true"
                   className="loginImg m-0 "
                   style={{
                     height: "890px",
@@ -249,6 +249,7 @@ const Login = () => {
                   }}
                 >
                   <source
+                    // eslint-disable-next-line no-undef
                     src={require("../../components/media/Final-Shot.mp4")}
                     type="video/mp4"
                   />

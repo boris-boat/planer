@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./404.styles.css";
 const FourOFour = () => {
   //page showing 404 no page found
@@ -10,6 +10,7 @@ const FourOFour = () => {
   return (
     <div className={`${center} notFoundImg`}>
       <img
+        // eslint-disable-next-line no-undef
         src={require("../../components/media/404.png")}
         alt=""
         className="imidz"

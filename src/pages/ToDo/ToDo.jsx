@@ -49,17 +49,15 @@ function ToDo() {
   };
  
   const addToDo = async () => {
-    let newestTodo = axios.post(REACT_APP_API_URL + "/todos/createTodo", {
-   
-   
-        text: newTodo,
+    let newestTodo =await axios.post(REACT_APP_API_URL + "/todos/createTodo", {
+         text: newTodo,
         creator: user,
         category: category === "Everything" ? "General" : category,
         completed: false,
-    
+      
     })
       .catch((e) => console.log(e));
-    setTodos([...todos, newestTodo]);
+    setTodos([...todos, newestTodo.data]);
   };
   const deleteToDo = async (id) => {
     await fetch(REACT_APP_API_URL + "/todos/delete" + id, {

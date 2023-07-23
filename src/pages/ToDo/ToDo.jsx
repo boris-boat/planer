@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { React, useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import {
   Button,
   Container,
@@ -25,37 +25,37 @@ function ToDo() {
 
   // eslint-disable-next-line no-undef
   const { REACT_APP_API_URL } = process.env;
-  let user = fullUserInfo.data.username;
+  let user = fullUserInfo.username;
   const center = "d-flex justify-content-center align-items-center";
 
   useEffect(() => {
     //first population of todos
     const getTodos = async () => {
-      axios.get(REACT_APP_API_URL + "/todos/" + user)
-      .then((res) => setTodos(res.data))
-      .catch((e) => console.log("Database error  : " + e));
+      axios
+        .get(REACT_APP_API_URL + "/todos/" + user)
+        .then((res) => setTodos(res.data))
+        .catch((e) => console.log("Database error  : " + e));
       setTimeout(() => {
         setLoading(false);
       }, 1500);
     };
 
     getTodos();
-
   }, []);
   const handleUpdate = async (id, text) => {
-    axios.post(REACT_APP_API_URL + "/todos/editTodo/" + id,
-    {text: text}
-    ).catch((e) => console.log(e));
+    axios
+      .post(REACT_APP_API_URL + "/todos/editTodo/" + id, { text: text })
+      .catch((e) => console.log(e));
   };
- 
+
   const addToDo = async () => {
-    let newestTodo =await axios.post(REACT_APP_API_URL + "/todos/createTodo", {
-         text: newTodo,
+    let newestTodo = await axios
+      .post(REACT_APP_API_URL + "/todos/createTodo", {
+        text: newTodo,
         creator: user,
         category: category === "Everything" ? "General" : category,
         completed: false,
-      
-    })
+      })
       .catch((e) => console.log(e));
     setTodos([...todos, newestTodo.data]);
   };

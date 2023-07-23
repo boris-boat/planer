@@ -64,16 +64,17 @@ const Login = () => {
         .then((response) => response.json())
         .then((data) => {
           //data daje user sa servera
-
-          if (data) {
+          if (data.token && data.user) {
             localStorage.setItem("imasvetoken", data.token);
             setIsLoggedIn(true);
             setFullUserInfo(data.user);
             navigate("/home");
+          } else {
+            notify("Invalid username/password combination");
           }
         });
     } catch (e) {
-      notify("Invalid username/password combination");
+      console.log(e);
     }
   };
   useEffect(() => {
@@ -87,8 +88,8 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          if (result?.data?.username) {
-            setFullUserInfo(result.data);
+          if (result?.username) {
+            setFullUserInfo(result);
             setIsLoggedIn(true);
             setSpinnerIsLoading(false);
           } else {

@@ -1,0 +1,29 @@
+import { Navigate } from "react-router-dom";
+import { useStateContext } from "./StateContext";
+import React from "react";
+
+const ProtectedRoute = ({ children }) => {
+  const { fullUserInfo } = useStateContext();
+  const { REACT_APP_NOSKE, REACT_APP_NENSICKA } = process.env;
+  const checkIfAllowed = () => {
+    if (
+      fullUserInfo.username !== REACT_APP_NOSKE ||
+      fullUserInfo.email !== "g.wedge@gmail.com" ||
+      fullUserInfo.username !== REACT_APP_NENSICKA
+    )
+      return false;
+  };
+  //component that checks for user object
+
+  if (
+    !fullUserInfo ||
+    fullUserInfo?.message === "Auth failed" ||
+    checkIfAllowed()
+  ) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedRoute;

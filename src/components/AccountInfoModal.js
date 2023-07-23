@@ -14,11 +14,11 @@ const AccountInfoModal = (props) => {
   const [updatedEmail, setUpdatedEmail] = useState("");
   const { REACT_APP_API_URL } = process.env;
   const { fullUserInfo, notify } = useStateContext();
-  let user = fullUserInfo?.data?.username;
+  let user = fullUserInfo?.username;
 
   const [currentEmail, setCurrentEmail] = useState(() => {
     if (user) {
-      return fullUserInfo?.data?.email;
+      return fullUserInfo?.email;
     } else {
       return "Not set";
     }

@@ -19,7 +19,9 @@ import { useStateContext } from "../../components/StateContext";
 const Home = () => {
   const navigate = useNavigate();
   const { fullUserInfo, setFullUserInfo } = useStateContext();
-  const { REACT_APP_API_URL } = process.env;
+  const { REACT_APP_API_URL, REACT_APP_NOSKE, REACT_APP_NENSICKA } =
+    process.env;
+
   const textStyle = { verticalAlign: "middle", marginBottom: "0" };
   const center =
     "d-flex align-content-center justify-content-center align-items-center";
@@ -156,8 +158,8 @@ const Home = () => {
                 <div className="align-self-center quizImg">
                   <QuizImg />
                 </div>
-                {fullUserInfo.username === "noske" ||
-                fullUserInfo.username === "Nensicka" ? (
+                {fullUserInfo.username === REACT_APP_NOSKE ||
+                fullUserInfo.username === REACT_APP_NENSICKA ? (
                   <div className="home quiz" onClick={() => navigate("/tuya")}>
                     <h4 style={textStyle}>Tuya</h4>
                   </div>

@@ -4,12 +4,12 @@ import React from "react";
 
 const ProtectedRoute = ({ children }) => {
   const { fullUserInfo } = useStateContext();
-  console.log(fullUserInfo);
+  const { REACT_APP_NOSKE, REACT_APP_NENSICKA } = process.env;
   const checkIfAllowed = () => {
     if (
-      fullUserInfo.username !== "noske" ||
+      fullUserInfo.username !== REACT_APP_NOSKE ||
       fullUserInfo.email !== "g.wedge@gmail.com" ||
-      fullUserInfo.username !== "Nensicka"
+      fullUserInfo.username !== REACT_APP_NENSICKA
     )
       return false;
   };

@@ -1,0 +1,45 @@
+.remote-container {
+ width: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ gap: 20px;
+}
+.remote {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 40px;
+    width: 50%;
+}
+.tv-container {
+    display: flex;
+    width: 50%;
+    gap: 10px;
+
+}
+.tv-container > button:first-child {
+width: 100%
+;}
+.ac-container {
+    display: flex;
+    width: 50%;
+    gap: 10px;
+
+}
+@media (min-width: 220px) and (max-width: 680px) {
+    .remote-container{
+      width: 90% ;
+    }
+    .tv-container,.ac-container {
+      width: 80% ;
+    }
+    .list-group-item {
+      max-width: 100% !important;
+    }
+    .listGrupaToDo {
+      max-width: 100% !important;
+    }
+  
+  }

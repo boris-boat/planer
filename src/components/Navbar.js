@@ -31,7 +31,7 @@ const Topnavbar = () => {
 
   return (
     <>
-      {isLoggedIn && fullUserInfo?.data?.username ? (
+      {isLoggedIn && fullUserInfo?.username ? (
         <Navbar
           bg="primary"
           variant="dark"

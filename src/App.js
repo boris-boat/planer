@@ -10,8 +10,10 @@ import TorrentExplorer from "./pages/TorrentTracker/TorrentTracker";
 import Quiz from "./pages/Quiz/Quiz";
 import Tracker from "./pages/ExpenseTracker/Tracker";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRouteTuya from "./components/ProtectedRouteTuya";
 import NoUser from "./pages/NoUser/NoUser";
 import Loyalty from "./pages/LoyaltyCollector/Loyalty";
+import Tuya from "./pages/Tuya/Tuya";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NoPage from "./pages/PageNotFound/404";
@@ -41,6 +43,15 @@ function App() {
             <ProtectedRoute>
               <CookBook />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/tuya"
+          element={
+            <ProtectedRouteTuya>
+              <Tuya />
+            </ProtectedRouteTuya>
           }
         />
         <Route
@@ -92,7 +103,6 @@ function App() {
           }
         />
         <Route exact path="/news" element={<NewsReworked />} />
-        <Route exact path="/*" element={<NoPage />} />
 
         <Route
           exact
@@ -103,6 +113,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route exact path="/*" element={<NoPage />} />
       </Routes>
     </div>
   );

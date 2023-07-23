@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-undef */
 import { Col, Container } from "react-bootstrap";
-import React from "react"
+import React from "react";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -156,6 +156,12 @@ const Home = () => {
                 <div className="align-self-center quizImg">
                   <QuizImg />
                 </div>
+                {fullUserInfo.username === "noske" ||
+                fullUserInfo.username === "Nensicka" ? (
+                  <div className="home quiz" onClick={() => navigate("/tuya")}>
+                    <h4 style={textStyle}>Tuya</h4>
+                  </div>
+                ) : null}
               </Container>
             </Col>
           </Col>

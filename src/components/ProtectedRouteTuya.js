@@ -4,12 +4,13 @@ import React from "react";
 
 const ProtectedRoute = ({ children }) => {
   const { fullUserInfo } = useStateContext();
-  const { REACT_APP_NOSKE, REACT_APP_NENSICKA } = process.env;
+  // eslint-disable-next-line no-undef
+  const { REACT_APP_USER1, REACT_APP_USER2 } = process.env;
   const checkIfAllowed = () => {
     if (
-      fullUserInfo.username !== REACT_APP_NOSKE ||
+      fullUserInfo.username !== REACT_APP_USER1 ||
       fullUserInfo.email !== "g.wedge@gmail.com" ||
-      fullUserInfo.username !== REACT_APP_NENSICKA
+      fullUserInfo.username !== REACT_APP_USER2
     )
       return false;
   };

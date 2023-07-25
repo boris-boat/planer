@@ -9,7 +9,6 @@ const NewsReworked = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const { data } = useFetch(REACT_APP_API_URL + "/news/getnews");
-
   const filterNews = (news, filter) => {
     try {
       let filteredData = news?.filter((item) => item.guid.includes(filter));
@@ -22,7 +21,7 @@ const NewsReworked = () => {
     <Container fluid>
       <Container fluid style={{ paddingTop: "60px" }}>
         <div style={{ width: "350px", margin: "0 auto", paddingTop: "15px" }}>
-          {data ? (
+          {data?.rssFeedFull && data?.rssFeed ? (
             <>
               <Card style={{ width: "100%", padding: "10px" }}>
                 <label htmlFor="searchNews" style={{ textAlign: "center" }}>

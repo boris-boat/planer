@@ -16,9 +16,7 @@ const Loyalty = () => {
   const [modalShow, setModalShow] = useState(false);
   //fetching data from backend
   const fetchNumbers = async () => {
-    fetch(
-      REACT_APP_API_URL + "/loyalty/getNumbers/" + fullUserInfo.data.username
-    )
+    fetch(REACT_APP_API_URL + "/loyalty/getNumbers/" + fullUserInfo.username)
       .then((res) => res.json())
       .then((result) => setBarcodeNumbers(result.loyaltyCards));
   };

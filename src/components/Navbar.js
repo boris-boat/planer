@@ -95,6 +95,16 @@ const Topnavbar = () => {
                   Loyalty card organizer
                 </Nav.Link>
               </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/fengshui");
+                    setShow(false);
+                  }}
+                >
+                  Feng Shui Assistant
+                </Nav.Link>
+              </Nav.Item>
               {/* <Nav.Item>
                 <Nav.Link
                   onClick={() => {

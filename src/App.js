@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import NoPage from "./pages/PageNotFound/404";
 import { Spinner } from "react-bootstrap";
 import { useStateContext } from "./components/StateContext";
+import FengShui from "./pages/FengShui/FengShui";
 
 function App() {
   const { spinnerIsLoading } = useStateContext();
@@ -87,6 +88,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+          <Route
+          exact
+          path="/fengshui"
+          element={
+            <ProtectedRoute>
+              <FengShui />
             </ProtectedRoute>
           }
         />

@@ -47,7 +47,6 @@ const Home = () => {
       localStorage.setItem("lat", position.coords.latitude);
     });
   }, []);
-
   return (
     <>
       <Container className={center} style={{ height: "100vh" }}>
@@ -158,12 +157,22 @@ const Home = () => {
                 <div className="align-self-center quizImg">
                   <QuizImg />
                 </div>
-                {fullUserInfo.username === REACT_APP_NOSKE ||
+              
+                {fullUserInfo.username === REACT_APP_NOSKE  ||
                 fullUserInfo.username === REACT_APP_NENSICKA ? (
                   <div className="home quiz" onClick={() => navigate("/tuya")}>
                     <h4 style={textStyle}>Tuya</h4>
                   </div>
+                  
                 ) : null}
+                 <div className="home quiz" onClick={() => navigate("/fengshui")}>
+                  <h4 style={textStyle}>Feng Shui Geomancer</h4>
+                  <img
+                    className="logo align-self-center"
+                    src={require("../../components/media/Icons/feng-shui.png")}
+                    alt=""
+                  ></img>
+                </div>
               </Container>
             </Col>
           </Col>
